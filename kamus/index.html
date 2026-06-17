@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamus Sastra</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Kamus Istilah Sastra</h1>
+    </header>
+
+    <main>
+
+        <div id="loading">
+            Memuat data...
+        </div>
+
+        <section class="search-section">
+            <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Cari istilah sastra..."
+                autocomplete="off"
+            >
+        </section>
+
+        <section class="history-section">
+            <h2>Terakhir Dicari</h2>
+            
+            <button id="clear-history">Hapus Riwayat</button>
+            
+            <div id="history-list">
+                Belum ada riwayat.
+            </div>
+        </section>
+
+        <section class="bookmark-section">
+            <h2>Bookmark Saya</h2>
+            <div id="bookmark-list">
+                Belum ada bookmark.
+            </div>
+        </section>
+
+        <section class="az-section">
+            <h2>Daftar A-Z</h2>
+            <div id="az-filter">
+                <button class="az-btn aktif" data-huruf="">
+                    Semua
+                </button>
+                <button class="az-btn" data-huruf="A">A</button>
+                <button class="az-btn" data-huruf="B">B</button>
+                <button class="az-btn" data-huruf="C">C</button>
+                <button class="az-btn" data-huruf="D">D</button>
+                <button class="az-btn" data-huruf="E">E</button>
+                <button class="az-btn" data-huruf="F">F</button>
+                <button class="az-btn" data-huruf="G">G</button>
+                <button class="az-btn" data-huruf="H">H</button>
+                <button class="az-btn" data-huruf="I">I</button>
+                <button class="az-btn" data-huruf="J">J</button>
+                <button class="az-btn" data-huruf="K">K</button>
+                <button class="az-btn" data-huruf="L">L</button>
+                <button class="az-btn" data-huruf="M">M</button>
+                <button class="az-btn" data-huruf="N">N</button>
+                <button class="az-btn" data-huruf="O">O</button>
+                <button class="az-btn" data-huruf="P">P</button>
+                <button class="az-btn" data-huruf="Q">Q</button>
+                <button class="az-btn" data-huruf="R">R</button>
+                <button class="az-btn" data-huruf="S">S</button>
+                <button class="az-btn" data-huruf="T">T</button>
+                <button class="az-btn" data-huruf="U">U</button>
+                <button class="az-btn" data-huruf="V">V</button>
+                <button class="az-btn" data-huruf="W">W</button>
+                <button class="az-btn" data-huruf="X">X</button>
+                <button class="az-btn" data-huruf="Y">Y</button>
+                <button class="az-btn" data-huruf="Z">Z</button>
+            </div>
+        </section>
+
+        <section class="tingkat-section">
+            <h2>Tingkat Kesulitan</h2>
+            <div id="tingkat-filter">
+                <button class="tingkat-btn aktif" data-tingkat="">
+                    Semua
+                </button>
+                <button class="tingkat-btn" data-tingkat="Dasar">
+                    Dasar
+                </button>
+                <button class="tingkat-btn" data-tingkat="Menengah">
+                    Menengah
+                </button>
+                <button class="tingkat-btn" data-tingkat="Lanjutan">
+                    Lanjutan
+                </button>
+            </div>
+        </section>
+
+        <section class="kategori-section">
+            <h2>Kategori</h2>
+            <div id="kategori-list">
+                Memuat kategori...
+            </div>
+        </section>
+
+        <section class="istilah-section">
+            <div id="daftar-istilah">
+                Memuat istilah...
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="../js/supabase.js"></script>
+    <script src="../js/kamus.js"></script>
+
+</body>
+
+</html>

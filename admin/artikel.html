@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Artikel - Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Kelola Artikel</h1>
+
+    <div class="toolbar" style="display: flex; gap: 10px; margin-bottom: 20px;">
+        <input
+            type="text"
+            id="search"
+            placeholder="Cari artikel..."
+            style="flex: 1; padding: 8px;"
+        >
+        <button id="btn-tambah" class="btn-primary">
+            + Tambah Artikel
+        </button>
+    </div>
+
+    <table border="1" width="100%" style="border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr>
+                <th style="padding: 10px;">Judul</th>
+                <th style="padding: 10px;">Slug</th>
+                <th style="padding: 10px;">Tanggal</th>
+                <th style="padding: 10px;">Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="artikel-body">
+            </tbody>
+    </table>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/admin-auth.js"></script>
+<script src="js/artikel.js"></script>
+
+</body>
+</html>

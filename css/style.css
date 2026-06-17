@@ -1,0 +1,298 @@
+body{
+
+font-family:Arial;
+
+max-width:1000px;
+
+margin:auto;
+
+padding:20px;
+
+background:#f5f5f5;
+
+}
+
+.card{
+
+background:white;
+
+padding:20px;
+
+margin-bottom:20px;
+
+border-radius:10px;
+
+box-shadow:
+0 2px 5px rgba(0,0,0,.1);
+
+}
+
+.card h2{
+
+margin-top:0;
+
+}
+
+.read-more {
+
+    display: inline-block;
+    margin-top: 12px;
+
+    color: #0d6efd;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+}
+
+.read-more:hover {
+
+    text-decoration: underline;
+
+}
+
+/* ====================================
+   HALAMAN ARTIKEL
+==================================== */
+
+.artikel-page {
+
+    padding: 60px 0;
+
+}
+
+.article-detail {
+
+    padding: 60px 0;
+
+}
+
+.article-detail h1 {
+
+    margin-bottom: 10px;
+
+}
+
+#tanggal {
+
+    color: #777;
+
+    margin-bottom: 25px;
+
+}
+
+#isi {
+
+    margin-top: 30px;
+
+    line-height: 1.9;
+
+    font-size: 18px;
+
+}
+
+#isi p {
+
+    margin-bottom: 20px;
+
+}
+
+.read-more {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    font-weight: bold;
+
+    text-decoration: none;
+
+}
+
+.back-link {
+
+    display: inline-block;
+
+    margin-bottom: 30px;
+
+    text-decoration: none;
+
+}
+
+.artikel-terkait-list {
+
+    margin-top: 15px;
+    padding-left: 20px;
+
+}
+
+.artikel-terkait-list li {
+
+    margin-bottom: 10px;
+
+}
+
+.artikel-link {
+
+    text-decoration: none;
+    color: #1e40af;
+    font-weight: 500;
+
+}
+
+.artikel-link:hover {
+
+    text-decoration: underline;
+
+}
+
+.artikel-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(250px, 1fr)
+        );
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+.artikel-card {
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    background: #fff;
+
+}
+
+.artikel-card a {
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+}
+
+.checkbox-group {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(220px, 1fr)
+        );
+
+    gap: 10px;
+
+    margin-top: 10px;
+
+}
+
+.checkbox-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+}
+
+/* =========================
+   ISTILAH TERKAIT ARTIKEL
+========================= */
+
+.istilah-terkait {
+
+    margin-top: 50px;
+
+}
+
+.istilah-terkait h2 {
+
+    margin-bottom: 20px;
+
+}
+
+.istilah-grid {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+}
+
+.istilah-card {
+
+    display: inline-block;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    border: 1px solid #ddd;
+
+    background: #fafafa;
+
+    text-decoration: none;
+
+    color: #333;
+
+    transition: .2s;
+
+}
+
+.istilah-card:hover {
+
+    background: #f0f4ff;
+
+    border-color: #2563eb;
+
+}
+
+.detail-page{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:40px 20px;
+
+}
+
+.detail-page h2{
+
+    margin-top:40px;
+
+}
+
+.detail-page ul{
+
+    padding-left:22px;
+
+}
+
+.detail-page li{
+
+    margin-bottom:12px;
+
+}

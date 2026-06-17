@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Kelola Karya</title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+</head>
+<body>
+
+<aside class="sidebar">
+
+    <h2>Admin Portal</h2>
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="istilah.html">
+                    Kelola Istilah
+                </a>
+            </li>
+
+            <li>
+                <a href="kategori.html">
+                    Kelola Kategori
+                </a>
+            </li>
+
+            <li>
+                <a href="referensi.html">
+                    Kelola Referensi
+                </a>
+            </li>
+
+            <li>
+                <a href="artikel.html">
+                    Kelola Artikel
+                </a>
+            </li>
+
+            <li>
+                <a href="sastrawan.html">
+                    Kelola Sastrawan
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="karya.html"
+                    class="active"
+                >
+                    Kelola Karya
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</aside>
+
+<main>
+
+    <div class="page-header">
+
+        <h1>
+            Kelola Karya Sastra
+        </h1>
+
+        <button id="btn-tambah">
+
+            + Tambah Karya
+
+        </button>
+
+    </div>
+
+    <div class="toolbar">
+
+        <input
+            type="text"
+            id="search-karya"
+            placeholder="Cari judul karya..."
+        >
+
+    </div>
+
+    <table class="admin-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Judul</th>
+
+                <th>Jenis</th>
+
+                <th>Tahun</th>
+
+                <th>Slug</th>
+
+                <th>Aksi</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="karyaTable">
+
+        </tbody>
+
+    </table>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script src="js/admin-auth.js"></script>
+
+<script src="js/karya.js"></script>
+
+</body>
+</html>

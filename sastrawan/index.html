@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sastrawan Indonesia</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+<body>
+
+<header>
+
+    <h1>Sastrawan Indonesia</h1>
+
+    <p>
+        Ensiklopedia tokoh sastra Indonesia
+    </p>
+
+</header>
+
+<main>
+
+    <section class="search-section">
+
+        <input
+            type="text"
+            id="search-input"
+            placeholder="Cari sastrawan..."
+        >
+
+    </section>
+
+    <section class="az-section">
+
+        <h2>Daftar A-Z</h2>
+
+        <div id="az-filter">
+
+            <button class="az-btn aktif" data-huruf="">
+                Semua
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="angkatan-section">
+
+        <h2>Filter Angkatan</h2>
+
+        <div id="angkatan-filter">
+
+            <button
+                class="angkatan-btn aktif"
+                data-angkatan=""
+            >
+                Semua
+            </button>
+
+            <button
+                class="angkatan-btn"
+                data-angkatan="Balai Pustaka"
+            >
+                Balai Pustaka
+            </button>
+
+            <button
+                class="angkatan-btn"
+                data-angkatan="Pujangga Baru"
+            >
+                Pujangga Baru
+            </button>
+
+            <button
+                class="angkatan-btn"
+                data-angkatan="Angkatan 45"
+            >
+                Angkatan 45
+            </button>
+
+            <button
+                class="angkatan-btn"
+                data-angkatan="Angkatan 1966"
+            >
+                Angkatan 1966
+            </button>
+
+            <button
+                class="angkatan-btn"
+                data-angkatan="Angkatan Reformasi"
+            >
+                Reformasi
+            </button>
+
+        </div>
+
+    </section>
+
+    <section class="jenis-section">
+
+        <h2>Filter Jenis</h2>
+
+        <div id="jenis-filter">
+
+            <button
+                class="jenis-btn aktif"
+                data-jenis=""
+            >
+                Semua
+            </button>
+
+            <button
+                class="jenis-btn"
+                data-jenis="Penyair"
+            >
+                Penyair
+            </button>
+
+            <button
+                class="jenis-btn"
+                data-jenis="Novelis"
+            >
+                Novelis
+            </button>
+
+            <button
+                class="jenis-btn"
+                data-jenis="Cerpenis"
+            >
+                Cerpenis
+            </button>
+
+            <button
+                class="jenis-btn"
+                data-jenis="Dramawan"
+            >
+                Dramawan
+            </button>
+
+            <button
+                class="jenis-btn"
+                data-jenis="Esais"
+            >
+                Esais
+            </button>
+
+            <button
+                class="jenis-btn"
+                data-jenis="Kritikus"
+            >
+                Kritikus
+            </button>
+
+            <button
+                class="jenis-btn"
+                data-jenis="Sastrawan Multigenre"
+            >
+                Multigenre
+            </button>
+
+        </div>
+
+    </section>
+
+    <div id="loading">
+        Memuat data...
+    </div>
+
+    <section id="sastrawanList">
+
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script src="../js/supabase-public.js"></script>
+
+<script src="sastrawan.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portal Sastra Indonesia</title>
+
+    <meta name="description"
+        content="Portal Sastra Indonesia adalah pusat referensi sastra Indonesia yang menyediakan kamus sastra, profil sastrawan, karya sastra, analisis puisi, dan generator sitasi.">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+
+            <div class="logo">
+                <h1>Portal Sastra Indonesia</h1>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="kamus/index.html">Kamus Sastra</a></li>
+                    <li><a href="sastrawan/index.html">Sastrawan</a></li>
+                    <li><a href="karya-sastra/index.html">Karya Sastra</a></li>
+                    <li><a href="artikel/index.html">Artikel</a></li>
+                    <li><a href="pages/sitasi.html">Generator Sitasi</a></li>
+                    <li><a href="pages/tentang.html">Tentang</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <section class="hero">
+
+        <div class="container">
+
+            <h2>Gerbang Pengetahuan Sastra Indonesia</h2>
+
+            <p>
+                Temukan istilah sastra, profil sastrawan,
+                karya sastra Indonesia, artikel akademik,
+                dan berbagai alat bantu untuk mahasiswa,
+                guru, serta peneliti sastra.
+            </p>
+
+            <a href="pages/kamus.html" class="btn">
+                Mulai Belajar
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="search-section">
+
+        <div class="container">
+
+            <h2>Cari di Portal</h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Cari istilah, sastrawan, karya..."
+            >
+
+            <div id="searchResults"></div>
+
+        </div>
+
+    </section>
+
+    <section class="stats">
+
+        <div class="container">
+
+            <div class="stat-card">
+                <h3>500+</h3>
+                <p>Istilah Sastra</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>100+</h3>
+                <p>Sastrawan</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>300+</h3>
+                <p>Karya Sastra</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>100+</h3>
+                <p>Artikel</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="features">
+
+        <div class="container">
+
+            <h2>Fitur Utama</h2>
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+                    <h3>Kamus Sastra</h3>
+                    <p>
+                        Kumpulan istilah sastra lengkap
+                        beserta definisi dan contohnya.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Database Sastrawan</h3>
+                    <p>
+                        Jelajahi biografi dan karya
+                        sastrawan Indonesia.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Karya Sastra</h3>
+                    <p>
+                        Temukan novel, puisi,
+                        cerpen, dan drama Indonesia.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <h3>Generator Sitasi</h3>
+                    <p>
+                        Membantu membuat daftar pustaka
+                        dan sitasi akademik.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="authors">
+
+        <div class="container">
+
+            <h2>Sastrawan Populer</h2>
+
+            <div class="author-grid">
+
+                <article class="author-card">
+                    <h3>Chairil Anwar</h3>
+                    <p>Pelopor Angkatan '45.</p>
+                </article>
+
+                <article class="author-card">
+                    <h3>Pramoedya Ananta Toer</h3>
+                    <p>Penulis Tetralogi Buru.</p>
+                </article>
+
+                <article class="author-card">
+                    <h3>Sapardi Djoko Damono</h3>
+                    <p>Penyair modern Indonesia.</p>
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="latest-posts">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <h2>
+                    Artikel Terbaru
+                </h2>
+
+                <a
+                    href="artikel/index.html"
+                    class="lihat-semua"
+                >
+                    Lihat Semua →
+                </a>
+
+            </div>
+
+            <div
+                class="post-grid"
+                id="latest-posts"
+            >
+
+                <p>
+                    Memuat artikel...
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="cta">
+
+        <div class="container">
+
+            <h2>Bergabung dalam Pengembangan Portal Sastra Indonesia</h2>
+
+            <p>
+                Portal ini dikembangkan untuk mendukung
+                pembelajaran dan penelitian sastra Indonesia.
+            </p>
+
+            <a href="pages/tentang.html" class="btn">
+                Pelajari Lebih Lanjut
+            </a>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="container">
+
+            <p>
+                © 2026 Portal Sastra Indonesia.
+                Seluruh hak cipta dilindungi.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-public.js"></script>
+    <script src="js/home-artikel.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

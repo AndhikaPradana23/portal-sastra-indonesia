@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Istilah</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1 id="judul-form">
+            Tambah Istilah
+        </h1>
+        <a href="istilah.html" class="btn-secondary">
+            ← Kembali
+        </a>
+    </div>
+
+    <form id="istilah-form">
+
+        <section class="form-section">
+            <h2>Informasi Dasar</h2>
+
+            <label for="nama">
+                Nama Istilah
+            </label>
+            <input
+                type="text"
+                id="nama"
+                required
+                placeholder="Contoh: Metafora"
+            >
+
+            <label for="slug">
+                Slug
+            </label>
+            <input
+                type="text"
+                id="slug"
+                required
+                placeholder="metafora"
+            >
+            <small style="display: block; margin-top: -5px; margin-bottom: 15px; color: #666;">
+                Slug akan digunakan pada URL.
+            </small>
+
+            <label for="kategori_id">
+                Kategori
+            </label>
+            <select id="kategori_id" required>
+                <option value="">
+                    Pilih Kategori
+                </option>
+            </select>
+
+            <label for="tingkat">
+                Tingkat Kesulitan
+            </label>
+            <select id="tingkat" required>
+                <option value="Pemula">Pemula</option>
+                <option value="Menengah">Menengah</option>
+                <option value="Lanjutan">Lanjutan</option>
+            </select>
+        </section>
+
+        <section class="form-section">
+            <h2>Definisi</h2>
+
+            <label for="definisi">
+                Definisi Singkat
+            </label>
+            <textarea
+                id="definisi"
+                rows="5"
+                required
+                placeholder="Masukkan definisi istilah..."
+            ></textarea>
+        </section>
+
+        <section class="form-section">
+            <h2>Penjelasan Lengkap</h2>
+
+            <label for="penjelasan">
+                Penjelasan
+            </label>
+            <textarea
+                id="penjelasan"
+                rows="10"
+                placeholder="Penjelasan lebih lengkap..."
+            ></textarea>
+        </section>
+
+        <section class="form-section">
+            <h2>Contoh Penggunaan</h2>
+
+            <label for="contoh">
+                Contoh
+            </label>
+            <textarea
+                id="contoh"
+                rows="8"
+                placeholder="Masukkan contoh penggunaan..."
+            ></textarea>
+        </section>
+
+        <section class="form-section">
+            <h2>Referensi</h2>
+            <p>
+                Tambahkan sumber pustaka atau referensi yang berkaitan dengan istilah ini.
+            </p>
+
+            <div id="referensi-container">
+            </div>
+
+            <button type="button" id="btn-tambah-referensi">
+                + Tambah Referensi
+            </button>
+        </section>
+
+        <section class="form-section" id="metadata-section" style="display: none;">
+            <h2>Metadata</h2>
+            <div style="margin-bottom: 8px;">
+                <strong>Dibuat:</strong>
+                <span id="created-at">-</span>
+            </div>
+            <div>
+                <strong>Diperbarui:</strong>
+                <span id="updated-at">-</span>
+            </div>
+        </section>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 8px;">
+                Istilah Terkait
+            </label>
+            <div
+                id="terkait-container"
+                class="checkbox-group"
+                style="padding: 12px; border: 1px solid #ddd; background: #f9f9f9; border-radius: 4px; max-height: 200px; overflow-y: auto;"
+            >
+                Memuat istilah...
+            </div>
+        </div>
+
+        <section class="form-section">
+            <h2>Sastrawan Terkait</h2>
+            <p>
+                Pilih sastrawan yang sering menggunakan atau berkaitan dengan istilah ini.
+            </p>
+            <div
+                id="sastrawan-container"
+                class="checkbox-group"
+                style="padding:12px; border:1px solid #ddd; background:#f9f9f9; border-radius:4px; max-height:220px; overflow-y:auto;"
+            >
+                Memuat sastrawan...
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h2>Karya Sastra Terkait</h2>
+            <p>
+                Pilih karya sastra yang menggunakan istilah ini.
+            </p>
+            <div
+                id="karya-container"
+                class="checkbox-group"
+                style="padding:12px; border:1px solid #ddd; background:#f9f9f9; border-radius:4px; max-height:220px; overflow-y:auto;"
+            >
+                Memuat karya...
+            </div>
+        </section>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                Simpan
+            </button>
+            <a href="istilah.html" class="btn-secondary">
+                Batal
+            </a>
+        </div>
+
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/admin-auth.js"></script>
+<script src="js/form-istilah.js"></script>
+
+</body>
+</html>

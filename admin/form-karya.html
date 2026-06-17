@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Form Karya</title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+</head>
+<body>
+
+<aside class="sidebar">
+
+    <h2>Admin Portal</h2>
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="istilah.html">
+                    Kelola Istilah
+                </a>
+            </li>
+
+            <li>
+                <a href="kategori.html">
+                    Kelola Kategori
+                </a>
+            </li>
+
+            <li>
+                <a href="referensi.html">
+                    Kelola Referensi
+                </a>
+            </li>
+
+            <li>
+                <a href="artikel.html">
+                    Kelola Artikel
+                </a>
+            </li>
+
+            <li>
+                <a href="sastrawan.html">
+                    Kelola Sastrawan
+                </a>
+            </li>
+
+            <li>
+                <a href="karya.html">
+                    Kelola Karya
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</aside>
+
+<main>
+
+    <div class="page-header">
+
+        <h1 id="judul-form">
+
+            Tambah Karya
+
+        </h1>
+
+    </div>
+
+    <form id="form-karya">
+
+        <div class="form-group">
+
+            <label>
+                Judul Karya
+            </label>
+
+            <input
+                type="text"
+                id="judul"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Slug
+            </label>
+
+            <input
+                type="text"
+                id="slug"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Jenis Karya
+            </label>
+
+            <select id="jenis">
+
+                <option value="">
+                    Pilih Jenis
+                </option>
+
+                <option value="Puisi">
+                    Puisi
+                </option>
+
+                <option value="Novel">
+                    Novel
+                </option>
+
+                <option value="Cerpen">
+                    Cerpen
+                </option>
+
+                <option value="Drama">
+                    Drama
+                </option>
+
+                <option value="Esai">
+                    Esai
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Tahun Terbit
+            </label>
+
+            <input
+                type="number"
+                id="tahun"
+                min="1800"
+                max="2100"
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Deskripsi
+            </label>
+
+            <textarea
+                id="deskripsi"
+                rows="8"
+            ></textarea>
+
+        </div>
+
+        <hr style="margin:40px 0;">
+
+        <div class="form-group">
+
+            <label>
+
+                Artikel Terkait
+
+            </label>
+
+            <p
+                style="
+                    color:#666;
+                    margin-bottom:15px;
+                "
+            >
+
+                Pilih artikel yang membahas karya sastra ini.
+
+            </p>
+
+            <div id="artikel-list">
+
+                <em>
+
+                    Memuat artikel...
+
+                </em>
+
+            </div>
+
+        </div>
+
+        <div class="form-actions">
+
+            <button type="submit">
+
+                Simpan
+
+            </button>
+
+            <a href="karya.html">
+
+                Batal
+
+            </a>
+
+        </div>
+
+    </form>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script src="js/admin-auth.js"></script>
+
+<script src="js/form-karya.js"></script>
+
+</body>
+</html>

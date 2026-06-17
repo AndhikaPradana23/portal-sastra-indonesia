@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Sastrawan</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<aside class="sidebar">
+    <h2>Admin Portal</h2>
+    <nav>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="istilah.html">Kelola Istilah</a></li>
+            <li><a href="kategori.html">Kelola Kategori</a></li>
+            <li><a href="referensi.html">Kelola Referensi</a></li>
+            <li><a href="artikel.html">Kelola Artikel</a></li>
+            <li><a href="sastrawan.html">Kelola Sastrawan</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<main>
+
+    <div class="page-header">
+        <h1 id="judul-form">
+            Tambah Sastrawan
+        </h1>
+    </div>
+
+    <form id="form-sastrawan">
+
+        <div class="form-group">
+            <label>Nama Sastrawan</label>
+            <input
+                type="text"
+                id="nama"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Slug</label>
+            <input
+                type="text"
+                id="slug"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Foto Sastrawan</label>
+            <input
+                type="file"
+                id="foto"
+                accept="image/*"
+            >
+            <div style="margin-top: 10px;">
+                <img
+                    id="preview-foto"
+                    style="
+                        max-width: 200px;
+                        border-radius: 6px;
+                        box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+                        display: none;
+                    "
+                    alt="Preview Foto"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Tempat Lahir</label>
+            <input
+                type="text"
+                id="tempat_lahir"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Tanggal Lahir</label>
+            <input
+                type="date"
+                id="tanggal_lahir"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Tanggal Wafat</label>
+            <input
+                type="date"
+                id="tanggal_wafat"
+            >
+        </div>
+
+        <div class="form-group">
+            <label>Angkatan Sastra</label>
+            <select id="angkatan">
+                <option value="">
+                    Pilih Angkatan
+                </option>
+                <option value="Balai Pustaka">
+                    Balai Pustaka
+                </option>
+                <option value="Pujangga Baru">
+                    Pujangga Baru
+                </option>
+                <option value="Angkatan 45">
+                    Angkatan 45
+                </option>
+                <option value="Angkatan 1966">
+                    Angkatan 1966
+                </option>
+                <option value="Angkatan Reformasi">
+                    Angkatan Reformasi
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Aliran Sastra</label>
+            <input
+                type="text"
+                id="aliran"
+                placeholder="Modernisme, Realisme Sosial, Humanisme"
+            >
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Jenis Sastrawan
+            </label>
+
+            <p
+                style="
+                    color:#666;
+                    margin-bottom:15px;
+                "
+            >
+                Pilih satu atau lebih jenis sastrawan.
+            </p>
+
+            <div id="jenis-sastrawan">
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jenis-checkbox"
+                        value="Penyair"
+                    >
+                    Penyair
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jenis-checkbox"
+                        value="Novelis"
+                    >
+                    Novelis
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jenis-checkbox"
+                        value="Cerpenis"
+                    >
+                    Cerpenis
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jenis-checkbox"
+                        value="Dramawan"
+                    >
+                    Dramawan
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jenis-checkbox"
+                        value="Esais"
+                    >
+                    Esais
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jenis-checkbox"
+                        value="Kritikus"
+                    >
+                    Kritikus
+                </label>
+
+                <label>
+                    <input
+                        type="checkbox"
+                        class="jenis-checkbox"
+                        value="Sastrawan Multigenre"
+                    >
+                    Sastrawan Multigenre
+                </label>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>Biografi Singkat</label>
+            <textarea
+                id="biografi_singkat"
+                rows="4"
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Biografi Lengkap</label>
+            <textarea
+                id="biografi_lengkap"
+                rows="15"
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Karya Sastrawan</label>
+            <p style="color:#666; margin-bottom:10px;">
+                Pilih karya yang ditulis oleh sastrawan ini.
+            </p>
+            <div id="karya-list">
+                <em>Memuat daftar karya...</em>
+            </div>
+        </div>
+
+        <hr style="margin:40px 0;">
+
+        <div class="form-group">
+            <label>
+                Penghargaan
+            </label>
+            <p style="color:#666;margin-bottom:15px;">
+                Tambahkan semua penghargaan yang pernah diterima oleh sastrawan.
+            </p>
+            <div id="penghargaan-list">
+            </div>
+            <button
+                type="button"
+                id="btn-tambah-penghargaan"
+                style="margin-top:15px;"
+            >
+                + Tambah Penghargaan
+            </button>
+        </div>
+
+        <hr style="margin:40px 0;">
+
+        <div class="form-group">
+            <label>
+                Referensi Akademik
+            </label>
+            <p
+                style="
+                    color:#666;
+                    margin-bottom:15px;
+                "
+            >
+                Tambahkan buku, jurnal, skripsi, tesis, atau website yang menjadi referensi.
+            </p>
+            <div
+                id="referensi-list"
+            >
+            </div>
+            <button
+                type="button"
+                id="btn-tambah-referensi"
+                style="margin-top:15px;"
+            >
+                + Tambah Referensi
+            </button>
+        </div>
+
+        <hr style="margin:40px 0;">
+
+        <div class="form-group">
+            <label>
+                Artikel Terkait
+            </label>
+            <p
+                style="
+                    color:#666;
+                    margin-bottom:15px;
+                "
+            >
+                Pilih artikel yang berkaitan dengan sastrawan ini.
+            </p>
+            <div id="artikel-list">
+                <em>Memuat artikel...</em>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit">
+                Simpan
+            </button>
+            <a href="sastrawan.html">
+                Batal
+            </a>
+        </div>
+
+    </form>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="js/admin-auth.js"></script>
+<script src="js/form-sastrawan.js"></script>
+
+<script>
+    document.getElementById('foto').addEventListener('change', function() {
+        const preview = document.getElementById('preview-foto');
+        const file = this.files[0];
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

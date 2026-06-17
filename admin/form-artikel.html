@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Artikel - Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1 id="judul-form">Tambah Artikel</h1>
+        <a href="artikel.html" class="btn-secondary" style="text-decoration: none;">← Kembali</a>
+    </div>
+
+    <form id="artikel-form" style="display: flex; flex-direction: column; gap: 15px;">
+
+        <div>
+            <label for="judul" style="display: block; font-weight: bold; margin-bottom: 5px;">Judul</label>
+            <input type="text" id="judul" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div>
+            <label for="slug" style="display: block; font-weight: bold; margin-bottom: 5px;">Slug</label>
+            <input type="text" id="slug" required style="width: 100%; padding: 8px;">
+        </div>
+
+        <div>
+            <label for="ringkasan" style="display: block; font-weight: bold; margin-bottom: 5px;">Ringkasan</label>
+            <textarea id="ringkasan" rows="4" style="width: 100%; padding: 8px;" placeholder="Tulis deskripsi singkat artikel..."></textarea>
+        </div>
+
+        <div>
+            <label for="isi" style="display: block; font-weight: bold; margin-bottom: 5px;">Isi Artikel</label>
+            <textarea id="isi" rows="15" style="width: 100%; padding: 8px;" placeholder="Tulis konten lengkap artikel di sini..."></textarea>
+        </div>
+
+        <section class="form-section">
+            <h2 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; margin-top: 10px;">Istilah Terkait</h2>
+            <div id="istilah-container" style="padding: 10px; border: 1px solid #ddd; background: #f9f9f9; border-radius: 4px; max-height: 200px; overflow-y: auto;">
+                Memuat istilah...
+            </div>
+        </section>
+
+        <div class="form-actions" style="margin-top: 10px;">
+            <button type="submit" class="btn-primary" style="padding: 10px 20px; cursor: pointer;">
+                Simpan
+            </button>
+            <a href="artikel.html" class="btn-secondary" style="margin-left: 10px; text-decoration: none;">Batal</a>
+        </div>
+
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/admin-auth.js"></script>
+<script src="js/form-artikel.js"></script>
+
+</body>
+</html>

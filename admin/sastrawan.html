@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Sastrawan</title>
+    <link rel="stylesheet" href="../css/style.css"> 
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <aside class="sidebar">
+        <h2>Admin Portal</h2>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="istilah.html">Kelola Istilah</a></li>
+                <li><a href="kategori.html">Kelola Kategori</a></li>
+                <li><a href="referensi.html">Kelola Referensi</a></li>
+                <li><a href="artikel.html">Kelola Artikel</a></li>
+                <li><a href="sastrawan.html" class="active">Kelola Sastrawan</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="page-header">
+            <h1>Kelola Sastrawan</h1>
+            <button id="btn-tambah">
+                + Tambah Sastrawan
+            </button>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Angkatan</th>
+                    <th>Aliran</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="sastrawanTable">
+                </tbody>
+        </table>
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/admin-auth.js"></script>
+<script src="js/sastrawan.js"></script>
+
+</body>
+</html>
