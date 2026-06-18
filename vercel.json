@@ -1,1 +1,8 @@
-{"rewrites": [{"source": "/sitemap.xml", "destination": "https://fayyvzywdytthjynjlef.supabase.co/functions/v1/sitemap"}]} 
+{
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "https://fayyvzywdytthjynjlef.supabase.co/functions/v1/sitemap"
+    }
+  ]
+}
