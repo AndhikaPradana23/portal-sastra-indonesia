@@ -1,46 +1,61 @@
-// Follow this setup guide to integrate the Deno language server with your editor:
-// https://deno.land/manual/getting_started/setup_your_environment
-// This enables autocomplete, go to definition, etc.
+import { serve } from "https://deno.land/std/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
-// Setup type definitions for built-in Supabase Runtime APIs
-import "@supabase/functions-js/edge-runtime.d.ts";
-import { withSupabase } from "@supabase/server";
+serve(async () => {
+    // Menginisialisasi klien Supabase menggunakan Environment Variables internal
+    const supabase = createClient(
+        Deno.env.get("SUPABASE_URL")!,
+        Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+    );
 
-console.log("Hello from Functions!");
+    // SEMENTARA: Ganti dengan domain produksi Anda nanti jika sudah rilis
+    const baseUrl = "https://portalsastra.id"; 
+    const urls = [];
 
-// This endpoint uses 'publishable' | 'secret' access, apiKey is required.
-// Use publishable for Client-facing, key-validated endpoints
-// Use secret for Server-to-server, internal calls
-export default {
-  fetch: withSupabase({ auth: ["publishable", "secret"] }, async (req, ctx) => {
-    // Called by another service with a secret key
-    // ctx.supabaseAdmin bypasses RLS — use for privileged operations
-    /*
-    if (ctx.authMode === "secret") {
-      const { user_id } = await req.json();
-      const { data } = await ctx.supabaseAdmin.auth.admin.getUserById(user_id);
+    // 1. URL Statis (Beranda & Halaman Utama Kategori)
+    urls.push({ loc: `${baseUrl}/` });
+    urls.push({ loc: `${baseUrl}/kamus/` });
+    urls.push({ loc: `${baseUrl}/artikel/` });
+    urls.push({ loc: `${baseUrl}/karya-sastra/` });
+    urls.push({ loc: `${baseUrl}/sastrawan/` });
 
-      return Response.json({
-        email: data?.user?.email,
-      });
-    }
-    */
-
-    const { name } = await req.json();
-
-    return Response.json({
-      message: `Hello ${name}!`,
+    // 2. Ambil data Slug dari tabel Istilah
+    const { data: istilah } = await supabase.from("istilah").select("slug");
+    istilah?.forEach(item => {
+        urls.push({ loc: `${baseUrl}/kamus/detail.html?slug=${item.slug}` });
     });
-  }),
-};
 
-/* To invoke locally:
+    // 3. Ambil data Slug dari tabel Artikel
+    const { data: artikel } = await supabase.from("artikel").select("slug");
+    artikel?.forEach(item => {
+        urls.push({ loc: `${baseUrl}/artikel/detail.html?slug=${item.slug}` });
+    });
 
-  1. Run `supabase start` (see: https://supabase.com/docs/reference/cli/supabase-start)
-  2. Make an HTTP request:
+    // 4. Ambil data Slug dari tabel Karya
+    const { data: karya } = await supabase.from("karya").select("slug");
+    karya?.forEach(item => {
+        urls.push({ loc: `${baseUrl}/karya-sastra/detail.html?slug=${item.slug}` });
+    });
 
-  curl -i --location --request POST 'http://127.0.0.1:54321/functions/v1/sitemap' \
-    --header 'apiKey: sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH' \
-    --data '{"name":"Functions"}'
+    // 5. Ambil data Slug dari tabel Sastrawan
+    const { data: sastrawan } = await supabase.from("sastrawan").select("slug");
+    sastrawan?.forEach(item => {
+        urls.push({ loc: `${baseUrl}/sastrawan/detail.html?slug=${item.slug}` });
+    });
 
-*/
+    // 6. Menyusun struktur teks XML
+    let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+    
+    urls.forEach(item => {
+        xml += `<url>\n  <loc>${item.loc}</loc>\n  <changefreq>weekly</changefreq>\n  <priority>0.8</priority>\n</url>\n`;
+    });
+
+    xml += `</urlset>`;
+
+    // 7. Kembalikan respons dalam bentuk format XML asli
+    return new Response(xml, {
+        headers: {
+            "Content-Type": "application/xml; charset=utf-8"
+        }
+    });
+});

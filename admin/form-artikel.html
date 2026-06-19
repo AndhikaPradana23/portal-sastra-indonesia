@@ -33,6 +33,139 @@
         </div>
 
         <div>
+            <label
+                for="kategori"
+                style="
+                    display:block;
+                    font-weight:bold;
+                    margin-bottom:5px;
+                "
+            >
+                Kategori
+            </label>
+            <select
+                id="kategori"
+                style="
+                    width:100%;
+                    padding:8px;
+                "
+            >
+                <option value="">
+                    Pilih kategori
+                </option>
+                <option value="Teori Sastra">
+                    Teori Sastra
+                </option>
+                <option value="Kritik Sastra">
+                    Kritik Sastra
+                </option>
+                <option value="Puisi">
+                    Puisi
+                </option>
+                <option value="Cerpen">
+                    Cerpen
+                </option>
+                <option value="Novel">
+                    Novel
+                </option>
+                <option value="Drama">
+                    Drama
+                </option>
+                <option value="Linguistik">
+                    Linguistik
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <label
+                for="tag"
+                style="
+                    display:block;
+                    font-weight:bold;
+                    margin-bottom:5px;
+                "
+            >
+                Tag
+            </label>
+            <small style="display: block; margin-bottom: 5px; color: #666;">
+                Pisahkan dengan koma. Contoh: Puisi, Chairil Anwar, Angkatan 45
+            </small>
+            <input
+                type="text"
+                id="tag"
+                style="
+                    width:100%;
+                    padding:8px;
+                "
+                placeholder="Tag1, Tag2, Tag3"
+            >
+        </div>
+
+        <div>
+            <label
+                for="thumbnail"
+                style="
+                    display:block;
+                    font-weight:bold;
+                    margin-bottom:5px;
+                "
+            >
+                Thumbnail
+            </label>
+            <input
+                type="text"
+                id="thumbnail"
+                style="
+                    width:100%;
+                    padding:8px;
+                "
+                placeholder="https://..."
+            >
+        </div>
+
+        <div>
+            <label style="display: block; font-weight: bold; margin-bottom: 5px;">
+                Upload Thumbnail
+            </label>
+            <input
+                type="file"
+                id="thumbnail-file"
+                accept="image/*"
+                style="width: 100%; padding: 8px; border: 1px dashed #ccc; background: #fafafa; border-radius: 4px;"
+            >
+        </div>
+
+        <div
+            id="thumbnail-preview"
+            style="
+                margin-top:15px;
+            "
+        >
+        </div>
+
+        <div>
+            <label
+                for="published_at"
+                style="
+                    display:block;
+                    font-weight:bold;
+                    margin-bottom:5px;
+                "
+            >
+                Tanggal Publish
+            </label>
+            <input
+                type="datetime-local"
+                id="published_at"
+                style="
+                    width:100%;
+                    padding:8px;
+                "
+            >
+        </div>
+
+        <div>
             <label for="isi" style="display: block; font-weight: bold; margin-bottom: 5px;">Isi Artikel</label>
             <textarea id="isi" rows="15" style="width: 100%; padding: 8px;" placeholder="Tulis konten lengkap artikel di sini..."></textarea>
         </div>

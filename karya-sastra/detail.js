@@ -59,6 +59,13 @@ async function loadDetail() {
     const istilahData = await loadIstilah(data.id);
     const artikelData = await loadArtikel(data.id, sastrawanData);
     const karyaLain = await loadKaryaLain(sastrawanData, data.id);
+    const karyaTerkait = await loadKaryaTerkait(data.id);
+
+    // Render skema JSON-LD CreativeWork untuk optimasi SEO
+    updateCreativeWorkSchema(
+        data,
+        sastrawanData
+    );
 
     // Render struktur markup HTML komponen detail karya ke dalam DOM
     container.innerHTML = `
@@ -79,11 +86,39 @@ async function loadDetail() {
 
     <section>
     <h2>
+    Genre
+    </h2>
+    <p>
+    ${data.genre || "-"}
+    </p>
+    </section>
+
+    <section>
+    <h2>
+    Tema
+    </h2>
+    ${renderTema(
+        data.tema
+    )}
+    </section>
+
+    <section>
+    <h2>
     Deskripsi
     </h2>
     <div>
     ${(data.deskripsi || "")
     .replace(/\n/g, "<br>")}
+    </div>
+    </section>
+
+    <section>
+    <h2>
+    Analisis Singkat
+    </h2>
+    <div>
+    ${(data.analisis || "-")
+    .replace(/\n/g,"<br>")}
     </div>
     </section>
 
@@ -110,7 +145,14 @@ async function loadDetail() {
 
     <section>
     <h2>
-    Karya Lain
+    Karya Terkait
+    </h2>
+    ${renderKaryaTerkait(karyaTerkait)}
+    </section>
+
+    <section>
+    <h2>
+    Karya Lain dari Penulis Ini
     </h2>
     ${renderKaryaLain(karyaLain)}
     </section>
@@ -251,6 +293,94 @@ async function loadKaryaLain(sastrawanData, karyaId) {
 }
 
 // ==========================================
+// LOAD KARYA TERKAIT (DUA ARAH)
+// ==========================================
+async function loadKaryaTerkait(karyaId){
+
+    //------------------------------------
+    // RELASI SEBAGAI SUMBER
+    //------------------------------------
+    const {
+        data: data1,
+        error: error1
+    } =
+    await supabaseClient
+        .from("karya_terkait")
+        .select(`
+            terkait:karya!karya_terkait_terkait_id_fkey(
+                id,
+                judul,
+                slug
+            )
+        `)
+        .eq(
+            "karya_id",
+            karyaId
+        );
+
+    if(error1){
+        console.error(error1);
+    }
+
+    //------------------------------------
+    // RELASI SEBAGAI TUJUAN
+    //------------------------------------
+    const {
+        data: data2,
+        error: error2
+    } =
+    await supabaseClient
+        .from("karya_terkait")
+        .select(`
+            karya:karya!karya_terkait_karya_id_fkey(
+                id,
+                judul,
+                slug
+            )
+        `)
+        .eq(
+            "terkait_id",
+            karyaId
+        );
+
+    if(error2){
+        console.error(error2);
+    }
+
+    //------------------------------------
+    // GABUNGKAN TANPA DUPLIKAT
+    //------------------------------------
+    const hasil = [];
+    const ids = new Set();
+
+    (data1 || []).forEach(item=>{
+        if(
+            item.terkait &&
+            !ids.has(item.terkait.id)
+        ){
+            ids.add(item.terkait.id);
+            hasil.push({
+                karya:item.terkait
+            });
+        }
+    });
+
+    (data2 || []).forEach(item=>{
+        if(
+            item.karya &&
+            !ids.has(item.karya.id)
+        ){
+            ids.add(item.karya.id);
+            hasil.push({
+                karya:item.karya
+            });
+        }
+    });
+
+    return hasil;
+}
+
+// ==========================================
 // LOAD ISTILAH TERKAIT KARYA
 // ==========================================
 async function loadIstilah(karyaId) {
@@ -339,6 +469,40 @@ function renderIstilah(data){
 
 }
 
+function renderTema(tema){
+
+    if(
+        !tema ||
+        !Array.isArray(tema) ||
+        tema.length === 0
+    ){
+
+        return `
+        <p>
+            -
+        </p>
+        `;
+
+    }
+
+    return `
+    <ul>
+
+    ${tema.map(item=>`
+
+        <li>
+
+            ${item}
+
+        </li>
+
+    `).join("")}
+
+    </ul>
+    `;
+
+}
+
 function renderArtikel(data) {
     if (!data.length) {
         return "<p>-</p>";
@@ -352,6 +516,30 @@ function renderArtikel(data) {
         <a href="../artikel/detail.html?slug=${item.artikel.slug}">
         ${item.artikel.judul}
         </a>
+        </li>
+        `;
+    });
+    html += "</ul>";
+    return html;
+}
+
+function renderKaryaTerkait(data){
+    if(!data.length){
+        return `
+        <p>
+            Belum ada karya terkait.
+        </p>
+        `;
+    }
+
+    let html = "<ul>";
+    data.forEach(item=>{
+        if(!item.karya) return;
+        html += `
+        <li>
+            <a href="detail.html?slug=${item.karya.slug}">
+                ${item.karya.judul}
+            </a>
         </li>
         `;
     });
@@ -377,4 +565,66 @@ function renderKaryaLain(data) {
     });
     html += "</ul>";
     return html;
+}
+
+// ==========================================
+// 5. JSON-LD SCHEMA GENERATOR
+// ==========================================
+function updateCreativeWorkSchema(
+    karya,
+    penulis = []
+){
+
+    const schema = {
+
+        "@context":"https://schema.org",
+
+        "@type":"CreativeWork",
+
+        name:
+            karya.judul,
+
+        description:
+            karya.deskripsi ||
+            karya.judul,
+
+        abstract:
+            karya.analisis ||
+            karya.deskripsi,
+
+        genre:
+            karya.genre ||
+            karya.jenis,
+
+        url:
+            window.location.href,
+
+        datePublished:
+            karya.tahun
+                ? karya.tahun.toString()
+                : undefined,
+
+        author:
+            penulis.map(item=>({
+
+                "@type":"Person",
+
+                name:
+                    item.sastrawan.nama
+
+            }))
+
+    };
+
+    document
+    .getElementById(
+        "jsonld-schema"
+    )
+    .textContent =
+    JSON.stringify(
+        schema,
+        null,
+        2
+    );
+
 }

@@ -9,7 +9,11 @@ const slug = document.getElementById("slug");
 const jenis = document.getElementById("jenis");
 const tahun = document.getElementById("tahun");
 const deskripsi = document.getElementById("deskripsi");
+const tema = document.getElementById("tema");
+const genre = document.getElementById("genre");
+const analisis = document.getElementById("analisis");
 const artikelList = document.getElementById("artikel-list");
+const karyaTerkaitList = document.getElementById("karya-terkait-list");
 
 // Proteksi Halaman & Cek Parameter Edit URL
 document.addEventListener(
@@ -29,6 +33,7 @@ document.addEventListener(
 
         // Muat daftar seluruh artikel terlebih dahulu
         await loadDaftarArtikel();
+        await loadDaftarKarya();
 
         if (editId) {
             const judulForm = document.getElementById("judul-form");
@@ -38,6 +43,7 @@ document.addEventListener(
             loadData(editId);
             // Muat relasi artikel yang tercentang untuk karya ini
             await loadRelasiArtikel(editId);
+            await loadRelasiKarya(editId);
         }
     }
 );
@@ -88,6 +94,23 @@ async function loadData(id) {
     if (jenis) jenis.value = data.jenis || "";
     if (tahun) tahun.value = data.tahun || "";
     if (deskripsi) deskripsi.value = data.deskripsi || "";
+    
+    if (tema) {
+        tema.value =
+        Array.isArray(data.tema)
+        ? data.tema.join(", ")
+        : "";
+    }
+
+    if (genre) {
+        genre.value =
+        data.genre || "";
+    }
+
+    if (analisis) {
+        analisis.value =
+        data.analisis || "";
+    }
 }
 
 async function loadDaftarArtikel() {
@@ -113,6 +136,40 @@ async function loadDaftarArtikel() {
     `).join("");
 }
 
+// ==========================================
+// LOAD DAFTAR KARYA TERKAIT
+// ==========================================
+async function loadDaftarKarya() {
+    const { data, error } =
+    await adminSupabase
+        .from("karya")
+        .select("id, judul")
+        .order("judul");
+
+    if (error) {
+        karyaTerkaitList.innerHTML =
+        "Gagal memuat karya.";
+        return;
+    }
+
+    karyaTerkaitList.innerHTML =
+    data.map(item => `
+        <label
+            style="
+                display:block;
+                margin-bottom:8px;
+            "
+        >
+            <input
+                type="checkbox"
+                class="karya-checkbox"
+                value="${item.id}"
+            >
+            ${item.judul}
+        </label>
+    `).join("");
+}
+
 async function loadRelasiArtikel(karyaId) {
     const { data } = await adminSupabase
         .from("artikel_karya")
@@ -131,6 +188,45 @@ async function loadRelasiArtikel(karyaId) {
 }
 
 // ==========================================
+// LOAD RELASI KARYA TERKAIT
+// ==========================================
+async function loadRelasiKarya(karyaId){
+    const { data } =
+    await adminSupabase
+        .from("karya_terkait")
+        .select("terkait_id")
+        .eq(
+            "karya_id",
+            karyaId
+        );
+
+    if(!data) return;
+
+    const ids =
+    data.map(item=>item.terkait_id);
+
+    document
+    .querySelectorAll(
+        ".karya-checkbox"
+    )
+    .forEach(cb=>{
+        cb.checked =
+        ids.includes(cb.value);
+    });
+
+    // Tidak boleh memilih dirinya sendiri
+    const self =
+    document.querySelector(
+        `.karya-checkbox[value="${karyaId}"]`
+    );
+
+    if(self){
+        self.disabled = true;
+        self.parentElement.style.opacity = ".5";
+    }
+}
+
+// ==========================================
 // 4. SIMPAN DATA (INSERT / UPDATE) & SINKRONISASI
 // ==========================================
 if (form) {
@@ -141,12 +237,47 @@ if (form) {
 
             // Susun data payload sebelum dikirim ke tabel Supabase
             const payload = {
-                judul: judul ? judul.value.trim() : "",
-                slug: slug ? slug.value.trim() : "",
-                jenis: jenis ? jenis.value : "",
-                tahun: (tahun && tahun.value) ? parseInt(tahun.value) : null,
-                deskripsi: deskripsi ? deskripsi.value.trim() : "",
-                updated_at: new Date()
+                judul:
+                judul
+                ? judul.value.trim()
+                : "",
+
+                slug:
+                slug
+                ? slug.value.trim()
+                : "",
+
+                jenis:
+                jenis
+                ? jenis.value
+                : "",
+
+                tahun:
+                tahun && tahun.value
+                ? parseInt(tahun.value)
+                : null,
+
+                deskripsi:
+                deskripsi
+                ? deskripsi.value.trim()
+                : "",
+
+                tema:
+                tema.value
+                ? tema.value
+                    .split(",")
+                    .map(item=>item.trim())
+                    .filter(item=>item!=="")
+                : [],
+
+                genre:
+                genre.value.trim(),
+
+                analisis:
+                analisis.value.trim(),
+
+                updated_at:
+                new Date()
             };
 
             let response;
@@ -158,10 +289,15 @@ if (form) {
                     .update(payload)
                     .eq("id", editId);
             } else {
-                // Mode Tambah Data Baru (Insert) - Ditambahkan .select().single() agar menghasilkan data id baru
+                // Mode Tambah Data Baru (Insert)
+                payload.created_at =
+                new Date();
+
                 response = await adminSupabase
                     .from("karya")
-                    .insert([payload])
+                    .insert([
+                        payload
+                    ])
                     .select()
                     .single();
             }
@@ -193,6 +329,37 @@ if (form) {
                 await adminSupabase
                     .from("artikel_karya")
                     .insert(artikelData);
+            }
+
+            // ==========================================
+            // SIMPAN KARYA TERKAIT
+            // ==========================================
+            await adminSupabase
+                .from("karya_terkait")
+                .delete()
+                .eq(
+                    "karya_id",
+                    karyaId
+                );
+
+            const karyaDipilih =
+            document.querySelectorAll(
+                ".karya-checkbox:checked"
+            );
+
+            const karyaData =
+            [...karyaDipilih].map(item=>({
+                karya_id:
+                karyaId,
+
+                terkait_id:
+                item.value
+            }));
+
+            if(karyaData.length){
+                await adminSupabase
+                    .from("karya_terkait")
+                    .insert(karyaData);
             }
 
             alert("Data berhasil disimpan");

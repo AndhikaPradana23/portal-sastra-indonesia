@@ -194,7 +194,7 @@ function potongTeks(teks, panjang){
 
     return teks.substring(
         0,
-        long
+        panjang
     ) + "...";
 }
 
@@ -373,7 +373,78 @@ document.addEventListener(
 );
 
 document.addEventListener(
-"DOMContentLoaded",
-()=>{
-    loadSastrawan();
-});
+    "DOMContentLoaded",
+    () => {
+
+        updateSEO();
+
+        loadSastrawan();
+
+    }
+);
+
+// ==========================================
+// SEO HALAMAN DAFTAR SASTRAWAN
+// ==========================================
+
+function updateSEO(){
+
+    const title =
+    "Database Sastrawan Indonesia | Portal Sastra Indonesia";
+
+    const description =
+    "Ensiklopedia sastrawan Indonesia berisi biografi, karya sastra, penghargaan, referensi akademik, artikel, serta tokoh sastra dari berbagai angkatan.";
+
+    document.title =
+    title;
+
+    document
+    .getElementById(
+        "meta-description"
+    )
+    .content =
+    description;
+
+    document
+    .getElementById(
+        "canonical-url"
+    )
+    .href =
+    window.location.href;
+
+    document
+    .getElementById(
+        "og-title"
+    )
+    .content =
+    title;
+
+    document
+    .getElementById(
+        "og-description"
+    )
+    .content =
+    description;
+
+    document
+    .getElementById(
+        "og-url"
+    )
+    .content =
+    window.location.href;
+
+    document
+    .getElementById(
+        "twitter-title"
+    )
+    .content =
+    title;
+
+    document
+    .getElementById(
+        "twitter-description"
+    )
+    .content =
+    description;
+
+}

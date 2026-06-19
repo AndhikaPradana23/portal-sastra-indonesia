@@ -306,6 +306,9 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("Halaman Kamus dimuat");
     console.log("Supabase URL:", SUPABASE_URL);
 
+    // Metadata SEO
+    updateSEO();
+
     // Memuat filter kategori dari database
     loadKategori();
 
@@ -318,6 +321,70 @@ document.addEventListener("DOMContentLoaded", () => {
     // Memuat seluruh data awal secara utuh (semua parameter kosong bawaan)
     loadIstilah();
 });
+
+// ==========================================
+// SEO HALAMAN DAFTAR KAMUS
+// ==========================================
+function updateSEO(){
+
+    const title =
+    "Kamus Istilah Sastra Indonesia | Portal Sastra Indonesia";
+
+    const description =
+    "Kamus istilah sastra Indonesia lengkap berisi definisi, contoh, penjelasan, referensi akademik, contoh penggunaan, dan istilah terkait.";
+
+    document.title = title;
+
+    document
+    .getElementById(
+        "meta-description"
+    )
+    .content =
+    description;
+
+    document
+    .getElementById(
+        "canonical-url"
+    )
+    .href =
+    window.location.href;
+
+    document
+    .getElementById(
+        "og-title"
+    )
+    .content =
+    title;
+
+    document
+    .getElementById(
+        "og-description"
+    )
+    .content =
+    description;
+
+    document
+    .getElementById(
+        "og-url"
+    )
+    .content =
+    window.location.href;
+
+    document
+    .getElementById(
+        "twitter-title"
+    )
+    .content =
+    title;
+
+    document
+    .getElementById(
+        "twitter-description"
+    )
+    .content =
+    description;
+
+}
 
 // Segarkan Riwayat Secara Otomatis Saat Kembali ke Tab/Halaman Kamus
 window.addEventListener("focus", loadHistory);

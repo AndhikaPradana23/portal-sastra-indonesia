@@ -19,6 +19,11 @@
         href="../css/style.css"
     >
 
+<script
+id="jsonld-schema"
+type="application/ld+json">
+{}
+</script>
 </head>
 
 <body>
@@ -39,6 +44,16 @@
 
         <div class="container">
 
+            <nav
+                id="breadcrumb"
+                class="breadcrumb"
+                aria-label="Breadcrumb"
+            >
+
+                Memuat navigasi...
+
+            </nav>
+
             <a
                 href="index.html"
                 class="back-link"
@@ -46,11 +61,20 @@
                 ← Kembali ke Artikel
             </a>
 
+            <div id="thumbnail-container"></div>
+
             <h1 id="judul">
                 Memuat...
             </h1>
 
-            <p id="tanggal"></p>
+            <div id="artikel-meta">
+                <p id="kategori"></p>
+                <p id="tanggal"></p>
+                <p id="penulis"></p>
+                <p id="estimasi-baca"></p>
+            </div>
+
+            <div id="tag-container"></div>
 
             <hr>
 
