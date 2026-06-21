@@ -452,7 +452,7 @@ function renderIstilah(data){
         html += `
         <li>
 
-        <a href="../kamus/detail.html?slug=${item.istilah.slug}">
+        <a href="../kamus-istilah/detail.html?slug=${item.istilah.slug}">
 
         ${item.istilah.nama}
 

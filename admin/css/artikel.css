@@ -1,0 +1,354 @@
+/* ==========================================================================
+   PORTAL SASTRA INDONESIA - ADMIN CSS ARTIKEL
+   ========================================================================== */
+
+/* 1. VARIABEL & RESET DASAR */
+:root {
+    --primary-color: #2c3e50;
+    --primary-hover: #1a252f;
+    --sidebar-bg: #1e272e;
+    --sidebar-hover: #2f3640;
+    --sidebar-active: #e67e22;
+    --secondary-color: #7f8c8d;
+    --secondary-hover: #95a5a6;
+    --success-color: #2ecc71;
+    --success-hover: #27ae60;
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+    --text-color: #2f3542;
+    --bg-color: #f5f6fa;
+    --border-color: #dcdde1;
+    --card-bg: #ffffff;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* 2. TATA LETAK UTAMA DASHBOARD (DENGAN SIDEBAR) */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Area Konten Utama */
+main {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: var(--bg-color);
+    overflow-y: auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.page-header h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* CONTAINER FORM INPUT (Untuk Form Tambah/Edit Artikel) */
+.container {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* 3. KOMPONEN TOMBOL (BUTTONS) */
+button, .btn-primary, .btn-secondary {
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.btn-primary, #btn-tambah {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover, #btn-tambah:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover);
+}
+
+/* Tombol Aksi di Dalam Tabel */
+td button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-right: 5px;
+    font-weight: 500;
+    color: white;
+}
+
+td button:nth-of-type(1) { /* Tombol Edit */
+    background-color: #f39c12;
+}
+
+td button:nth-of-type(1):hover {
+    background-color: #e67e22;
+}
+
+td button:nth-of-type(2) { /* Tombol Hapus */
+    background-color: var(--danger-color);
+}
+
+td button:nth-of-type(2):hover {
+    background-color: var(--danger-hover);
+}
+
+/* 4. TOOLBAR & FORM ELEMENT */
+.toolbar {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+    color: var(--text-color);
+    background-color: #ffffff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="datetime-local"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+}
+
+textarea {
+    resize: vertical;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+}
+
+/* 5. PENATAAN TABEL DATA (ADMIN TABLE) */
+table, .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: none !important; /* Menghilangkan border kasar bawaan */
+}
+
+th, td {
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #f1f2f6;
+}
+
+th {
+    background-color: #f1f2f6;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--border-color) !important;
+}
+
+td {
+    color: #57606f;
+    font-size: 0.95rem;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Menyesuaikan lebar kolom aksi */
+th:last-child, td:last-child {
+    width: 180px;
+    text-align: right;
+}
+
+/* 6. FORM SPESIFIK & KONTAINER RELATED (MANY-TO-MANY) */
+.form-section {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#istilah-container {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    background-color: #fafafa;
+    border-radius: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+#istilah-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#istilah-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#istilah-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+#istilah-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 0.95rem;
+    padding: 4px 6px;
+    border-radius: 3px;
+    transition: background-color 0.1s ease;
+}
+
+.checkbox-item:hover {
+    background-color: #f0f2f5;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+/* 7. PREVIEW THUMBNAIL & UTILITY */
+.thumbnail-preview {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+.thumbnail-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-top: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
+/* Disable State */
+button:disabled {
+    background-color: var(--secondary-color) !important;
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* 8. MEDIA QUERIES (RESPONSIVE DESIGN) */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .toolbar input[type="text"] {
+        width: 100%;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    table, .admin-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    th, td {
+        padding: 10px;
+    }
+}

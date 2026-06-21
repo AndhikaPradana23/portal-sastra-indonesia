@@ -1,0 +1,362 @@
+/* ==========================================================================
+   GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   LAYOUT LAYOUT CONTAINER (Dua Kolom - Halaman Utama)
+   ========================================================================== */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    padding: 30px;
+    background: #f8fafc;
+}
+
+/* Layout Container Tunggal (Halaman Form) */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   PAGE HEADER & UTILITIES
+   ========================================================================== */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.page-header h1 {
+    font-size: 26px;
+    color: #1a202c;
+    font-weight: 700;
+}
+
+#search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 25px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+#search-input:focus {
+    border-color: #2b6cb0;
+    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+}
+
+/* ==========================================================================
+   BUTTONS STYLING
+   ========================================================================== */
+button, .btn-primary, .btn-secondary {
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+/* Tombol Tambah Utama / Simpan */
+#btn-tambah, .btn-primary {
+    background: #2b6cb0;
+    color: white;
+    border: none;
+}
+
+#btn-tambah:hover, .btn-primary:hover {
+    background: #2c5282;
+}
+
+/* Tombol Kembali / Batal */
+.btn-secondary {
+    background: #e2e8f0;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+}
+
+.btn-secondary:hover {
+    background: #cbd5e0;
+    color: #2d3748;
+}
+
+/* Tombol Tambah Dinamis Di Dalam Form (Referensi) */
+#btn-tambah-referensi {
+    background: #edf2f7;
+    color: #2b6cb0;
+    border: 1px dashed #2b6cb0;
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+}
+
+#btn-tambah-referensi:hover {
+    background: #e2e8f0;
+}
+
+/* ==========================================================================
+   DATA TABLE (ADMIN TABLE)
+   ========================================================================== */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+.admin-table th, .admin-table td {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.admin-table th {
+    background: #edf2f7;
+    color: #4a5568;
+    font-weight: 600;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.admin-table td {
+    border-bottom: 1px solid #edf2f7;
+    color: #2d3748;
+}
+
+.admin-table tbody tr:hover {
+    background: #f7fafc;
+}
+
+/* Kolom Tombol Aksi di Tabel (Edit & Hapus) */
+.admin-table td button {
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-right: 5px;
+    border: 1px solid transparent;
+}
+
+.admin-table td button:first-of-type {
+    background: #fff;
+    color: #2b6cb0;
+    border-color: #2b6cb0;
+}
+
+.admin-table td button:first-of-type:hover {
+    background: #2b6cb0;
+    color: #fff;
+}
+
+.admin-table td button:last-of-type {
+    background: #fff;
+    color: #e53e3e;
+    border-color: #e53e3e;
+}
+
+.admin-table td button:last-of-type:hover {
+    background: #e53e3e;
+    color: #fff;
+}
+
+/* ==========================================================================
+   FORM CONTROLS & SECTIONS
+   ========================================================================== */
+#istilah-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-section {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.form-section h2 {
+    font-size: 16px;
+    color: #4a5568;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 6px;
+}
+
+.form-section p {
+    font-size: 13px;
+    color: #718096;
+    margin-bottom: 12px;
+}
+
+/* Label & Input Fields */
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #2d3748;
+    margin-bottom: 6px;
+    margin-top: 12px;
+}
+
+.form-section label:first-of-type {
+    margin-top: 0;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #2d3748;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus {
+    border-color: #2b6cb0;
+    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+/* Jendela Grup Baris Referensi Dinamis */
+.referensi-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.referensi-item .hapus-referensi {
+    background: #fff5f5;
+    color: #e53e3e;
+    border: 1px solid #fed7d7;
+    padding: 12px;
+    flex-shrink: 0;
+}
+
+.referensi-item .hapus-referensi:hover {
+    background: #e53e3e;
+    color: white;
+}
+
+/* Jendela Grup Pilihan Relasi Mandiri (Checkbox) */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.checkbox-item, .checkbox-group label {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    border-radius: 6px;
+    font-weight: 500 !important;
+    font-size: 14px;
+    color: #4a5568;
+    margin: 0 !important;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.checkbox-item:hover, .checkbox-group label:hover {
+    background: #edf2f7;
+    color: #2d3748;
+}
+
+.checkbox-item input[type="checkbox"], .checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Blok Aksi Submit Form di bagian Bawah */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    #btn-tambah {
+        width: 100%;
+    }
+
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .container {
+        margin: 15px;
+        padding: 15px;
+    }
+}

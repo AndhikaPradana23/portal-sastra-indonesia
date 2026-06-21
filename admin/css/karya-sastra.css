@@ -1,0 +1,313 @@
+/* ==========================================================================
+   RESET & VARIABEL GLOBAL
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+:root {
+    --bg-color: #f4f6f9;
+    --sidebar-bg: #1e293b;
+    --sidebar-hover: #334155;
+    --sidebar-active: #2563eb;
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --border-color: #e2e8f0;
+    --white: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   TATA LETAK UTAMA DASHBOARD WADAH KOMPONEN DUA KOLOM
+   ========================================================================== */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* ==========================================================================
+   KONTEN UTAMA (MAIN AREA)
+   ========================================================================== */
+main {
+    flex-grow: 1;
+    padding: 40px;
+    max-width: 1200px;
+    background-color: var(--bg-color);
+}
+
+/* Header Halaman */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+.page-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Tombol Global */
+button, .form-actions button[type="submit"] {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: none;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#btn-tambah, .form-actions button[type="submit"] {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+#btn-tambah:hover, .form-actions button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Toolbar & Pencarian */
+.toolbar {
+    margin-bottom: 24px;
+}
+
+.toolbar input[type="text"] {
+    width: 100%;
+    max-width: 360px;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    background-color: var(--white);
+    transition: border-color 0.2s;
+}
+
+.toolbar input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ==========================================================================
+   KOMPONEN TABEL DATA (INDEX/LIST)
+   ========================================================================== */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.admin-table th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.admin-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    vertical-align: middle;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Tombol Aksi dalam Tabel */
+.admin-table td button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-right: 6px;
+    background-color: transparent;
+}
+
+.admin-table td button:first-of-type {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.admin-table td button:first-of-type:hover {
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+.admin-table td button:last-of-type {
+    color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
+.admin-table td button:last-of-type:hover {
+    background-color: rgba(239, 44, 68, 0.05);
+}
+
+/* State Jika Data Kosong / Gagal */
+.admin-table td[colspan="5"] {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   FORMULIR INPUT (TAMBAH / EDIT KARYA)
+   ========================================================================== */
+#form-karya {
+    background-color: var(--white);
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: #0f172a;
+}
+
+.form-group small {
+    color: var(--text-muted);
+    font-size: 0.825rem;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Input, Select, & Textarea */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background-color: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* Khusus Container List Checkbox Dinamis (Artikel & Karya Terkait) */
+#artikel-list, #karya-terkait-list {
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+    background-color: #f8fafc;
+}
+
+#artikel-list label, #karya-terkait-list label {
+    font-weight: 400 !important;
+    font-size: 0.9rem !important;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+#artikel-list label input[type="checkbox"],
+#karya-terkait-list label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+#artikel-list em, #karya-terkait-list em {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Bagian Tombol Form Aksi (Simpan & Batal) */
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.form-actions a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.form-actions a:hover {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVITAS DASAR)
+   ========================================================================== */
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+    }
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}

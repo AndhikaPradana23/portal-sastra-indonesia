@@ -59,13 +59,13 @@ async function loadIstilah() {
 document.getElementById("btn-tambah").addEventListener(
     "click",
     () => {
-        location.href = "form-istilah.html";
+        location.href = "form-kamus-istilah.html";
     }
 );
 
 // Handler Tombol Aksi Edit Data (Mengarahkan ke Form dengan Parameter ID data)
 function editIstilah(id) {
-    location.href = `form-istilah.html?id=${id}`;
+    location.href = `form-kamus-istilah.html?id=${id}`;
 }
 
 // Handler Tombol Aksi Hapus Data dari Tabel Database Supabase

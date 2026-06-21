@@ -4,45 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kelola Artikel - Admin</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../admin/css/artikel.css">
+    <link rel="stylesheet" href="../admin/css/sidebar.css">
 </head>
 <body>
 
-<div class="container">
+<div class="dashboard-container">
 
-    <h1>Kelola Artikel</h1>
+    <div id="sidebar-container"></div>
 
-    <div class="toolbar" style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <input
-            type="text"
-            id="search"
-            placeholder="Cari artikel..."
-            style="flex: 1; padding: 8px;"
-        >
-        <button id="btn-tambah" class="btn-primary">
-            + Tambah Artikel
-        </button>
-    </div>
+    <main>
+        <div class="page-header">
+            <h1>Kelola Artikel</h1>
+        </div>
 
-    <table border="1" width="100%" style="border-collapse: collapse; text-align: left;">
-        <thead>
-            <tr>
-                <th style="padding: 10px;">Judul</th>
-                <th style="padding: 10px;">Slug</th>
-                <th style="padding: 10px;">Tanggal</th>
-                <th style="padding: 10px;">Aksi</th>
-            </tr>
-        </thead>
-        <tbody id="artikel-body">
-            </tbody>
-    </table>
+        <div class="toolbar" style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <input
+                type="text"
+                id="search"
+                placeholder="Cari artikel..."
+                style="flex: 1; padding: 8px;"
+            >
+            <button id="btn-tambah" class="btn-primary">
+                + Tambah Artikel
+            </button>
+        </div>
+
+        <table class="admin-table" border="1" width="100%" style="border-collapse: collapse; text-align: left;">
+            <thead>
+                <tr>
+                    <th style="padding: 10px;">Judul</th>
+                    <th style="padding: 10px;">Slug</th>
+                    <th style="padding: 10px;">Tanggal</th>
+                    <th style="padding: 10px;">Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="artikel-body">
+                </tbody>
+        </table>
+    </main>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/admin-auth.js"></script>
-<script src="js/artikel.js"></script>
+<script src="../admin/js/supabase.js"></script>
+<script src="../admin/js/admin-auth.js"></script>
+
+<script src="../admin/js/sidebar.js"></script>
+
+<script src="../admin/js/artikel.js"></script>
 
 </body>
 </html>

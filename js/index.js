@@ -1,3 +1,17 @@
+document.addEventListener(
+    "DOMContentLoaded",
+    initHome
+);
+
+function initHome(){
+
+    console.log(
+        "Homepage Loaded"
+    );
+
+    
+}
+
 // ======================================================
 // HOME ARTIKEL LOGIC
 // Portal Sastra Indonesia
@@ -40,3 +54,4 @@ async function loadArtikelTerbaru() {
         </article>
     `).join("");
 }
+

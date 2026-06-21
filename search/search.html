@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Global Search | Portal Sastra Indonesia
+    </title>
+
+    <meta
+        name="description"
+        content="Cari istilah sastra, artikel, karya sastra, dan sastrawan dalam Portal Sastra Indonesia."
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <h1>
+                Portal Sastra Indonesia
+            </h1>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="container">
+
+            <h1>
+                Global Search
+            </h1>
+
+            <p>
+                Cari istilah, artikel, karya sastra, maupun sastrawan.
+            </p>
+
+            <section class="search-box">
+
+                <input
+                    type="search"
+                    id="global-search"
+                    placeholder="Cari apa saja..."
+                    autocomplete="off"
+                >
+
+                <div
+                    id="autocomplete-list"
+                    class="autocomplete-list"
+                    ></div>
+
+            </section>
+
+            <section class="history-section">
+
+                <h2>
+                    Riwayat Pencarian
+                </h2>
+
+                <div id="search-history">
+                    Belum ada riwayat.
+                </div>
+
+            </section>
+
+            <section class="popular-search-section">
+                <h2>
+                    🔥 Pencarian Populer
+                </h2>
+                <div id="popular-search">
+                    Memuat...
+                </div>
+            </section>
+
+            <section id="search-status">
+                Silakan ketik kata kunci.
+            </section>
+
+            <section
+                id="search-results"
+                class="search-results"
+            >
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-public.js"></script>
+    <script src="../js/global-search.js"></script>
+    <script src="search.js"></script>
+
+</body>
+
+</html>

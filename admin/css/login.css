@@ -1,0 +1,162 @@
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   LOGIN BOX CONTAINER
+   ========================================================================== */
+.login-box {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Efek estetik formal bernuansa sastra/portal akademik */
+.login-box::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #2b6cb0;
+    margin: 0 auto 20px auto;
+    border-radius: 2px;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+.login-box h1 {
+    font-size: 22px;
+    color: #2b6cb0;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.login-box h2 {
+    font-size: 15px;
+    color: #718096;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   FORM COMPONENTS
+   ========================================================================== */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#login-form input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #2d3748;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+#login-form input:focus {
+    background: #ffffff;
+    border-color: #2b6cb0;
+    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
+}
+
+#login-form input::placeholder {
+    color: #a0aec0;
+}
+
+/* Button Login */
+#login-form button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #2b6cb0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#login-form button[type="submit"]:hover {
+    background: #2c5282;
+}
+
+#login-form button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================================================
+   FEEDBACK & MESSAGES
+   ========================================================================== */
+#message {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 20px;
+    color: #4a5568; /* Warna default saat "Memproses..." */
+    line-height: 1.5;
+}
+
+/* Styling dinamis mendeteksi pesan error dari Supabase */
+#message:not(:empty) {
+    padding: 10px;
+    border-radius: 6px;
+    background: #f7fafc;
+}
+
+/* Jika text berisi kata gagal/error/invalid, warna teks akan otomatis terbaca jelas */
+#message:contains("Invalid"), 
+#message:contains("gagal"),
+#message:contains("bukan") {
+    color: #e53e3e;
+    background: #fff5f5;
+    border: 1px solid #fed7d7;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    .login-box {
+        padding: 30px 20px;
+    }
+    
+    .login-box h1 {
+        font-size: 20px;
+    }
+}

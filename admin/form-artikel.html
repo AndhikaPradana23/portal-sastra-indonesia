@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulir Artikel - Admin</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../admin/css/artikel.css">
 </head>
 <body>
 
@@ -12,7 +12,7 @@
 
     <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
         <h1 id="judul-form">Tambah Artikel</h1>
-        <a href="artikel.html" class="btn-secondary" style="text-decoration: none;">← Kembali</a>
+        <a href="../admin/artikel.html" class="btn-secondary" style="text-decoration: none;">← Kembali</a>
     </div>
 
     <form id="artikel-form" style="display: flex; flex-direction: column; gap: 15px;">
@@ -181,7 +181,7 @@
             <button type="submit" class="btn-primary" style="padding: 10px 20px; cursor: pointer;">
                 Simpan
             </button>
-            <a href="artikel.html" class="btn-secondary" style="margin-left: 10px; text-decoration: none;">Batal</a>
+            <a href="../admin/artikel.html" class="btn-secondary" style="margin-left: 10px; text-decoration: none;">Batal</a>
         </div>
 
     </form>
@@ -189,9 +189,9 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/supabase.js"></script>
-<script src="js/admin-auth.js"></script>
-<script src="js/form-artikel.js"></script>
+<script src="../admin/js/supabase.js"></script>
+<script src="../admin/js/admin-auth.js"></script>
+<script src="../admin/js/form-artikel.js"></script>
 
 </body>
 </html>

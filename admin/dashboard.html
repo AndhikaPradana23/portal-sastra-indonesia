@@ -4,25 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Portal Sastra Indonesia</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../admin/css/dashboard.css">
+    <link rel="stylesheet" href="../admin/css/sidebar.css">
 </head>
 <body>
 
     <div class="dashboard-container">
-        <aside class="sidebar">
-            <h2>Admin Portal</h2>
-            <nav>
-                <ul>
-                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
-                    <li><a href="istilah.html">Kelola Istilah</a></li>
-                    <li><a href="kategori.html">Kelola Kategori</a></li>
-                    <li><a href="artikel.html">Kelola Artikel</a></li>
-                    <li><a href="sastrawan.html">Kelola Sastrawan</a></li>
-                    <li><a href="karya.html">Kelola Karya Sastrawan</a></li>
-                </ul>
-            </nav>
-            <button id="logout-btn" class="btn-logout">Keluar (Logout)</button>
-        </aside>
+        <div id="sidebar-container"></div>
 
         <main>
             <div class="stats-grid">
@@ -50,7 +38,8 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/admin-auth.js"></script>
-    <script src="js/dashboard.js"></script>
+    <script src="../admin/js/admin-auth.js"></script>
+    <script src="../admin/js/dashboard.js"></script>
+    <script src="../admin/js/sidebar.js"></script>
 </body>
 </html>

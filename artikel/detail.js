@@ -331,7 +331,7 @@ async function loadIstilahTerkait(
             <div class="istilah-grid">
                 ${istilahData.map(item => `
                     <a
-                        href="../kamus/detail.html?slug=${item.slug}"
+                        href="../kamus-istilah/detail.html?slug=${item.slug}"
                         class="istilah-card"
                     >
                         ${item.nama}

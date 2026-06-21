@@ -1,0 +1,344 @@
+/* ==========================================================================
+   RESET & VARIABLE CONFIGURATION
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #18bc9c;
+    --danger-color: #e74c3c;
+    --bg-light: #f8f9fa;
+    --text-dark: #333333;
+    --text-muted: #666666;
+    --border-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   DASHBOARD STRUCTURE (LAYOUT)
+   ========================================================================== */
+.dashboard-container {
+    display: flex;
+    width: 100%;
+}
+
+/* Main Content Styling */
+main {
+    flex: 1;
+    margin-left: 0; /* Jarak kiri dinonaktifkan karena diatur oleh flexbox pada container sidebar baru */
+    padding: 40px;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+/* Page Header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.page-header h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   BUTTONS & ACTIONS
+   ========================================================================== */
+button, .form-actions a {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Primary Button (+ Tambah Sastrawan / Simpan) */
+#btn-tambah, button[type="submit"] {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+}
+
+#btn-tambah:hover, button[type="submit"]:hover {
+    background-color: #128f76;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Dynamic Add Buttons (+ Penghargaan / + Referensi) */
+#btn-tambah-penghargaan, #btn-tambah-referensi {
+    background-color: transparent;
+    color: var(--secondary-color);
+    border: 2px dashed var(--secondary-color);
+    padding: 8px 15px;
+    width: 100%;
+}
+
+#btn-tambah-penghargaan:hover, #btn-tambah-referensi:hover {
+    background-color: rgba(24, 188, 156, 0.1);
+}
+
+/* Cancel / Batal Button */
+.form-actions a {
+    background-color: #95a5a6;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+.form-actions a:hover {
+    background-color: #7f8c8d;
+}
+
+/* ==========================================================================
+   TABLE STYLING (Kelola Sastrawan)
+   ========================================================================== */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table th, .admin-table td {
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+.admin-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f1f2f6;
+}
+
+/* Action Buttons inside Table */
+.admin-table td button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    margin-right: 5px;
+}
+
+.admin-table td button:first-child {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.admin-table td button:first-child:hover {
+    background-color: #2980b9;
+}
+
+.admin-table td button:last-child {
+    background-color: var(--danger-color);
+    color: #ffffff;
+}
+
+.admin-table td button:last-child:hover {
+    background-color: #c0392b;
+}
+
+/* ==========================================================================
+   FORM STYLING (Form Sastrawan)
+   ========================================================================== */
+#form-sastrawan {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    max-width: 900px;
+    margin-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+}
+
+/* Text Inputs, Select, and Textarea */
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(24, 188, 156, 0.1);
+}
+
+/* File Input Wrapper Customization */
+.form-group input[type="file"] {
+    background: #f1f2f6;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px dashed #bdc3c7;
+    width: 100%;
+}
+
+/* Checkbox Grid Container (Jenis Sastrawan & Daftar Karya/Artikel) */
+#jenis-sastrawan, #karya-list, #artikel-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 100%));
+    gap: 12px;
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+/* Diubah khusus list karya/artikel agar 2 kolom jika di layar besar */
+#karya-list, #artikel-list {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+#jenis-sastrawan label, #karya-list label, #artikel-list label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+#jenis-sastrawan input[type="checkbox"],
+#karya-list input[type="checkbox"],
+#artikel-list input[type="checkbox"] {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--secondary-color);
+}
+
+/* Dynamic Rows for Penghargaan & Referensi Input Fields */
+.penghargaan-row, .referensi-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    align-items: center;
+    background: #fcfcfc;
+    padding: 10px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+}
+
+.penghargaan-row input, .referensi-row input {
+    flex: 1;
+}
+
+/* Remove Row Buttons */
+.btn-hapus-row {
+    background-color: var(--danger-color);
+    color: #ffffff;
+    padding: 12px;
+    line-height: 1;
+}
+
+.btn-hapus-row:hover {
+    background-color: #c0392b;
+}
+
+/* Form Action Buttons Container */
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Loading state placeholder */
+#karya-list em, #artikel-list em {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 992px) {
+    main {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    main {
+        margin-left: 0;
+        padding: 20px 15px;
+    }
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+    }
+    .penghargaan-row, .referensi-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn-hapus-row {
+        text-align: center;
+    }
+    #karya-list, #artikel-list {
+        grid-template-columns: 1fr;
+    }
+}

@@ -363,7 +363,7 @@ if (form) {
             }
 
             alert("Data berhasil disimpan");
-            location.href = "karya.html";
+            location.href = "karya-sastra.html";
         }
     );
 }

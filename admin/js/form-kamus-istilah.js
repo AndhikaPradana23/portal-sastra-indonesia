@@ -837,7 +837,7 @@ async function simpanIstilah(event) {
         );
 
         location.href =
-        "istilah.html";
+        "kamus-istilah.html";
 
     } catch(error) {
 

@@ -211,7 +211,7 @@ if (btnTambah) {
     () => {
 
         location.href =
-            "form-karya.html";
+            "form-karya-sastra.html";
 
     });
 }
@@ -223,7 +223,7 @@ if (btnTambah) {
 function editKarya(id) {
 
     location.href =
-        `form-karya.html?id=${id}`;
+        `form-karya-sastra.html?id=${id}`;
 
 }
 
