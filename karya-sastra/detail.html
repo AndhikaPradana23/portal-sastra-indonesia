@@ -3,87 +3,53 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Portal Sastra Indonesia</title>
 
-<meta
-id="meta-description"
-name="description"
-content="Portal Sastra Indonesia">
+<meta id="meta-description" name="description" content="Portal Sastra Indonesia">
 
-<link
-rel="stylesheet"
-href="../css/karya-sastra.css">
+<link rel="stylesheet" href="/css/karya-sastra.css">
+<link rel="stylesheet" href="/css/layout.css">
 
-<script
-id="jsonld-schema"
-type="application/ld+json">
-{}
-</script>
+<script id="jsonld-schema" type="application/ld+json">{}</script>
 </head>
 
 <body>
 
-<header class="page-header">
+<header id="site-header"></header>
 
-<div class="container">
-
-<a href="../index.html">
-
-Portal Sastra Indonesia
-
-</a>
-
-</div>
-
-</header>
+<div id="breadcrumb"></div>
 
 <main class="container">
 
-<nav class="breadcrumb">
-
-<a href="../index.html">Beranda</a>
-
-<span>›</span>
-
-<a href="index.html">Karya Sastra</a>
-
-<span>›</span>
-
-<span id="breadcrumb-title">
-
-Memuat...
-
-</span>
-
-</nav>
+<div class="bookmark-container">
+    <button id="bookmark-button" class="bookmark-btn">☆ Simpan</button>
+</div>
 
 <div id="detail-karya">
 
-Memuat data...
+    <div id="loading-text">Memuat data...</div>
 
 </div>
 
 </main>
 
-<footer class="page-footer">
-
-<div class="container">
-
-© Portal Sastra Indonesia
-
-</div>
-
-</footer>
+<footer id="site-footer"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-<script src="../js/supabase-public.js"></script>
+<script src="/js/supabase-public.js"></script>
 
-<script src="../karya-sastra/detail.js"></script>
+<script src="/js/bookmark/bookmark-service.js"></script>
+<script src="/js/bookmark/bookmark-storage.js"></script>
+<script src="/js/bookmark/bookmark-button.js"></script>
+
+<script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/breadcrumb.js"></script>
+
+<script src="detail.js"></script>
 
 </body>
 </html>

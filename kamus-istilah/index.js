@@ -301,8 +301,11 @@ document.addEventListener("input", function (event) {
     }
 });
 
-// UBAHAN LANGKAH 5: Menangani Inisialisasi Awal Ketika Halaman Selesai Dimuat Browser
-document.addEventListener("DOMContentLoaded", () => {
+// UBAHAN LANGKAH 6: Menangani Inisialisasi Awal Ketika Halaman Selesai Dimuat Browser dengan Layout Dahulu
+document.addEventListener("DOMContentLoaded", async () => {
+    // Memuat layout utama terlebih dahulu
+    await loadLayout();
+
     console.log("Halaman Kamus dimuat");
     console.log("Supabase URL:", SUPABASE_URL);
 

@@ -66,7 +66,20 @@ async function loadDetailArtikel() {
     ).textContent =
         data.judul;
 
-    renderBreadcrumb(data);
+    // LANGKAH 5: Memanggil fungsi global renderBreadcrumb baru sesuai array objek instansi data
+    renderBreadcrumb([
+        {
+            label: "Beranda",
+            href: "/index.html"
+        },
+        {
+            label: "Artikel",
+            href: "/artikel/index.html"
+        },
+        {
+            label: data.judul
+        }
+    ]);
 
     // ==========================================
     // LANGKAH 3: PENGISIAN AREA METADATA ARTIKEL
@@ -169,46 +182,16 @@ async function loadDetailArtikel() {
         data
     );
 
-}
-
-// ==========================================
-// BREADCRUMB
-// ==========================================
-function renderBreadcrumb(
-    artikel
-){
-
-    const container =
-    document.getElementById(
-        "breadcrumb"
+    // ==================================================
+    // INISIALISASI TOMBOL BOOKMARK ARTIKEL
+    // ==================================================
+    initBookmarkButton(
+        createBookmarkItem({
+            tipe: "artikel",
+            slug: data.slug,
+            judul: data.judul
+        })
     );
-
-    container.innerHTML =
-    `
-<a href="../index.html">
-Beranda
-</a>
-<span>
-›
-</span>
-<a href="index.html">
-Artikel
-</a>
-<span>
-›
-</span>
-<a href="index.html?kategori=${encodeURIComponent(
-artikel.kategori || ""
-)}">
-${artikel.kategori || "Artikel"}
-</a>
-<span>
-›
-</span>
-<span class="current">
-${artikel.judul}
-</span>
-`;
 
 }
 
@@ -351,9 +334,9 @@ async function loadSastrawanTerkait(
 ){
 
     const container =
-    document.getElementById(
-        "sastrawan-terkait-container"
-    );
+        document.getElementById(
+            "sastrawan-terkait-container"
+        );
 
     const { data } = await supabaseClient
     .from("artikel_sastrawan")
@@ -397,9 +380,9 @@ async function loadKaryaTerkait(
 ){
 
     const container =
-    document.getElementById(
-        "karya-terkait-container"
-    );
+        document.getElementById(
+            "karya-terkait-container"
+        );
 
     const { data } = await supabaseClient
     .from("artikel_karya")
@@ -447,9 +430,9 @@ async function loadArtikelTerkait(
 ){
 
     const container =
-    document.getElementById(
-        "artikel-terkait-container"
-    );
+        document.getElementById(
+            "artikel-terkait-container"
+        );
 
     //--------------------------------------------------
     // Ambil kandidat artikel
@@ -711,13 +694,13 @@ function updateArticleSchema(
                 {
                     "@type": "ListItem",
                     "position": 3,
-                    "name": artikel.kategori || "Artikel",
+                    "name": "Artikel",
                     "item": window.location.origin + "/artikel/?kategori=" + encodeURIComponent(artikel.kategori || "")
                 },
                 {
                     "@type": "ListItem",
                     "position": 4,
-                    "name": artikel.judul,
+                    "name": "Artikel",
                     "item": window.location.href
                 }
             ]

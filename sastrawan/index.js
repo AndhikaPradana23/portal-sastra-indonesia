@@ -194,7 +194,7 @@ function potongTeks(teks, panjang){
 
     return teks.substring(
         0,
-        panjang
+        path
     ) + "...";
 }
 
@@ -372,14 +372,16 @@ document.addEventListener(
     }
 );
 
+// UBAHAN LANGKAH 6: Memuat Layout Terlebih Dahulu Sebelum Fungsi Halaman Sastrawan Dijalankan
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    async () => {
+        // Memuat layout utama terlebih dahulu
+        await loadLayout();
 
         updateSEO();
 
         loadSastrawan();
-
     }
 );
 

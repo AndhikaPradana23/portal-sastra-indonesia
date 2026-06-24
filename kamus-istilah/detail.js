@@ -40,6 +40,23 @@ async function loadDetailIstilah() {
             throw error;
         }
 
+        // ==========================================
+        // RENDER BREADCRUMB DINAMIS
+        // ==========================================
+        renderBreadcrumb([
+            {
+                label: "Beranda",
+                href: "/index.html"
+            },
+            {
+                label: "Kamus Sastra",
+                href: "/kamus-istilah/index.html"
+            },
+            {
+                label: data.nama
+            }
+        ]);
+
         /*
         =========================
         SIMPAN RIWAYAT PENCARIAN
@@ -451,12 +468,8 @@ async function loadDetailIstilah() {
 
                     </div>
 
-                    <button
-                        id="bookmark-btn"
-                        data-nama="${data.nama}"
-                        data-slug="${data.slug}"
-                    >
-                        ⭐ Simpan Istilah
+                    <button id="bookmark-button" class="bookmark-btn">
+                        ☆ Simpan
                     </button>
 
                 </header>
@@ -504,6 +517,17 @@ async function loadDetailIstilah() {
             </article>
         `;
 
+        // ==================================================
+        // INisialisasi UTAMA INISIASI TOMBOL BOOKMARK BARU
+        // ==================================================
+        initBookmarkButton(
+            createBookmarkItem({
+                tipe: "istilah",
+                slug: data.slug,
+                judul: data.nama
+            })
+        );
+
     } catch (error) {
 
         loading.style.display = "none";
@@ -527,7 +551,7 @@ async function loadDetailIstilah() {
 }
 
 // ==========================================
-// FUNGSIONALITAS BOOKMARK ISTILAH KAMUS
+// FUNGSIONALITAS BOOKMARK ISTILAH KAMUS (LAMA - CADANGAN)
 // ==========================================
 document.addEventListener(
     "click",
@@ -546,7 +570,7 @@ document.addEventListener(
             let bookmarks =
                 JSON.parse(
                     localStorage.getItem(
-                        "deliciousKamusBookmarks" // Disamakan key jika ada standar app, default: "kamusBookmarks"
+                        "deliciousKamusBookmarks"
                     )
                 ) || JSON.parse(localStorage.getItem("kamusBookmarks")) || [];
 

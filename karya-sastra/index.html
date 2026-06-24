@@ -15,130 +15,59 @@ Karya Sastra Indonesia | Portal Sastra Indonesia
 
 </title>
 
-<meta
-id="meta-description"
-name="description"
-content="Kumpulan karya sastra Indonesia berupa puisi, novel, cerpen, drama, and esai karya para sastrawan Indonesia."
->
+<meta id="meta-description" name="description" content="Kumpulan karya sastra Indonesia berupa puisi, novel, cerpen, drama, and esai karya para sastrawan Indonesia.">
 
-<link
-id="canonical-url"
-rel="canonical"
-href=""
->
+<link id="canonical-url" rel="canonical" href="">
 
-<meta
-id="og-title"
-property="og:title"
-content=""
->
+<meta id="og-title" property="og:title" content="">
 
-<meta
-id="og-description"
-property="og:description"
-content=""
->
+<meta id="og-description" property="og:description" content="">
 
-<meta
-id="og-url"
-property="og:url"
-content=""
->
+<meta id="og-url" property="og:url" content="">
 
-<meta
-property="og:type"
-content="website"
->
+<meta property="og:type" content="website">
 
-<meta
-property="og:site_name"
-content="Portal Sastra Indonesia"
->
+<meta property="og:site_name" content="Portal Sastra Indonesia">
 
-<meta
-name="twitter:card"
-content="summary_large_image"
->
+<meta name="twitter:card" content="summary_large_image">
 
-<meta
-id="twitter-title"
-name="twitter:title"
-content=""
->
+<meta id="twitter-title" name="twitter:title" content="">
 
-<meta
-id="twitter-description"
-name="twitter:description"
-content=""
->
+<meta id="twitter-description" name="twitter:description" content="">
 
-<link
-rel="stylesheet"
-href="../css/karya-sastra.css"
->
+<link rel="stylesheet" href="/css/karya-sastra.css">
+<link rel="stylesheet" href="/css/layout.css">
 
 </head>
 <body>
 
+<header id="site-header"></header>
+
 <main class="container">
 
     <h1>
-
         Karya Sastra Indonesia
-
     </h1>
 
     <section class="filter-section">
 
         <h2>
-
             Filter Jenis
-
         </h2>
 
         <div id="jenis-filter">
 
-            <button
-                class="jenis-btn aktif"
-                data-jenis=""
-            >
-                Semua
-            </button>
+            <button class="jenis-btn aktif" data-jenis="">Semua</button>
 
-            <button
-                class="jenis-btn"
-                data-jenis="Novel"
-            >
-                Novel
-            </button>
+            <button class="jenis-btn" data-jenis="Novel">Novel</button>
 
-            <button
-                class="jenis-btn"
-                data-jenis="Puisi"
-            >
-                Puisi
-            </button>
+            <button class="jenis-btn" data-jenis="Puisi">Puisi</button>
 
-            <button
-                class="jenis-btn"
-                data-jenis="Cerpen"
-            >
-                Cerpen
-            </button>
+            <button class="jenis-btn" data-jenis="Cerpen">Cerpen</button>
 
-            <button
-                class="jenis-btn"
-                data-jenis="Drama"
-            >
-                Drama
-            </button>
+            <button class="jenis-btn" data-jenis="Drama">Drama</button>
 
-            <button
-                class="jenis-btn"
-                data-jenis="Esai"
-            >
-                Esai
-            </button>
+            <button class="jenis-btn" data-jenis="Esai">Esai</button>
 
         </div>
 
@@ -147,41 +76,29 @@ href="../css/karya-sastra.css"
     <section class="filter-section">
 
         <h2>
-
             Filter Tahun
-
         </h2>
 
         <select id="tahun-filter">
 
             <option value="">
-
                 Semua Periode
-
             </option>
 
             <option value="1900-1945">
-
                 1900–1945
-
             </option>
 
             <option value="1945-1965">
-
                 1945–1965
-
             </option>
 
             <option value="1966-1998">
-
                 1966–1998
-
             </option>
 
             <option value="1999-9999">
-
                 1998–Sekarang
-
             </option>
 
         </select>
@@ -191,17 +108,13 @@ href="../css/karya-sastra.css"
     <section class="filter-section">
 
         <h2>
-
             Filter Penulis
-
         </h2>
 
         <select id="penulis-filter">
 
             <option value="">
-
                 Semua Penulis
-
             </option>
 
         </select>
@@ -211,17 +124,13 @@ href="../css/karya-sastra.css"
     <section class="filter-section">
 
         <h2>
-
             Filter Genre
-
         </h2>
 
         <select id="genre-filter">
 
             <option value="">
-
                 Semua Genre
-
             </option>
 
         </select>
@@ -229,16 +138,19 @@ href="../css/karya-sastra.css"
     </section>
 
     <div id="karya-container">
-
         Memuat data...
-
     </div>
 
 </main>
 
+<footer id="site-footer"></footer>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-<script src="../js/supabase-public.js"></script>
+<script src="/js/supabase-public.js"></script>
+
+<script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
 
 <script src="index.js"></script>
 

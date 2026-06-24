@@ -4,68 +4,34 @@
 <head>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title id="page-title">Artikel</title>
 
-    <title id="page-title">
-        Artikel
-    </title>
+    <link rel="stylesheet" href="../css/artikel.css">
+    <link rel="stylesheet" href="/css/layout.css">
 
-    <link
-        rel="stylesheet"
-        href="../css/artikel.css"
-    >
-
-<script
-id="jsonld-schema"
-type="application/ld+json">
-{}
-</script>
+<script id="jsonld-schema" type="application/ld+json">{}</script>
 </head>
 
 <body>
 
-    <header>
+    <header id="site-header"></header>
 
-        <div class="container">
-
-            <div class="logo">
-                <h1>Portal Sastra Indonesia</h1>
-            </div>
-
-        </div>
-
-    </header>
+    <div id="breadcrumb"></div>
 
     <main class="article-detail">
 
         <div class="container">
 
-            <nav
-                id="breadcrumb"
-                class="breadcrumb"
-                aria-label="Breadcrumb"
-            >
-
-                Memuat navigasi...
-
-            </nav>
-
-            <a
-                href="index.html"
-                class="back-link"
-            >
-                ← Kembali ke Artikel
-            </a>
+            <a href="index.html" class="back-link">← Kembali ke Artikel</a>
 
             <div id="thumbnail-container"></div>
 
-            <h1 id="judul">
-                Memuat...
-            </h1>
+            <h1 id="judul">Memuat...</h1>
+
+            <!-- PERINTAH: Menambahkan tombol tepat setelah elemen judul -->
+            <button id="bookmark-button" class="bookmark-btn">☆ Simpan</button>
 
             <div id="artikel-meta">
                 <p id="kategori"></p>
@@ -98,11 +64,21 @@ type="application/ld+json">
 
     </main>
 
+    <footer id="site-footer"></footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <script src="../js/supabase-public.js"></script>
+    <script src="/js/supabase-public.js"></script>
 
-    <script src="../artikel/detail.js"></script>
+    <script src="/js/bookmark/bookmark-service.js"></script>
+    <script src="/js/bookmark/bookmark-storage.js"></script>
+    <script src="/js/bookmark/bookmark-button.js"></script>
+
+    <script src="/js/layout/layout.js"></script>
+    <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/breadcrumb.js"></script>
+
+    <script src="detail.js"></script>
 
 </body>
 

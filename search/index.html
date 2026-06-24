@@ -19,22 +19,15 @@
         content="Cari istilah sastra, artikel, karya sastra, dan sastrawan dalam Portal Sastra Indonesia."
     >
 
-    <link
-        rel="stylesheet"
-        href="../css/style.css"
-    >
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="/css/layout.css">
 
 </head>
 
 <body>
 
-    <header>
-        <div class="container">
-            <h1>
-                Portal Sastra Indonesia
-            </h1>
-        </div>
-    </header>
+    <header id="site-header"></header>
 
     <main>
 
@@ -99,9 +92,15 @@
 
     </main>
 
+    <footer id="site-footer"></footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="../js/supabase-public.js"></script>
-    <script src="../js/global-search.js"></script>
+    <script src="/js/supabase-public.js"></script>
+    <script src="/js/global-search.js"></script>
+
+    <script src="/js/layout/layout.js"></script>
+    <script src="/js/layout/active-menu.js"></script>
+
     <script src="search.js"></script>
 
 </body>

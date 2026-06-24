@@ -8,6 +8,8 @@ let keywordAktif = "";
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
+        // Memuat layout utama terlebih dahulu
+        await loadLayout();
 
         updateSEO();
 

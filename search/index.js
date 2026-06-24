@@ -1,7 +1,9 @@
 // ==========================================
 // INCOUPLED INITIALIZATION
 // ==========================================
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    // Memuat layout utama terlebih dahulu
+    await loadLayout();
 
     // Inisialisasi pemetaan elemen HTML spesifik untuk halaman Search
     initGlobalSearch({

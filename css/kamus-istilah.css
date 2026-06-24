@@ -169,12 +169,6 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,.1);
 }
 
-.detail-card header {
-    border-bottom: 1px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 25px;
-}
-
 .detail-card h1 {
     margin: 0 0 10px 0;
 }

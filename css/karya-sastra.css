@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GLOBAL STYLE OVERRIDES & CONTAINER (Mewarisi style.css dasar)
+   GLOBAL STYLE OVERRIDES (Mewarisi style.css/layout.css dasar)
    ========================================================================== */
 body {
     font-family: Arial, sans-serif;
@@ -8,12 +8,6 @@ body {
     padding: 20px;
     background: #f5f5f5;
     color: #333;
-}
-
-.container {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 /* ==========================================================================

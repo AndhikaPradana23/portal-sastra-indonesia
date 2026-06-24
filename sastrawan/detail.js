@@ -172,7 +172,7 @@ async function loadDetail() {
         </section>
 
         <section>
-            <h2>Referensi Akademik</h2>
+            <h2>Referensi Academic</h2>
             ${renderReferensi(referensiData)}
         </section>
 
@@ -187,6 +187,17 @@ async function loadDetail() {
         </section>
     </article>
     `;
+
+    // ==================================================
+    // INISIALISASI TOMBOL BOOKMARK SASTRAWAN
+    // ==================================================
+    initBookmarkButton(
+        createBookmarkItem({
+            tipe: "sastrawan",
+            slug: data.slug,
+            judul: data.nama
+        })
+    );
 }
 
 // ==========================================
@@ -372,28 +383,20 @@ function updatePersonSchema(
 // UPDATE BREADCRUMB
 // ==========================================
 function updateBreadcrumb(data){
-    const list =
-        document.getElementById(
-            "breadcrumb-list"
-        );
-
-    if(!list) return;
-
-    list.innerHTML = `
-    <li>
-        <a href="../index.html">
-            Beranda
-        </a>
-    </li>
-    <li>
-        <a href="index.html">
-            Sastrawan
-        </a>
-    </li>
-    <li aria-current="page">
-        ${data.nama}
-    </li>
-    `;
+    // Memanggil fungsi global renderBreadcrumb sesuai instruksi Langkah 5
+    renderBreadcrumb([
+        {
+            label: "Beranda",
+            href: "/index.html"
+        },
+        {
+            label: "Sastrawan",
+            href: "/sastrawan/index.html"
+        },
+        {
+            label: data.nama
+        }
+    ]);
 
     updateBreadcrumbSchema(data);
 }
@@ -662,7 +665,7 @@ function renderKategoriKarya(judul, daftar) {
             </li>
             `;
         });
-        html += "</ul>";
+        html += "<ul>";
     }
 
     html += "</section>";

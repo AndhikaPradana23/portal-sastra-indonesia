@@ -33,6 +33,7 @@
     <link rel="icon" type="image/png" href="icon/favicon-32.png">
     <link rel="icon" href="icon/favicon.ico">
 
+    <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="css/index.css">
 
     <script type="application/ld+json">
@@ -71,27 +72,7 @@
 
 <body>
 
-    <header>
-        <div class="container">
-
-            <div class="logo">
-                <h1>Portal Sastra Indonesia</h1>
-            </div>
-
-            <nav>
-                <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="kamus-istilah/index.html">Kamus Sastra</a></li>
-                    <li><a href="sastrawan/index.html">Sastrawan</a></li>
-                    <li><a href="karya-sastra/index.html">Karya Sastra</a></li>
-                    <li><a href="artikel/index.html">Artikel</a></li>
-                    <li><a href="pages/sitasi.html">Generator Sitasi</a></li>
-                    <li><a href="pages/tentang.html">Tentang</a></li>
-                </ul>
-            </nav>
-
-        </div>
-    </header>
+    <header id="site-header"></header>
 
     <section class="hero">
 
@@ -109,7 +90,7 @@
 
                 <span>
 
-                    Lebih Mudah
+                    Melalui Kemudahan
 
                 </span>
 
@@ -364,27 +345,17 @@
 
     </main>
 
-    <footer>
-
-        <div class="container">
-
-            <p>
-                © 2026 Portal Sastra Indonesia.
-                Seluruh hak cipta dilindungi.
-            </p>
-
-        </div>
-
-    </footer>
+    <footer id="site-footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-public.js"></script>
     <script src="js/global-search.js"></script>
 
     <script src="js/home/config.js"></script>
-    <script src="js/home/helpers.js"></script>
-    <script src="js/home/renderer.js"></script>
-    <script src="js/home/api.js"></script>
+
+    <script src="js/core/helpers.js"></script>
+    <script src="js/core/renderer.js"></script>
+    <script src="js/core/api.js"></script>
     
     <script src="js/home/hero.js"></script>
     <script src="js/home/istilah.js"></script>
@@ -394,6 +365,9 @@
     <script src="js/home/statistik.js"></script>
     <script src="js/home/tentang.js"></script>
 
+    <script src="/js/layout/layout.js"></script>
+    <script src="/js/layout/active-menu.js"></script>
+    
     <script src="js/index.js"></script>
 
 </body>

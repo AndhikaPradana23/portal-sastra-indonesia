@@ -5,25 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Istilah</title>
-    <link rel="stylesheet" href="../css/kamus-istilah.css">
+    <link rel="stylesheet" href="/css/kamus-istilah.css">
+    <link rel="stylesheet" href="/css/layout.css">
 </head>
 
 <body>
 
+    <header id="site-header"></header>
+
+    <div id="breadcrumb"></div>
+
     <main class="detail-container">
 
-        <div id="loading">
-            Memuat istilah...
+        <div id="detail-istilah">
+            <!-- Menambahkan tombol bookmark di awal kontainer detail sebelum konten dimuat -->
+            <button id="bookmark-button" class="bookmark-btn">☆ Simpan</button>
+            
+            <div id="loading">
+                Memuat istilah...
+            </div>
         </div>
-
-        <div id="detail-istilah"></div>
 
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <footer id="site-footer"></footer>
 
-    <script src="../js/supabase.js"></script>
-    <script src="../kamus-istilah/detail.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/supabase.js"></script>
+
+    <script src="/js/layout/layout.js"></script>
+    <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/breadcrumb.js"></script>
+
+    <script src="/js/bookmark/bookmark-service.js"></script>
+    <script src="/js/bookmark/bookmark-storage.js"></script>
+    <script src="/js/bookmark/bookmark-button.js"></script>
+
+    <script src="detail.js"></script>
 
 </body>
 

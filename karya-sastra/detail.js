@@ -50,9 +50,23 @@ async function loadDetail() {
     // Set judul halaman browser secara dinamis mengikuti judul karya
     document.title = data.judul + " | Portal Sastra Indonesia";
 
-    // Tambahkan pengaturan elemen breadcrumb dan meta deskripsi SEO
-    document.getElementById("breadcrumb-title").textContent = data.judul;
+    // Set meta deskripsi SEO
     document.getElementById("meta-description").content = data.deskripsi || data.judul;
+
+    // Panggil fungsi global renderBreadcrumb (Tidak perlu membuat HTML manual lagi)
+    renderBreadcrumb([
+        {
+            label: "Beranda",
+            href: "/index.html"
+        },
+        {
+            label: "Karya Sastra",
+            href: "/karya-sastra/index.html"
+        },
+        {
+            label: data.judul
+        }
+    ]);
 
     // Ambil relasi (Sastrawan, Istilah, Artikel Terkait, dan Karya Lain)
     const sastrawanData = await loadSastrawan(data.id);
@@ -158,6 +172,17 @@ async function loadDetail() {
     </section>
     </article>
     `;
+
+    // ==========================================
+    // INISIALISASI TOMBOL BOOKMARK KARYA
+    // ==========================================
+    initBookmarkButton(
+        createBookmarkItem({
+            tipe: "karya",
+            slug: data.slug,
+            judul: data.judul
+        })
+    );
 }
 
 // ==========================================
@@ -567,9 +592,6 @@ function renderKaryaLain(data) {
     return html;
 }
 
-// ==========================================
-// 5. JSON-LD SCHEMA GENERATOR
-// ==========================================
 function updateCreativeWorkSchema(
     karya,
     penulis = []
