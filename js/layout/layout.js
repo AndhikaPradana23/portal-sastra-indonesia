@@ -28,6 +28,7 @@ async function loadComponent(
 
 async function loadLayout(){
 
+    // Menunggu header dan footer selesai dimasukkan ke DOM
     await Promise.all([
 
         loadComponent(
@@ -41,6 +42,26 @@ async function loadLayout(){
         )
 
     ]);
+
+    // Jalankan initAuthUI dengan aman menggunakan try-catch
+    try{
+
+        if(
+            typeof window.initAuthUI ===
+            "function"
+        ){
+            await window.initAuthUI();
+        }
+
+    }
+    catch(error){
+
+        console.error(
+            "Auth UI Error:",
+            error
+        );
+
+    }
 
     // HAPUS: await loadBreadcrumb(); (karena merusak halaman indeks)
     

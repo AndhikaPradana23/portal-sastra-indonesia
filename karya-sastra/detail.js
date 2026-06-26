@@ -179,8 +179,9 @@ async function loadDetail() {
     initBookmarkButton(
         createBookmarkItem({
             tipe: "karya",
-            slug: data.slug,
-            judul: data.judul
+            item_id: data.id,
+            judul: data.judul,
+            slug: data.slug
         })
     );
 }

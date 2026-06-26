@@ -9,7 +9,9 @@ async function fetchHomeData({
         .from(table)
         .select(columns)
         .order(orderBy, { ascending })
-        .limit(limit);
+        .limit(
+            APP_CONFIG.HOME_LIMIT
+        )
 
     if (error) throw error;
 

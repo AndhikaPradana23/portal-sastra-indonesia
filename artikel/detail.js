@@ -188,8 +188,9 @@ async function loadDetailArtikel() {
     initBookmarkButton(
         createBookmarkItem({
             tipe: "artikel",
-            slug: data.slug,
-            judul: data.judul
+            item_id: data.id,
+            judul: data.judul,
+            slug: data.slug
         })
     );
 

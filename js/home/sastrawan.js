@@ -20,9 +20,11 @@ async function loadPopularSastrawan() {
 
         container.innerHTML = data
             .map(item => renderHomeCard({
-                badge: HOME_CONFIG.sastrawan.badge,
+                badge: CoreHelpers.escapeHtml(HOME_CONFIG.sastrawan.badge),
                 title: item.nama,
                 description: item.biografi_singkat,
+                tipe: "sastrawan",
+                slug: item.slug,
                 url: HOME_CONFIG.sastrawan.detailUrl + item.slug,
                 buttonText: "Lihat Profil →"
             }))

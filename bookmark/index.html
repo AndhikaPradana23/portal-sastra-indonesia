@@ -1,75 +1,97 @@
 <!DOCTYPE html>
-
 <html lang="id">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Bookmark Saya</title>
-
-<link
-rel="stylesheet"
-href="/css/layout.css">
-
-<link
-rel="stylesheet"
-href="/css/bookmark.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark Saya</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/bookmark.css">
 </head>
-
 <body>
 
-<header id="site-header"></header>
+    <header id="site-header"></header>
 
-<main
-class="bookmark-page">
+    <main class="bookmark-page">
+        <div class="container">
+            
+            <section class="bookmark-summary">
+                <div class="bookmark-total">
+                    <h2>Bookmark Saya</h2>
+                    <p id="bookmark-total">0 Bookmark</p>
+                </div>
+                <div id="bookmark-count-grid" class="bookmark-count-grid">
+                </div>
+            </section>
 
-<div class="container">
+            <section class="bookmark-export">
+                <button id="export-json">
+                    Export JSON
+                </button>
+                <button id="export-csv">
+                    Export CSV
+                </button>
+                <button id="export-txt">
+                    Export TXT
+                </button>
+            </section>
 
-<h1>
+            <section class="bookmark-search">
+                <input
+                    id="bookmark-search"
+                    type="text"
+                    placeholder="Cari bookmark..."
+                >
+            </section>
 
-Bookmark Saya
+            <section class="bookmark-filter">
+                <button class="bookmark-filter-btn active" data-type="all">
+                    Semua
+                </button>
+                <button class="bookmark-filter-btn" data-type="istilah">
+                    Istilah
+                </button>
+                <button class="bookmark-filter-btn" data-type="artikel">
+                    Artikel
+                </button>
+                <button class="bookmark-filter-btn" data-type="sastrawan">
+                    Sastrawan
+                </button>
+                <button class="bookmark-filter-btn" data-type="karya">
+                    Karya
+                </button>
+            </section>
 
-</h1>
+            <div id="bookmark-list">
+                <p>Memuat bookmark...</p>
+            </div>
+        </div>
+    </main>
 
-<div
-id="bookmark-list">
+    <footer id="site-footer"></footer>
 
-<p>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/supabase-public.js"></script>
 
-Memuat bookmark...
+    <script src="/js/auth/auth-service.js"></script>
+    <script src="/js/auth/logout.js"></script>
+    <script src="/js/auth/auth-ui.js"></script>
+    <script src="/js/auth/auth-state.js"></script>
+    <script src="/js/auth/protected-route.js"></script>
+    
+    <script src="/js/layout/layout.js"></script>
+    <script src="/js/layout/active-menu.js"></script>
 
-</p>
+    <script src="/js/core/helpers.js"></script>
 
-</div>
+    <script src="/js/bookmark/bookmark-storage.js"></script>
+    <script src="/js/bookmark/bookmark-service.js"></script>
+    
+    <script src="/js/bookmark/bookmark-export.js"></script>
+    
+    <script src="/js/bookmark/bookmark-renderer.js"></script>
+    <script src="/js/bookmark/bookmark-page.js"></script>
 
-</div>
-
-</main>
-
-<footer id="site-footer"></footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="/js/supabase-public.js"></script>
-
-<script src="/js/layout/layout.js"></script>
-<script src="/js/layout/active-menu.js"></script>
-
-<script src="/js/bookmark/bookmark-storage.js"></script>
-<script src="/js/bookmark/bookmark-service.js"></script>
-<script src="/js/bookmark/bookmark-renderer.js"></script>
-<script src="/js/bookmark/bookmark-page.js"></script>
-
-<script src="/js/core/helpers.js"></script>
-
-<script src="index.js"></script>
+    <script src="index.js"></script>
 
 </body>
-
 </html>

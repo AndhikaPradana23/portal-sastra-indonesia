@@ -46,17 +46,17 @@ function renderHomeCard({
     return `
         <article class="home-card">
             <span class="card-badge">
-                ${escapeHtml(badge)}
+                ${CoreHelpers.escapeHtml(badge)}
             </span>
 
             <h3>
                 <a href="${targetUrl}">
-                    ${escapeHtml(title)}
+                    ${CoreHelpers.escapeHtml(title)}
                 </a>
             </h3>
 
             <p>
-                ${potongTeks(description, 140)}
+                ${CoreHelpers.potongTeks(description, 140)}
             </p>
 
             <a
@@ -81,10 +81,10 @@ function renderBookmarkCard(item) {
         <article class="bookmark-card">
             <h3>
                 <a href="${dynamicUrl}">
-                    ${escapeHtml(item.judul || item.title)}
+                    ${CoreHelpers.escapeHtml(item.judul || item.title)}
                 </a>
             </h3>
-            <span class="card-badge">${escapeHtml(item.tipe)}</span>
-            </article>
+            <span class="card-badge">${CoreHelpers.escapeHtml(item.tipe)}</span>
+        </article>
     `;
 }

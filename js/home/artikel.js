@@ -20,9 +20,11 @@ async function loadLatestArtikel() {
 
         container.innerHTML = data
             .map(item => renderHomeCard({
-                badge: HOME_CONFIG.artikel.badge,
+                badge: CoreHelpers.escapeHtml(HOME_CONFIG.artikel.badge),
                 title: item.judul,
                 description: item.ringkasan,
+                tipe: "artikel",
+                slug: item.slug,
                 url: HOME_CONFIG.artikel.detailUrl + item.slug,
                 buttonText: "Baca Selengkapnya →"
             }))

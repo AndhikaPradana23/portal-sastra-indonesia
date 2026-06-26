@@ -57,3 +57,139 @@
     font-weight:bold;
 
 }
+
+/* ===========================
+   FILTER
+=========================== */
+
+.bookmark-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.bookmark-filter-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 30px;
+    background: #f1f1f1;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: 600;
+}
+
+.bookmark-filter-btn:hover {
+    background: #e6e6e6;
+}
+
+.bookmark-filter-btn.active {
+    background: #0d6efd;
+    color: white;
+}
+
+/* ===========================
+   SEARCH
+=========================== */
+
+.bookmark-search {
+    margin-bottom: 20px;
+}
+
+.bookmark-search input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.bookmark-search input:focus {
+    outline: none;
+    border-color: #0d6efd;
+}
+
+mark {
+    background: #fff3cd;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* ===========================
+   SUMMARY
+=========================== */
+
+.bookmark-summary {
+    margin-bottom: 30px;
+}
+
+.bookmark-total h2 {
+    margin-bottom: 8px;
+}
+
+.bookmark-total p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.bookmark-count-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(140px, 1fr)
+        );
+    gap: 15px;
+}
+
+.bookmark-count-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    box-shadow:
+        0 3px 10px
+        rgba(
+            0,
+            0,
+            0,
+            .06
+        );
+}
+
+.bookmark-count-card strong {
+    display: block;
+    font-size: 28px;
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
+
+.bookmark-count-card span {
+    color: #666;
+}
+
+/* ===========================
+   EXPORT
+=========================== */
+
+.bookmark-export {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.bookmark-export button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #0d6efd;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.bookmark-export button:hover {
+    opacity: .9;
+}

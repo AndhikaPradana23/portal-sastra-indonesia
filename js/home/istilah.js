@@ -20,9 +20,11 @@ async function loadLatestIstilah() {
 
         container.innerHTML = data
             .map(item => renderHomeCard({
-                badge: HOME_CONFIG.istilah.badge,
+                badge: CoreHelpers.escapeHtml(HOME_CONFIG.istilah.badge),
                 title: item.nama,
                 description: item.definisi,
+                tipe: "istilah",
+                slug: item.slug,
                 url: HOME_CONFIG.istilah.detailUrl + item.slug,
                 buttonText: "Lihat Istilah →"
             }))

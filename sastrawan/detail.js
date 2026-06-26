@@ -194,8 +194,9 @@ async function loadDetail() {
     initBookmarkButton(
         createBookmarkItem({
             tipe: "sastrawan",
-            slug: data.slug,
-            judul: data.nama
+            item_id: data.id,
+            judul: data.nama,
+            slug: data.slug
         })
     );
 }

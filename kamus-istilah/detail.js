@@ -1,3 +1,34 @@
+// ==========================================================================
+// HELPER DETAIL BOOKMARK (REFACTOR)
+// ==========================================================================
+/**
+ * Helper global untuk menginisialisasi tombol bookmark di semua halaman detail.
+ * @param {string} tipe - Kategori tipe konten ('istilah', 'artikel', 'karya', 'sastrawan')
+ * @param {Object} data - Objek data mentah dari database Supabase
+ */
+function initDetailBookmark(tipe, data){
+
+    if(
+        typeof initBookmarkButton !==
+        "function"
+    ){
+        return;
+    }
+
+    return initBookmarkButton(
+        createBookmarkItem({
+            tipe,
+            item_id: data.id,
+            judul: data.nama || data.judul,
+            slug: data.slug
+        })
+    );
+
+}
+
+// ==========================================================================
+// CORE DETAIL FUNCTION
+// ==========================================================================
 async function loadDetailIstilah() {
 
     const loading =
@@ -29,6 +60,9 @@ async function loadDetailIstilah() {
             return;
         }
 
+        // ==================================================
+        // MEMUAT DATA UTAMA ISTILAH DARI SUPABASE
+        // ==================================================
         const { data, error } =
             await supabaseClient
                 .from("istilah")
@@ -329,36 +363,19 @@ async function loadDetailIstilah() {
         ){
 
             sastrawanHTML = `
-
-        <section class="section">
-
-        <h2>
-
-        Sastrawan yang Menggunakan Istilah
-
-        </h2>
-
-        <ul>
-
-        ${sastrawanRelasi.map(item=>`
-
-        <li>
-
-        <a href="../sastrawan/detail.html?slug=${item.sastrawan.slug}">
-
-        ${item.sastrawan.nama}
-
-        </a>
-
-        </li>
-
-        `).join("")}
-
-        </ul>
-
-        </section>
-
-        `;
+                <section class="section">
+                    <h2>Sastrawan yang Menggunakan Istilah</h2>
+                    <ul>
+                        ${sastrawanRelasi.map(item=>`
+                            <li>
+                                <a href="../sastrawan/detail.html?slug=${item.sastrawan.slug}">
+                                    ${item.sastrawan.nama}
+                                </a>
+                            </li>
+                        `).join("")}
+                    </ul>
+                </section>
+            `;
 
         }
 
@@ -373,36 +390,19 @@ async function loadDetailIstilah() {
         ){
 
             karyaHTML = `
-
-        <section class="section">
-
-        <h2>
-
-        Karya Sastra yang Menggunakan Istilah
-
-        </h2>
-
-        <ul>
-
-        ${karyaRelasi.map(item=>`
-
-        <li>
-
-        <a href="../karya-sastra/detail.html?slug=${item.karya.slug}">
-
-        ${item.karya.judul}
-
-        </a>
-
-        </li>
-
-        `).join("")}
-
-        </ul>
-
-        </section>
-
-        `;
+                <section class="section">
+                    <h2>Karya Sastra yang Menggunakan Istilah</h2>
+                    <ul>
+                        ${karyaRelasi.map(item=>`
+                            <li>
+                                <a href="../karya-sastra/detail.html?slug=${item.karya.slug}">
+                                    ${item.karya.judul}
+                                </a>
+                            </li>
+                        `).join("")}
+                    </ul>
+                </section>
+            `;
 
         }
 
@@ -446,11 +446,9 @@ async function loadDetailIstilah() {
             `;
         }
 
-        /*
-        ==================================================
-        LANGKAH 8: MASUKKAN ARTIKEL HTML KE HALAMAN DETAIL
-        ==================================================
-        */
+        // ==================================================================
+        // RENDER HTML UTAMA (Sintaks liar 'academic' kini sudah dibersihkan!)
+        // ==================================================================
         container.innerHTML = `
             <article class="detail-card">
 
@@ -517,15 +515,12 @@ async function loadDetailIstilah() {
             </article>
         `;
 
-        // ==================================================
-        // INisialisasi UTAMA INISIASI TOMBOL BOOKMARK BARU
-        // ==================================================
-        initBookmarkButton(
-            createBookmarkItem({
-                tipe: "istilah",
-                slug: data.slug,
-                judul: data.nama
-            })
+        // ==================================================================
+        // INISIALISASI TOMBOL BOOKMARK AMAN (Dipanggil SETELAH HTML masuk DOM)
+        // ==================================================================
+        await initDetailBookmark(
+            "istilah",
+            data
         );
 
     } catch (error) {

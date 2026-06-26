@@ -84,16 +84,22 @@ function initSearch(config = {}){
 
     // Event Delegation lokal pada Container UI masing-masing
     if (SearchUI.results) {
-        SearchUI.results.addEventListener("click", event => {
+        SearchUI.results.addEventListener("click", async event => {
             const card = event.target.closest(".search-card");
-            if (card) saveSearchHistory(card.dataset.keyword);
+            if (card) {
+                // INTEGRASI LANGKAH 3: Simpan riwayat ke DB saat hasil pencarian diklik
+                await saveSearchHistory(card.dataset.keyword);
+            }
         });
     }
 
     if (SearchUI.autocomplete) {
-        SearchUI.autocomplete.addEventListener("click", event => {
+        SearchUI.autocomplete.addEventListener("click", async event => {
             const item = event.target.closest(".autocomplete-item");
-            if (item) saveSearchHistory(item.dataset.keyword);
+            if (item) {
+                // INTEGRASI LANGKAH 3: Simpan riwayat ke DB saat item autocomplete diklik
+                await saveSearchHistory(item.dataset.keyword);
+            }
         });
 
         // Hover mouse memperbarui indeks navigasi keyboard secara sinkron di dalam area autocomplete saja
@@ -120,7 +126,7 @@ function initSearch(config = {}){
     }
 
     if (SearchUI.history) {
-        SearchUI.history.addEventListener("click", event => {
+        SearchUI.history.addEventListener("click", async event => {
             if(event.target.classList.contains("history-btn")){
                 const keyword = event.target.dataset.keyword;
                 if (input) {
@@ -129,9 +135,21 @@ function initSearch(config = {}){
                     handleSearch({ target: input });
                 }
             }
+            // INTEGRASI LANGKAH 3: Hapus item satuan berdasarkan ID database jika ada tombol delete
+            if(event.target.classList.contains("delete-history-btn")){
+                event.stopPropagation();
+                const historyId = event.target.dataset.id;
+                if(window.SearchHistoryService) {
+                    await window.SearchHistoryService.deleteHistory(historyId);
+                    await loadSearchHistory();
+                }
+            }
+            // INTEGRASI LANGKAH 3: Hapus semua riwayat di database
             if(event.target.id === "clear-history"){
-                localStorage.removeItem("searchHistory");
-                loadSearchHistory();
+                if(window.SearchHistoryService) {
+                    await window.SearchHistoryService.clearHistory();
+                    await loadSearchHistory();
+                }
             }
         });
     }
@@ -377,7 +395,22 @@ function renderAutocomplete(items){
 }
 
 // Fungsi navigasi menggunakan keyboard
-function handleKeyboardNavigation(event){
+async function handleKeyboardNavigation(event){
+
+    const input = SearchUI.input;
+    if(!input) return;
+
+    // INTEGRASI LANGKAH 3: Deteksi Tombol Enter saat fokus di kolom input biasa
+    if(event.key === "Enter" && selectedAutocomplete === -1){
+        const keyword = input.value.trim();
+        if(!keyword) return;
+
+        event.preventDefault();
+        await saveSearchHistory(keyword);
+
+        window.location.href = "/search/index.html?q=" + encodeURIComponent(keyword);
+        return;
+    }
 
     if(autocompleteItems.length === 0){
         return;
@@ -402,7 +435,8 @@ function handleKeyboardNavigation(event){
     else if(event.key === "Enter"){
         if(selectedAutocomplete >= 0){
             event.preventDefault();
-            saveSearchHistory(autocompleteItems[selectedAutocomplete].label);
+            // INTEGRASI LANGKAH 3: Simpan riwayat via service sebelum berpindah halaman dari autocomplete
+            await saveSearchHistory(autocompleteItems[selectedAutocomplete].label);
             window.location.href = autocompleteItems[selectedAutocomplete].url;
         }
     }
@@ -434,37 +468,35 @@ function updateAutocompleteSelection(){
 }
 
 // ==========================================
-// MANAGEMENT RIWAYAT PENCARIAN
+// MANAGEMENT RIWAYAT PENCARIAN (INTEGRASI SUPABASE)
 // ==========================================
 
-function saveSearchHistory(keyword){
-
+/**
+ * INTEGRASI LANGKAH 3: Menyimpan data keyword ke database Supabase
+ */
+async function saveSearchHistory(keyword){
     const keywordBersih = keyword ? keyword.trim() : "";
     if(!keywordBersih) return;
 
-    let history = JSON.parse(localStorage.getItem("searchHistory")) || [];
-
-    history = history.filter(
-        item => item.toLowerCase() !== keywordBersih.toLowerCase()
-    );
-
-    history.unshift(keywordBersih);
-    history = history.slice(0, 10);
-
-    localStorage.setItem("searchHistory", JSON.stringify(history));
-
-    if (SearchUI.history) {
-        loadSearchHistory();
+    if (window.SearchHistoryService) {
+        await window.SearchHistoryService.saveSearchHistory(keywordBersih);
+        if (SearchUI.history) {
+            await loadSearchHistory();
+        }
     }
-
 }
 
-function loadSearchHistory(){
-
+/**
+ * INTEGRASI LANGKAH 3: Mengambil data riwayat dari database Supabase
+ */
+async function loadSearchHistory(){
     const container = SearchUI.history;
     if (!container) return;
 
-    const history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    let history = [];
+    if (window.SearchHistoryService) {
+        history = await window.SearchHistoryService.getSearchHistory();
+    }
 
     if(history.length === 0){
         container.innerHTML = "<p>Belum ada riwayat.</p>";
@@ -472,12 +504,15 @@ function loadSearchHistory(){
     }
 
     container.innerHTML = history.map(item => `
-        <button
-            class="history-btn"
-            data-keyword="${escapeHtml(item)}"
-        >
-            🕒 ${escapeHtml(item)}
-        </button>
+        <div class="history-item-wrapper" style="display: inline-flex; align-items: center; margin-right: 5px;">
+            <button
+                class="history-btn"
+                data-keyword="${escapeHtml(item.keyword)}"
+            >
+                🕒 ${escapeHtml(item.keyword)}
+            </button>
+            <button class="delete-history-btn" data-id="${item.id}" style="background:none; border:none; cursor:pointer; padding:0 4px;">×</button>
+        </div>
     `).join("")
     +
     `
@@ -485,7 +520,6 @@ function loadSearchHistory(){
             <button id="clear-history">Hapus Riwayat</button>
         </div>
     `;
-
 }
 
 // ==========================================
@@ -545,6 +579,8 @@ async function loadPopularSearch(){
 
 }
 
+// ... (Sisa fungsi helper, cariKonten, dan rendering tetap sama di bawah ini) ...
+
 function renderPopularSearch(items){
 
     const container = SearchUI.popular;
@@ -565,10 +601,6 @@ function renderPopularSearch(items){
     `).join("");
 
 }
-
-// ==========================================
-// FUNGSI QUERY DATABASE SUPABASE (WITH SIGNAL)
-// ==========================================
 
 async function cariIstilah(keyword, signal){
     const query = supabaseClient
@@ -618,9 +650,6 @@ async function cariSastrawan(keyword, signal){
     return data || [];
 }
 
-// ==========================================
-// RENDER HASIL PENCARIAN
-// ==========================================
 function renderSemuaHasil(data){
 
     const container = SearchUI.results;
@@ -666,10 +695,6 @@ function renderCard(item, field, url){
     `;
 
 }
-
-// ==========================================
-// UTILITY HELPERS
-// ==========================================
 
 function escapeHtml(text){
     if (text == null) {

@@ -15,19 +15,19 @@ async function loadWebsiteStats() {
 
         container.innerHTML = `
             <article class="stat-box">
-                <h3>${formatNumber(istilah.count)}</h3>
+                <h3>${CoreHelpers.formatNumber(istilah.count)}</h3>
                 <p>Istilah</p>
             </article>
             <article class="stat-box">
-                <h3>${formatNumber(artikel.count)}</h3>
+                <h3>${CoreHelpers.formatNumber(artikel.count)}</h3>
                 <p>Artikel</p>
             </article>
             <article class="stat-box">
-                <h3>${formatNumber(sastrawan.count)}</h3>
+                <h3>${CoreHelpers.formatNumber(sastrawan.count)}</h3>
                 <p>Sastrawan</p>
             </article>
             <article class="stat-box">
-                <h3>${formatNumber(karya.count)}</h3>
+                <h3>${CoreHelpers.formatNumber(karya.count)}</h3>
                 <p>Karya</p>
             </article>
         `;
