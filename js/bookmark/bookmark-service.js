@@ -7,8 +7,7 @@
  * @returns {Promise<string|null>} - User ID berupa string UUID atau null
  */
 async function getBookmarkUser(){
-    const user =
-        await getCurrentUser();
+    const user = await getCurrentUser();
 
     if(!user){
         return null;
@@ -28,35 +27,19 @@ async function addBookmark(tipe, itemId){
     // ==================================================
     // VALIDASI PARAMETER AWAL
     // ==================================================
-    if(
-        !tipe ||
-        !itemId
-    ){
-        console.error(
-            "Parameter bookmark tidak valid",
-            {
-                tipe,
-                itemId
-            }
-        );
-
+    if(!tipe || !itemId){
+        console.error("Parameter bookmark tidak valid", { tipe, itemId });
         return false;
     }
 
-    const userId =
-        await getBookmarkUser();
+    const userId = await getBookmarkUser();
 
     if(!userId){
         return false;
     }
 
-    const {
-        error
-    } =
-    await supabaseClient
-        .from(
-            "bookmark_user"
-        )
+    const { error } = await supabaseClient
+        .from("bookmark_user")
         .insert({
             user_id: userId,
             tipe,
@@ -82,40 +65,22 @@ async function removeBookmark(tipe, itemId){
     // ==================================================
     // VALIDASI PARAMETER AWAL
     // ==================================================
-    if(
-        !tipe ||
-        !itemId
-    ){
+    if(!tipe || !itemId){
         return false;
     }
 
-    const userId =
-        await getBookmarkUser();
+    const userId = await getBookmarkUser();
 
     if(!userId){
         return false;
     }
 
-    const {
-        error
-    } =
-    await supabaseClient
-        .from(
-            "bookmark_user"
-        )
+    const { error } = await supabaseClient
+        .from("bookmark_user")
         .delete()
-        .eq(
-            "user_id",
-            userId
-        )
-        .eq(
-            "tipe",
-            tipe
-        )
-        .eq(
-            "item_id",
-            itemId
-        );
+        .eq("user_id", userId)
+        .eq("tipe", tipe)
+        .eq("item_id", itemId);
 
     if(error){
         console.error("Gagal menghapus bookmark:", error);
@@ -136,55 +101,62 @@ async function isBookmarked(tipe, itemId){
     // ==================================================
     // VALIDASI PARAMETER AWAL
     // ==================================================
-    if(
-        !tipe ||
-        !itemId
-    ){
+    if(!tipe || !itemId){
         return false;
     }
 
-    const userId =
-        await getBookmarkUser();
+    const userId = await getBookmarkUser();
 
     if(!userId){
         return false;
     }
 
-    const {
-        data
-    } =
-    await supabaseClient
-        .from(
-            "bookmark_user"
-        )
+    const { data } = await supabaseClient
+        .from("bookmark_user")
         .select("id")
-        .eq(
-            "user_id",
-            userId
-        )
-        .eq(
-            "tipe",
-            tipe
-        )
-        .eq(
-            "item_id",
-            itemId
-        )
+        .eq("user_id", userId)
+        .eq("tipe", tipe)
+        .eq("item_id", itemId)
         .maybeSingle();
 
     return !!data;
 }
 
 /**
- * Mengambil seluruh daftar bookmark yang tersimpan milik user aktif.
- * @returns {Promise<Array>} - Array berisi objek-objek bookmark
+ * SOLUSI 3: Menambahkan Metadata Relasi (Enrichment) Secara Dinamis + FITUR DEBUG
+ * Mengambil detail slug dan judul/nama dari tabel relasi asal konten.
+ * @param {Object} item - Objek data dasar mentah dari tabel bookmark_user
+ * @returns {Promise<Object>} - Objek bookmark yang sudah ditambahkan properti slug dan judul terbaru
  */
-async function getBookmarks(){
-    const userId =
-        await getBookmarkUser();
+async function enrichBookmark(item){
 
-    if(!userId){
-        return [];
+    let table;
+    let titleField;
+
+    switch(item.tipe){
+
+        case "istilah":
+            table = "istilah";
+            titleField = "nama";
+            break;
+
+        case "artikel":
+            table = "artikel";
+            titleField = "judul";
+            break;
+
+        case "sastrawan":
+            table = "sastrawan";
+            titleField = "nama";
+            break;
+
+        case "karya":
+            table = "karya";
+            titleField = "judul";
+            break;
+
+        default:
+            return item;
     }
 
     const {
@@ -192,27 +164,71 @@ async function getBookmarks(){
         error
     } =
     await supabaseClient
-        .from(
-            "bookmark_user"
-        )
-        .select("*")
+        .from(table)
+        .select(`
+            id,
+            slug,
+            ${titleField}
+        `)
         .eq(
-            "user_id",
-            userId
+            "id",
+            item.item_id
         )
-        .order(
-            "created_at",
-            {
-                ascending: false
-            }
-        );
+        .single();
 
     if(error){
-        console.error("Gagal mengambil daftar bookmark:", error);
+
+        console.error(
+            "Enrich bookmark error:",
+            error
+        );
+
+        return item;
+    }
+
+    return {
+
+        ...item,
+
+        slug:
+            data.slug,
+
+        judul:
+            data[titleField]
+
+    };
+
+}
+
+/**
+ * SOLUSI 3: Mengambil seluruh daftar bookmark yang tersimpan milik user aktif.
+ * Data diurutkan berdasarkan yang terbaru (descending) dan diperkaya menggunakan enrichBookmark.
+ * @returns {Promise<Array>} - Array berisi objek-objek bookmark lengkap dengan slug dan judul
+ */
+async function getBookmarks(){
+
+    const userId = await getBookmarkUser();
+
+    if(!userId){
         return [];
     }
 
-    return data;
+    const { data, error } = await supabaseClient
+        .from("bookmark_user")
+        .select("*")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false });
+
+    if(error){
+        console.error(error);
+        return [];
+    }
+
+    const result = await Promise.all(
+        data.map(enrichBookmark)
+    );
+
+    return result;
 }
 
 // ==========================================================================
@@ -238,42 +254,29 @@ async function toggleBookmark(tipeOrObj, itemId){
         actualItemId = tipeOrObj.item_id || tipeOrObj.itemId;
     }
 
-    const saved =
-        await isBookmarked(
-            tipe,
-            actualItemId
-        );
+    const saved = await isBookmarked(tipe, actualItemId);
 
     if(saved){
-        await removeBookmark(
-            tipe,
-            actualItemId
-        );
+        await removeBookmark(tipe, actualItemId);
         return false;
     }
 
-    await addBookmark(
-        tipe,
-        actualItemId
-    );
-
+    await addBookmark(tipe, actualItemId);
     return true;
 }
 
 /**
- * Fungsi pabrikator untuk membuat struktur data objek bookmark seragam di frontend.
- * @param {Object} param0 - Properti utama objek
+ * SOLUSI 2: Fungsi pabrikator untuk membuat struktur data objek bookmark seragam di frontend.
+ * Menambahkan properti slug ke dalam return value pabrikasi objek.
+ * @param {Object} param0 - Properti utama objek termasuk slug
  * @returns {Object}
  */
-function createBookmarkItem({
-    tipe,
-    item_id,
-    judul
-}){
+function createBookmarkItem({ tipe, item_id, judul, slug }){
     return {
         tipe,
         item_id,
-        judul
+        judul,
+        slug
     };
 }
 
@@ -282,9 +285,7 @@ function createBookmarkItem({
  * @returns {Promise<number>} - Jumlah total item yang di-bookmark
  */
 async function getBookmarkCount(){
-    const list =
-        await getBookmarks();
-
+    const list = await getBookmarks();
     return list.length;
 }
 
@@ -319,21 +320,25 @@ async function getBookmarkCountByType(){
 // ==========================================================================
 
 /**
- * Membuat URL secara dinamis dari tipe dan item_id (atau slug jika ada).
- * @param {Object} item - Objek bookmark
- * @returns {string} - Teks URL lengkap halaman detail
+ * SOLUSI 4: Membuat URL secara dinamis menggunakan parameter slug, bukan item_id lagi.
+ * @param {Object} item - Objek bookmark yang memiliki properti slug
+ * @returns {string} - Teks URL lengkap menuju halaman detail berbasis slug
  */
 function getBookmarkUrl(item){
-    const identifier = item.slug || item.item_id;
+
     switch(item.tipe){
         case "istilah":
-            return `/kamus-istilah/detail.html?id=${identifier}`;
+            return `/kamus-istilah/detail.html?slug=${item.slug}`;
+
         case "artikel":
-            return `/artikel/detail.html?id=${identifier}`;
+            return `/artikel/detail.html?slug=${item.slug}`;
+
         case "sastrawan":
-            return `/sastrawan/detail.html?id=${identifier}`;
+            return `/sastrawan/detail.html?slug=${item.slug}`;
+
         case "karya":
-            return `/karya-sastra/detail.html?id=${identifier}`;
+            return `/karya-sastra/detail.html?slug=${item.slug}`;
+
         default:
             return "#";
     }

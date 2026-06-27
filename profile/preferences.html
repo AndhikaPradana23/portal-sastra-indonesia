@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Preferensi</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/profile.css"
+    >
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="container">
+
+    <h1>
+        Preferensi Pengguna
+    </h1>
+
+    <form
+        id="preferences-form"
+    >
+
+        <div class="form-group">
+
+            <label>
+                Tema
+            </label>
+
+            <select id="theme">
+
+                <option value="light">
+                    Light
+                </option>
+
+                <option value="dark">
+                    Dark
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Jumlah Item per Halaman
+            </label>
+
+            <select
+                id="items-per-page"
+            >
+
+                <option value="10">
+                    10
+                </option>
+
+                <option value="20">
+                    20
+                </option>
+
+                <option value="50">
+                    50
+                </option>
+
+            </select>
+
+        </div>
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="enable-history"
+            >
+
+            Simpan Riwayat Pencarian
+
+        </label>
+
+        <br><br>
+
+        <label>
+
+            <input
+                type="checkbox"
+                id="enable-autocomplete"
+            >
+
+            Aktifkan Autocomplete
+
+        </label>
+
+        <br><br>
+
+        <button type="submit">
+
+            Simpan Preferensi
+
+        </button>
+
+    </form>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/js/supabase-public.js"></script>
+<script src="/js/layout/layout.js"></script>
+
+<script src="/js/auth/auth-service.js"></script>
+<script src="/js/auth/protected-route.js"></script>
+<script src="/js/auth/preferences.js"></script>
+<script src="/profile/preferences.js"></script>
+
+</body>
+</html>

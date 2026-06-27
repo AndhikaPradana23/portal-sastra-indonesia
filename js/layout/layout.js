@@ -1,72 +1,62 @@
+// js/layout/layout.js
+
 async function loadComponent(
     selector,
     file
-){
+) {
+    const element = document.querySelector(selector);
 
-    const element =
-        document.querySelector(selector);
-
-    if(!element){
+    if (!element) {
         return;
     }
 
-    try{
-
-        const response =
-            await fetch(file);
-
-        element.innerHTML =
-            await response.text();
-
+    try {
+        const response = await fetch(file);
+        element.innerHTML = await response.text();
     }
-
-    catch(error){
+    catch (error) {
         console.error(error);
     }
-
 }
 
-async function loadLayout(){
-
+async function loadLayout() {
     // Menunggu header dan footer selesai dimasukkan ke DOM
     await Promise.all([
-
         loadComponent(
             "#site-header",
             "/components/header.html"
         ),
-
         loadComponent(
             "#site-footer",
             "/components/footer.html"
         )
-
     ]);
 
     // Jalankan initAuthUI dengan aman menggunakan try-catch
-    try{
-
-        if(
+    try {
+        if (
             typeof window.initAuthUI ===
             "function"
-        ){
+        ) {
             await window.initAuthUI();
         }
-
     }
-    catch(error){
-
+    catch (error) {
         console.error(
             "Auth UI Error:",
             error
         );
-
     }
 
     // HAPUS: await loadBreadcrumb(); (karena merusak halaman indeks)
     
     initActiveMenu();
 
+    // OTOMATIS BERJALAN SETELAH LAYOUT SELESAI DIMUAT
+    // Menerapkan preferensi global (seperti tema) jika service tersedia
+    if (window.PreferencesService) {
+        await window.PreferencesService.applyPreferences();
+    }
 }
 
 // ==========================================

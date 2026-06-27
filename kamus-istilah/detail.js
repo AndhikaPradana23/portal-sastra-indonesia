@@ -17,7 +17,7 @@ function initDetailBookmark(tipe, data){
 
     return initBookmarkButton(
         createBookmarkItem({
-            tipe,
+            tipe: "istilah",
             item_id: data.id,
             judul: data.nama || data.judul,
             slug: data.slug

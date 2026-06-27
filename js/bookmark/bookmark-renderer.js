@@ -152,8 +152,8 @@ function renderBookmarkList(list){
 }
 
 /**
- * LANGKAH 4: Komponen renderer untuk membuat struktur HTML satu kartu bookmark.
- * Menggunakan getBookmarkUrl(item) secara dinamis alih-alih item.url statis.
+ * LANGKAH 4 & SOLUSI 5: Komponen renderer kartu bookmark yang aman.
+ * Menangani fallback string "Konten tidak ditemukan" jika properti judul rusak/hilang.
  * @param {Object} item - Objek data bookmark individual
  * @returns {string} - String representasi elemen HTML <article>
  */
@@ -172,7 +172,13 @@ function renderBookmarkCard(item){
 
         <h3>
             <a href="${url}">
-                ${highlightKeyword(rawTitle)}
+                ${
+                    highlightKeyword(
+                        CoreHelpers.escapeHtml(
+                            rawTitle || "Konten tidak ditemukan"
+                        )
+                    )
+                }
             </a>
         </h3>
 

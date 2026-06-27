@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pengaturan Akun</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/profile.css"
+    >
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="container">
+
+    <h1>
+        Pengaturan Akun
+    </h1>
+
+    <section class="settings-card">
+
+        <h2>
+            Informasi Akun
+        </h2>
+
+        <form id="profile-form">
+
+            <div class="form-group">
+
+                <label>
+                    Nama
+                </label>
+
+                <input
+                    id="nama"
+                    type="text"
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    id="email"
+                    type="email"
+                    disabled
+                >
+
+            </div>
+
+            <button type="submit">
+
+                Simpan Perubahan
+
+            </button>
+
+        </form>
+
+    </section>
+
+    <section class="settings-card">
+
+        <h2>
+            Ganti Password
+        </h2>
+
+        <form id="password-form">
+
+            <div class="form-group">
+
+                <label>
+                    Password Baru
+                </label>
+
+                <input
+                    id="password"
+                    type="password"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+            <button type="submit">
+
+                Ubah Password
+
+            </button>
+
+        </form>
+
+    </section>
+
+    <section class="settings-card">
+
+        <h2>
+            Preferensi
+        </h2>
+
+        <a
+            href="/profile/preferences.html"
+        >
+            Kelola Preferensi →
+        </a>
+
+    </section>
+
+    <!-- TAMBAHAN: Danger Zone Section -->
+    <section class="settings-card">
+
+        <h2>
+            Danger Zone
+        </h2>
+
+        <button
+            id="delete-account"
+        >
+            Hapus Akun
+        </button>
+
+    </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/js/supabase-public.js"></script>
+
+<script src="/js/layout/layout.js"></script>
+
+<script src="/js/auth/auth-service.js"></script>
+<script src="/js/auth/protected-route.js"></script>
+<script src="/profile/settings.js"></script>
+
+</body>
+</html>

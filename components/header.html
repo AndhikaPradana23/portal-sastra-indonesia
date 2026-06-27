@@ -1,57 +1,43 @@
+<!-- components/header.html -->
 <header>
-
     <div class="container">
-
         <div class="logo">
-
-            <h1>
-
-                Portal Sastra Indonesia
-
-            </h1>
-
+            <h1>Portal Sastra Indonesia</h1>
         </div>
-
+        
         <nav>
-
             <ul>
-
                 <li><a href="/index.html">Beranda</a></li>
-
-                <li><a href="/kamus-istilah/index.html">
-                    Kamus Sastra
-                </a></li>
-
-                <li><a href="/artikel/index.html">
-                    Artikel
-                </a></li>
-
-                <li><a href="/sastrawan/index.html">
-                    Sastrawan
-                </a></li>
-
-                <li><a href="/karya-sastra/index.html">
-                    Karya Sastra
-                </a></li>
                 
-                <li><a href="/bookmark/index.html">
-                    Bookmark
-                </a></li>
+                <li><a href="/kamus-istilah/index.html">Kamus Sastra</a></li>
+                
+                <li><a href="/artikel/index.html">Artikel</a></li>
+                
+                <li><a href="/sastrawan/index.html">Sastrawan</a></li>
+                
+                <li><a href="/karya-sastra/index.html">Karya Sastra</a></li>
+                
+                <li><a href="/bookmark/index.html">Bookmark</a></li>
 
-                <li><a href="/profile/index.html">
-                    Profil Saya
-                </a></li>
-
+                <!-- Menu autentikasi / dropdown user akan di-inject atau diatur secara dinamis di sini -->
                 <li id="auth-menu">
-                    <a href="/auth/login.html">
-                        Masuk
-                    </a>
+                    <a href="/auth/login.html">Masuk</a>
+                    
+                    <!-- 
+                      Catatan untuk sistem Auth JS Anda: 
+                      Saat user berhasil login, script `initAuthUI()` biasanya akan mengganti isi dari elemen 
+                      <li id="auth-menu"> di atas dengan markup dropdown berikut secara dinamis:
+                      
+                      <div class="auth-dropdown">
+                          <span>👋 ${nama}</span>
+                          <a href="/profile/index.html">Profil</a>
+                          <a href="/profile/preferences.html">Preferensi</a>
+                          <a href="/profile/settings.html">Pengaturan</a>
+                          <a href="#" id="logout-btn">Logout</a>
+                      </div>
+                    -->
                 </li>
-
             </ul>
-
         </nav>
-
     </div>
-
 </header>
