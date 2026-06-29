@@ -1,0 +1,27 @@
+.field{
+    margin-bottom:20px;
+}
+
+.field label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+.field input,
+.field select{
+    width:100%;
+    padding:14px;
+}
+
+button{
+    padding:14px 24px;
+}
+
+.citation-result{
+    margin-top:30px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    line-height:1.8;
+}

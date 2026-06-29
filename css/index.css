@@ -277,3 +277,39 @@ body {
     color:white;
     text-decoration:none;
 }
+
+.autocomplete-list{
+    position:absolute;
+    width:100%;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    margin-top:8px;
+    overflow:hidden;
+    z-index:999;
+    display:none;
+}
+
+.autocomplete-item{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:14px 18px;
+    text-decoration:none;
+    color:#333;
+    border-bottom:1px solid #eee;
+}
+
+.autocomplete-item:last-child{
+    border-bottom:none;
+}
+
+.autocomplete-item:hover{
+    background:#f7f9fc;
+}
+
+.autocomplete-empty{
+    padding:16px;
+    color:#777;
+}

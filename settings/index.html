@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Pengaturan Akun</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/layout.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/settings.css"
+    >
+</head>
+
+<body>
+
+<div id="site-header"></div>
+
+<main class="container">
+
+    <h1>
+        Pengaturan Akun
+    </h1>
+
+    <section class="settings-card">
+
+        <h2>
+            Informasi Akun
+        </h2>
+
+        <p>
+            Nama:
+            <strong id="nama-user">
+                -
+            </strong>
+        </p>
+
+        <p>
+            Email:
+            <strong id="email-user">
+                -
+            </strong>
+        </p>
+
+    </section>
+
+    <section class="settings-card">
+
+        <h2>
+            Ubah Nama
+        </h2>
+
+        <form id="form-nama">
+
+            <input
+                id="nama"
+                type="text"
+                placeholder="Nama baru"
+            >
+
+            <button type="submit">
+                Simpan
+            </button>
+
+        </form>
+
+    </section>
+
+    <section class="settings-card">
+
+        <h2>
+            Ganti Password
+        </h2>
+
+        <form id="form-password">
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Password baru"
+            >
+
+            <button type="submit">
+                Ganti Password
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="/js/supabase-public.js"></script>
+
+<script src="/js/auth/auth-service.js"></script>
+
+<script src="/js/auth/protected-route.js"></script>
+
+<script src="/js/layout/layout.js"></script>
+
+<script src="/settings/index.js"></script>
+
+</body>
+</html>

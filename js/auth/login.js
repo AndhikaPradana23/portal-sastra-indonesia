@@ -65,6 +65,15 @@ async function handleLogin(event){
             password
         );
 
+        // --- SINKRONISASI RIWAYAT PENCARIAN GUEST KE USER LOGIN ---
+        if(
+            window
+            .syncGuestHistory
+        ){
+            await
+            syncGuestHistory();
+        }
+
         alert(
             "Login berhasil."
         );

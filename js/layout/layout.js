@@ -50,7 +50,10 @@ async function loadLayout() {
 
     // HAPUS: await loadBreadcrumb(); (karena merusak halaman indeks)
     
-    initActiveMenu();
+    // UPDATE: Menjalankan initActiveMenu dengan aman agar tidak merusak loadLayout() jika file belum di-load
+    if (window.initActiveMenu) {
+        window.initActiveMenu();
+    }
 
     // OTOMATIS BERJALAN SETELAH LAYOUT SELESAI DIMUAT
     // Menerapkan preferensi global (seperti tema) jika service tersedia

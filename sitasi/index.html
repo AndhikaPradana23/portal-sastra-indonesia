@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Generator Sitasi
+    </title>
+
+    <meta
+        name="description"
+        content="
+        Generator sitasi APA, MLA,
+        Chicago, dan Harvard
+        untuk mahasiswa dan peneliti.
+        "
+    >
+
+    <!-- UPDATE: Menambahkan Meta Open Graph, Tautan Kanonikal, dan Skema JSON-LD untuk SEO -->
+    <meta
+        property="og:title"
+        content="
+        Generator Sitasi
+        Portal Sastra Indonesia
+        "
+    >
+
+    <meta
+        property="og:description"
+        content="
+        Generator sitasi APA,
+        MLA,
+        Chicago,
+        Harvard.
+        "
+    >
+
+    <link
+        rel="canonical"
+        href="
+        https://portalsastra.id/sitasi/
+        "
+    >
+
+    <script
+        id="jsonld-schema"
+        type="application/ld+json"
+    >
+    </script>
+
+    <link
+        rel="stylesheet"
+        href="/css/layout.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/sitasi.css"
+    >
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="container">
+
+    <h1>
+        Generator Sitasi
+    </h1>
+
+    <p>
+        Buat sitasi secara otomatis
+        dengan berbagai format akademik.
+    </p>
+
+    <form id="citation-form">
+
+        <div class="field">
+            <label>Penulis</label>
+
+            <input
+                id="author"
+                type="text"
+                placeholder="Nama penulis"
+            >
+        </div>
+
+        <div class="field">
+            <label>Judul</label>
+
+            <input
+                id="title"
+                type="text"
+                placeholder="Judul artikel atau buku"
+            >
+        </div>
+
+        <div class="field">
+            <label>Tahun</label>
+
+            <input
+                id="year"
+                type="number"
+                placeholder="2026"
+            >
+        </div>
+
+        <div class="field">
+            <label>Penerbit</label>
+
+            <input
+                id="publisher"
+                type="text"
+            >
+        </div>
+
+        <div class="field">
+            <label>URL</label>
+
+            <input
+                id="url"
+                type="url"
+            >
+        </div>
+
+        <div class="field">
+            <label>Format</label>
+
+            <select id="style">
+
+                <option value="apa">
+                    APA
+                </option>
+
+                <option value="mla">
+                    MLA
+                </option>
+
+                <option value="chicago">
+                    Chicago
+                </option>
+
+                <option value="harvard">
+                    Harvard
+                </option>
+
+            </select>
+        </div>
+
+        <button type="submit">
+            Buat Sitasi
+        </button>
+
+    </form>
+
+    <section class="citation-box">
+
+        <pre
+            id="citation-result"
+            class="citation-result"
+        >
+Belum ada sitasi.
+        </pre>
+
+        <button
+            id="copy-citation"
+            type="button"
+            class="secondary-btn"
+        >
+            Salin Sitasi
+        </button>
+
+        <button
+            id="download-citation"
+            type="button"
+            class="secondary-btn"
+        >
+            Download TXT
+        </button>
+
+    </section>
+
+    <!-- UPDATE: Menambahkan komponen Riwayat Sitasi -->
+    <section
+        class="citation-history"
+    >
+
+        <h2>
+            Riwayat Sitasi
+        </h2>
+
+        <div
+            id="citation-history"
+        >
+        </div>
+
+    </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/layout.js"></script>
+
+<script src="/js/citation/citation-formatters.js"></script>
+<script src="/js/citation/citation-history.js"></script>
+<script src="/js/citation/citation-export.js"></script>
+<script src="/js/citation/citation-service.js"></script>
+<script src="/js/citation/citation-schema.js"></script>
+<script src="/js/citation/citation-auto.js"></script>
+
+<script src="/sitasi/index.js"></script>
+
+</body>
+</html>

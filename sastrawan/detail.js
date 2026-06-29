@@ -199,6 +199,13 @@ async function loadDetail() {
             slug: data.slug
         })
     );
+
+    // ==================================================
+    // INISIALISASI TOMBOL SITASI SASTRAWAN
+    // ==================================================
+    initCitationButton(
+        data
+    );
 }
 
 // ==========================================
@@ -906,4 +913,46 @@ function renderInternalLink(karyaData, artikelData){
     html += "</div>";
 
     return html;
+}
+
+// ==========================================
+// INISIALISASI TOMBOL SITASI SASTRAWAN
+// ==========================================
+function initCitationButton(
+    sastrawan
+){
+
+    const button =
+        document.getElementById(
+            "citation-btn"
+        );
+
+    if(!button){
+        return;
+    }
+
+    button.onclick = () => {
+
+        openCitationPage({
+
+            author:
+                "Portal Sastra Indonesia",
+
+            title:
+                sastrawan.nama,
+
+            year:
+                new Date()
+                .getFullYear(),
+
+            publisher:
+                "Portal Sastra Indonesia",
+
+            url:
+                window.location.href
+
+        });
+
+    };
+
 }

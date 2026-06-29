@@ -66,22 +66,24 @@ async function updateAuthMenu(){
             ? window.escapeHtml(nama)
             : nama;
 
+    // UPDATE: Menambahkan menu "Profil" dan "Pengaturan Akun" ke dalam dropdown
     menu.innerHTML = `
         <div class="auth-dropdown">
 
             <span>
-
                 👋 ${safeNama}
-
             </span>
 
-            <a
-                href="#"
-                id="logout-btn"
-            >
+            <a href="/profile/index.html">
+                Profil
+            </a>
 
+            <a href="/settings/index.html">
+                Pengaturan Akun
+            </a>
+
+            <a href="#" id="logout-btn">
                 Logout
-
             </a>
 
         </div>

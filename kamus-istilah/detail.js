@@ -523,6 +523,13 @@ async function loadDetailIstilah() {
             data
         );
 
+        // ==================================================================
+        // INISIALISASI TOMBOL SITASI AMAN
+        // ==================================================================
+        initCitationButton(
+            data
+        );
+
     } catch (error) {
 
         loading.style.display = "none";
@@ -607,3 +614,45 @@ document.addEventListener(
     "DOMContentLoaded",
     loadDetailIstilah
 );
+
+// ==========================================
+// FUNGSIONALITAS TOMBOL SITASI ISTILAH KAMUS
+// ==========================================
+function initCitationButton(
+    istilah
+){
+
+    const button =
+        document.getElementById(
+            "citation-btn"
+        );
+
+    if(!button){
+        return;
+    }
+
+    button.onclick = () => {
+
+        openCitationPage({
+
+            author:
+                "Portal Sastra Indonesia",
+
+            title:
+                istilah.nama,
+
+            year:
+                new Date()
+                .getFullYear(),
+
+            publisher:
+                "Portal Sastra Indonesia",
+
+            url:
+                window.location.href
+
+        });
+
+    };
+
+}

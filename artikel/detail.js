@@ -82,7 +82,7 @@ async function loadDetailArtikel() {
     ]);
 
     // ==========================================
-    // LANGKAH 3: PENGISIAN AREA METADATA ARTIKEL
+    // PENGISIAN AREA METADATA ARTIKEL
     // ==========================================
     document.getElementById(
         "kategori"
@@ -112,7 +112,7 @@ async function loadDetailArtikel() {
     `;
 
     // ==========================================
-    // LANGKAH 4: RENDERING GAMBAR MINI (THUMBNAIL)
+    // RENDERING GAMBAR MINI (THUMBNAIL)
     // ==========================================
     if (data.thumbnail) {
         document.getElementById(
@@ -133,7 +133,7 @@ async function loadDetailArtikel() {
     }
 
     // ==========================================
-    // LANGKAH 5: RENDERING LABEL TAGS
+    // RENDERING LABEL TAGS
     // ==========================================
     const tagContainer = document.getElementById("tag-container");
     if (Array.isArray(data.tag) && data.tag.length) {
@@ -155,7 +155,7 @@ async function loadDetailArtikel() {
         );
 
     // ==========================================
-    // PENULIS & JSON-LD META (Langkah 2)
+    // PENULIS & JSON-LD META
     // ==========================================
     const authorName = await loadPenulisArtikel(data.id);
 
@@ -193,6 +193,8 @@ async function loadDetailArtikel() {
             slug: data.slug
         })
     );
+
+    initCitationButton(data);
 
 }
 
@@ -420,7 +422,7 @@ async function loadKaryaTerkait(
 }
 
 // ==========================================
-// LANGKAH 2: ARTIKEL TERKAIT OTOMATIS (SKORING)
+// ARTIKEL TERKAIT OTOMATIS (SKORING)
 // Prioritas:
 // 1. Kategori
 // 2. Tag
@@ -620,7 +622,7 @@ function hitungEstimasiBaca(text) {
 }
 
 // ==========================================
-// JSON-LD SCHEMA GENERATOR (SEO) (Langkah 3, 4, 5, & 6)
+// JSON-LD SCHEMA GENERATOR (SEO) 
 // ==========================================
 function updateArticleSchema(
     artikel,
@@ -737,5 +739,49 @@ async function tambahViews(id, views){
 
     console.log("Data hasil update views:", data);
     console.log("Error hasil update views:", error);
+
+}
+
+// ==========================================
+// INISIALISASI TOMBOL SITASI ARTIKEL
+// ==========================================
+function initCitationButton(
+    artikel
+){
+
+    const button =
+        document.getElementById(
+            "citation-btn"
+        );
+
+    if(!button){
+        return;
+    }
+
+    button.onclick = () => {
+
+        openCitationPage({
+
+            author:
+                "Portal Sastra Indonesia",
+
+            title:
+                artikel.judul,
+
+            year:
+                new Date(
+                    artikel.published_at ||
+                    artikel.created_at
+                ).getFullYear(),
+
+            publisher:
+                "Portal Sastra Indonesia",
+
+            url:
+                window.location.href
+
+        });
+
+    };
 
 }

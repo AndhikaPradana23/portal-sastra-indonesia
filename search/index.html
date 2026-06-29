@@ -19,9 +19,12 @@
         content="Cari istilah sastra, artikel, karya sastra, dan sastrawan dalam Portal Sastra Indonesia."
     >
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
 
     <link rel="stylesheet" href="/css/layout.css">
+
+    <!-- Tambahan stylesheet search.css -->
+    <link rel="stylesheet" href="/css/search.css">
 
 </head>
 
@@ -41,21 +44,28 @@
                 Cari istilah, artikel, karya sastra, maupun sastrawan.
             </p>
 
-            <section class="search-box">
+            <!-- UPDATE: Struktur komponen box pencarian dengan ID dan Placeholder baru -->
+            <div class="search-box">
 
                 <input
-                    type="search"
-                    id="global-search"
-                    placeholder="Cari apa saja..."
+                    id="search-input"
+                    type="text"
+                    placeholder="Cari istilah, artikel, karya, sastrawan..."
                     autocomplete="off"
                 >
 
                 <div
-                    id="autocomplete-list"
+                    id="autocomplete-result"
                     class="autocomplete-list"
-                    ></div>
+                ></div>
 
-            </section>
+                <!-- LANGKAH 2: Menambahkan kontainer suggestion -->
+                <div
+                    id="search-suggestion"
+                    class="suggestion-list"
+                ></div>
+
+            </div>
 
             <section class="history-section">
 
@@ -78,6 +88,14 @@
                 </div>
             </section>
 
+            <!-- Tambahan kontainer ringkasan hasil pencarian -->
+            <div class="search-summary">
+                <h2 id="search-title">
+                    Hasil Pencarian
+                </h2>
+                <p id="search-total"></p>
+            </div>
+
             <section id="search-status">
                 Silakan ketik kata kunci.
             </section>
@@ -96,17 +114,31 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="/js/supabase-public.js"></script>
+
+    <script src="/js/search/search-service.js"></script>
+    <script src="/js/search/search-renderer.js"></script>
+    <script src="/js/search/autocomplete.js"></script>
+    <script src="/js/search/search-service.js"></script>
+    <script src="/js/search/search-page.js"></script>
+    <script src="/js/search/search-results.js"></script>
+    <script src="/js/search/search-group.js"></script>
+    <script src="/js/search/search-utils.js"></script>
+    <script src="/js/search/popular-search-service.js"></script>
+    <script src="/js/search/search-history-sync.js"></script>
+    <script src="/js/search/search-seo.js"></script>
+    <script src="/js/search/search-api.js"></script>
+
     <script src="/js/global-search.js"></script>
-    
+
+    <script src="/js/layout/layout.js"></script>
+    <script src="/js/layout/active-menu.js"></script>
+
     <script src="/js/auth/auth-service.js"></script>
     <script src="/js/auth/logout.js"></script>
     <script src="/js/auth/auth-ui.js"></script>
     <script src="/js/auth/auth-state.js"></script>
 
-    <script src="/js/layout/layout.js"></script>
-    <script src="/js/layout/active-menu.js"></script>
-
-    <script src="search.js"></script>
+    <script src="index.js"></script>
 
 </body>
 

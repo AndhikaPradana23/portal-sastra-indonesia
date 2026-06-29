@@ -184,6 +184,11 @@ async function loadDetail() {
             slug: data.slug
         })
     );
+
+    initCitationButton(
+        data,
+        sastrawanData
+    );
 }
 
 // ==========================================
@@ -649,5 +654,53 @@ function updateCreativeWorkSchema(
         null,
         2
     );
+
+}
+
+function initCitationButton(
+    karya,
+    penulis
+){
+
+    const button =
+        document.getElementById(
+            "citation-btn"
+        );
+
+    if(!button){
+        return;
+    }
+
+    button.onclick = () => {
+
+        const author =
+            penulis
+            .map(
+                item =>
+                    item.sastrawan.nama
+            )
+            .join(", ");
+
+        openCitationPage({
+
+            author:
+                author ||
+                "Tidak diketahui",
+
+            title:
+                karya.judul,
+
+            year:
+                karya.tahun,
+
+            publisher:
+                "Portal Sastra Indonesia",
+
+            url:
+                window.location.href
+
+        });
+
+    };
 
 }
