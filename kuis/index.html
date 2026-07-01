@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kuis Sastra Indonesia</title>
+
+    <meta name="description" content="Uji pengetahuan sastra Indonesia melalui kuis interaktif.">
+
+    <link rel="stylesheet" href="/css/layout.css">
+
+    <link rel="stylesheet" href="/css/kuis.css">
+
+</head>
+
+<body>
+
+    <header id="site-header"></header>
+
+    <main class="quiz-page">
+
+        <div class="container">
+
+            <div class="quiz-hero">
+
+                <h1>
+                    🧠 Kuis Sastra Indonesia
+                </h1>
+
+                <p>
+
+                    Uji pemahaman Anda mengenai
+                    istilah sastra,
+                    sastrawan,
+                    karya sastra,
+                    dan artikel.
+
+                </p>
+
+            </div>
+
+            <section class="quiz-form">
+
+                <div class="form-group">
+
+                    <label>
+                        Kategori Kuis
+                    </label>
+
+                    <select id="quiz-category">
+
+                        <option value="istilah">
+                            Istilah Sastra
+                        </option>
+
+                        <option value="sastrawan">
+                            Sastrawan
+                        </option>
+
+                        <option value="karya">
+                            Karya Sastra
+                        </option>
+
+                        <option value="campuran">
+                            Campuran
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Jumlah Soal
+                    </label>
+
+                    <select id="quiz-total">
+
+                        <option value="5">
+                            5 Soal
+                        </option>
+
+                        <option value="10">
+                            10 Soal
+                        </option>
+
+                        <option value="20">
+                            20 Soal
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button id="start-quiz-btn">
+
+                    Mulai Kuis
+
+                </button>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/supabase-public.js"></script>
+
+    <script src="/js/auth/auth-service.js"></script>
+    <script src="/js/auth/logout.js"></script>
+    <script src="/js/auth/auth-ui.js"></script>
+    <script src="/js/auth/auth-state.js"></script>
+
+    <script src="/js/layout/layout.js"></script>
+    <script src="/js/layout/active-menu.js"></script>
+
+    <script src="/js/kuis/quiz-utils.js"></script>
+    <script src="/js/kuis/quiz-storage.js"></script>
+    <script src="/js/kuis/quiz-service.js"></script>
+    <script src="/js/kuis/quiz-generator.js"></script>
+    <script src="/js/kuis/quiz-page.js"></script>
+
+    <script src="index.js"></script>
+
+</body>
+</html>

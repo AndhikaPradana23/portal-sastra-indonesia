@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Analisis Puisi
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/layout.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="/css/analisis-puisi.css"
+    >
+
+</head>
+<body>
+
+    <header id="site-header"></header>
+
+    <main class="container">
+
+        <h1>
+            Analisis Puisi
+        </h1>
+
+        <p>
+
+            Tempel puisi dan dapatkan
+            analisis otomatis.
+
+        </p>
+
+        <div class="input-section">
+
+            <textarea
+                id="puisi-input"
+                placeholder="Masukkan puisi di sini..."
+            ></textarea>
+
+            <div class="input-info">
+
+                <span id="char-count">
+                    Karakter: 0
+                </span>
+
+                <span id="line-count">
+                    Baris: 0
+                </span>
+
+            </div>
+
+            <div class="input-actions">
+
+                <button
+                    id="example-btn"
+                    type="button"
+                >
+                    Contoh Puisi
+                </button>
+
+                <button
+                    id="clear-btn"
+                    type="button"
+                >
+                    Hapus
+                </button>
+
+                <button
+                    id="analyze-btn"
+                    type="button"
+                    disabled
+                >
+                    Analisis
+                </button>
+
+            </div>
+
+        </div>
+
+        <section
+            id="analysis-result"
+        >
+            Belum ada analisis.
+        </section>
+
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script src="/js/layout/layout.js"></script>
+    <script src="/js/layout/active-menu.js"></script>
+
+    <script src="/js/puisi/input-manager.js"></script>
+    <script src="/js/puisi/bait-analyzer.js"></script>
+    <script src="/js/puisi/larik-analyzer.js"></script>
+    <script src="/js/puisi/kata-analyzer.js"></script>
+    <script src="/js/puisi/frekuensi-analyzer.js"></script>
+    <script src="/js/puisi/huruf-analyzer.js"></script>
+    <script src="/js/puisi/rima-analyzer.js"></script>
+    <script src="/js/puisi/wordcloud.js"></script>
+
+    <script src="/js/puisi/majas-data.js"></script>
+    <script src="/js/puisi/majas-detector.js"></script>
+    <script src="/js/puisi/majas-renderer.js"></script>
+
+    <script src="/js/puisi/export-share.js"></script>
+    <script src="/js/puisi/analyzer.js"></script>
+
+    <script src="index.js"></script>
+
+</body>
+</html>
