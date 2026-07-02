@@ -4,24 +4,23 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Analisis Puisi
-    </title>
+    <title>Analisis Puisi</title>
 
-    <link
-        rel="stylesheet"
-        href="/css/layout.css"
-    >
+    <link rel="stylesheet" href="/css/variables.css">
 
-    <link
-        rel="stylesheet"
-        href="/css/analisis-puisi.css"
-    >
+    <link rel="stylesheet" href="/css/typography.css">
+
+    <link rel="stylesheet" href="/css/spacing.css">
+
+    <link rel="stylesheet" href="/css/utilities.css">
+
+    <link rel="stylesheet" href="/css/cards.css">
+
+    <link rel="stylesheet" href="/css/layout.css">
+
+    <link rel="stylesheet" href="/css/analisis-puisi.css">
 
 </head>
 <body>
@@ -35,18 +34,13 @@
         </h1>
 
         <p>
-
             Tempel puisi dan dapatkan
             analisis otomatis.
-
         </p>
 
         <div class="input-section">
 
-            <textarea
-                id="puisi-input"
-                placeholder="Masukkan puisi di sini..."
-            ></textarea>
+            <textarea id="puisi-input" placeholder="Masukkan puisi di sini..."></textarea>
 
             <div class="input-info">
 
@@ -62,25 +56,15 @@
 
             <div class="input-actions">
 
-                <button
-                    id="example-btn"
-                    type="button"
-                >
+                <button id="example-btn" type="button">
                     Contoh Puisi
                 </button>
 
-                <button
-                    id="clear-btn"
-                    type="button"
-                >
+                <button id="clear-btn" type="button">
                     Hapus
                 </button>
 
-                <button
-                    id="analyze-btn"
-                    type="button"
-                    disabled
-                >
+                <button id="analyze-btn" type="button" disabled>
                     Analisis
                 </button>
 
@@ -88,15 +72,22 @@
 
         </div>
 
-        <section
-            id="analysis-result"
-        >
+        <section id="analysis-result">
             Belum ada analisis.
         </section>
 
     </main>
 
     <footer id="site-footer"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+    <script src="/js/supabase-public.js"></script>
+
+    <script src="/js/auth/auth-service.js"></script>
+    <script src="/js/auth/logout.js"></script>
+    <script src="/js/auth/auth-ui.js"></script>
+    <script src="/js/auth/auth-state.js"></script>
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>

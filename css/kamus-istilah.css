@@ -2,29 +2,28 @@
    GLOBAL & LAYOUT BASE
 ==================================== */
 body {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    background: #f5f5f5;
+    /* Font-family, warna teks, dan background global sudah otomatis mengikuti layout.css & typography.css */
+    max-width: 1200px; /* Diselaraskan dengan kontainer utama portal */
+    margin: 0 auto;
 }
 
 #loading {
-    padding: 15px;
-    background: #e0e0e0;
-    border-radius: 6px;
-    margin-bottom: 20px;
+    padding: var(--space-4); /* 16px */
+    background: var(--surface-secondary);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-5); /* 24px */
     text-align: center;
-    font-weight: bold;
+    font-weight: 600;
+    color: var(--text-light);
 }
 
 .error, .empty {
-    padding: 20px;
-    background: #f8d7da;
-    color: #721c24;
-    border-radius: 8px;
-    border: 1px solid #f5c6cb;
-    margin: 20px 0;
+    padding: var(--space-5); /* 24px */
+    background: var(--danger-light);
+    color: var(--danger);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    margin: var(--space-5) 0;
 }
 
 /* ====================================
@@ -33,123 +32,153 @@ body {
 .search-section {
     position: relative;
     max-width: 700px;
-    margin: 30px 0;
+    margin: var(--space-6) 0; /* 32px */
 }
 
 .search-section input[type="text"] {
     width: 100%;
-    padding: 16px;
-    font-size: 18px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: var(--space-4) var(--space-5); /* 16px 24px - Sesuai standar search global */
+    font-size: 1.125rem; /* .text-lg */
+    border-radius: var(--radius-lg); /* Mengikuti spesifikasi utilities.css */
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
     box-sizing: border-box;
+}
+
+.search-section input[type="text"]:focus {
+    outline: none;
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-sm);
 }
 
 /* ====================================
    RIWAYAT (HISTORY) & BOOKMARK
 ==================================== */
 .history-section, .bookmark-section {
-    margin: 30px 0;
+    margin: var(--space-6) 0;
 }
 
 .history-item, .bookmark-item {
     display: inline-block;
-    margin: 6px;
-    padding: 8px 14px;
-    border: none;
-    border-radius: 30px;
-    background: #f2f2f2;
+    margin: var(--space-1) var(--space-2); /* 4px 8px */
+    padding: var(--space-2) var(--space-4); /* 8px 16px */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full); /* Mengikuti kelas token badge/pill */
+    background: var(--surface-secondary);
     text-decoration: none;
-    color: #333;
-    font-size: 14px;
-    transition: .2s;
+    color: var(--text);
+    font-size: 0.875rem; /* .text-sm */
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 .history-item:hover, .bookmark-item:hover {
-    background: #e0e0e0;
+    background: var(--surface);
+    border-color: var(--border-dark);
+    color: var(--primary);
 }
 
 #clear-history, #clear-bookmarks {
-    padding: 8px 16px;
-    border: none;
-    background: #d9534f;
-    color: #fff;
-    border-radius: 6px;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--danger);
+    background: var(--surface);
+    color: var(--danger);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.875rem;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: var(--space-3);
+    transition: all 0.2s ease;
 }
 
 #clear-history:hover, #clear-bookmarks:hover {
-    background: #c9302c;
+    background: var(--danger);
+    color: var(--text-white);
 }
 
 /* ====================================
    NAVIGASI FILTER (A-Z, TINGKAT, KATEGORI)
 ==================================== */
 .az-section, .tingkat-section, .kategori-section {
-    margin-top: 35px;
+    margin-top: var(--space-6);
 }
 
 .az-btn, .tingkat-btn, .kategori-btn {
-    margin: 6px;
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 25px;
-    background: #fff;
+    margin: var(--space-1);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    background: var(--surface);
+    color: var(--text-light);
+    font-weight: 500;
     cursor: pointer;
-    transition: .2s;
+    transition: all 0.2s ease;
 }
 
 .az-btn:hover, .tingkat-btn:hover, .kategori-btn:hover {
-    background: #f5f5f5;
+    background: var(--surface-secondary);
+    color: var(--text);
+    border-color: var(--border-dark);
 }
 
 /* Status tombol aktif berdasarkan script js */
 .az-btn.aktif, .tingkat-btn.aktif, .kategori-btn.aktif {
-    background: #fff4d6;
-    border-color: #ffe59e;
-    font-weight: bold;
+    background: var(--warning-light);
+    border-color: var(--warning);
+    color: var(--secondary);
+    font-weight: 700;
 }
 
 /* ====================================
    HALAMAN DAFTAR ISTILAH (INDEX)
 ==================================== */
 .istilah-section {
-    margin-top: 30px;
+    margin-top: var(--space-6);
 }
 
 #daftar-istilah {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--space-5); /* 24px - Mengikuti spasing.css */
 }
 
 /* Kartu daftar istilah */
 .istilah-section .istilah-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    background: var(--surface);
+    padding: var(--space-5); /* 24px - Sesuai standar komponen .card */
+    border-radius: var(--radius-lg); /* Sesuai standarisasi di utilities.css & cards.css */
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.istilah-section .istilah-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .istilah-section .istilah-card h2 {
     margin-top: 0;
+    margin-bottom: var(--space-3);
 }
 
 .istilah-section .definisi {
-    color: #555;
-    line-height: 1.6;
+    color: var(--text-light);
+    line-height: 1.8;
 }
 
 .btn-detail {
     display: inline-block;
-    margin-top: 12px;
-    color: #0d6efd;
+    margin-top: var(--space-3); /* 12px */
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .btn-detail:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
 }
 
@@ -158,79 +187,92 @@ body {
 ==================================== */
 .detail-container {
     max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
+    margin: 0 auto;
+    padding: var(--space-7) 0; /* 48px - Menggunakan grid padding container */
 }
 
 .detail-card {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    background: var(--surface);
+    padding: var(--space-6); /* 32px */
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
 .detail-card h1 {
-    margin: 0 0 10px 0;
+    margin: 0 0 var(--space-3) 0;
 }
 
 .meta {
-    margin-bottom: 15px;
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
 }
 
 .badge-tingkat {
-    background: #ffe066;
-    padding: 4px 8px;
-    border-radius: 4px;
+    background: var(--warning-light);
+    color: var(--secondary);
+    padding: var(--space-1) var(--space-3); /* 4px 12px */
+    border-radius: var(--radius-full); /* Diselaraskan dengan token badge global */
     font-weight: 700;
-    font-size: 14px;
+    font-size: 0.8125rem;
 }
 
+/* Tombol bookmark internal diselaraskan dengan .bookmark-btn global di layout.css */
 #bookmark-btn {
-    padding: 8px 16px;
-    background: #2b6cb0;
-    color: white;
-    border: none;
-    border-radius: 6px;
+    padding: var(--space-2) var(--space-4);
+    background: var(--surface);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
 #bookmark-btn:hover {
-    background: #1e40af;
+    background: var(--background);
+    color: var(--primary-hover);
 }
 
 .detail-card .section {
-    margin-top: 30px;
+    margin-top: var(--space-6); /* 32px */
 }
 
 .detail-card .section h2 {
     margin-top: 0;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #2b6cb0;
-    padding-bottom: 5px;
+    margin-bottom: var(--space-4);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: var(--space-1);
     display: inline-block;
+    color: var(--secondary);
 }
 
 .detail-card p {
     line-height: 1.8;
-    font-size: 16px;
+    font-size: 1rem;
+    color: var(--text-light);
 }
 
 .detail-card ul {
-    padding-left: 22px;
+    padding-left: 1.5rem; /* Sesuai standar typography.css */
 }
 
 .detail-card li {
-    margin-bottom: 12px;
+    margin-bottom: var(--space-3);
+    color: var(--text-light);
 }
 
 .detail-card ul a {
     text-decoration: none;
-    color: #2b6cb0;
-    font-weight: 500;
+    color: var(--primary);
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .detail-card ul a:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
 }
 
@@ -238,23 +280,46 @@ body {
 .artikel-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
+    gap: var(--space-4); /* 16px */
+    margin-top: var(--space-5);
 }
 
 .artikel-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg); /* Mengikuti modul standar token artikel-card */
+    padding: var(--space-4);
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.artikel-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .artikel-link {
     text-decoration: none;
-    color: #1e40af;
-    font-weight: 500;
+    color: var(--primary);
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .artikel-link:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+==================================== */
+@media (max-width: 768px) {
+    .detail-card {
+        padding: var(--space-5); /* 24px di layar tablet/mobile */
+    }
+
+    .search-section input[type="text"] {
+        padding: var(--space-3) var(--space-4);
+        font-size: 1rem;
+    }
 }

@@ -9,6 +9,16 @@
 
     <meta name="description" content="Kerjakan kuis sastra Indonesia.">
 
+    <link rel="stylesheet" href="/css/variables.css">
+
+    <link rel="stylesheet" href="/css/typography.css">
+
+    <link rel="stylesheet" href="/css/spacing.css">
+
+    <link rel="stylesheet" href="/css/utilities.css">
+
+    <link rel="stylesheet" href="/css/cards.css">
+
     <link rel="stylesheet" href="/css/layout.css">
 
     <link rel="stylesheet" href="/css/kuis.css">
@@ -21,30 +31,23 @@
 
     <div class="container">
 
-        <!-- AWAL PERUBAHAN PANEL NAVIGASI SOAL -->
         <div class="quiz-header">
 
             <div>
 
                 <div id="quiz-progress"></div>
 
-                <div
-                    id="question-navigation"
-                    class="question-navigation"
-                >
+                <div id="question-navigation" class="question-navigation">
 
                 </div>
 
             </div>
 
             <div id="quiz-timer">
-
                 ⏱ 00:00
-
             </div>
 
         </div>
-        <!-- AKHIR PERUBAHAN PANEL NAVIGASI SOAL -->
 
         <div id="quiz-status"></div>
 
@@ -55,15 +58,11 @@
         <div class="quiz-navigation">
 
             <button id="prev-btn">
-
                 ← Sebelumnya
-
             </button>
 
             <button id="next-btn">
-
                 Selanjutnya →
-
             </button>
 
         </div>
@@ -74,7 +73,8 @@
 
 <footer id="site-footer"></footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
     <script src="/js/supabase-public.js"></script>
 
     <script src="/js/auth/auth-service.js"></script>

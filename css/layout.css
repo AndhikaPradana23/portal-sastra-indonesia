@@ -3,30 +3,68 @@
    Portal Sastra Indonesia
 ========================================== */
 
+body {
+    background: var(--background);
+    color: var(--text);
+}
+
+/* ========= UTILITY COLOR CLASSES ========= */
+.text-primary {
+    color: var(--primary);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+.text-light {
+    color: var(--text-light);
+}
+
+.bg-primary {
+    background: var(--primary);
+}
+
+.bg-surface {
+    background: var(--surface);
+}
+
+.bg-success {
+    background: var(--success);
+}
+
+.bg-danger {
+    background: var(--danger);
+}
+
+.border {
+    border: 1px solid var(--border);
+}
+
 /* ========= CONTAINER ========= */
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 var(--space-5); /* 24px */
     box-sizing: border-box;
 }
 
 /* ========= HEADER ========= */
 header {
-    background: #ffffff;
-    border-bottom: 1px solid #f1f1f1;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    box-shadow: var(--shadow-sm); /* Diselaraskan dengan sistem shadow */
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 20px;
+    padding: var(--space-4) var(--space-5); /* 16px 24px */
 }
 
 /* ========= LOGO ========= */
@@ -37,9 +75,9 @@ header .container {
 
 .logo h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 1.5rem; /* 24px - Menggunakan skala .text-2xl / h3 */
     font-weight: 700;
-    color: #1a1a1a;
+    color: var(--secondary);
     letter-spacing: -0.5px;
 }
 
@@ -55,7 +93,7 @@ nav ul {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: var(--space-6); /* 32px - Mengikuti kelipatan spacing system */
 }
 
 nav li {
@@ -67,32 +105,32 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: #555555;
+    color: var(--text-light);
     font-weight: 600;
-    font-size: 15px;
+    font-size: 0.9375rem; /* Menjaga proporsi navigasi tetap ideal */
     transition: color 0.2s ease;
     position: relative;
-    padding: 6px 0;
+    padding: var(--space-2) 0; /* 8px */
 }
 
 nav a:hover {
-    color: #0d6efd;
+    color: var(--primary);
 }
 
 /* ========= ACTIVE MENU ========= */
 nav a.active {
-    color: #0d6efd;
+    color: var(--primary);
 }
 
 nav a.active::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -18px; /* Presisi pas di atas border bottom header */
+    bottom: -20px; /* Disesuaikan agar pas di atas border-bottom header */
     width: 100%;
     height: 3px;
     border-radius: 10px 10px 0 0;
-    background: #0d6efd;
+    background: var(--primary);
 }
 
 /* ========= AUTH DROPDOWN & MENU ========= */
@@ -103,24 +141,24 @@ nav a.active::after {
 .auth-dropdown {
     display: flex;
     align-items: center;
-    gap: 16px;
-    background: #f8f9fa;
-    padding: 6px 14px;
-    border-radius: 30px;
-    border: 1px solid #e9ecef;
+    gap: var(--space-4); /* 16px */
+    background: var(--surface);
+    padding: var(--space-2) var(--space-4); /* 8px 16px */
+    border-radius: var(--radius-full); /* Menggunakan token radius lingkaran penuh */
+    border: 1px solid var(--border);
 }
 
 .auth-dropdown span {
     font-weight: 600;
-    font-size: 14px;
-    color: #333333;
+    font-size: 0.875rem; /* 14px - Mengikuti skala .text-sm */
+    color: var(--text);
 }
 
-/* Link internal di dalam dropdown (misal: "Profil Saya") */
+/* Link internal di dalam dropdown */
 .auth-dropdown a {
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px - Mengikuti skala .text-sm */
     font-weight: 600;
-    color: #0d6efd;
+    color: var(--primary);
     text-decoration: none;
     transition: opacity 0.2s ease;
 }
@@ -130,15 +168,16 @@ nav a.active::after {
     opacity: 0.8;
 }
 
-/* Khusus tombol logout agar memiliki pemisah visual yang tegas */
+/* Tombol logout dengan pemisah visual */
 .auth-dropdown a#logout-btn {
-    color: #dc3545;
-    border-left: 1px solid #dee2e6;
-    padding-left: 14px;
+    color: var(--danger);
+    border-left: 1px solid var(--border);
+    padding-left: var(--space-4); /* 16px */
 }
 
 .auth-dropdown a#logout-btn:hover {
-    color: #bd2130;
+    color: var(--danger); 
+    opacity: 0.8;
     text-decoration: none;
 }
 
@@ -146,9 +185,9 @@ nav a.active::after {
    BREADCRUMB
 ========================================== */
 .breadcrumb {
-    margin: 20px auto;
+    margin: var(--space-5) auto; /* 24px */
     max-width: 1200px;
-    padding: 0 20px;
+    padding: 0 var(--space-5); /* 24px */
     box-sizing: border-box;
 }
 
@@ -156,103 +195,104 @@ nav a.active::after {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2); /* 8px */
     margin: 0;
-    padding: 10px 16px;
+    padding: var(--space-3) var(--space-4); /* 12px 16px */
     list-style: none;
-    background: #f8f9fa;
-    border-radius: 8px;
+    background: var(--surface);
+    border-radius: var(--radius-sm); /* 8px - Sesuai spesifikasi tokens */
+    border: 1px solid var(--border);
 }
 
 .breadcrumb li {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 0.875rem; /* 14px - Mengikuti skala small/text-sm */
 }
 
 .breadcrumb li:not(:last-child)::after {
     content: "›";
-    margin-left: 8px;
-    color: #adb5bd;
-    font-size: 16px;
+    margin-left: var(--space-2); /* 8px */
+    color: var(--text-light);
+    font-size: 1.125rem;
     font-weight: bold;
 }
 
 .breadcrumb a {
-    color: #0d6efd;
+    color: var(--primary);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s ease;
 }
 
 .breadcrumb a:hover {
-    color: #0a58ca;
+    color: var(--primary-hover);
     text-decoration: underline;
 }
 
 .breadcrumb span {
-    color: #6c757d;
+    color: var(--text-light);
     font-weight: 500;
 }
 
 /* ========= FOOTER ========= */
 footer {
-    margin-top: 100px;
-    background: #ffffff;
-    border-top: 1px solid #dee2e6;
+    margin-top: var(--space-9); /* 96px - Menggunakan spacing paling besar */
+    background: var(--surface);
+    border-top: 1px solid var(--border);
 }
 
 footer .container {
-    padding: 40px 20px;
+    padding: var(--space-7) var(--space-5); /* 48px 24px */
     text-align: center;
 }
 
 footer p {
     margin: 0;
-    color: #6c757d;
-    font-size: 14px;
+    color: var(--text-light);
+    font-size: 0.875rem; /* 14px */
     line-height: 1.6;
 }
 
 /* ========= RESPONSIVE ========= */
-@media (max-width: 992px) {
+@media (max-width: 768px) { /* Diselaraskan dengan breakpoint media query typography.css (768px) */
     header .container {
         flex-direction: column;
-        gap: 16px;
-        padding: 14px 20px;
+        gap: var(--space-4);
+        padding: var(--space-4) var(--space-5);
     }
 
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 20px;
+        gap: var(--space-4); /* 16px */
     }
 
     nav a.active::after {
-        display: none; /* Hilangkan garis bawah aktif di mobile agar tidak berantakan */
+        display: none;
     }
 }
 
 @media (max-width: 640px) {
     .logo h1 {
-        font-size: 20px;
+        font-size: 1.25rem; /* 20px - Mengikuti skala .text-xl */
     }
 
     nav ul {
-        gap: 12px;
+        gap: var(--space-3); /* 12px */
     }
     
     nav a, .auth-dropdown span, .auth-dropdown a {
-        font-size: 13px;
+        font-size: 0.8125rem;
     }
 
     .auth-dropdown {
-        gap: 10px;
-        padding: 4px 10px;
+        gap: var(--space-2); /* 8px */
+        padding: var(--space-1) var(--space-3); /* 4px 12px */
     }
 
     .auth-dropdown a#logout-btn {
-        padding-left: 10px;
+        padding-left: var(--space-3);
     }
 }
 
@@ -260,31 +300,33 @@ footer p {
    BOOKMARK BUTTON
 ========================================== */
 .bookmark-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: 1px solid #0d6efd;
-    border-radius: 8px;
+    margin-top: var(--space-5); /* 24px */
+    padding: var(--space-3) var(--space-5); /* 12px 24px - Sesuai standar button di spacing.css */
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-md); /* Sesuai standarisasi button di utilities.css */
     cursor: pointer;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 600;
-    background: #ffffff;
-    color: #0d6efd;
+    background: var(--surface);
+    color: var(--primary);
     transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-2); /* 8px */
 }
 
 .bookmark-btn:hover {
-    background: #f0f5ff;
+    background: var(--background);
+    color: var(--primary-hover);
 }
 
 .bookmark-btn.bookmarked {
-    background: #0d6efd;
-    color: #ffffff;
+    background: var(--primary);
+    color: var(--surface);
+    border-color: var(--primary);
 }
 
 .bookmark-btn.bookmarked:hover {
-    background: #0b5ed7;
-    border-color: #0b5ed7;
+    background: var(--primary-hover);
+    border-color: var(--primary-hover);
 }

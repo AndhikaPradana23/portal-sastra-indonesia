@@ -1,175 +1,158 @@
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:40px 20px;
+/* ==========================================================================
+   ANAlISIS PUISI COMPONENT
+   Portal Sastra Indonesia
+   ========================================================================== */
+
+/* Kontainer khusus agar area kerja analisis lebih fokus dan intuitif (900px) */
+.analysis-container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#puisi-input{
-    width:100%;
-    min-height:300px;
-    padding:20px;
-    font-size:16px;
-    border:1px solid #ddd;
-    border-radius:12px;
+/* Section pembungkus input */
+.input-section {
+    margin-top: var(--space-6); /* 32px */
 }
 
-#analyze-btn{
-    margin-top:20px;
-    padding:14px 30px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
+/* Textarea input puisi */
+#puisi-input {
+    width: 100%;
+    min-height: 300px;
+    box-sizing: border-box;
+    resize: vertical;
+    line-height: 1.8; /* Menjaga kenyamanan pembacaan bait puisi */
+    /* padding, border, radius, dan font otomatis diwariskan dari system global */
 }
 
-#analysis-result{
-    margin-top:40px;
-    padding:30px;
-    border:1px solid #eee;
-    border-radius:12px;
+/* Metadata / info di bawah input */
+.input-info {
+    display: flex;
+    gap: var(--space-5); /* 24px - Menggantikan 30px acak */
+    margin-top: var(--space-2); /* 8px */
+    color: var(--text-light);
 }
 
-.input-section{
-    margin-top:40px;
+/* Area aksi tombol */
+.input-actions {
+    display: flex;
+    gap: var(--space-3); /* 12px */
+    margin-top: var(--space-4); /* 16px */
 }
 
-#puisi-input{
-    width:100%;
-    min-height:300px;
-    padding:20px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    resize:vertical;
-    font-size:16px;
-    line-height:1.8;
+/* Tombol aksi di dalam form analisis */
+.input-actions button {
+    cursor: pointer;
+    /* padding, font-weight, dan radius otomatis menggunakan standar utilities/spacing */
 }
 
-.input-info{
-    display:flex;
-    gap:30px;
-    margin-top:15px;
-    color:#666;
+/* State khusus tombol utama */
+#analyze-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
-.input-actions{
-    display:flex;
-    gap:12px;
-    margin-top:20px;
+/* ==========================================================================
+   ANALYSIS RESULT AREA
+   ========================================================================== */
+
+#analysis-result {
+    margin-top: var(--space-7); /* 48px - Jarak pemisah yang tegas setelah proses */
 }
 
-.input-actions button{
-    padding:12px 20px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
+/* Card utama hasil analisis */
+.analysis-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg); /* 18px - Selaras dengan komponen .card */
+    padding: var(--space-5); /* 24px */
 }
 
-#analyze-btn:disabled{
-    opacity:.5;
-    cursor:not-allowed;
+.analysis-card h3 {
+    margin-top: 0;
+    margin-bottom: var(--space-4); /* 16px */
 }
 
-#analysis-result{
-    margin-top:40px;
+.analysis-section {
+    margin-top: var(--space-5); /* 24px */
 }
 
-.analysis-card{
-    background:#fff;
-    border:1px solid #eee;
-    border-radius:16px;
-    padding:24px;
+.analysis-section h4 {
+    margin-bottom: var(--space-3); /* 12px */
 }
 
-.analysis-card h3{
-    margin-top:0;
-    margin-bottom:20px;
+/* ==========================================================================
+   DATA ITEMS & WIDGETS
+   ========================================================================== */
+
+/* Baris item kalkulasi statistik (Jumlah kata, karakter, dll) */
+.analysis-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4); /* 16px */
+    margin-bottom: var(--space-3); /* 12px */
+    background: var(--surface-secondary); /* Menggunakan warna surface kontras */
+    border-radius: var(--radius-md); /* 12px */
 }
 
-.analysis-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px;
-    background:#f8f9fa;
-    border-radius:12px;
+/* Angka indikator statistik */
+.analysis-item span {
+    font-size: 1.75rem; /* ~28px - Menggunakan skala rem yang proporsional */
+    font-weight: 700;
+    color: var(--primary); /* Memberi aksen menonjol pada hasil angka */
 }
 
-.analysis-item span{
-    font-size:28px;
-    font-weight:bold;
+/* List frekuensi kata & rima */
+.word-frequency,
+.rima-list {
+    padding-left: var(--space-4); /* 16px */
 }
 
-.analysis-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px;
-    margin-bottom:12px;
-    background:#f8f9fa;
-    border-radius:12px;
+.word-frequency li,
+.rima-list li {
+    margin-bottom: var(--space-2); /* 8px */
 }
 
-.analysis-section{
-    margin-top:30px;
+.rima-box {
+    margin-top: var(--space-3);
 }
 
-.analysis-section h4{
-    margin-bottom:15px;
+/* Container awan kata (Word Cloud) */
+.word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3); /* 12px */
+    margin-top: var(--space-4);
+    justify-content: center;
+    align-items: center;
 }
 
-.word-frequency{
-    padding-left:20px;
+/* Item kata unik di dalam awan kata */
+.word-item {
+    padding: var(--space-2) var(--space-3); /* 8px 12px */
+    border-radius: var(--radius-md);
+    background: var(--surface-secondary);
+    color: var(--text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+    line-height: 1.2;
 }
 
-.word-frequency li{
-    margin-bottom:10px;
+.word-item:hover {
+    transform: scale(1.08);
+    box-shadow: var(--shadow-sm);
 }
 
-.rima-box{
-    margin-top:15px;
+/* Daftar pendeteksian Majas */
+.majas-list {
+    margin-top: var(--space-3);
 }
 
-.rima-list{
-    margin-top:15px;
-    padding-left:20px;
-}
-
-.rima-list li{
-    margin-bottom:15px;
-}
-
-.rima-list small{
-    color:#666;
-}
-
-.word-cloud{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-    margin-top:20px;
-    justify-content:center;
-    align-items:center;
-}
-
-.word-item{
-    padding:10px;
-    border-radius:12px;
-    background:#f5f5f5;
-    transition:.3s;
-    cursor:default;
-    line-height:1.2;
-}
-
-.word-item:hover{
-    transform:scale(1.1);
-}
-
-.majas-list{
-    margin-top:15px;
-}
-
-.majas-list li{
-    padding:12px;
-    border:1px solid #e5e7eb;
-    border-radius:12px;
-    margin-bottom:10px;
+.majas-list li {
+    padding: var(--space-3); /* 12px */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-2);
+    list-style-type: none; /* Menghilangkan dot peluru agar layout list majas lebih bersih */
 }

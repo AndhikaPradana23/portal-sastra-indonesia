@@ -5,25 +5,22 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Global Search | Portal Sastra Indonesia
-    </title>
+    <title>Global Search | Portal Sastra Indonesia</title>
 
-    <meta
-        name="description"
-        content="Cari istilah sastra, artikel, karya sastra, dan sastrawan dalam Portal Sastra Indonesia."
-    >
+    <meta name="description" content="Cari istilah sastra, artikel, karya sastra, dan sastrawan dalam Portal Sastra Indonesia.">
+
+    <link rel="stylesheet" href="/css/variables.css">
+
+    <link rel="stylesheet" href="/css/typography.css">
+
+    <link rel="stylesheet" href="/css/spacing.css">
 
     <link rel="stylesheet" href="/css/index.css">
 
     <link rel="stylesheet" href="/css/layout.css">
 
-    <!-- Tambahan stylesheet search.css -->
     <link rel="stylesheet" href="/css/search.css">
 
 </head>
@@ -44,26 +41,13 @@
                 Cari istilah, artikel, karya sastra, maupun sastrawan.
             </p>
 
-            <!-- UPDATE: Struktur komponen box pencarian dengan ID dan Placeholder baru -->
             <div class="search-box">
 
-                <input
-                    id="search-input"
-                    type="text"
-                    placeholder="Cari istilah, artikel, karya, sastrawan..."
-                    autocomplete="off"
-                >
+                <input id="search-input" type="text" placeholder="Cari istilah, artikel, karya, sastrawan..." autocomplete="off">
 
-                <div
-                    id="autocomplete-result"
-                    class="autocomplete-list"
-                ></div>
+                <div id="autocomplete-result" class="autocomplete-list"></div>
 
-                <!-- LANGKAH 2: Menambahkan kontainer suggestion -->
-                <div
-                    id="search-suggestion"
-                    class="suggestion-list"
-                ></div>
+                <div id="search-suggestion" class="suggestion-list"></div>
 
             </div>
 
@@ -88,7 +72,6 @@
                 </div>
             </section>
 
-            <!-- Tambahan kontainer ringkasan hasil pencarian -->
             <div class="search-summary">
                 <h2 id="search-title">
                     Hasil Pencarian
@@ -100,10 +83,7 @@
                 Silakan ketik kata kunci.
             </section>
 
-            <section
-                id="search-results"
-                class="search-results"
-            >
+            <section id="search-results" class="search-results">
             </section>
 
         </div>

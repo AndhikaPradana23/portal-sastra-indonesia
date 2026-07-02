@@ -1,27 +1,43 @@
-.field{
-    margin-bottom:20px;
+/* ==========================================================================
+   CITATION (SITASI) COMPONENT
+   Portal Sastra Indonesia
+   ========================================================================== */
+
+/* Wrapper form group untuk halaman sitasi */
+.field {
+    margin-bottom: var(--space-5); /* 24px - Selaras dengan .form-group di spacing.css */
 }
 
-.field label{
-    display:block;
-    margin-bottom:8px;
-    font-weight:bold;
+.field label {
+    display: block;
+    margin-bottom: var(--space-2); /* 8px - Jarak label ke input sesuai standar */
+    /* font-weight dan color diwariskan otomatis dari label global di typography.css */
 }
 
+/* Pengaturan lebar penuh untuk elemen form sitasi */
 .field input,
-.field select{
-    width:100%;
-    padding:14px;
+.field select {
+    width: 100%;
+    box-sizing: border-box;
+    /* padding, border, radius, dan font diwariskan otomatis dari typography.css & utilities.css */
 }
 
-button{
-    padding:14px 24px;
+/* ==========================================================================
+   CITATION RESULT CARD
+   ========================================================================== */
+
+.citation-result {
+    margin-top: var(--space-6); /* 32px - Jarak top spacing yang konsisten */
+    background: var(--surface); /* Menggunakan token permukaan sistem */
+    padding: var(--space-5); /* 24px - Selaras dengan standar padding .card */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg); /* 18px - Mengikuti standar .result-card / .card */
+    box-shadow: var(--shadow-sm); /* Menambahkan elevasi shadow halus khas sistem baru */
 }
 
-.citation-result{
-    margin-top:30px;
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    line-height:1.8;
+/* Menjaga keterbacaan teks format sitasi di dalam result */
+.citation-result p {
+    margin: 0;
+    color: var(--text); /* Menggunakan warna teks utama agar format sitasi terlihat tegas */
+    line-height: 1.8; /* Mempertahankan kenyamanan baca teks sastra/akademik */
 }

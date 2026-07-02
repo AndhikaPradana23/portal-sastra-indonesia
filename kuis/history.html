@@ -8,6 +8,16 @@
 
     <title>Riwayat Nilai Kuis</title>
 
+    <link rel="stylesheet" href="/css/variables.css">
+
+    <link rel="stylesheet" href="/css/typography.css">
+
+    <link rel="stylesheet" href="/css/spacing.css">
+
+    <link rel="stylesheet" href="/css/utilities.css">
+
+    <link rel="stylesheet" href="/css/cards.css">
+
     <link rel="stylesheet" href="/css/layout.css">
 
     <link rel="stylesheet" href="/css/kuis.css">
@@ -22,27 +32,16 @@
     <div class="container">
 
         <h1>
-
             📊
             Riwayat Nilai
-
         </h1>
 
-        <div
-            id="quiz-history"
-        >
+        <div id="quiz-history">
 
         </div>
 
-        <button
-            id="clear-history-btn"
-            class="
-            result-button
-            "
-        >
-
+        <button id="clear-history-btn" class="result-button">
             Hapus Riwayat
-
         </button>
 
     </div>
@@ -50,6 +49,15 @@
 </main>
 
 <footer id="site-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script src="/js/supabase-public.js"></script>
+
+<script src="/js/auth/auth-service.js"></script>
+<script src="/js/auth/logout.js"></script>
+<script src="/js/auth/auth-ui.js"></script>
+<script src="/js/auth/auth-state.js"></script>
 
 <script src="/js/layout/layout.js"></script>
 <script src="/js/layout/active-menu.js"></script>

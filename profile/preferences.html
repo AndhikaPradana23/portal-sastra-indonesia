@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <title>Preferensi</title>
 
-    <link
-        rel="stylesheet"
-        href="/css/profile.css"
-    >
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/typography.css">
+    <link rel="stylesheet" href="/css/spacing.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body>
 
@@ -19,9 +21,7 @@
         Preferensi Pengguna
     </h1>
 
-    <form
-        id="preferences-form"
-    >
+    <form id="preferences-form">
 
         <div class="form-group">
 
@@ -49,9 +49,7 @@
                 Jumlah Item per Halaman
             </label>
 
-            <select
-                id="items-per-page"
-            >
+            <select id="items-per-page">
 
                 <option value="10">
                     10
@@ -70,35 +68,21 @@
         </div>
 
         <label>
-
-            <input
-                type="checkbox"
-                id="enable-history"
-            >
-
-            Simpan Riwayat Pencarian
-
+            <input type="checkbox" id="enable-history">
+                Simpan Riwayat Pencarian
         </label>
 
         <br><br>
 
         <label>
-
-            <input
-                type="checkbox"
-                id="enable-autocomplete"
-            >
-
+            <input type="checkbox" id="enable-autocomplete">
             Aktifkan Autocomplete
-
         </label>
 
         <br><br>
 
         <button type="submit">
-
             Simpan Preferensi
-
         </button>
 
     </form>

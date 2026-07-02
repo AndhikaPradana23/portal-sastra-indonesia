@@ -2,51 +2,52 @@
    GLOBAL & LAYOUT BASE
 ==================================== */
 body {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    background: #f5f5f5;
+    /* Aturan font-family, background, dan color sudah diwarisi dari layout & typography */
+    max-width: 1200px; /* Diselaraskan dengan max-width container utama */
+    margin: 0 auto;
+    padding: 0; /* Mengandalkan padding dari .container di layout.css */
 }
 
 /* ====================================
    HERO NEW STYLE
 ==================================== */
 .hero {
-    padding: 90px 20px;
-    background: white;
-    border-radius: 18px;
-    margin-bottom: 40px;
+    padding: var(--space-9) var(--space-5); /* 96px 24px - Mengikuti spasing.css */
+    background: var(--surface);
+    border-radius: var(--radius-xl); /* Sesuai standarisasi di utilities.css */
+    margin-bottom: var(--space-7); /* 48px */
     text-align: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    box-shadow: var(--shadow-lg);
 }
 
 .hero-badge {
     display: inline-block;
-    padding: 8px 20px;
-    border-radius: 50px;
-    background: #eef4ff;
-    color: #0d6efd;
+    padding: var(--space-2) var(--space-5); /* 8px 24px */
+    border-radius: var(--radius-full); /* Sesuai standarisasi di utilities.css */
+    background: var(--primary-light);
+    color: var(--primary);
     font-weight: 700;
-    margin-bottom: 25px;
+    font-size: 0.875rem; /* .text-sm */
+    margin-bottom: var(--space-5); /* 24px */
 }
 
 .hero h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
+    font-size: 2.5rem; /* Mengikuti ukuran h1 pada typography.css */
+    font-weight: 800;
+    color: var(--secondary);
+    margin-bottom: var(--space-4); /* 16px */
 }
 
 .hero h2 span {
-    color: #0d6efd;
+    color: var(--primary);
 }
 
 .hero p {
     max-width: 700px;
-    margin: auto;
+    margin: 0 auto var(--space-6) auto;
+    font-size: 1.125rem; /* .text-lg */
     line-height: 1.8;
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 35px;
+    color: var(--text-light);
 }
 
 /* ====================================
@@ -54,262 +55,317 @@ body {
 ==================================== */
 .hero-search {
     max-width: 700px;
-    margin: auto;
+    margin: 0 auto;
     position: relative;
 }
 
 .hero-search input {
     width: 100%;
-    padding: 18px 22px;
-    font-size: 18px;
-    border-radius: 14px;
-    border: 1px solid #ddd;
+    padding: var(--space-4) var(--space-5); /* 16px 24px */
+    font-size: 1.125rem; /* .text-lg */
+    border-radius: var(--radius-lg); /* Sesuai standarisasi di utilities.css */
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    box-sizing: border-box;
+}
+
+.hero-search input:focus {
+    outline: none;
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-sm);
 }
 
 /* ====================================
    HERO NAVIGATION MENU & CARDS
 ==================================== */
 .hero-menu {
-    margin-top: 45px;
+    margin-top: var(--space-7); /* 48px */
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: var(--space-5); /* 24px - Mengikuti aturan .hero-menu di spasing.css */
 }
 
 .hero-card {
-    background: #fafafa;
-    border-radius: 15px;
-    padding: 30px;
+    background: var(--surface-secondary);
+    border-radius: var(--radius-lg); /* Sesuai standarisasi di utilities.css */
+    padding: var(--space-5); /* 24px - Mengikuti aturan .hero-card di spasing.css */
     text-decoration: none;
-    color: #222;
+    color: var(--text);
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    font-size: 32px;
-    transition: .25s;
-    border: 1px solid #eee;
+    gap: var(--space-4); /* 16px */
+    font-size: 2rem; /* .text-3xl untuk display ikon/angka besar */
+    font-weight: 700;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--border);
 }
 
 .hero-card strong {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 1rem; /* .text-base */
+    font-weight: 700;
+    color: var(--secondary);
 }
 
 .hero-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    background: var(--surface);
 }
 
 /* ====================================
    HOME SECTION (ISTILAH, ARTIKEL, DLL)
 ==================================== */
 .home-section {
-    margin-top: 50px;
+    padding: var(--space-8) 0; /* 64px - Sesuai aturan .home-section di spasing.css */
 }
 
 .section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: var(--space-6); /* 32px - Sesuai aturan .section-header di spasing.css */
 }
 
 .home-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    gap: var(--space-5); /* 24px - Sesuai aturan .home-grid di spasing.css */
 }
 
 .home-card {
-    background: white;
-    padding: 22px;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(0,0,0,.06);
-    transition: .25s;
+    background: var(--surface);
+    padding: var(--space-5); /* 24px - Disamakan dengan basis .card */
+    border-radius: var(--radius-lg); /* Sesuai standarisasi di cards.css & utilities.css */
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .card-badge {
     display: inline-block;
-    padding: 5px 10px;
-    margin-bottom: 15px;
-    background: #eef4ff;
-    color: #0d6efd;
-    border-radius: 30px;
-    font-size: 13px;
-    font-weight: bold;
+    padding: var(--space-1) var(--space-3); /* 4px 12px */
+    margin-bottom: var(--space-3); /* 12px */
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: var(--radius-full); /* Mengikuti kelas token badge/tag */
+    font-size: 0.8125rem;
+    font-weight: 700;
 }
 
 .home-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .home-card h3 {
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: var(--space-3); /* 12px */
 }
 
 .home-card a {
     text-decoration: none;
-    color: #222;
+    color: var(--secondary);
+    transition: color 0.2s;
 }
 
 .home-card a:hover {
-    color: #0d6efd;
+    color: var(--primary);
 }
 
 .home-card p {
-    color: #666;
-    line-height: 1.6;
+    color: var(--text-light);
+    line-height: 1.8; /* Sesuai paragraf sistem */
 }
 
 .home-link {
     display: inline-block;
-    margin-top: 18px;
+    margin-top: var(--space-4); /* 16px */
     font-weight: 600;
-    color: #0d6efd;
+    color: var(--primary);
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 .home-link:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
 }
 
 .lihat-semua {
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
-    color: #0d6efd;
+    color: var(--primary);
+    transition: color 0.2s;
+}
+
+.lihat-semua:hover {
+    color: var(--primary-hover);
 }
 
 /* ====================================
    WEBSITE STATISTICS
 ==================================== */
-.stats-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-    gap:25px;
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-5); /* 24px */
 }
 
-.stat-box{
-    background:white;
-    padding:30px;
-    border-radius:16px;
-    text-align:center;
-    box-shadow: 0 4px 12px rgba(0,0,0,.05);
+.stat-box {
+    background: var(--surface);
+    padding: var(--space-5); /* 24px */
+    border-radius: var(--radius-lg); /* Mengikuti aturan .stats-card di utilities.css */
+    border: 1px solid var(--border);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
 }
 
-.stat-box h3{
-    margin:0;
-    font-size:42px;
-    color:#0d6efd;
+.stat-box h3 {
+    margin: 0;
+    font-size: 2.5rem; /* Diselaraskan skala h1/3xl */
+    color: var(--primary);
+    font-weight: 800;
 }
 
-.stat-box p{
-    margin-top:10px;
-    color:#666;
-    font-weight:bold;
-}
-
-/* ====================================
-   RESPONSIVE DESIGN
-==================================== */
-@media(max-width: 768px) {
-    .hero h2 {
-        font-size: 2.1rem;
-    }
-    
-    .hero-menu {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .tentang-grid{
-        grid-template-columns:1fr;
-    }
+.stat-box p {
+    margin-top: var(--space-2); /* 8px */
+    margin-bottom: 0;
+    color: var(--text-light);
+    font-weight: 600;
 }
 
 /* ====================================
    TENTANG PORTAL
 ==================================== */
-.tentang-grid{
-    display:grid;
+.tentang-grid {
+    display: grid;
     grid-template-columns: 2fr 1fr;
-    gap:50px;
-    align-items:center;
+    gap: var(--space-7); /* 48px */
+    align-items: center;
 }
 
-.section-label{
-    display:inline-block;
-    padding:6px 14px;
-    border-radius:20px;
-    background:#eef4ff;
-    color:#0d6efd;
-    font-weight:bold;
-    margin-bottom:18px;
+.section-label {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4); /* 8px 16px */
+    border-radius: var(--radius-full);
+    background: var(--primary-light);
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: var(--space-4); /* 16px */
+    font-size: 0.875rem; /* .text-sm */
 }
 
-.tentang-grid h2{
-    margin-top:0;
-    margin-bottom:20px;
+.tentang-grid h2 {
+    margin-top: 0;
+    margin-bottom: var(--space-4); /* 16px */
 }
 
-.tentang-grid p{
-    line-height:1.8;
-    color:#555;
+.tentang-grid p {
+    line-height: 1.8;
+    color: var(--text-light);
 }
 
-.portal-feature-list{
-    display:grid;
-    gap:15px;
+.portal-feature-list {
+    display: grid;
+    gap: var(--space-4); /* 16px */
 }
 
-.portal-feature-list div{
-    background:white;
-    padding:18px;
-    border-radius:12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,.05);
+.portal-feature-list div {
+    background: var(--surface);
+    padding: var(--space-4); /* 16px */
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
-.btn-primary{
-    display:inline-block;
-    margin-top:25px;
-    padding:12px 22px;
-    border-radius:10px;
-    background:#0d6efd;
-    color:white;
-    text-decoration:none;
+.btn-primary {
+    display: inline-block;
+    margin-top: var(--space-5); /* 24px */
+    padding: var(--space-3) var(--space-5); /* 12px 24px - Sesuai standar button spasing.css */
+    border-radius: var(--radius-md); /* Sesuai standarisasi di utilities.css */
+    background: var(--primary);
+    color: var(--text-white);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
 }
 
-.autocomplete-list{
-    position:absolute;
-    width:100%;
-    background:#fff;
-    border:1px solid #ddd;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-    margin-top:8px;
-    overflow:hidden;
-    z-index:999;
-    display:none;
+.btn-primary:hover {
+    background: var(--primary-hover);
+    color: var(--text-white);
 }
 
-.autocomplete-item{
-    display:flex;
-    gap:12px;
-    align-items:center;
-    padding:14px 18px;
-    text-decoration:none;
-    color:#333;
-    border-bottom:1px solid #eee;
+/* ====================================
+   AUTOCOMPLETE SYSTEM
+==================================== */
+.autocomplete-list {
+    position: absolute;
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md); /* Mengikuti komponen form level bawah input */
+    box-shadow: var(--shadow-lg);
+    margin-top: var(--space-2); /* 8px */
+    overflow: hidden;
+    z-index: 999;
+    display: none;
+    box-sizing: border-box;
 }
 
-.autocomplete-item:last-child{
-    border-bottom:none;
+.autocomplete-item {
+    display: flex;
+    gap: var(--space-3); /* 12px */
+    align-items: center;
+    padding: var(--space-3) var(--space-4); /* 12px 16px */
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
 }
 
-.autocomplete-item:hover{
-    background:#f7f9fc;
+.autocomplete-item:last-child {
+    border-bottom: none;
 }
 
-.autocomplete-empty{
-    padding:16px;
-    color:#777;
+.autocomplete-item:hover {
+    background: var(--surface-secondary);
+}
+
+.autocomplete-empty {
+    padding: var(--space-4); /* 16px */
+    color: var(--text-light);
+}
+
+/* ====================================
+   RESPONSIVE DESIGN
+==================================== */
+@media (max-width: 768px) { /* Breakpoint diselaraskan dengan media query typography.css */
+    .hero {
+        padding: var(--space-8) var(--space-4); /* 64px 16px */
+    }
+
+    .hero h2 {
+        font-size: 2rem; /* Sesuai aturan h1 responsif di typography.css */
+    }
+    
+    .hero-menu {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-3); /* 12px */
+    }
+
+    .tentang-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6); /* 32px */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-menu {
+        grid-template-columns: 1fr; /* Responsif satu kolom untuk layar sangat kecil */
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

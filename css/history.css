@@ -1,12 +1,41 @@
-.history-card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:15px;
+/* ==========================================================================
+   HISTORY COMPONENT
+   Portal Sastra Indonesia
+   ========================================================================== */
+
+.history-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: var(--space-5); /* 24px - Konsisten dengan standar .card di spacing.css */
+    margin-bottom: var(--space-4); /* 16px - Jarak antar list kartu riwayat */
+    border-radius: var(--radius-lg); /* 18px - Token Card Components */
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.history-card a{
-    text-decoration:none;
-    color:#222;
-    font-weight:600;
+/* ========= HOVER EFFECT ========= */
+.history-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* ========= LINK & TEXT SYSTEM ========= */
+.history-card a {
+    text-decoration: none;
+    color: var(--secondary); /* Menghilangkan warna keras #222 */
+    font-weight: 700; /* Disinkronkan dengan bobot heading sistem */
+    font-size: 1.125rem; /* 18px - Sesuai skala h5/text-lg untuk judul riwayat */
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+.history-card a:hover {
+    color: var(--primary); /* Memberikan indikasi interaktif saat di-hover */
+}
+
+/* Mengatur meta informasi tambahan di dalam riwayat (jika ada waktu/kategori) */
+.history-card small {
+    display: block;
+    margin-top: var(--space-1); /* 4px */
+    color: var(--text-soft);
 }

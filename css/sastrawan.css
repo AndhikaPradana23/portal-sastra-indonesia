@@ -1,66 +1,26 @@
 /* ==========================================================================
-   1. BASE STYLES & LAYOUT (Diturunkan dari css/layout.css)
+   1. BASE STYLES & LAYOUT (Inherited from global system)
    ========================================================================== */
 body {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    background: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Header & Footer Portal */
-.page-header {
-    background: #fff;
-    padding: 15px 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.05);
-    margin-bottom: 20px;
-}
-
-.page-header a {
-    font-weight: bold;
-    font-size: 18px;
-    color: #2b6cb0;
-    text-decoration: none;
-}
-
-.page-footer {
-    margin-top: 50px;
-    padding: 20px 0;
-    border-top: 1px solid #ddd;
-    text-align: center;
-    color: #666;
-    font-size: 14px;
-}
-
-/* Global Link Hover Effect */
-a {
-    color: #2b6cb0;
-    transition: color 0.2s;
-}
-
-a:hover {
-    color: #1a4975;
+    /* Font-family, warna background, teks, dan max-width diwariskan dari layout & typography */
+    margin: 0 auto;
 }
 
 /* Loading & Empty States */
 #loading, .empty, .error {
-    padding: 30px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.05);
+    padding: var(--space-5); /* 24px */
+    background: var(--surface-secondary);
+    border-radius: var(--radius-md);
     text-align: center;
-    font-weight: 500;
-    margin: 20px 0;
+    font-weight: 600;
+    margin: var(--space-5) 0;
+    color: var(--text-light);
 }
 
 .error {
-    color: #d9534f;
-    border: 1px solid #f5c6cb;
-    background: #f8d7da;
+    color: var(--danger);
+    border: 1px solid var(--border);
+    background: var(--danger-light);
 }
 
 /* ==========================================================================
@@ -69,39 +29,43 @@ a:hover {
 
 /* Search Section */
 .search-section {
-    margin-bottom: 25px;
+    margin-bottom: var(--space-5);
 }
 
 #search-input {
     width: 100%;
-    padding: 14px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: var(--space-3) var(--space-4); /* 12px 16px - Konsisten dengan form global */
+    font-size: 1rem;
+    border-radius: var(--radius-lg); /* Sesuai token komponen .search-box */
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
     box-sizing: border-box;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 #search-input:focus {
-    border-color: #2b6cb0;
-    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-sm);
 }
 
 /* Filter Sections (A-Z, Angkatan, Jenis) */
 .az-section, .angkatan-section, .jenis-section {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.05);
+    background: var(--surface);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-5);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
 .az-section h2, .angkatan-section h2, .jenis-section h2 {
     margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #4a5568;
+    margin-bottom: var(--space-4);
+    font-size: 0.875rem; /* .text-sm */
+    font-weight: 700;
+    color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -109,62 +73,73 @@ a:hover {
 #az-filter, #angkatan-filter, #jenis-filter {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: var(--space-2); /* 8px */
 }
 
 /* Buttons Styles */
 .az-btn, .angkatan-btn, .jenis-btn {
-    padding: 8px 14px;
-    font-size: 14px;
-    border: 1px solid #e2e8f0;
-    background: #f8fafc;
-    color: #4a5568;
-    border-radius: 6px;
+    padding: var(--space-2) var(--space-4); /* 8px 16px */
+    font-size: 0.875rem; /* .text-sm */
+    border: 1px solid var(--border);
+    background: var(--surface-secondary);
+    color: var(--text-light);
+    border-radius: var(--radius-full); /* Diselaraskan dengan gaya chip/tag filter global */
     cursor: pointer;
-    transition: all 0.2s;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 .az-btn {
-    padding: 6px 10px;
-    min-width: 35px;
+    padding: var(--space-2);
+    min-width: 40px;
+    text-align: center;
 }
 
 .az-btn:hover, .angkatan-btn:hover, .jenis-btn:hover {
-    background: #edf2f7;
-    border-color: #cbd5e0;
+    background: var(--surface);
+    color: var(--text);
+    border-color: var(--border-dark);
 }
 
 /* Active State Filter Button */
 .az-btn.aktif, .angkatan-btn.aktif, .jenis-btn.aktif {
-    background: #2b6cb0;
-    color: #fff;
-    border-color: #2b6cb0;
-    font-weight: bold;
+    background: var(--warning-light);
+    color: var(--secondary);
+    border-color: var(--warning);
+    font-weight: 700;
 }
 
 /* Sastrawan List Grid & Cards */
 #sastrawanList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-    gap: 20px;
-    margin-top: 25px;
+    gap: var(--space-5); /* 24px - Mengikuti aturan sistem kartu */
+    margin-top: var(--space-5);
 }
 
 .sastrawan-card {
     display: flex;
-    gap: 20px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.08);
+    gap: var(--space-5);
+    background: var(--surface);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg); /* Mengikuti token komponen .card */
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.sastrawan-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
 }
 
 .sastrawan-thumb {
     width: 120px;
     height: 150px;
     object-fit: cover;
-    border-radius: 6px;
-    background: #e2e8f0;
+    border-radius: var(--radius-sm);
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
     flex-shrink: 0;
 }
 
@@ -174,27 +149,26 @@ a:hover {
 
 .card-content h2 {
     margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 20px;
+    margin-bottom: var(--space-2);
 }
 
 .card-content h2 a {
     text-decoration: none;
-    color: #2d3748;
+    color: var(--secondary);
 }
 
 .card-content h2 a:hover {
-    color: #2b6cb0;
+    color: var(--primary);
 }
 
 .card-content p {
-    margin: 6px 0;
-    font-size: 14px;
-    color: #4a5568;
+    margin: var(--space-1) 0;
+    font-size: 0.875rem; /* .text-sm */
+    color: var(--text-light);
 }
 
 .card-content p strong {
-    color: #2d3748;
+    color: var(--text);
 }
 
 /* Responsive List Grid */
@@ -208,78 +182,37 @@ a:hover {
    3. HALAMAN DETAIL (sastrawan/detail.html)
    ========================================================================= */
 
-/* Breadcrumb Navigation */
-.breadcrumb {
-    margin-bottom: 25px;
-    font-size: 14px;
-    color: #666;
-}
-
-.breadcrumb ol {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 8px;
-}
-
-.breadcrumb li+li:before {
-    content: "/";
-    padding-right: 8px;
-    color: #cbd5e0;
-}
-
-.breadcrumb a {
-    text-decoration: none;
-    color: #2b6cb0;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-.breadcrumb li[aria-current="page"] {
-    font-weight: bold;
-    color: #2d3748;
-}
-
 /* Detail Page Structure */
 .detail-page {
     max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-5); /* 32px 24px */
+    background: var(--surface);
+    border-radius: var(--radius-xl); /* Menggunakan spesifikasi modal/large card */
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
 }
 
 .detail-sastrawan h1 {
-    font-size: 32px;
-    color: #1a202c;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #edf2f7;
-    padding-bottom: 10px;
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-5);
+    border-bottom: 2px solid var(--surface-secondary);
+    padding-bottom: var(--space-3);
 }
 
 .detail-sastrawan section {
-    margin-top: 35px;
+    margin-top: var(--space-6);
 }
 
 .detail-sastrawan h2 {
-    font-size: 22px;
-    color: #2d3748;
-    margin-bottom: 15px;
-    border-left: 4px solid #2b6cb0;
-    padding-left: 12px;
+    margin-bottom: var(--space-4);
+    border-left: 4px solid var(--primary);
+    padding-left: var(--space-3);
 }
 
 .detail-sastrawan h3 {
-    font-size: 16px;
-    color: #4a5568;
-    margin-top: 15px;
-    margin-bottom: 8px;
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-2);
 }
 
 /* Detail Foto Sastrawan */
@@ -287,57 +220,59 @@ a:hover {
     width: 200px;
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,.1);
-    margin-bottom: 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--space-5);
+    border: 1px solid var(--border);
     display: block;
 }
 
 /* Info Ringkas Section */
 .info-ringkas {
-    background: #f7fafc;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
+    background: var(--surface-secondary);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
+    gap: var(--space-4);
 }
 
 .info-ringkas p {
     margin: 0;
-    font-size: 15px;
+    font-size: 0.9375rem;
+    color: var(--text);
 }
 
 .info-ringkas p strong {
-    color: #4a5568;
+    color: var(--text-light);
     display: block;
-    font-size: 13px;
+    font-size: 0.8125rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 2px;
+    margin-bottom: var(--space-1);
 }
 
 /* Lists Styling (Karya, Penghargaan, Artikel, Istilah) */
 .detail-page ul, .detail-page ol {
-    padding-left: 22px;
-    margin-top: 10px;
+    padding-left: 1.5rem; /* Sesuai typography.css */
+    margin-top: var(--space-3);
 }
 
 .detail-page li {
-    margin-bottom: 10px;
-    font-size: 16px;
+    margin-bottom: var(--space-2);
 }
 
 .detail-page li small {
-    color: #718096;
+    color: var(--text-soft);
 }
 
 /* Kategori Karya Sub-Section */
 .kategori-karya {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px dashed #e2e8f0;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px dashed var(--border-dark);
 }
 
 .kategori-karya:last-of-type {
@@ -346,18 +281,17 @@ a:hover {
 
 /* Internal Linking Boxes */
 .internal-box {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 15px 20px;
-    margin-bottom: 15px;
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg); /* Menyesuaikan komponen .search-result */
+    padding: var(--space-4) var(--space-5);
+    margin-bottom: var(--space-4);
 }
 
 .internal-box h3 {
     margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #2b6cb0;
+    margin-bottom: var(--space-2);
+    color: var(--primary);
 }
 
 /* Responsive adjustment for Detail Photo layout */
@@ -367,8 +301,8 @@ a:hover {
     }
     .detail-foto {
         float: left;
-        margin-right: 25px;
-        margin-bottom: 25px;
+        margin-right: var(--space-5);
+        margin-bottom: var(--space-5);
     }
     .info-ringkas {
         clear: none;

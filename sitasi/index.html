@@ -2,60 +2,32 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>
-        Generator Sitasi
-    </title>
 
-    <meta
-        name="description"
-        content="
-        Generator sitasi APA, MLA,
-        Chicago, dan Harvard
-        untuk mahasiswa dan peneliti.
-        "
-    >
+    <title>Generator Sitasi</title>
 
-    <!-- UPDATE: Menambahkan Meta Open Graph, Tautan Kanonikal, dan Skema JSON-LD untuk SEO -->
-    <meta
-        property="og:title"
-        content="
-        Generator Sitasi
-        Portal Sastra Indonesia
-        "
-    >
+    <meta name="description" content="Generator sitasi APA, MLA, Chicago, dan Harvard untuk mahasiswa dan peneliti.">
 
-    <meta
-        property="og:description"
-        content="
-        Generator sitasi APA,
-        MLA,
-        Chicago,
-        Harvard.
-        "
-    >
+    <meta property="og:title" content="Generator Sitasi Portal Sastra Indonesia">
 
-    <link
-        rel="canonical"
-        href="
-        https://portalsastra.id/sitasi/
-        "
-    >
+    <meta property="og:description" content="Generator sitasi APA, MLA, Chicago, Harvard.">
 
-    <script
-        id="jsonld-schema"
-        type="application/ld+json"
-    >
-    </script>
+    <link rel="canonical" href=" https://portalsastra.id/sitasi/">
 
-    <link
-        rel="stylesheet"
-        href="/css/layout.css"
-    >
+    <script id="jsonld-schema" type="application/ld+json"></script>
 
-    <link
-        rel="stylesheet"
-        href="/css/sitasi.css"
-    >
+    <link rel="stylesheet" href="/css/variables.css">
+
+    <link rel="stylesheet" href="/css/typography.css">
+
+    <link rel="stylesheet" href="/css/spacing.css">
+
+    <link rel="stylesheet" href="/css/utilities.css">
+
+    <link rel="stylesheet" href="/css/cards.css">
+
+    <link rel="stylesheet" href="/css/layout.css">
+
+    <link rel="stylesheet" href="/css/sitasi.css">
 </head>
 <body>
 
@@ -77,49 +49,32 @@
         <div class="field">
             <label>Penulis</label>
 
-            <input
-                id="author"
-                type="text"
-                placeholder="Nama penulis"
-            >
+            <input id="author" type="text" placeholder="Nama penulis">
         </div>
 
         <div class="field">
             <label>Judul</label>
 
-            <input
-                id="title"
-                type="text"
-                placeholder="Judul artikel atau buku"
-            >
+            <input id="title" type="text" placeholder="Judul artikel atau buku">
         </div>
 
         <div class="field">
             <label>Tahun</label>
 
-            <input
-                id="year"
-                type="number"
-                placeholder="2026"
-            >
+            <input id="year" type="number" placeholder="2026">
         </div>
 
         <div class="field">
             <label>Penerbit</label>
 
-            <input
-                id="publisher"
-                type="text"
+            <input id="publisher" type="text"
             >
         </div>
 
         <div class="field">
             <label>URL</label>
 
-            <input
-                id="url"
-                type="url"
-            >
+            <input id="url" type="url">
         </div>
 
         <div class="field">
@@ -154,43 +109,27 @@
 
     <section class="citation-box">
 
-        <pre
-            id="citation-result"
-            class="citation-result"
-        >
-Belum ada sitasi.
+        <pre id="citation-result" class="citation-result">
+            Belum ada sitasi.
         </pre>
 
-        <button
-            id="copy-citation"
-            type="button"
-            class="secondary-btn"
-        >
+        <button id="copy-citation" type="button" class="secondary-btn">
             Salin Sitasi
         </button>
 
-        <button
-            id="download-citation"
-            type="button"
-            class="secondary-btn"
-        >
+        <button id="download-citation" type="button" class="secondary-btn">
             Download TXT
         </button>
 
     </section>
 
-    <!-- UPDATE: Menambahkan komponen Riwayat Sitasi -->
-    <section
-        class="citation-history"
-    >
+    <section class="citation-history">
 
         <h2>
             Riwayat Sitasi
         </h2>
 
-        <div
-            id="citation-history"
-        >
+        <div id="citation-history">
         </div>
 
     </section>
@@ -198,6 +137,15 @@ Belum ada sitasi.
 </main>
 
 <div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script src="/js/supabase-public.js"></script>
+
+<script src="/js/auth/auth-service.js"></script>
+<script src="/js/auth/logout.js"></script>
+<script src="/js/auth/auth-ui.js"></script>
+<script src="/js/auth/auth-state.js"></script>
 
 <script src="/js/layout/active-menu.js"></script>
 <script src="/js/layout/layout.js"></script>

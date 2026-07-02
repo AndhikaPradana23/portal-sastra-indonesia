@@ -1,0 +1,127 @@
+/* ==========================================
+   BORDER RADIUS & SHADOW SYSTEM & UTILITIES
+   Portal Sastra Indonesia
+========================================== */
+
+/* ========= LANGKAH 2: UTILITY SHADOW ========= */
+.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+    box-shadow: var(--shadow-xl);
+}
+
+/* ========= LANGKAH 2: UTILITY RADIUS ========= */
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-xl {
+    border-radius: var(--radius-xl);
+}
+
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+/* ========= STANDARISASI KOMPONEN (MAPPING RADIUS) ========= */
+
+/* 1. Small / Pill Components (Langkah 10 & 11) */
+.badge,
+.tag,
+.chip,
+.hero-badge,
+.search-pill,
+.counter,
+.avatar {
+    border-radius: var(--radius-full);
+}
+
+/* 2. Form Components (Langkah 3 & 4) */
+button,
+.btn,
+input,
+textarea,
+select,
+.quiz-option {
+    border-radius: var(--radius-md);
+}
+
+/* 3. Card Components (Langkah 5, 6, 7, 8) */
+.card,
+.hero-card,
+.article-card,
+.stats-card,
+.result-card,
+.search-box,
+.search-result,
+.hero-search,
+.hero-search input {
+    border-radius: var(--radius-lg);
+}
+
+/* 4. Large Sections & Modals (Langkah 9 & 12) */
+.hero,
+.modal,
+.about-card,
+.cta-card {
+    border-radius: var(--radius-xl);
+}
+
+
+/* ==========================================
+   HASIL REFACTOR HOMEPAGE, SEARCH & KUIS
+========================================== */
+
+/* Refactor Homepage */
+.hero-card {
+    border-radius: var(--radius-lg);
+}
+
+.hero-search input {
+    border-radius: var(--radius-lg);
+}
+
+.hero-badge {
+    border-radius: var(--radius-full);
+}
+
+/* Refactor Search */
+.search-box {
+    border-radius: var(--radius-lg);
+}
+
+.search-result {
+    border-radius: var(--radius-lg);
+}
+
+/* Refactor Kuis */
+.quiz-option {
+    border-radius: var(--radius-md);
+}
+
+/* Catatan: .stats-card dan .result-card otomatis mengikuti --radius-lg */
+.stats-card {
+    border-radius: var(--radius-lg);
+}
+
+.result-card {
+    border-radius: var(--radius-lg);
+}

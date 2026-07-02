@@ -4,10 +4,17 @@
     <meta charset="UTF-8">
     <title>Pengaturan Akun</title>
 
-    <link
-        rel="stylesheet"
-        href="/css/profile.css"
-    >
+    <link rel="stylesheet" href="/css/variables.css">
+
+    <link rel="stylesheet" href="/css/typography.css">
+
+    <link rel="stylesheet" href="/css/spacing.css">
+
+    <link rel="stylesheet" href="/css/utilities.css">
+    
+    <link rel="stylesheet" href="/css/cards.css">
+
+    <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body>
 
@@ -33,10 +40,7 @@
                     Nama
                 </label>
 
-                <input
-                    id="nama"
-                    type="text"
-                >
+                <input id="nama" type="text">
 
             </div>
 
@@ -46,18 +50,12 @@
                     Email
                 </label>
 
-                <input
-                    id="email"
-                    type="email"
-                    disabled
-                >
+                <input id="email" type="email" disabled>
 
             </div>
 
             <button type="submit">
-
                 Simpan Perubahan
-
             </button>
 
         </form>
@@ -78,19 +76,12 @@
                     Password Baru
                 </label>
 
-                <input
-                    id="password"
-                    type="password"
-                    minlength="6"
-                    required
-                >
+                <input id="password" type="password" minlength="6" required>
 
             </div>
 
             <button type="submit">
-
                 Ubah Password
-
             </button>
 
         </form>
@@ -103,24 +94,19 @@
             Preferensi
         </h2>
 
-        <a
-            href="/profile/preferences.html"
-        >
+        <a href="/profile/preferences.html">
             Kelola Preferensi →
         </a>
 
     </section>
 
-    <!-- TAMBAHAN: Danger Zone Section -->
     <section class="settings-card">
 
         <h2>
             Danger Zone
         </h2>
 
-        <button
-            id="delete-account"
-        >
+        <button id="delete-account">
             Hapus Akun
         </button>
 

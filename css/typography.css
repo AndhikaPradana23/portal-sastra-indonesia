@@ -1,0 +1,200 @@
+@import url(
+"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
+);
+
+/* ==========================================
+   TYPOGRAPHY SYSTEM
+   Portal Sastra Indonesia
+========================================== */
+
+/* ========= ATUR BODY ========= */
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 1rem;
+    line-height: 1.7; /* Nyaman untuk teks panjang seperti artikel, biografi, puisi */
+    font-weight: 400;
+    color: var(--text);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========= HEADING SYSTEM ========= */
+h1 {
+    font-size: 2.5rem; /* 40px - Hero Homepage, Judul Artikel/Karya */
+    line-height: 1.2;
+    font-weight: 800;
+    color: var(--secondary);
+}
+
+h2 {
+    font-size: 2rem; /* 32px - Judul Section, Heading Halaman */
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+h3 {
+    font-size: 1.5rem; /* 24px - Card Title, Judul Analisis/Quiz */
+    line-height: 1.4;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+h4 {
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+h5 {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+h6 {
+    font-size: 1rem; /* 16px */
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+/* ========= PARAGRAPH SYSTEM ========= */
+p {
+    font-size: 1rem;
+    line-height: 1.8; /* Optimal untuk keterbacaan artikel & biografi panjang */
+    color: var(--text-light);
+}
+
+/* ========= SMALL TEXT ========= */
+small {
+    font-size: .875rem; /* 14px - Metadata, tanggal, statistik, referensi */
+    line-height: 1.5;
+    color: var(--text-soft);
+}
+
+/* ========= LINK SYSTEM ========= */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: .2s;
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+/* ========= STRONG ========= */
+strong {
+    font-weight: 700;
+    color: var(--text);
+}
+
+/* ========= LIST ========= */
+ul,
+ol {
+    padding-left: 1.5rem;
+}
+
+li {
+    line-height: 1.8; /* Penting untuk daftar karya, penghargaan, & referensi */
+    color: var(--text-light);
+}
+
+/* ========= FORM & BUTTON TYPOGRAPHY ========= */
+label {
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text);
+}
+
+button {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ========= UTILITY CLASSES ========= */
+/* Font Size Utilities */
+.text-xs {
+    font-size: .75rem;
+}
+
+.text-sm {
+    font-size: .875rem;
+}
+
+.text-base {
+    font-size: 1rem;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+}
+
+.text-3xl {
+    font-size: 2rem;
+}
+
+/* Font Weight Utilities */
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+/* ========= RESPONSIVE TYPOGRAPHY ========= */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    body {
+        font-size: .95rem;
+    }
+}

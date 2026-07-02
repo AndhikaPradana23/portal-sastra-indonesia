@@ -2,68 +2,68 @@
    GLOBAL STYLES & LAYOUT BASE (Diturunkan dari css/layout.css)
    ========================================================================== */
 body {
-    font-family: Arial, sans-serif;
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    background: #f5f5f5;
-    color: #222;
+    /* Aturan dasar margin, font-family, max-width, dan background diwariskan dari layout & typography */
+    margin: 0 auto;
 }
 
 /* Pembatas Garis */
 hr {
     border: 0;
     height: 1px;
-    background: #ddd;
-    margin: 40px 0;
+    background: var(--border);
+    margin: var(--space-7) 0; /* 48px */
 }
 
 /* ==========================================================================
    HALAMAN DAFTAR ARTIKEL (artikel/index.html)
    ========================================================================== */
 .artikel-page {
-    padding: 20px 0;
+    padding: var(--space-4) 0;
 }
 
 .artikel-page h1 {
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: var(--space-6); /* 32px - Konsisten dengan section-header */
 }
 
 /* Section Pencarian */
 .search-section {
-    margin-bottom: 25px;
+    margin-bottom: var(--space-5); /* 24px */
 }
 
 .search-section input[type="search"] {
     width: 100%;
-    padding: 14px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: var(--space-3) var(--space-4); /* 12px 16px - Konsisten dengan form system */
+    font-size: 1rem;
+    border-radius: var(--radius-lg); /* Mengikuti komponen .search-box */
+    border: 1px solid var(--border);
     box-sizing: border-box;
     outline: none;
-    transition: border-color 0.2s;
+    background-color: var(--surface);
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .search-section input[type="search"]:focus {
-    border-color: #2b6cb0;
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-sm);
 }
 
 /* Section Filter Kategori & Tag */
 .filter-section {
-    margin-bottom: 25px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.05);
+    margin-bottom: var(--space-5); /* 24px */
+    background: var(--surface);
+    padding: var(--space-5); /* 24px */
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
 }
 
 .filter-section h2 {
     margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #444;
+    margin-bottom: var(--space-3);
+    font-size: 0.875rem; /* .text-sm */
+    color: var(--text-light);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -71,44 +71,47 @@ hr {
 #kategori-filter, #tag-filter {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: var(--space-2); /* 8px */
 }
 
-/* Komponen Button Filter */
+/* Komponen Button Filter (Diselaraskan dengan komponen chip/tag) */
 .kategori-btn, .tag-btn {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    background: #fdfdfd;
+    padding: var(--space-2) var(--space-4); /* 8px 16px */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full); /* Mengikuti spesifikasi .tag/.chip di utilities.css */
+    background: var(--surface);
+    color: var(--text-light);
     cursor: pointer;
-    font-size: 14px;
+    font-size: 0.875rem; /* .text-sm */
+    font-weight: 500;
     transition: all 0.2s ease;
 }
 
 .kategori-btn:hover, .tag-btn:hover {
-    background: #f0f4ff;
-    border-color: #2b6cb0;
-    color: #2b6cb0;
+    background: var(--surface-secondary);
+    border-color: var(--border-dark);
+    color: var(--text);
 }
 
 .kategori-btn.aktif, .tag-btn.aktif {
-    background: #2b6cb0;
-    color: white;
-    border-color: #2b6cb0;
-    font-weight: bold;
+    background: var(--primary-light);
+    color: var(--primary-hover);
+    border-color: var(--primary);
+    font-weight: 700;
 }
 
 /* Layout Utama: Grid Artikel & Sidebar */
 .artikel-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 30px;
-    margin-top: 30px;
+    gap: var(--space-6); /* 32px */
+    margin-top: var(--space-6);
 }
 
 @media (max-width: 768px) {
     .artikel-layout {
         grid-template-columns: 1fr;
+        gap: var(--space-5);
     }
 }
 
@@ -116,45 +119,51 @@ hr {
 .post-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: var(--space-5); /* 24px - Mengikuti home-grid */
 }
 
+/* Mewarisi perilaku dasar .card dari cards.css */
 .post-card {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);
-    transition: transform 0.2s;
+    background: var(--surface);
+    padding: var(--space-5); /* 24px */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .post-card:hover {
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
 }
 
 .post-card h2 {
     margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 22px;
+    margin-bottom: var(--space-3);
+    font-size: 1.5rem; /* Menyesuaikan h3 global */
+    font-weight: 700;
+    color: var(--secondary);
     line-height: 1.4;
 }
 
 .post-card p {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    color: var(--text-light);
+    line-height: 1.8; /* Sesuai paragraf system */
+    margin-bottom: var(--space-4);
 }
 
 /* Link Baca Selengkapnya */
 .read-more {
     display: inline-block;
-    color: #2b6cb0;
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
-    font-size: 15px;
-    transition: text-decoration 0.2s;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
 }
 
 .read-more:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
 }
 
@@ -162,22 +171,26 @@ hr {
 .artikel-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: var(--space-5); /* 24px */
 }
 
+/* Mewarisi bentuk .card */
 .sidebar-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.1);
+    background: var(--surface);
+    padding: var(--space-5); /* 24px */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
 }
 
 .sidebar-box h2 {
     margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 18px;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 8px;
+    margin-bottom: var(--space-4);
+    font-size: 1.125rem; /* Sesuai h5 global */
+    font-weight: 700;
+    color: var(--secondary);
+    border-bottom: 2px solid var(--surface-secondary);
+    padding-bottom: var(--space-2);
 }
 
 .sidebar-list {
@@ -187,8 +200,8 @@ hr {
 }
 
 .sidebar-list li {
-    margin-bottom: 15px;
-    line-height: 1.4;
+    margin-bottom: var(--space-4);
+    line-height: 1.6;
 }
 
 .sidebar-list li:last-child {
@@ -197,18 +210,20 @@ hr {
 
 .sidebar-list a {
     text-decoration: none;
-    color: #2b6cb0;
-    font-weight: 500;
+    color: var(--primary);
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .sidebar-list a:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
 }
 
 .sidebar-list small {
-    color: #777;
-    display: inline-block;
-    margin-top: 4px;
+    color: var(--text-soft);
+    display: block;
+    margin-top: var(--space-1);
 }
 
 
@@ -216,109 +231,86 @@ hr {
    HALAMAN DETAIL ARTIKEL (artikel/detail.html)
    ========================================================================== */
 .article-detail {
-    padding: 20px 0;
-}
-
-/* Breadcrumb */
-.breadcrumb {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    color: #666;
-    background: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,.05);
-}
-
-.breadcrumb a {
-    text-decoration: none;
-    color: #2b6cb0;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-.breadcrumb .current {
-    font-weight: bold;
-    color: #222;
+    padding: var(--space-4) 0;
 }
 
 /* Tombol Kembali */
 .back-link {
     display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: var(--space-5);
     text-decoration: none;
-    color: #666;
-    font-weight: 500;
-    font-size: 15px;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
 }
 
 .back-link:hover {
-    color: #2b6cb0;
+    color: var(--primary);
 }
 
 /* Judul Utama Artikel */
 #judul {
-    font-size: 32px;
-    line-height: 1.3;
+    font-size: 2.5rem; /* Sesuai h1 sistem */
+    line-height: 1.2;
+    font-weight: 800;
     margin-top: 0;
-    margin-bottom: 15px;
-    color: #111;
+    margin-bottom: var(--space-4);
+    color: var(--secondary);
 }
 
 /* Area Metadata Artikel */
 #artikel-meta {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    background: #eaeaea;
-    padding: 15px 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    font-size: 14px;
+    gap: var(--space-3);
+    background: var(--surface-secondary);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-md); /* Sesuai standardisasi boks info kecil */
+    border: 1px solid var(--border);
+    margin-bottom: var(--space-5);
+    font-size: 0.875rem; /* .text-sm */
 }
 
 #artikel-meta p {
     margin: 0;
-    color: #444;
+    color: var(--text-light);
 }
 
 #artikel-meta strong {
-    color: #222;
+    color: var(--text);
 }
 
 /* Label Tags Halaman Detail */
 .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 25px;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
 }
 
 .tag-list .tag {
-    background: #e2e8f0;
-    color: #4a5568;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
+    background: var(--surface-secondary);
+    color: var(--text-light);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full); /* Diarahkan ke spesifikasi token .tag */
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
 }
 
 /* Tubuh Konten Isi Artikel */
 #isi {
-    margin-top: 30px;
+    margin-top: var(--space-5);
     line-height: 1.9;
-    font-size: 18px;
-    color: #333;
+    font-size: 1.125rem; /* Membaca teks panjang lebih nyaman */
+    color: var(--text);
     text-align: justify;
 }
 
 #isi p {
-    margin-bottom: 25px;
+    margin-bottom: var(--space-5);
+    color: var(--text); /* Keterbacaan utama artikel diisi teks solid */
 }
 
 
@@ -326,71 +318,88 @@ hr {
    BAGIAN DETAIL RELASI (Istilah, Sastrawan, Karya & Artikel Terkait)
    ========================================================================== */
 .article-detail section {
-    margin-top: 35px;
+    margin-top: var(--space-7); /* 48px */
 }
 
 .article-detail section h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-    color: #222;
+    font-size: 1.5rem; /* Sesuai h3 global */
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+    color: var(--secondary);
     position: relative;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #ddd;
+    padding-bottom: var(--space-2);
+    border-bottom: 2px solid var(--surface-secondary);
 }
 
 /* Grid Istilah Terkait (Kamus) */
 .istilah-terkait {
-    margin-top: 40px;
+    margin-top: var(--space-6);
 }
 
 .istilah-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: var(--space-3); /* 12px */
 }
 
 .istilah-card {
     display: inline-block;
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background: white;
+    padding: var(--space-2) var(--space-4); /* 8px 16px */
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--surface);
     text-decoration: none;
-    color: #333;
-    font-weight: 500;
+    color: var(--text-light);
+    font-weight: 600;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,.02);
+    box-shadow: var(--shadow-sm);
 }
 
 .istilah-card:hover {
-    background: #f0f4ff;
-    border-color: #2b6cb0;
-    color: #2b6cb0;
-    transform: translateY(-1px);
+    background: var(--surface-secondary);
+    border-color: var(--border-dark);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 /* List Style untuk Sastrawan, Karya, dan Artikel Terkait */
 .article-detail ul {
-    padding-left: 22px;
+    padding-left: 1.5rem; /* Sesuai typography.css */
     margin: 0;
 }
 
 .article-detail li {
-    margin-bottom: 12px;
-    font-size: 16px;
+    margin-bottom: var(--space-3);
+    font-size: 1rem;
+    color: var(--text-light);
 }
 
 .article-detail li a {
     text-decoration: none;
-    color: #2b6cb0;
-    font-weight: 500;
+    color: var(--primary);
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .article-detail li a:hover {
+    color: var(--primary-hover);
     text-decoration: underline;
 }
 
 /* Blok Khusus Section Artikel Terkait Otomatis */
 .artikel-terkait-section ul {
     list-style-type: square;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 768px) {
+    #judul {
+        font-size: 2rem; /* Mengikuti fallback h1 responsif */
+    }
+    #isi {
+        font-size: 1rem; /* Ukuran font mengecil di layar ponsel */
+    }
 }
