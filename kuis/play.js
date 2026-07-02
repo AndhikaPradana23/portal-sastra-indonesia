@@ -4,6 +4,10 @@ document.addEventListener(
 
         await loadLayout();
 
+        updateQuizSEO();
+
+        renderQuizSchema();
+
         initQuizEngine();
 
     }

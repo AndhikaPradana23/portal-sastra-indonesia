@@ -8,7 +8,84 @@
 
     <title>Kuis Sastra Indonesia</title>
 
-    <meta name="description" content="Uji pengetahuan sastra Indonesia melalui kuis interaktif.">
+    <!-- Langkah 4: Meta SEO & Canonical -->
+    <meta name="description" content="Kuis sastra Indonesia interaktif untuk menguji pengetahuan istilah, sastrawan, dan karya sastra.">
+
+    <meta name="keywords" content="kuis sastra, kuis bahasa indonesia, kuis sastrawan, kuis karya sastra">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://portalsastra.id/kuis/">
+
+    <meta name="theme-color" content="#0d6efd">
+
+    <!-- Langkah 5: Open Graph -->
+    <meta property="og:type" content="website">
+
+    <meta property="og:title" content="Kuis Sastra Indonesia">
+
+    <meta property="og:description" content="Uji pengetahuan sastra Indonesia secara interaktif.">
+
+    <meta property="og:url" content="https://portalsastra.id/kuis/">
+
+    <meta property="og:image" content="https://portalsastra.id/images/quiz-cover.jpg">
+
+    <!-- Langkah 6: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="Kuis Sastra Indonesia">
+
+    <meta name="twitter:description" content="Uji pengetahuan sastra Indonesia.">
+
+    <meta name="twitter:image" content="https://portalsastra.id/images/quiz-cover.jpg">
+
+    <!-- Langkah 7: Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Beranda",
+                "item": "https://portalsastra.id"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Kuis Sastra",
+                "item": "https://portalsastra.id/kuis"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Langkah 8: FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Apa itu Kuis Sastra Indonesia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Kuis interaktif untuk menguji pengetahuan istilah, sastrawan, dan karya sastra Indonesia."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Apakah kuis ini gratis?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ya. Seluruh fitur kuis dapat digunakan secara gratis."
+                }
+            }
+        ]
+    }
+    </script>
 
     <link rel="stylesheet" href="/css/layout.css">
 
@@ -102,6 +179,19 @@
 
                 </button>
 
+                <!-- Langkah 9: Link Leaderboard -->
+                <div class="quiz-links">
+
+                    <a href="/kuis/history.html">
+                        Riwayat Nilai
+                    </a>
+
+                    <a href="/kuis/leaderboard.html">
+                        Leaderboard
+                    </a>
+
+                </div>
+
             </section>
 
         </div>
@@ -123,6 +213,7 @@
 
     <script src="/js/kuis/quiz-utils.js"></script>
     <script src="/js/kuis/quiz-storage.js"></script>
+    <script src="/js/kuis/quiz-config.js"></script>
     <script src="/js/kuis/quiz-service.js"></script>
     <script src="/js/kuis/quiz-generator.js"></script>
     <script src="/js/kuis/quiz-page.js"></script>
