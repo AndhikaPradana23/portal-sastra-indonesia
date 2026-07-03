@@ -104,103 +104,123 @@
 
     <main class="quiz-page">
 
-        <div class="container">
+        <section
+            class="
+            section
+            "
+        >
 
-            <div class="quiz-hero">
+            <div class="container">
 
-                <h1>
-                    🧠 Kuis Sastra Indonesia
-                </h1>
+                <div class="section-header">
 
-                <p>
-                    Uji pemahaman Anda mengenai
-                    istilah sastra,
-                    sastrawan,
-                    karya sastra,
-                    dan artikel.
-                </p>
+                    <div>
+
+                        <h1 class="section-title">
+
+                            Kuis Sastra Indonesia
+
+                        </h1>
+
+                        <p class="section-description">
+
+                            Uji pemahaman sastra Indonesia.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="quiz-hero" style="margin-top: var(--space-4);">
+
+                    <p>
+                        Uji pemahaman Anda mengenai istilah sastra, sastrawan, karya sastra, dan artikel melalui simulasi interaktif di bawah ini.
+                    </p>
+
+                </div>
+
+                <div class="quiz-form" style="margin-top: var(--space-6);">
+
+                    <div class="form-group">
+
+                        <label>
+                            Kategori Kuis
+                        </label>
+
+                        <select id="quiz-category">
+
+                            <option value="istilah">
+                                Istilah Sastra
+                            </option>
+
+                            <option value="sastrawan">
+                                Sastrawan
+                            </option>
+
+                            <option value="karya">
+                                Karya Sastra
+                            </option>
+
+                            <option value="campuran">
+                                Campuran
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Jumlah Soal
+                        </label>
+
+                        <select id="quiz-total">
+
+                            <option value="5">
+                                5 Soal
+                            </option>
+
+                            <option value="10">
+                                10 Soal
+                            </option>
+
+                            <option value="20">
+                                20 Soal
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <button id="start-quiz-btn">
+                        Mulai Kuis
+                    </button>
+
+                    <div class="quiz-links">
+
+                        <a href="/kuis/history.html">
+                            Riwayat Nilai
+                        </a>
+
+                        <a href="/kuis/leaderboard.html">
+                            Leaderboard
+                        </a>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <section class="quiz-form">
-
-                <div class="form-group">
-
-                    <label>
-                        Kategori Kuis
-                    </label>
-
-                    <select id="quiz-category">
-
-                        <option value="istilah">
-                            Istilah Sastra
-                        </option>
-
-                        <option value="sastrawan">
-                            Sastrawan
-                        </option>
-
-                        <option value="karya">
-                            Karya Sastra
-                        </option>
-
-                        <option value="campuran">
-                            Campuran
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>
-                        Jumlah Soal
-                    </label>
-
-                    <select id="quiz-total">
-
-                        <option value="5">
-                            5 Soal
-                        </option>
-
-                        <option value="10">
-                            10 Soal
-                        </option>
-
-                        <option value="20">
-                            20 Soal
-                        </option>
-
-                    </select>
-
-                </div>
-
-                <button id="start-quiz-btn">
-                    Mulai Kuis
-                </button>
-
-                <div class="quiz-links">
-
-                    <a href="/kuis/history.html">
-                        Riwayat Nilai
-                    </a>
-
-                    <a href="/kuis/leaderboard.html">
-                        Leaderboard
-                    </a>
-
-                </div>
-
-            </section>
-
-        </div>
+        </section>
 
     </main>
 
     <footer id="site-footer"></footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
     <script src="/js/supabase-public.js"></script>
 

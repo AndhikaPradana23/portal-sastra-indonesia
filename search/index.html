@@ -31,62 +31,82 @@
 
     <main>
 
-        <div class="container">
+        <section
+            class="
+            section
+            "
+        >
 
-            <h1>
-                Global Search
-            </h1>
+            <div class="container">
 
-            <p>
-                Cari istilah, artikel, karya sastra, maupun sastrawan.
-            </p>
+                <div class="section-header">
 
-            <div class="search-box">
+                    <div>
 
-                <input id="search-input" type="text" placeholder="Cari istilah, artikel, karya, sastrawan..." autocomplete="off">
+                        <h1 class="section-title">
 
-                <div id="autocomplete-result" class="autocomplete-list"></div>
+                            Global Search
 
-                <div id="search-suggestion" class="suggestion-list"></div>
+                        </h1>
+
+                        <p class="section-description">
+
+                            Cari istilah, artikel, karya sastra, maupun sastrawan.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="search-box" style="margin-top: var(--space-6);">
+
+                    <input id="search-input" type="text" placeholder="Cari istilah, artikel, karya, sastrawan..." autocomplete="off">
+
+                    <div id="autocomplete-result" class="autocomplete-list"></div>
+
+                    <div id="search-suggestion" class="suggestion-list"></div>
+
+                </div>
+
+                <section class="history-section" style="margin-top: var(--space-6);">
+
+                    <h2>
+                        Riwayat Pencarian
+                    </h2>
+
+                    <div id="search-history">
+                        Belum ada riwayat.
+                    </div>
+
+                </section>
+
+                <section class="popular-search-section" style="margin-top: var(--space-6);">
+                    <h2>
+                        🔥 Pencarian Populer
+                    </h2>
+                    <div id="popular-search">
+                        Memuat...
+                    </div>
+                </section>
+
+                <div class="search-summary" style="margin-top: var(--space-6);">
+                    <h2 id="search-title">
+                        Hasil Pencarian
+                    </h2>
+                    <p id="search-total"></p>
+                </div>
+
+                <section id="search-status" style="margin-top: var(--space-4);">
+                    Silakan ketik kata kunci.
+                </section>
+
+                <section id="search-results" class="search-results" style="margin-top: var(--space-4);">
+                </section>
 
             </div>
 
-            <section class="history-section">
-
-                <h2>
-                    Riwayat Pencarian
-                </h2>
-
-                <div id="search-history">
-                    Belum ada riwayat.
-                </div>
-
-            </section>
-
-            <section class="popular-search-section">
-                <h2>
-                    🔥 Pencarian Populer
-                </h2>
-                <div id="popular-search">
-                    Memuat...
-                </div>
-            </section>
-
-            <div class="search-summary">
-                <h2 id="search-title">
-                    Hasil Pencarian
-                </h2>
-                <p id="search-total"></p>
-            </div>
-
-            <section id="search-status">
-                Silakan ketik kata kunci.
-            </section>
-
-            <section id="search-results" class="search-results">
-            </section>
-
-        </div>
+        </section>
 
     </main>
 

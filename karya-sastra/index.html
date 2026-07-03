@@ -41,103 +41,131 @@
 
 <header id="site-header"></header>
 
-<main class="container">
+<main>
 
-    <h1>
-        Karya Sastra Indonesia
-    </h1>
+    <section
+        class="
+        section
+        "
+    >
 
-    <section class="filter-section">
+        <div class="container">
 
-        <h2>
-            Filter Jenis
-        </h2>
+            <div class="section-header">
 
-        <div id="jenis-filter">
+                <div>
 
-            <button class="jenis-btn aktif" data-jenis="">Semua</button>
+                    <h1 class="section-title">
 
-            <button class="jenis-btn" data-jenis="Novel">Novel</button>
+                        Karya Sastra
 
-            <button class="jenis-btn" data-jenis="Puisi">Puisi</button>
+                    </h1>
 
-            <button class="jenis-btn" data-jenis="Cerpen">Cerpen</button>
+                    <p class="section-description">
 
-            <button class="jenis-btn" data-jenis="Drama">Drama</button>
+                        Novel, puisi, cerpen, dan drama.
 
-            <button class="jenis-btn" data-jenis="Esai">Esai</button>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="filter-section" style="margin-top: var(--space-6);">
+
+                <h2>
+                    Filter Jenis
+                </h2>
+
+                <div id="jenis-filter">
+
+                    <button class="jenis-btn aktif" data-jenis="">Semua</button>
+
+                    <button class="jenis-btn" data-jenis="Novel">Novel</button>
+
+                    <button class="jenis-btn" data-jenis="Puisi">Puisi</button>
+
+                    <button class="jenis-btn" data-jenis="Cerpen">Cerpen</button>
+
+                    <button class="jenis-btn" data-jenis="Drama">Drama</button>
+
+                    <button class="jenis-btn" data-jenis="Esai">Esai</button>
+
+                </div>
+
+            </div>
+
+            <div class="filter-section" style="margin-top: var(--space-6);">
+
+                <h2>
+                    Filter Tahun
+                </h2>
+
+                <select id="tahun-filter">
+
+                    <option value="">
+                        Semua Periode
+                    </option>
+
+                    <option value="1900-1945">
+                        1900–1945
+                    </option>
+
+                    <option value="1945-1965">
+                        1945–1965
+                    </option>
+
+                    <option value="1966-1998">
+                        1966–1998
+                    </option>
+
+                    <option value="1999-9999">
+                        1998–Sekarang
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-section" style="margin-top: var(--space-6);">
+
+                <h2>
+                    Filter Penulis
+                </h2>
+
+                <select id="penulis-filter">
+
+                    <option value="">
+                        Semua Penulis
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="filter-section" style="margin-top: var(--space-6);">
+
+                <h2>
+                    Filter Genre
+                </h2>
+
+                <select id="genre-filter">
+
+                    <option value="">
+                        Semua Genre
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div id="karya-container" style="margin-top: var(--space-6);">
+                Memuat data...
+            </div>
 
         </div>
 
     </section>
-
-    <section class="filter-section">
-
-        <h2>
-            Filter Tahun
-        </h2>
-
-        <select id="tahun-filter">
-
-            <option value="">
-                Semua Periode
-            </option>
-
-            <option value="1900-1945">
-                1900–1945
-            </option>
-
-            <option value="1945-1965">
-                1945–1965
-            </option>
-
-            <option value="1966-1998">
-                1966–1998
-            </option>
-
-            <option value="1999-9999">
-                1998–Sekarang
-            </option>
-
-        </select>
-
-    </section>
-
-    <section class="filter-section">
-
-        <h2>
-            Filter Penulis
-        </h2>
-
-        <select id="penulis-filter">
-
-            <option value="">
-                Semua Penulis
-            </option>
-
-        </select>
-
-    </section>
-
-    <section class="filter-section">
-
-        <h2>
-            Filter Genre
-        </h2>
-
-        <select id="genre-filter">
-
-            <option value="">
-                Semua Genre
-            </option>
-
-        </select>
-
-    </section>
-
-    <div id="karya-container">
-        Memuat data...
-    </div>
 
 </main>
 

@@ -43,107 +43,139 @@
 
 <main>
 
-    <section class="search-section">
+    <section
+        class="
+        section
+        "
+    >
 
-        <input type="text" id="search-input" placeholder="Cari sastrawan...">
+        <div class="container">
 
-    </section>
+            <div class="section-header">
 
-    <section class="az-section">
+                <div>
 
-        <h2>Daftar A-Z</h2>
+                    <h1 class="section-title">
 
-        <div id="az-filter">
+                        Database Sastrawan
 
-            <button class="az-btn aktif" data-huruf="">
-                Semua
-            </button>
+                    </h1>
+
+                    <p class="section-description">
+
+                        Profil sastrawan Indonesia.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="search-section">
+
+                <input type="text" id="search-input" placeholder="Cari sastrawan...">
+
+            </div>
+
+            <div class="az-section" style="margin-top: var(--space-6);">
+
+                <h2>Daftar A-Z</h2>
+
+                <div id="az-filter">
+
+                    <button class="az-btn aktif" data-huruf="">
+                        Semua
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="angkatan-section" style="margin-top: var(--space-6);">
+
+                <h2>Filter Angkatan</h2>
+
+                <div id="angkatan-filter">
+
+                    <button class="angkatan-btn aktif" data-angkatan="">
+                        Semua
+                    </button>
+
+                    <button class="angkatan-btn" data-angkatan="Balai Pustaka">
+                        Balai Pustaka
+                    </button>
+
+                    <button class="angkatan-btn" data-angkatan="Pujangga Baru">
+                        Pujangga Baru
+                    </button>
+
+                    <button class="angkatan-btn" data-angkatan="Angkatan 45">
+                        Angkatan 45
+                    </button>
+
+                    <button class="angkatan-btn" data-angkatan="Angkatan 1966">
+                        Angkatan 1966
+                    </button>
+
+                    <button class="angkatan-btn" data-angkatan="Angkatan Reformasi">
+                        Reformasi
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="jenis-section" style="margin-top: var(--space-6);">
+
+                <h2>Filter Jenis</h2>
+
+                <div id="jenis-filter">
+
+                    <button class="jenis-btn aktif" data-jenis="">
+                        Semua
+                    </button>
+
+                    <button class="jenis-btn" data-jenis="Penyair">
+                        Penyair
+                    </button>
+
+                    <button class="jenis-btn" data-jenis="Novelis">
+                        Novelis
+                    </button>
+
+                    <button class="jenis-btn" data-jenis="Cerpenis">
+                        Cerpenis
+                    </button>
+
+                    <button class="jenis-btn" data-jenis="Dramawan">
+                        Dramawan
+                    </button>
+
+                    <button class="jenis-btn" data-jenis="Esais">
+                        Esais
+                    </button>
+
+                    <button class="jenis-btn" data-jenis="Kritikus">
+                        Kritikus
+                    </button>
+
+                    <button class="jenis-btn" data-jenis="Sastrawan Multigenre">
+                        Multigenre
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div id="loading" style="margin-top: var(--space-4);">
+                Memuat data...
+            </div>
+
+            <div id="sastrawanList" style="margin-top: var(--space-4);">
+
+            </div>
 
         </div>
-
-    </section>
-
-    <section class="angkatan-section">
-
-        <h2>Filter Angkatan</h2>
-
-        <div id="angkatan-filter">
-
-            <button class="angkatan-btn aktif" data-angkatan="">
-                Semua
-            </button>
-
-            <button class="angkatan-btn" data-angkatan="Balai Pustaka">
-                Balai Pustaka
-            </button>
-
-            <button class="angkatan-btn" data-angkatan="Pujangga Baru">
-                Pujangga Baru
-            </button>
-
-            <button class="angkatan-btn" data-angkatan="Angkatan 45">
-                Angkatan 45
-            </button>
-
-            <button class="angkatan-btn" data-angkatan="Angkatan 1966">
-                Angkatan 1966
-            </button>
-
-            <button class="angkatan-btn" data-angkatan="Angkatan Reformasi">
-                Reformasi
-            </button>
-
-        </div>
-
-    </section>
-
-    <section class="jenis-section">
-
-        <h2>Filter Jenis</h2>
-
-        <div id="jenis-filter">
-
-            <button class="jenis-btn aktif" data-jenis="">
-                Semua
-            </button>
-
-            <button class="jenis-btn" data-jenis="Penyair">
-                Penyair
-            </button>
-
-            <button class="jenis-btn" data-jenis="Novelis">
-                Novelis
-            </button>
-
-            <button class="jenis-btn" data-jenis="Cerpenis">
-                Cerpenis
-            </button>
-
-            <button class="jenis-btn" data-jenis="Dramawan">
-                Dramawan
-            </button>
-
-            <button class="jenis-btn" data-jenis="Esais">
-                Esais
-            </button>
-
-            <button class="jenis-btn" data-jenis="Kritikus">
-                Kritikus
-            </button>
-
-            <button class="jenis-btn" data-jenis="Sastrawan Multigenre">
-                Multigenre
-            </button>
-
-        </div>
-
-    </section>
-
-    <div id="loading">
-        Memuat data...
-    </div>
-
-    <section id="sastrawanList">
 
     </section>
 

@@ -17,55 +17,85 @@
     <header id="site-header"></header>
 
     <main class="bookmark-page">
-        <div class="container">
-            
-            <section class="bookmark-summary">
-                <div class="bookmark-total">
-                    <h2>Bookmark Saya</h2>
-                    <p id="bookmark-total">0 Bookmark</p>
+
+        <section
+            class="
+            section
+            "
+        >
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h1 class="section-title">
+
+                            Bookmark
+
+                        </h1>
+
+                        <p class="section-description">
+
+                            Simpan konten favorit Anda.
+
+                        </p>
+
+                    </div>
+
                 </div>
-                <div id="bookmark-count-grid" class="bookmark-count-grid">
+
+                <div class="bookmark-summary" style="margin-top: var(--space-6);">
+                    <div class="bookmark-total">
+                        <p id="bookmark-total">0 Bookmark</p>
+                    </div>
+                    <div id="bookmark-count-grid" class="bookmark-count-grid">
+                    </div>
                 </div>
-            </section>
 
-            <section class="bookmark-export">
-                <button id="export-json">
-                    Export JSON
-                </button>
-                <button id="export-csv">
-                    Export CSV
-                </button>
-                <button id="export-txt">
-                    Export TXT
-                </button>
-            </section>
+                <div class="bookmark-export" style="margin-top: var(--space-4);">
+                    <button id="export-json">
+                        Export JSON
+                    </button>
+                    <button id="export-csv">
+                        Export CSV
+                    </button>
+                    <button id="export-txt">
+                        Export TXT
+                    </button>
+                </div>
 
-            <section class="bookmark-search">
-                <input id="bookmark-search" type="text" placeholder="Cari bookmark...">
-            </section>
+                <div class="bookmark-search" style="margin-top: var(--space-4);">
+                    <input id="bookmark-search" type="text" placeholder="Cari bookmark...">
+                </div>
 
-            <section class="bookmark-filter">
-                <button class="bookmark-filter-btn active" data-type="all">
-                    Semua
-                </button>
-                <button class="bookmark-filter-btn" data-type="istilah">
-                    Istilah
-                </button>
-                <button class="bookmark-filter-btn" data-type="artikel">
-                    Artikel
-                </button>
-                <button class="bookmark-filter-btn" data-type="sastrawan">
-                    Sastrawan
-                </button>
-                <button class="bookmark-filter-btn" data-type="karya">
-                    Karya
-                </button>
-            </section>
+                <div class="bookmark-filter" style="margin-top: var(--space-4);">
+                    <button class="bookmark-filter-btn active" data-type="all">
+                        Semua
+                    </button>
+                    <button class="bookmark-filter-btn" data-type="istilah">
+                        Istilah
+                    </button>
+                    <button class="bookmark-filter-btn" data-type="artikel">
+                        Artikel
+                    </button>
+                    <button class="bookmark-filter-btn" data-type="sastrawan">
+                        Sastrawan
+                    </button>
+                    <button class="bookmark-filter-btn" data-type="karya">
+                        Karya
+                    </button>
+                </div>
 
-            <div id="bookmark-list">
-                <p>Memuat bookmark...</p>
+                <div id="bookmark-list" style="margin-top: var(--space-6);">
+                    <p>Memuat bookmark...</p>
+                </div>
+
             </div>
-        </div>
+
+        </section>
+
     </main>
 
     <footer id="site-footer"></footer>

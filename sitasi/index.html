@@ -11,7 +11,7 @@
 
     <meta property="og:description" content="Generator sitasi APA, MLA, Chicago, Harvard.">
 
-    <link rel="canonical" href=" https://portalsastra.id/sitasi/">
+    <link rel="canonical" href="https://portalsastra.id/sitasi/">
 
     <script id="jsonld-schema" type="application/ld+json"></script>
 
@@ -33,103 +33,129 @@
 
 <div id="site-header"></div>
 
-<main class="container">
+<main>
 
-    <h1>
-        Generator Sitasi
-    </h1>
+    <section
+        class="
+        section
+        "
+    >
 
-    <p>
-        Buat sitasi secara otomatis
-        dengan berbagai format akademik.
-    </p>
+        <div class="container">
 
-    <form id="citation-form">
+            <div class="section-header">
 
-        <div class="field">
-            <label>Penulis</label>
+                <div>
 
-            <input id="author" type="text" placeholder="Nama penulis">
-        </div>
+                    <h1 class="section-title">
 
-        <div class="field">
-            <label>Judul</label>
+                        Generator Sitasi
 
-            <input id="title" type="text" placeholder="Judul artikel atau buku">
-        </div>
+                    </h1>
 
-        <div class="field">
-            <label>Tahun</label>
+                    <p class="section-description">
 
-            <input id="year" type="number" placeholder="2026">
-        </div>
+                        Buat sitasi secara otomatis dengan berbagai format akademik.
 
-        <div class="field">
-            <label>Penerbit</label>
+                    </p>
 
-            <input id="publisher" type="text"
-            >
-        </div>
+                </div>
 
-        <div class="field">
-            <label>URL</label>
+            </div>
 
-            <input id="url" type="url">
-        </div>
+            <div style="margin-top: var(--space-6);">
 
-        <div class="field">
-            <label>Format</label>
+                <form id="citation-form">
 
-            <select id="style">
+                    <div class="field">
+                        <label>Penulis</label>
 
-                <option value="apa">
-                    APA
-                </option>
+                        <input id="author" type="text" placeholder="Nama penulis">
+                    </div>
 
-                <option value="mla">
-                    MLA
-                </option>
+                    <div class="field">
+                        <label>Judul</label>
 
-                <option value="chicago">
-                    Chicago
-                </option>
+                        <input id="title" type="text" placeholder="Judul artikel atau buku">
+                    </div>
 
-                <option value="harvard">
-                    Harvard
-                </option>
+                    <div class="field">
+                        <label>Tahun</label>
 
-            </select>
-        </div>
+                        <input id="year" type="number" placeholder="2026">
+                    </div>
 
-        <button type="submit">
-            Buat Sitasi
-        </button>
+                    <div class="field">
+                        <label>Penerbit</label>
 
-    </form>
+                        <input id="publisher" type="text">
+                    </div>
 
-    <section class="citation-box">
+                    <div class="field">
+                        <label>URL</label>
 
-        <pre id="citation-result" class="citation-result">
-            Belum ada sitasi.
-        </pre>
+                        <input id="url" type="url">
+                    </div>
 
-        <button id="copy-citation" type="button" class="secondary-btn">
-            Salin Sitasi
-        </button>
+                    <div class="field">
+                        <label>Format</label>
 
-        <button id="download-citation" type="button" class="secondary-btn">
-            Download TXT
-        </button>
+                        <select id="style">
 
-    </section>
+                            <option value="apa">
+                                APA
+                            </option>
 
-    <section class="citation-history">
+                            <option value="mla">
+                                MLA
+                            </option>
 
-        <h2>
-            Riwayat Sitasi
-        </h2>
+                            <option value="chicago">
+                                Chicago
+                            </option>
 
-        <div id="citation-history">
+                            <option value="harvard">
+                                Harvard
+                            </option>
+
+                        </select>
+                    </div>
+
+                    <button type="submit">
+                        Buat Sitasi
+                    </button>
+
+                </form>
+
+                <section class="citation-box" style="margin-top: var(--space-6);">
+
+                    <pre id="citation-result" class="citation-result">
+                        Belum ada sitasi.
+                    </pre>
+
+                    <button id="copy-citation" type="button" class="secondary-btn">
+                        Salin Sitasi
+                    </button>
+
+                    <button id="download-citation" type="button" class="secondary-btn">
+                        Download TXT
+                    </button>
+
+                </section>
+
+                <section class="citation-history" style="margin-top: var(--space-6);">
+
+                    <h2>
+                        Riwayat Sitasi
+                    </h2>
+
+                    <div id="citation-history">
+                    </div>
+
+                </section>
+
+            </div>
+
         </div>
 
     </section>
@@ -157,7 +183,7 @@
 <script src="/js/citation/citation-schema.js"></script>
 <script src="/js/citation/citation-auto.js"></script>
 
-<script src="/sitasi/index.js"></script>
+<script src="index.js"></script>
 
 </body>
 </html>

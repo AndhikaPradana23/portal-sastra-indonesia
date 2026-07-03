@@ -9,83 +9,112 @@
     <link rel="stylesheet" href="/css/spacing.css">
     <link rel="stylesheet" href="/css/utilities.css">
     <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body>
 
 <div id="site-header"></div>
 
-<main class="container">
+<main>
 
-    <h1>
-        Preferensi Pengguna
-    </h1>
+    <section
+        class="
+        section
+        "
+    >
 
-    <form id="preferences-form">
+        <div class="container">
 
-        <div class="form-group">
+            <div class="section-header">
 
-            <label>
-                Tema
-            </label>
+                <div>
 
-            <select id="theme">
+                    <h1 class="section-title">
 
-                <option value="light">
-                    Light
-                </option>
+                        Preferensi Pengguna
 
-                <option value="dark">
-                    Dark
-                </option>
+                    </h1>
 
-            </select>
+                    <p class="section-description">
+
+                        Atur konfigurasi tampilan dan fungsionalitas akun Anda.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <form id="preferences-form" style="margin-top: var(--space-6);">
+
+                <div class="form-group">
+
+                    <label>
+                        Tema
+                    </label>
+
+                    <select id="theme">
+
+                        <option value="light">
+                            Light
+                        </option>
+
+                        <option value="dark">
+                            Dark
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+                        Jumlah Item per Halaman
+                    </label>
+
+                    <select id="items-per-page">
+
+                        <option value="10">
+                            10
+                        </option>
+
+                        <option value="20">
+                            20
+                        </option>
+
+                        <option value="50">
+                            50
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <label>
+                    <input type="checkbox" id="enable-history">
+                    Simpan Riwayat Pencarian
+                </label>
+
+                <br><br>
+
+                <label>
+                    <input type="checkbox" id="enable-autocomplete">
+                    Aktifkan Autocomplete
+                </label>
+
+                <br><br>
+
+                <button type="submit">
+                    Simpan Preferensi
+                </button>
+
+            </form>
 
         </div>
 
-        <div class="form-group">
-
-            <label>
-                Jumlah Item per Halaman
-            </label>
-
-            <select id="items-per-page">
-
-                <option value="10">
-                    10
-                </option>
-
-                <option value="20">
-                    20
-                </option>
-
-                <option value="50">
-                    50
-                </option>
-
-            </select>
-
-        </div>
-
-        <label>
-            <input type="checkbox" id="enable-history">
-                Simpan Riwayat Pencarian
-        </label>
-
-        <br><br>
-
-        <label>
-            <input type="checkbox" id="enable-autocomplete">
-            Aktifkan Autocomplete
-        </label>
-
-        <br><br>
-
-        <button type="submit">
-            Simpan Preferensi
-        </button>
-
-    </form>
+    </section>
 
 </main>
 

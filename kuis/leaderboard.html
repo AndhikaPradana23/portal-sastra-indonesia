@@ -29,51 +29,73 @@
 
 <main class="leaderboard-page">
 
-    <div class="container">
+    <section
+        class="
+        section
+        "
+    >
 
-        <h1>
-            🏆
-            Leaderboard Kuis
+        <div class="container">
 
-        </h1>
+            <div class="section-header">
 
-        <div class="filter-container" style="margin-bottom: 20px;">
-            
-            <label for="leaderboard-filter" style="margin-right: 10px; font-weight: bold;">
-                Pilih Kategori:
-            </label>
+                <div>
 
-            <select id="leaderboard-filter" class="form-control">
+                    <h1 class="section-title">
 
-                <option value="">
-                    Semua
-                </option>
+                        Leaderboard Kuis
 
-                <option value="istilah">
-                    Istilah
-                </option>
+                    </h1>
 
-                <option value="sastrawan">
-                    Sastrawan
-                </option>
+                    <p class="section-description">
 
-                <option value="karya">
-                    Karya
-                </option>
+                        Uji pemahaman sastra Indonesia.
 
-                <option value="campuran">
-                    Campuran
-                </option>
+                    </p>
 
-            </select>
+                </div>
+
+            </div>
+
+            <div class="filter-container" style="margin-top: var(--space-6); margin-bottom: var(--space-4);">
+                
+                <label for="leaderboard-filter" style="margin-right: var(--space-2); font-weight: bold;">
+                    Pilih Kategori:
+                </label>
+
+                <select id="leaderboard-filter" class="form-control">
+
+                    <option value="">
+                        Semua
+                    </option>
+
+                    <option value="istilah">
+                        Istilah
+                    </option>
+
+                    <option value="sastrawan">
+                        Sastrawan
+                    </option>
+
+                    <option value="karya">
+                        Karya
+                    </option>
+
+                    <option value="campuran">
+                        Campuran
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div id="leaderboard-list" style="margin-top: var(--space-4);">
+                Memuat...
+            </div>
 
         </div>
 
-        <div id="leaderboard-list">
-            Memuat...
-        </div>
-
-    </div>
+    </section>
 
 </main>
 

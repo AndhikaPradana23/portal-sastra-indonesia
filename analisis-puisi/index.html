@@ -27,53 +27,76 @@
 
     <header id="site-header"></header>
 
-    <main class="container">
+    <main>
 
-        <h1>
-            Analisis Puisi
-        </h1>
+        <section
+            class="
+            section
+            "
+        >
 
-        <p>
-            Tempel puisi dan dapatkan
-            analisis otomatis.
-        </p>
+            <div class="container">
 
-        <div class="input-section">
+                <div class="section-header">
 
-            <textarea id="puisi-input" placeholder="Masukkan puisi di sini..."></textarea>
+                    <div>
 
-            <div class="input-info">
+                        <h1 class="section-title">
 
-                <span id="char-count">
-                    Karakter: 0
-                </span>
+                            Analisis Puisi
 
-                <span id="line-count">
-                    Baris: 0
-                </span>
+                        </h1>
+
+                        <p class="section-description">
+
+                            Tempel puisi dan dapatkan analisis otomatis.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="input-section" style="margin-top: var(--space-6);">
+
+                    <textarea id="puisi-input" placeholder="Masukkan puisi di sini..."></textarea>
+
+                    <div class="input-info">
+
+                        <span id="char-count">
+                            Karakter: 0
+                        </span>
+
+                        <span id="line-count">
+                            Baris: 0
+                        </span>
+
+                    </div>
+
+                    <div class="input-actions">
+
+                        <button id="example-btn" type="button">
+                            Contoh Puisi
+                        </button>
+
+                        <button id="clear-btn" type="button">
+                            Hapus
+                        </button>
+
+                        <button id="analyze-btn" type="button" disabled>
+                            Analisis
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div id="analysis-result" style="margin-top: var(--space-6);">
+                    Belum ada analisis.
+                </div>
 
             </div>
 
-            <div class="input-actions">
-
-                <button id="example-btn" type="button">
-                    Contoh Puisi
-                </button>
-
-                <button id="clear-btn" type="button">
-                    Hapus
-                </button>
-
-                <button id="analyze-btn" type="button" disabled>
-                    Analisis
-                </button>
-
-            </div>
-
-        </div>
-
-        <section id="analysis-result">
-            Belum ada analisis.
         </section>
 
     </main>
