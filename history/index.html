@@ -2,20 +2,24 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Riwayat Pencarian</title>
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-    
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/history.css">
 </head>
@@ -25,11 +29,7 @@
 
 <main>
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -38,32 +38,37 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Riwayat Pencarian
-
                     </h1>
 
                     <p class="section-description">
-
                         Kelola riwayat pencarian dan aktivitas sastra Anda.
-
                     </p>
 
                 </div>
 
             </div>
 
-            <button
-                id="clear-history"
-                style="margin-top: var(--space-6);"
-            >
+            <button id="clear-history" class="btn btn-outline" style="margin-top: var(--space-6);">
                 Hapus Semua
             </button>
 
-            <div
-                id="history-list"
-                style="margin-top: var(--space-4);"
-            >
+            <div id="history-list" style="margin-top: var(--space-4);">
+                
+                <!-- State Memuat Riwayat menggunakan Skeleton Card Global -->
+                <div class="card skeleton" style="height: 150px; margin-bottom: var(--space-4);"></div>
+                <div class="card skeleton" style="height: 150px;"></div>
+
+                <!-- 
+                  Catatan untuk sistem JS Anda: Jika data kosong, 
+                  ganti innerHTML komponen di atas dengan komponen standarisasi:
+                  
+                  <div class="empty-state">
+                      <div class="empty-icon">📚</div>
+                      <h3>Belum Ada Riwayat</h3>
+                      <p>Aktivitas pencarian Anda akan muncul di sini.</p>
+                  </div>
+                -->
 
             </div>
 
@@ -80,6 +85,10 @@
 <script src="/js/auth/protected-route.js"></script>
 <script src="/js/history/history-service.js"></script>
 <script src="/js/history/history-page.js"></script>
+
+<script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
 </body>
 </html>

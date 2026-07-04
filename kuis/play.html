@@ -2,24 +2,26 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pengerjaan Kuis</title>
+    <title>Pengerjaan Kuis | Portal Sastra Indonesia</title>
 
     <meta name="description" content="Kerjakan kuis sastra Indonesia.">
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/kuis.css">
 </head>
@@ -29,67 +31,72 @@
 
 <main class="quiz-play-page">
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
             <div class="section-header">
-
                 <div>
-
                     <h1 class="section-title">
-
                         Kuis Sastra Indonesia
-
                     </h1>
-
                     <p class="section-description">
-
                         Uji pemahaman sastra Indonesia.
-
                     </p>
-
                 </div>
-
             </div>
 
-            <div class="quiz-header" style="margin-top: var(--space-6);">
+            <div class="card" style="margin-top: var(--space-6);">
+                
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+                    <div style="flex: 1; min-width: 200px;">
+                        <div id="quiz-progress" style="font-weight: var(--font-weight-medium); margin-bottom: var(--space-1);"></div>
+                        <div id="question-navigation" class="question-navigation"></div>
+                    </div>
+                    <div id="quiz-timer" class="badge badge-primary" style="font-size: var(--font-size-base); padding: var(--space-2) var(--space-3);">
+                        ⏱ 00:00
+                    </div>
+                </div>
 
-                <div>
+                <div class="card-body">
+                    
+                    <div id="quiz-status"></div>
 
-                    <div id="quiz-progress"></div>
-
-                    <div id="question-navigation" class="question-navigation" style="margin-top: var(--space-2);">
-
+                    <div id="quiz-container" style="margin-top: var(--space-2);">
+                        
+                        <div class="card skeleton" style="height: 200px;"></div>
+                        
                     </div>
 
                 </div>
 
-                <div id="quiz-timer">
-                    ⏱ 00:00
+                <div class="card-footer">
+                    
+                    <div class="quiz-navigation" style="display: flex; justify-content: space-between; align-items: center; gap: var(--space-3);">
+                        
+                        <button 
+                            id="prev-btn" 
+                            class="
+                            btn 
+                            btn-outline
+                            "
+                        >
+                            ← Sebelumnya
+                        </button>
+
+                        <button 
+                            id="next-btn" 
+                            class="
+                            btn 
+                            btn-primary
+                            "
+                        >
+                            Selanjutnya →
+                        </button>
+
+                    </div>
+
                 </div>
-
-            </div>
-
-            <div id="quiz-status" style="margin-top: var(--space-4);"></div>
-
-            <div id="quiz-container" style="margin-top: var(--space-4);">
-
-            </div>
-
-            <div class="quiz-navigation" style="margin-top: var(--space-6);">
-
-                <button id="prev-btn">
-                    ← Sebelumnya
-                </button>
-
-                <button id="next-btn">
-                    Selanjutnya →
-                </button>
 
             </div>
 
@@ -112,6 +119,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
 
     <script src="/js/kuis/quiz-utils.js"></script>
     <script src="/js/kuis/quiz-storage.js"></script>

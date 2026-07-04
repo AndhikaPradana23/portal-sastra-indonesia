@@ -1,52 +1,108 @@
 <link rel="stylesheet" href="/css/variables.css">
 <link rel="stylesheet" href="/css/typography.css">
 <link rel="stylesheet" href="/css/spacing.css">
-<link rel="stylesheet" href="/css/utilities.css">
+<link rel="stylesheet" href="/css/layout.css">
+   
+<link rel="stylesheet" href="/css/buttons.css">
 <link rel="stylesheet" href="/css/cards.css">
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/badges.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/animations.css">
+<link rel="stylesheet" href="/css/utilities.css">
+<link rel="stylesheet" href="/css/responsive.css">
 
-<header>
-    <div class="container">
-        <div class="logo">
-            <h1>Portal Sastra Indonesia</h1>
+<div class="container">
+
+    <a href="/" class="logo">
+        📚 Portal Sastra Indonesia
+    </a>
+
+    <nav class="main-nav">
+
+        <a href="/" data-menu="home">
+            Beranda
+        </a>
+
+        <a href="/kamus-istilah/" data-menu="kamus">
+            Kamus
+        </a>
+
+        <a href="/artikel/" data-menu="artikel">
+            Artikel
+        </a>
+
+        <a href="/sastrawan/" data-menu="sastrawan">
+            Sastrawan
+        </a>
+
+        <a href="/karya-sastra/" data-menu="karya">
+            Karya
+        </a>
+
+        <div class="dropdown">
+
+            <button class="dropdown-toggle btn btn-outline">
+                Tools ▼
+            </button>
+
+            <div class="dropdown-menu">
+
+                <a href="/sitasi/">
+                    Generator Sitasi
+                </a>
+
+                <a href="/analisis-puisi/">
+                    Analisis Puisi
+                </a>
+
+                <a href="/kuis/">
+                    Kuis Sastra
+                </a>
+
+            </div>
+
         </div>
-        
-        <nav>
-            <ul>
-                <li><a href="/index.html">Beranda</a></li>
-                
-                <li><a href="/kamus-istilah/index.html">Kamus Sastra</a></li>
-                
-                <li><a href="/artikel/index.html">Artikel</a></li>
-                
-                <li><a href="/sastrawan/index.html">Sastrawan</a></li>
-                
-                <li><a href="/karya-sastra/index.html">Karya Sastra</a></li>
-                
-                <li><a href="/bookmark/index.html">Bookmark</a></li>
 
-                <li><a href="/sitasi/index.html">Generator Sitasi</a></li>
+    </nav>
 
-                <li><a href="/analisis-puisi/index.html">Analisis Puisi</a></li>
+    <div class="header-right">
 
-                <li><a href="/kuis/index.html">Kuis</a></li>
+        <form action="/search/" class="header-search">
+            <div class="search-box">
+                🔎
+                <input class="input" name="q" placeholder="Cari..." required>
+            </div>
+        </form>
 
-                <li id="auth-menu">
-                    <a href="/auth/login.html">Masuk</a>
-                    <!-- 
-                      Catatan untuk sistem Auth JS Anda: 
-                      Saat user berhasil login, script `initAuthUI()` biasanya akan mengganti isi dari elemen 
-                      <li id="auth-menu"> di atas dengan markup dropdown berikut secara dinamis:
-                      
-                      <div class="auth-dropdown">
-                          <span>👋 ${nama}</span>
-                          <a href="/profile/index.html">Profil</a>
-                          <a href="/profile/preferences.html">Preferensi</a>
-                          <a href="/profile/settings.html">Pengaturan</a>
-                          <a href="#" id="logout-btn">Logout</a>
-                      </div>
-                    -->
-                </li>
-            </ul>
-        </nav>
+        <div id="auth-menu" style="display: inline-block;">
+            <a href="/profile/" class="profile-button btn btn-outline">
+                Profil
+            </a>
+            <!-- 
+              Catatan untuk sistem Auth JS Anda: 
+              Saat user berhasil login, script `initAuthUI()` biasanya akan mengganti isi dari elemen 
+              <div id="auth-menu"> di atas dengan markup dropdown berikut secara dinamis:
+              
+              <div class="auth-dropdown">
+                  <span>👋 ${nama}</span>
+                  <a href="/profile/index.html">Profil</a>
+                  <a href="/profile/preferences.html">Preferensi</a>
+                  <a href="/profile/settings.html">Pengaturan</a>
+                  <a href="#" id="logout-btn">Logout</a>
+              </div>
+            -->
+        </div>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn btn btn-outline">
+            ☰
+        </button>
+
     </div>
-</header>
+
+</div>
+
+<script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>

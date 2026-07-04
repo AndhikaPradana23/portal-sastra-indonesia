@@ -3,22 +3,24 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Leaderboard Kuis</title>
+    <title>Leaderboard Kuis | Portal Sastra Indonesia</title>
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/kuis.css">
 
@@ -29,11 +31,7 @@
 
 <main class="leaderboard-page">
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -42,55 +40,71 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Leaderboard Kuis
-
                     </h1>
 
                     <p class="section-description">
-
                         Uji pemahaman sastra Indonesia.
-
                     </p>
 
                 </div>
 
             </div>
 
-            <div class="filter-container" style="margin-top: var(--space-6); margin-bottom: var(--space-4);">
-                
-                <label for="leaderboard-filter" style="margin-right: var(--space-2); font-weight: bold;">
-                    Pilih Kategori:
-                </label>
+            <div class="card" style="margin-top: var(--space-6);">
 
-                <select id="leaderboard-filter" class="form-control">
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+                    
+                    <h3 style="margin: 0;">Peringkat Tertinggi</h3>
 
-                    <option value="">
-                        Semua
-                    </option>
+                    <div class="filter-container" style="display: flex; align-items: center; gap: var(--space-2);">
+                        
+                        <label for="leaderboard-filter" style="font-weight: var(--font-weight-medium); white-space: nowrap;">
+                            Kategori:
+                        </label>
 
-                    <option value="istilah">
-                        Istilah
-                    </option>
+                        <select id="leaderboard-filter" class="select">
+                            <option value="">Semua</option>
+                            <option value="istilah">Istilah</option>
+                            <option value="sastrawan">Sastrawan</option>
+                            <option value="karya">Karya</option>
+                            <option value="campuran">Campuran</option>
+                        </select>
 
-                    <option value="sastrawan">
-                        Sastrawan
-                    </option>
+                    </div>
 
-                    <option value="karya">
-                        Karya
-                    </option>
+                </div>
 
-                    <option value="campuran">
-                        Campuran
-                    </option>
+                <div class="card-body">
 
-                </select>
+                    <div id="leaderboard-list">
+                        
+                        <div class="card skeleton" style="height: 250px;"></div>
 
-            </div>
+                        <!-- 
+                          Catatan untuk sistem JavaScript Anda: Jika data kosong atau belum ada skor kuis, 
+                          ganti isi kontainer di atas dengan komponen standarisasi berikut:
+                          
+                          <div class="empty-state">
+                              <div class="empty-icon">📚</div>
+                              <h3>Belum Ada Riwayat</h3>
+                              <p>Coba gunakan kata kunci lain atau jadilah yang pertama mengisi papan peringkat kuis!</p>
+                          </div>
+                        -->
 
-            <div id="leaderboard-list" style="margin-top: var(--space-4);">
-                Memuat...
+                    </div>
+
+                </div>
+
+                <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-2);">
+                    <a href="/kuis/index.html" class="btn btn-outline">
+                        ↩️ Kembali ke Menu Kuis
+                    </a>
+                    <a href="/kuis/history.html" class="btn btn-primary">
+                        📜 Lihat Skor Saya
+                    </a>
+                </div>
+
             </div>
 
         </div>
@@ -113,6 +127,7 @@
 
 <script src="/js/layout/layout.js"></script>
 <script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
 <script src="/js/kuis/quiz-leaderboard.js"></script>
 

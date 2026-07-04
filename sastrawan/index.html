@@ -31,10 +31,20 @@
 <link rel="stylesheet" href="/css/variables.css">
 <link rel="stylesheet" href="/css/typography.css">
 <link rel="stylesheet" href="/css/spacing.css">
-<link rel="stylesheet" href="/css/utilities.css">
-<link rel="stylesheet" href="/css/cards.css">
-<link rel="stylesheet" href="/css/sastrawan.css">
 <link rel="stylesheet" href="/css/layout.css">
+   
+<link rel="stylesheet" href="/css/buttons.css">
+<link rel="stylesheet" href="/css/cards.css">
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/badges.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/animations.css">
+<link rel="stylesheet" href="/css/utilities.css">
+<link rel="stylesheet" href="/css/responsive.css">
+
+<link rel="stylesheet" href="/css/sastrawan.css">
+
 
 </head>
 <body>
@@ -43,11 +53,7 @@
 
 <main>
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -56,15 +62,11 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Database Sastrawan
-
                     </h1>
 
                     <p class="section-description">
-
                         Profil sastrawan Indonesia.
-
                     </p>
 
                 </div>
@@ -72,18 +74,19 @@
             </div>
 
             <div class="search-section">
-
-                <input type="text" id="search-input" placeholder="Cari sastrawan...">
-
+                <div class="search-box">
+                    🔎
+                    <input type="text" id="search-input" class="input" placeholder="Cari sastrawan...">
+                </div>
             </div>
 
             <div class="az-section" style="margin-top: var(--space-6);">
 
-                <h2>Daftar A-Z</h2>
+                <h2 style="font-size: var(--font-size-md); margin-bottom: var(--space-3);">Daftar A-Z</h2>
 
-                <div id="az-filter">
+                <div id="az-filter" style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
 
-                    <button class="az-btn aktif" data-huruf="">
+                    <button class="btn btn-primary az-btn aktif" data-huruf="">
                         Semua
                     </button>
 
@@ -93,31 +96,31 @@
 
             <div class="angkatan-section" style="margin-top: var(--space-6);">
 
-                <h2>Filter Angkatan</h2>
+                <h2 style="font-size: var(--font-size-md); margin-bottom: var(--space-3);">Filter Angkatan</h2>
 
-                <div id="angkatan-filter">
+                <div id="angkatan-filter" style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
 
-                    <button class="angkatan-btn aktif" data-angkatan="">
+                    <button class="btn btn-primary angkatan-btn aktif" data-angkatan="">
                         Semua
                     </button>
 
-                    <button class="angkatan-btn" data-angkatan="Balai Pustaka">
+                    <button class="btn btn-outline angkatan-btn" data-angkatan="Balai Pustaka">
                         Balai Pustaka
                     </button>
 
-                    <button class="angkatan-btn" data-angkatan="Pujangga Baru">
+                    <button class="btn btn-outline angkatan-btn" data-angkatan="Pujangga Baru">
                         Pujangga Baru
                     </button>
 
-                    <button class="angkatan-btn" data-angkatan="Angkatan 45">
+                    <button class="btn btn-outline angkatan-btn" data-angkatan="Angkatan 45">
                         Angkatan 45
                     </button>
 
-                    <button class="angkatan-btn" data-angkatan="Angkatan 1966">
+                    <button class="btn btn-outline angkatan-btn" data-angkatan="Angkatan 1966">
                         Angkatan 1966
                     </button>
 
-                    <button class="angkatan-btn" data-angkatan="Angkatan Reformasi">
+                    <button class="btn btn-outline angkatan-btn" data-angkatan="Angkatan Reformasi">
                         Reformasi
                     </button>
 
@@ -127,39 +130,39 @@
 
             <div class="jenis-section" style="margin-top: var(--space-6);">
 
-                <h2>Filter Jenis</h2>
+                <h2 style="font-size: var(--font-size-md); margin-bottom: var(--space-3);">Filter Jenis</h2>
 
-                <div id="jenis-filter">
+                <div id="jenis-filter" style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
 
-                    <button class="jenis-btn aktif" data-jenis="">
+                    <button class="btn btn-primary jenis-btn aktif" data-jenis="">
                         Semua
                     </button>
 
-                    <button class="jenis-btn" data-jenis="Penyair">
+                    <button class="btn btn-outline jenis-btn" data-jenis="Penyair">
                         Penyair
                     </button>
 
-                    <button class="jenis-btn" data-jenis="Novelis">
+                    <button class="btn btn-outline jenis-btn" data-jenis="Novelis">
                         Novelis
                     </button>
 
-                    <button class="jenis-btn" data-jenis="Cerpenis">
+                    <button class="btn btn-outline jenis-btn" data-jenis="Cerpenis">
                         Cerpenis
                     </button>
 
-                    <button class="jenis-btn" data-jenis="Dramawan">
+                    <button class="btn btn-outline jenis-btn" data-jenis="Dramawan">
                         Dramawan
                     </button>
 
-                    <button class="jenis-btn" data-jenis="Esais">
+                    <button class="btn btn-outline jenis-btn" data-jenis="Esais">
                         Esais
                     </button>
 
-                    <button class="jenis-btn" data-jenis="Kritikus">
+                    <button class="btn btn-outline jenis-btn" data-jenis="Kritikus">
                         Kritikus
                     </button>
 
-                    <button class="jenis-btn" data-jenis="Sastrawan Multigenre">
+                    <button class="btn btn-outline jenis-btn" data-jenis="Sastrawan Multigenre">
                         Multigenre
                     </button>
 
@@ -167,11 +170,11 @@
 
             </div>
 
-            <div id="loading" style="margin-top: var(--space-4);">
-                Memuat data...
+            <div id="loading" style="margin-top: var(--space-5);">
+                <div class="card skeleton" style="height: 200px;"></div>
             </div>
 
-            <div id="sastrawanList" style="margin-top: var(--space-4);">
+            <div id="sastrawanList" style="margin-top: var(--space-5);">
 
             </div>
 
@@ -196,6 +199,7 @@
 
 <script src="/js/layout/layout.js"></script>
 <script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
 <script src="index.js"></script>
 

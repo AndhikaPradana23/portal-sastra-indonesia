@@ -1,0 +1,27 @@
+/* ==========================================
+   Loading Skeleton
+   File: css/skeleton.css
+   ========================================== */
+
+/* Skeleton Base Animation Effect */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        #f1f5f9,
+        #e2e8f0,
+        #f1f5f9
+    );
+    background-size: 200% 100%;
+    animation: skeleton 1.5s infinite linear; /* Ditambahkan linear agar transisi animasi konstan */
+    border-radius: var(--radius-md);
+}
+
+/* Shimmer Animation Keyframes */
+@keyframes skeleton {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
+}

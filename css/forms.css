@@ -1,0 +1,27 @@
+/* ==========================================
+   Input System
+   File: css/forms.css
+   ========================================== */
+
+/* Base Form Controls */
+.input,
+.textarea,
+.select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: white;
+    font: inherit;
+    color: var(--text);
+    transition: 0.2s;
+}
+
+/* Focus State */
+.input:focus,
+.textarea:focus,
+.select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+}

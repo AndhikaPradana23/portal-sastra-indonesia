@@ -3,37 +3,26 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Kuis Sastra Indonesia</title>
+    <title>Kuis Sastra Indonesia | Portal Sastra Indonesia</title>
 
     <meta name="description" content="Kuis sastra Indonesia interaktif untuk menguji pengetahuan istilah, sastrawan, dan karya sastra.">
-
     <meta name="keywords" content="kuis sastra, kuis bahasa indonesia, kuis sastrawan, kuis karya sastra">
-
     <meta name="robots" content="index, follow">
 
     <link rel="canonical" href="https://portalsastra.id/kuis/">
-
     <meta name="theme-color" content="#0d6efd">
 
     <meta property="og:type" content="website">
-
     <meta property="og:title" content="Kuis Sastra Indonesia">
-
     <meta property="og:description" content="Uji pengetahuan sastra Indonesia secara interaktif.">
-
     <meta property="og:url" content="https://portalsastra.id/kuis/">
-
     <meta property="og:image" content="https://portalsastra.id/images/quiz-cover.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-
     <meta name="twitter:title" content="Kuis Sastra Indonesia">
-
     <meta name="twitter:description" content="Uji pengetahuan sastra Indonesia.">
-
     <meta name="twitter:image" content="https://portalsastra.id/images/quiz-cover.jpg">
 
     <script type="application/ld+json">
@@ -83,16 +72,19 @@
     </script>
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/kuis.css">
 
@@ -104,110 +96,73 @@
 
     <main class="quiz-page">
 
-        <section
-            class="
-            section
-            "
-        >
+        <section class="section">
 
             <div class="container">
 
                 <div class="section-header">
-
                     <div>
-
                         <h1 class="section-title">
-
                             Kuis Sastra Indonesia
-
                         </h1>
-
                         <p class="section-description">
-
                             Uji pemahaman sastra Indonesia.
-
                         </p>
-
                     </div>
-
                 </div>
 
                 <div class="quiz-hero" style="margin-top: var(--space-4);">
-
                     <p>
                         Uji pemahaman Anda mengenai istilah sastra, sastrawan, karya sastra, dan artikel melalui simulasi interaktif di bawah ini.
                     </p>
-
                 </div>
 
-                <div class="quiz-form" style="margin-top: var(--space-6);">
+                <div class="quiz-form card" style="margin-top: var(--space-6); padding: var(--space-5);">
+                    
+                    <div class="card-header" style="padding-left: 0; padding-right: 0; padding-top: 0;">
+                        <h3 style="margin: 0;">Konfigurasi Kuis Sastra</h3>
+                    </div>
 
-                    <div class="form-group">
+                    <div class="card-body" style="padding-left: 0; padding-right: 0; display: flex; flex-direction: column; gap: var(--space-4);">
+                        
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                                Kategori Kuis
+                            </label>
+                            <select id="quiz-category" class="select">
+                                <option value="istilah">Istilah Sastra</option>
+                                <option value="sastrawan">Sastrawan</option>
+                                <option value="karya">Karya Sastra</option>
+                                <option value="campuran">Campuran</option>
+                            </select>
+                        </div>
 
-                        <label>
-                            Kategori Kuis
-                        </label>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                                Jumlah Soal
+                            </label>
+                            <select id="quiz-total" class="select">
+                                <option value="5">5 Soal</option>
+                                <option value="10">10 Soal</option>
+                                <option value="20">20 Soal</option>
+                            </select>
+                        </div>
 
-                        <select id="quiz-category">
-
-                            <option value="istilah">
-                                Istilah Sastra
-                            </option>
-
-                            <option value="sastrawan">
-                                Sastrawan
-                            </option>
-
-                            <option value="karya">
-                                Karya Sastra
-                            </option>
-
-                            <option value="campuran">
-                                Campuran
-                            </option>
-
-                        </select>
+                        <button id="start-quiz-btn" class="btn btn-primary" style="width: 100%; margin-top: var(--space-2);">
+                            Mulai Kuis
+                        </button>
 
                     </div>
 
-                    <div class="form-group">
-
-                        <label>
-                            Jumlah Soal
-                        </label>
-
-                        <select id="quiz-total">
-
-                            <option value="5">
-                                5 Soal
-                            </option>
-
-                            <option value="10">
-                                10 Soal
-                            </option>
-
-                            <option value="20">
-                                20 Soal
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                    <button id="start-quiz-btn">
-                        Mulai Kuis
-                    </button>
-
-                    <div class="quiz-links">
-
-                        <a href="/kuis/history.html">
-                            Riwayat Nilai
-                        </a>
-
-                        <a href="/kuis/leaderboard.html">
-                            Leaderboard
-                        </a>
-
+                    <div class="card-footer" style="padding-left: 0; padding-right: 0; padding-bottom: 0; border-top: 1px solid var(--border-color); padding-top: var(--space-4);">
+                        <div class="quiz-links" style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                            <a href="/kuis/history.html" class="btn btn-outline">
+                                📜 Riwayat Nilai
+                            </a>
+                            <a href="/kuis/leaderboard.html" class="btn btn-outline">
+                                🏆 Leaderboard
+                            </a>
+                        </div>
                     </div>
 
                 </div>
@@ -231,6 +186,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
 
     <script src="/js/kuis/quiz-utils.js"></script>
     <script src="/js/kuis/quiz-storage.js"></script>

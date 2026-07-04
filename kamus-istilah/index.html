@@ -19,10 +19,20 @@
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/typography.css">
     <link rel="stylesheet" href="/css/spacing.css">
-    <link rel="stylesheet" href="/css/utilities.css">
-    <link rel="stylesheet" href="/css/cards.css">
-    <link rel="stylesheet" href="/css/kamus-istilah.css">
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet" href="/css/kamus-istilah.css">
+
 </head>
 
 <body>
@@ -46,94 +56,122 @@
                     </div>
                 </div>
 
-                <div id="loading">
-                    Memuat data...
-                </div>
-
-                <div class="search-section">
-                    <input type="text" id="search-input" placeholder="Cari istilah sastra..." autocomplete="off">
-                </div>
-
-                <div class="history-section" style="margin-top: var(--space-6);">
-                    <h2>Terakhir Dicari</h2>
-                    
-                    <button id="clear-history">Hapus Riwayat</button>
-                    
-                    <div id="history-list">
-                        Belum ada riwayat.
+                <!-- Penerapan Kamus Search Box Global Standar -->
+                <div class="search-section" style="margin-top: var(--space-4);">
+                    <div class="search-box">
+                        自由 🔎
+                        <input type="text" id="search-input" class="input" placeholder="Cari istilah sastra..." autocomplete="off">
                     </div>
                 </div>
 
-                <div class="bookmark-section" style="margin-top: var(--space-6);">
-                    <h2>Bookmark Saya</h2>
-                    <div id="bookmark-list">
-                        Belum ada bookmark.
+                <!-- Loader Awal Menggunakan Skeleton Card Global -->
+                <div id="loading" style="margin-top: var(--space-4);">
+                    <div class="card skeleton" style="height: 100px;"></div>
+                </div>
+
+                <div class="history-section card" style="margin-top: var(--space-6);">
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Terakhir Dicari</h2>
+                        <button id="clear-history" class="btn btn-outline">Hapus Riwayat</button>
+                    </div>
+                    <div class="card-body">
+                        <div id="history-list">
+                            <div class="empty-state">
+                                <div class="empty-icon">📚</div>
+                                <h3>Belum Ada Riwayat</h3>
+                                <p>Aktivitas riwayat pencarian Anda akan muncul di sini.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="az-section" style="margin-top: var(--space-6);">
-                    <h2>Daftar A-Z</h2>
-                    <div id="az-filter">
-                        <button class="az-btn aktif" data-huruf="">
-                            Semua
-                        </button>
-                        <button class="az-btn" data-huruf="A">A</button>
-                        <button class="az-btn" data-huruf="B">B</button>
-                        <button class="az-btn" data-huruf="C">C</button>
-                        <button class="az-btn" data-huruf="D">D</button>
-                        <button class="az-btn" data-huruf="E">E</button>
-                        <button class="az-btn" data-huruf="F">F</button>
-                        <button class="az-btn" data-huruf="G">G</button>
-                        <button class="az-btn" data-huruf="H">H</button>
-                        <button class="az-btn" data-huruf="I">I</button>
-                        <button class="az-btn" data-huruf="J">J</button>
-                        <button class="az-btn" data-huruf="K">K</button>
-                        <button class="az-btn" data-huruf="L">L</button>
-                        <button class="az-btn" data-huruf="M">M</button>
-                        <button class="az-btn" data-huruf="N">N</button>
-                        <button class="az-btn" data-huruf="O">O</button>
-                        <button class="az-btn" data-huruf="P">P</button>
-                        <button class="az-btn" data-huruf="Q">Q</button>
-                        <button class="az-btn" data-huruf="R">R</button>
-                        <button class="az-btn" data-huruf="S">S</button>
-                        <button class="az-btn" data-huruf="T">T</button>
-                        <button class="az-btn" data-huruf="U">U</button>
-                        <button class="az-btn" data-huruf="V">V</button>
-                        <button class="az-btn" data-huruf="W">W</button>
-                        <button class="az-btn" data-huruf="X">X</button>
-                        <button class="az-btn" data-huruf="Y">Y</button>
-                        <button class="az-btn" data-huruf="Z">Z</button>
+                <div class="bookmark-section card" style="margin-top: var(--space-6);">
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Bookmark Saya</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="bookmark-list">
+                            <div class="empty-state">
+                                <div class="empty-icon">📚</div>
+                                <h3>Belum Ada Bookmark</h3>
+                                <p>Simpan istilah sastra favorit Anda di sini.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="tingkat-section" style="margin-top: var(--space-6);">
-                    <h2>Tingkat Kesulitan</h2>
-                    <div id="tingkat-filter">
-                        <button class="tingkat-btn aktif" data-tingkat="">
-                            Semua
-                        </button>
-                        <button class="tingkat-btn" data-tingkat="Dasar">
-                            Dasar
-                        </button>
-                        <button class="tingkat-btn" data-tingkat="Menengah">
-                            Menengah
-                        </button>
-                        <button class="tingkat-btn" data-tingkat="Lanjutan">
-                            Lanjutan
-                        </button>
+                <div class="az-section card" style="margin-top: var(--space-6);">
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Daftar A-Z</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="az-filter" style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+                            <button class="az-btn btn btn-primary aktif" data-huruf="">Semua</button>
+                            <button class="az-btn btn btn-outline" data-huruf="A">A</button>
+                            <button class="az-btn btn btn-outline" data-huruf="B">B</button>
+                            <button class="az-btn btn btn-outline" data-huruf="C">C</button>
+                            <button class="az-btn btn btn-outline" data-huruf="D">D</button>
+                            <button class="az-btn btn btn-outline" data-huruf="E">E</button>
+                            <button class="az-btn btn btn-outline" data-huruf="F">F</button>
+                            <button class="az-btn btn btn-outline" data-huruf="G">G</button>
+                            <button class="az-btn btn btn-outline" data-huruf="H">H</button>
+                            <button class="az-btn btn btn-outline" data-huruf="I">I</button>
+                            <button class="az-btn btn btn-outline" data-huruf="J">J</button>
+                            <button class="az-btn btn btn-outline" data-huruf="K">K</button>
+                            <button class="az-btn btn btn-outline" data-huruf="L">L</button>
+                            <button class="az-btn btn btn-outline" data-huruf="M">M</button>
+                            <button class="az-btn btn btn-outline" data-huruf="N">N</button>
+                            <button class="az-btn btn btn-outline" data-huruf="O">O</button>
+                            <button class="az-btn btn btn-outline" data-huruf="P">P</button>
+                            <button class="az-btn btn btn-outline" data-huruf="Q">Q</button>
+                            <button class="az-btn btn btn-outline" data-huruf="R">R</button>
+                            <button class="az-btn btn btn-outline" data-huruf="S">S</button>
+                            <button class="az-btn btn btn-outline" data-huruf="T">T</button>
+                            <button class="az-btn btn btn-outline" data-huruf="U">U</button>
+                            <button class="az-btn btn btn-outline" data-huruf="V">V</button>
+                            <button class="az-btn btn btn-outline" data-huruf="W">W</button>
+                            <button class="az-btn btn btn-outline" data-huruf="X">X</button>
+                            <button class="az-btn btn btn-outline" data-huruf="Y">Y</button>
+                            <button class="az-btn btn btn-outline" data-huruf="Z">Z</button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="kategori-section" style="margin-top: var(--space-6);">
-                    <h2>Kategori</h2>
-                    <div id="kategori-list">
-                        Memuat kategori...
+                <div class="tingkat-section card" style="margin-top: var(--space-6);">
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Tingkat Kesulitan</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="tingkat-filter" style="display: flex; gap: var(--space-2);">
+                            <button class="tingkat-btn btn btn-primary aktif" data-tingkat="">Semua</button>
+                            <button class="tingkat-btn btn btn-outline" data-tingkat="Dasar">
+                                <span class="badge badge-primary">Dasar</span>
+                            </button>
+                            <button class="tingkat-btn btn btn-outline" data-tingkat="Menengah">
+                                <span class="badge badge-primary">Menengah</span>
+                            </button>
+                            <button class="tingkat-btn btn btn-outline" data-tingkat="Lanjutan">
+                                <span class="badge badge-primary">Lanjutan</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kategori-section card" style="margin-top: var(--space-6);">
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Kategori</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="kategori-list">
+                            <div class="card skeleton" style="height: 50px;"></div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="istilah-section" style="margin-top: var(--space-6);">
                     <div id="daftar-istilah">
-                        Memuat istilah...
+                        <div class="card skeleton" style="height: 150px; margin-bottom: var(--space-4);"></div>
+                        <div class="card skeleton" style="height: 150px;"></div>
                     </div>
                 </div>
 
@@ -158,6 +196,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
 
     <script src="index.js"></script>
 

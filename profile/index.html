@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>Profil Saya</title>
+    <title>Profil Saya | Portal Sastra Indonesia</title>
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-    
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/profile.css">
 </head>
@@ -26,11 +29,7 @@
 
 <main>
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -41,26 +40,38 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Profil Saya
-
                     </h1>
 
                     <p class="section-description">
-
                         Kelola informasi akun dan pengaturan profil Anda.
-
                     </p>
 
                 </div>
 
             </div>
 
-            <div id="profile-container" style="margin-top: var(--space-6);">
+            <div class="card" style="margin-top: var(--space-6);">
+                
+                <div class="card-header">
+                    <h3 style="margin: 0;">Informasi Akun</h3>
+                </div>
 
-                <p>
-                    Memuat profil...
-                </p>
+                <div class="card-body">
+
+                    <div id="profile-container">
+
+                        <div class="card skeleton" style="height: 200px;"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer" style="display: flex; justify-content: flex-end; gap: var(--space-2);">
+                    <!-- Contoh penempatan tombol standar jika diperlukan:
+                    <button class="btn btn-primary">Simpan Perubahan</button> 
+                    -->
+                </div>
 
             </div>
 
@@ -87,6 +98,7 @@
 <script src="/js/layout/layout.js"></script>
 <script src="/js/layout/breadcrumb.js"></script>
 <script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
 <script src="index.js"></script>
 

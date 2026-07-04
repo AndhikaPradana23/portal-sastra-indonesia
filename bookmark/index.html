@@ -3,13 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Bookmark Saya</title>
+
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/typography.css">
     <link rel="stylesheet" href="/css/spacing.css">
-    <link rel="stylesheet" href="/css/utilities.css">
-    <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
     <link rel="stylesheet" href="/css/bookmark.css">
 </head>
 <body>
@@ -18,11 +29,7 @@
 
     <main class="bookmark-page">
 
-        <section
-            class="
-            section
-            "
-        >
+        <section class="section">
 
             <div class="container">
 
@@ -31,65 +38,69 @@
                     <div>
 
                         <h1 class="section-title">
-
                             Bookmark
-
                         </h1>
 
                         <p class="section-description">
-
                             Simpan konten favorit Anda.
-
                         </p>
 
                     </div>
 
                 </div>
 
-                <div class="bookmark-summary" style="margin-top: var(--space-6);">
-                    <div class="bookmark-total">
-                        <p id="bookmark-total">0 Bookmark</p>
+                <div class="bookmark-summary card" style="margin-top: var(--space-6);">
+                    <div class="card-header">
+                        <div class="bookmark-total">
+                            <h3 id="bookmark-total" style="margin: 0;">0 Bookmark</h3>
+                        </div>
                     </div>
-                    <div id="bookmark-count-grid" class="bookmark-count-grid">
+                    <div class="card-body">
+                        <div id="bookmark-count-grid" class="bookmark-count-grid">
+                        </div>
                     </div>
                 </div>
 
-                <div class="bookmark-export" style="margin-top: var(--space-4);">
-                    <button id="export-json">
+                <div class="bookmark-export" style="margin-top: var(--space-4); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                    <button id="export-json" class="btn btn-outline">
                         Export JSON
                     </button>
-                    <button id="export-csv">
+                    <button id="export-csv" class="btn btn-outline">
                         Export CSV
                     </button>
-                    <button id="export-txt">
+                    <button id="export-txt" class="btn btn-outline">
                         Export TXT
                     </button>
                 </div>
 
                 <div class="bookmark-search" style="margin-top: var(--space-4);">
-                    <input id="bookmark-search" type="text" placeholder="Cari bookmark...">
+                    <div class="search-box">
+                        🔎
+                        <input id="bookmark-search" class="input" type="text" placeholder="Cari bookmark...">
+                    </div>
                 </div>
 
-                <div class="bookmark-filter" style="margin-top: var(--space-4);">
-                    <button class="bookmark-filter-btn active" data-type="all">
+                <div class="bookmark-filter" style="margin-top: var(--space-4); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                    <button class="bookmark-filter-btn btn btn-primary active" data-type="all">
                         Semua
                     </button>
-                    <button class="bookmark-filter-btn" data-type="istilah">
+                    <button class="bookmark-filter-btn btn btn-outline" data-type="istilah">
                         Istilah
                     </button>
-                    <button class="bookmark-filter-btn" data-type="artikel">
+                    <button class="bookmark-filter-btn btn btn-outline" data-type="artikel">
                         Artikel
                     </button>
-                    <button class="bookmark-filter-btn" data-type="sastrawan">
+                    <button class="bookmark-filter-btn btn btn-outline" data-type="sastrawan">
                         Sastrawan
                     </button>
-                    <button class="bookmark-filter-btn" data-type="karya">
+                    <button class="bookmark-filter-btn btn btn-outline" data-type="karya">
                         Karya
                     </button>
                 </div>
 
                 <div id="bookmark-list" style="margin-top: var(--space-6);">
-                    <p>Memuat bookmark...</p>
+                    <div class="card skeleton" style="height: 200px; margin-bottom: var(--space-4);"></div>
+                    <div class="card skeleton" style="height: 200px; margin-bottom: var(--space-4);"></div>
                 </div>
 
             </div>
@@ -111,6 +122,7 @@
     
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
 
     <script src="/js/core/helpers.js"></script>
 

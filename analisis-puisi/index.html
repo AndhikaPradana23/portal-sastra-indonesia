@@ -9,16 +9,19 @@
     <title>Analisis Puisi</title>
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/analisis-puisi.css">
 
@@ -29,11 +32,7 @@
 
     <main>
 
-        <section
-            class="
-            section
-            "
-        >
+        <section class="section">
 
             <div class="container">
 
@@ -42,15 +41,11 @@
                     <div>
 
                         <h1 class="section-title">
-
                             Analisis Puisi
-
                         </h1>
 
                         <p class="section-description">
-
-                            Tempel puisi dan dapatkan analisis otomatis.
-
+                            Tempel puisi dan dapatkan analisis otomatis secara instan.
                         </p>
 
                     </div>
@@ -59,7 +54,11 @@
 
                 <div class="input-section" style="margin-top: var(--space-6);">
 
-                    <textarea id="puisi-input" placeholder="Masukkan puisi di sini..."></textarea>
+                    <textarea 
+                        id="puisi-input" 
+                        class="textarea" 
+                        placeholder="Masukkan puisi di sini..."
+                    ></textarea>
 
                     <div class="input-info">
 
@@ -73,17 +72,17 @@
 
                     </div>
 
-                    <div class="input-actions">
+                    <div class="input-actions" style="margin-top: var(--space-3); display: flex; gap: var(--space-2);">
 
-                        <button id="example-btn" type="button">
+                        <button id="example-btn" class="btn btn-outline" type="button">
                             Contoh Puisi
                         </button>
 
-                        <button id="clear-btn" type="button">
+                        <button id="clear-btn" class="btn btn-outline" type="button">
                             Hapus
                         </button>
 
-                        <button id="analyze-btn" type="button" disabled>
+                        <button id="analyze-btn" class="btn btn-primary" type="button" disabled>
                             Analisis
                         </button>
 
@@ -91,8 +90,20 @@
 
                 </div>
 
-                <div id="analysis-result" style="margin-top: var(--space-6);">
-                    Belum ada analisis.
+                <div id="analysis-result" style="margin-top: var(--space-8);">
+                    
+                    <div class="empty-state">
+                        <div class="empty-icon">
+                            📝
+                        </div>
+                        <h3>
+                            Belum Ada Analisis
+                        </h3>
+                        <p>
+                            Silakan masukkan teks puisi di atas lalu klik tombol Analisis.
+                        </p>
+                    </div>
+
                 </div>
 
             </div>
@@ -114,6 +125,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
 
     <script src="/js/puisi/input-manager.js"></script>
     <script src="/js/puisi/bait-analyzer.js"></script>

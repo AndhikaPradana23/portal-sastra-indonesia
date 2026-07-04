@@ -4,14 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Istilah</title>
+
+    <title>Detail Istilah | Portal Sastra Indonesia</title>
+
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/typography.css">
     <link rel="stylesheet" href="/css/spacing.css">
-    <link rel="stylesheet" href="/css/utilities.css">
-    <link rel="stylesheet" href="/css/cards.css">
-    <link rel="stylesheet" href="/css/kamus-istilah.css">
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet" href="/css/kamus-istilah.css">
 </head>
 
 <body>
@@ -22,48 +33,55 @@
 
     <main>
 
-        <section
-            class="
-            section
-            "
-        >
+        <section class="section">
 
             <div class="container">
 
                 <div class="section-header">
-
                     <div>
-
-                        <h1
-                            class="
-                            section-title
-                            "
-                        >
-
+                        <h1 class="section-title">
                             Kamus Istilah Sastra
-
                         </h1>
-
-                        <p
-                            class="
-                            section-description
-                            "
-                        >
-
+                        <p class="section-description">
                             Kumpulan istilah sastra Indonesia.
-
                         </p>
-
                     </div>
-
                 </div>
 
-                <div id="detail-istilah" class="detail-container">
-                    <button id="bookmark-button" class="bookmark-btn">☆ Simpan</button>
+                <div id="detail-istilah" class="detail-container card" style="margin-top: var(--space-6);">
                     
-                    <div id="loading">
-                        Memuat istilah...
+                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+                        <h3 style="margin: 0;">Detail Istilah Sastra</h3>
+                        
+                        <div class="card-actions" style="display: flex; gap: var(--space-2);">
+                            <!-- Standarisasi Tombol Aksi Bookmark -->
+                            <button id="bookmark-button" class="btn btn-outline">
+                                🔖 Bookmark
+                            </button>
+                            <button id="citation-btn" class="btn btn-secondary">
+                                📋 Sitasi Istilah
+                            </button>
+                        </div>
                     </div>
+
+                    <div class="card-body">
+                        <div id="loading">
+                            <div class="card skeleton" style="height: 120px; margin-bottom: var(--space-4);"></div>
+                            <div class="card skeleton" style="height: 80px;"></div>
+                        </div>
+
+                        <!--
+                          Catatan untuk sistem JS Anda: Jika data gagal ditemukan, 
+                          ganti isi .card-body dengan komponen standarisasi berikut:
+                          
+                          <div class="empty-state">
+                              <div class="empty-icon">📚</div>
+                              <h3>Istilah Tidak Ditemukan</h3>
+                              <p>Silakan periksa kembali kata kunci atau kembali ke halaman utama kamus.</p>
+                          </div>
+                        -->
+                    </div>
+
                 </div>
 
             </div>
@@ -71,8 +89,6 @@
         </section>
 
     </main>
-
-    <button id="citation-btn" class="citation-btn">📋 Sitasi Istilah</button>
 
     <footer id="site-footer"></footer>
 
@@ -88,6 +104,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
     <script src="/js/layout/breadcrumb.js"></script>
 
     <script src="/js/bookmark/bookmark-service.js"></script>

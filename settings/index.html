@@ -2,20 +2,23 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-
-    <title>Pengaturan Akun</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan Akun | Portal Sastra Indonesia</title>
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-    
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/settings.css">
 </head>
@@ -26,11 +29,7 @@
 
 <main>
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -39,80 +38,138 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Pengaturan Akun
-
                     </h1>
 
                     <p class="section-description">
-
                         Kelola informasi akun, profil personal, dan keamanan kata sandi Anda.
-
                     </p>
 
                 </div>
 
             </div>
 
-            <div style="margin-top: var(--space-6);">
+            <div style="margin-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-5);">
 
-                <section class="settings-card" style="margin-bottom: var(--space-4);">
+                <div class="card">
 
-                    <h2>
-                        Informasi Akun
-                    </h2>
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">
+                            Informasi Akun
+                        </h2>
+                    </div>
 
-                    <p>
-                        Nama:
-                        <strong id="nama-user">
-                            -
-                        </strong>
-                    </p>
+                    <div class="card-body">
 
-                    <p>
-                        Email:
-                        <strong id="email-user">
-                            -
-                        </strong>
-                    </p>
+                        <p style="margin-bottom: var(--space-2);">
+                            Nama: 
+                            <strong id="nama-user">-</strong>
+                        </p>
 
-                </section>
+                        <p style="margin: 0;">
+                            Email: 
+                            <strong id="email-user">-</strong>
+                        </p>
 
-                <section class="settings-card" style="margin-bottom: var(--space-4);">
+                    </div>
 
-                    <h2>
-                        Ubah Nama
-                    </h2>
+                </div>
 
-                    <form id="form-nama">
+                <div class="card">
 
-                        <input id="nama" type="text" placeholder="Nama baru">
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">
+                            Ubah Nama
+                        </h2>
+                    </div>
 
-                        <button type="submit">
+                    <div class="card-body">
+
+                        <form id="form-nama">
+
+                            <div class="form-group">
+
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                                    Nama Baru
+                                </label>
+
+                                <input 
+                                    id="nama" 
+                                    class="input" 
+                                    type="text" 
+                                    placeholder="Masukkan nama baru"
+                                >
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="card-footer" style="display: flex; justify-content: flex-end;">
+
+                        <button 
+                            type="submit" 
+                            form="form-nama" 
+                            class="
+                            btn 
+                            btn-primary
+                            "
+                        >
                             Simpan
                         </button>
 
-                    </form>
+                    </div>
 
-                </section>
+                </div>
 
-                <section class="settings-card">
+                <div class="card">
 
-                    <h2>
-                        Ganti Password
-                    </h2>
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">
+                            Ganti Password
+                        </h2>
+                    </div>
 
-                    <form id="form-password">
+                    <div class="card-body">
 
-                        <input id="password" type="password" placeholder="Password baru">
+                        <form id="form-password">
 
-                        <button type="submit">
+                            <div class="form-group">
+
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                                    Password Baru
+                                </label>
+
+                                <input 
+                                    id="password" 
+                                    class="input" 
+                                    type="password" 
+                                    placeholder="Masukkan password baru"
+                                >
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="card-footer" style="display: flex; justify-content: flex-end;">
+
+                        <button 
+                            type="submit" 
+                            form="form-password" 
+                            class="
+                            btn 
+                            btn-primary
+                            "
+                        >
                             Ganti Password
                         </button>
 
-                    </form>
+                    </div>
 
-                </section>
+                </div>
 
             </div>
 
@@ -129,10 +186,11 @@
 <script src="/js/supabase-public.js"></script>
 
 <script src="/js/auth/auth-service.js"></script>
-
 <script src="/js/auth/protected-route.js"></script>
 
 <script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
 <script src="/settings/index.js"></script>
 

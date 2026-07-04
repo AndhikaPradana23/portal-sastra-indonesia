@@ -94,87 +94,148 @@ body {
     text-decoration: underline;
 }
 
-/* ========= HEADER ========= */
-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+/* ========= HEADER (Langkah 2: Layout Header) ========= */
+.site-header {
     position: sticky;
     top: 0;
-    z-index: 1000;
-    box-shadow: var(--shadow-sm); /* Diselaraskan dengan sistem shadow */
+    z-index: 999;
+    background: rgba(255, 255, 255, .9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
 }
 
-header .container {
+.site-header .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: var(--space-4) 0; /* Menggunakan padding vertikal saja, horizontal diatur oleh celah kontainer global (16px) */
+    justify-content: space-between;
+    gap: var(--space-5);
+    min-height: 72px;
 }
 
 /* ========= LOGO ========= */
 .logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo h1 {
-    margin: 0;
-    font-size: 1.5rem; /* 24px - Menggunakan skala .text-2xl / h3 */
-    font-weight: 700;
+    font-size: 1.2rem;
+    font-weight: 800;
     color: var(--secondary);
-    letter-spacing: -0.5px;
-}
-
-/* ========= NAVIGATION ========= */
-nav {
-    display: flex;
-    align-items: center;
-}
-
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: var(--space-6); /* 32px - Mengikuti kelipatan spacing system */
-}
-
-nav li {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-nav a {
     text-decoration: none;
-    color: var(--text-light);
+    white-space: nowrap;
+}
+
+/* ========= NAVIGATION (Langkah 2 & Langkah 3) ========= */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text);
     font-weight: 600;
-    font-size: 0.9375rem; /* Menjaga proporsi navigasi tetap ideal */
-    transition: color 0.2s ease;
+    transition: .2s;
+}
+
+.main-nav a:hover {
+    color: var(--primary);
+}
+
+/* ========= ACTIVE MENU INDICATOR (Langkah 3) ========= */
+.main-nav a.active {
+    color: var(--primary);
     position: relative;
-    padding: var(--space-2) 0; /* 8px */
 }
 
-nav a:hover {
-    color: var(--primary);
-}
-
-/* ========= ACTIVE MENU ========= */
-nav a.active {
-    color: var(--primary);
-}
-
-nav a.active::after {
+.main-nav a.active::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -20px; /* Disesuaikan agar pas di atas border-bottom header */
-    width: 100%;
+    right: 0;
+    bottom: -12px;
     height: 3px;
-    border-radius: 10px 10px 0 0;
+    border-radius: 999px;
     background: var(--primary);
+}
+
+/* ========= TOOLS DROPDOWN (Langkah 4) ========= */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    border: none;
+    background: transparent;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    min-width: 240px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: none;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 14px 18px;
+}
+
+.dropdown-menu a:hover {
+    background: var(--background);
+}
+
+/* ========= RIGHT AREA & SEARCH (Langkah 2, 5 & 6) ========= */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.header-search {
+    width: 260px;
+}
+
+.profile-button {
+    white-space: nowrap;
+}
+
+/* Tombol hamburger menu - Sembunyikan default di desktop */
+.mobile-menu-btn {
+    display: none;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+}
+
+/* ========= MOBILE DRAWER (MENU RESPONSIF) ========= */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    height: 100vh;
+    background: white;
+    transition: .3s;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+}
+
+.mobile-menu-open .mobile-drawer {
+    right: 0;
 }
 
 /* ========= AUTH DROPDOWN & MENU ========= */
@@ -185,22 +246,21 @@ nav a.active::after {
 .auth-dropdown {
     display: flex;
     align-items: center;
-    gap: var(--space-4); /* 16px */
+    gap: var(--space-4);
     background: var(--surface);
-    padding: var(--space-2) var(--space-4); /* 8px 16px */
-    border-radius: var(--radius-full); /* Menggunakan token radius lingkaran penuh */
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
     border: 1px solid var(--border);
 }
 
 .auth-dropdown span {
     font-weight: 600;
-    font-size: 0.875rem; /* 14px - Mengikuti skala .text-sm */
+    font-size: 0.875rem;
     color: var(--text);
 }
 
-/* Link internal di dalam dropdown */
 .auth-dropdown a {
-    font-size: 0.875rem; /* 14px - Mengikuti skala .text-sm */
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--primary);
     text-decoration: none;
@@ -208,30 +268,21 @@ nav a.active::after {
 }
 
 .auth-dropdown a:hover {
-    text-decoration: none;
     opacity: 0.8;
 }
 
-/* Tombol logout dengan pemisah visual */
 .auth-dropdown a#logout-btn {
     color: var(--danger);
     border-left: 1px solid var(--border);
-    padding-left: var(--space-4); /* 16px */
-}
-
-.auth-dropdown a#logout-btn:hover {
-    color: var(--danger); 
-    opacity: 0.8;
-    text-decoration: none;
+    padding-left: var(--space-4);
 }
 
 /* ==========================================
    BREADCRUMB
 ========================================== */
 .breadcrumb {
-    /* Mengikuti aturan kontainer baru untuk membungkus struktur remah roti secara presisi */
     width: min(1200px, calc(100% - 32px));
-    margin: var(--space-5) auto; /* 24px atas-bawah, otomatis tengah */
+    margin: var(--space-5) auto;
     box-sizing: border-box;
 }
 
@@ -239,24 +290,24 @@ nav a.active::after {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--space-2); /* 8px */
+    gap: var(--space-2);
     margin: 0;
-    padding: var(--space-3) var(--space-4); /* 12px 16px */
+    padding: var(--space-3) var(--space-4);
     list-style: none;
     background: var(--surface);
-    border-radius: var(--radius-sm); /* 8px - Sesuai spesifikasi tokens */
+    border-radius: var(--radius-sm);
     border: 1px solid var(--border);
 }
 
 .breadcrumb li {
     display: flex;
     align-items: center;
-    font-size: 0.875rem; /* 14px - Mengikuti skala small/text-sm */
+    font-size: 0.875rem;
 }
 
 .breadcrumb li:not(:last-child)::after {
     content: "›";
-    margin-left: var(--space-2); /* 8px */
+    margin-left: var(--space-2);
     color: var(--text-light);
     font-size: 1.125rem;
     font-weight: bold;
@@ -281,73 +332,31 @@ nav a.active::after {
 
 /* ========= FOOTER ========= */
 footer {
-    margin-top: var(--space-9); /* 96px - Menggunakan spacing paling besar */
+    margin-top: var(--space-9);
     background: var(--surface);
     border-top: 1px solid var(--border);
 }
 
 footer .container {
-    padding: var(--space-7) 0; /* Menggunakan padding vertikal saja, horizontal diatur otomatis oleh kontainer global */
+    padding: var(--space-7) 0;
     text-align: center;
 }
 
 footer p {
     margin: 0;
     color: var(--text-light);
-    font-size: 0.875rem; /* 14px */
+    font-size: 0.875rem;
     line-height: 1.6;
-}
-
-/* ========= RESPONSIVE ========= */
-@media (max-width: 768px) { /* Diselaraskan dengan breakpoint media query typography.css (768px) */
-    header .container {
-        flex-direction: column;
-        gap: var(--space-4);
-        padding: var(--space-4) 0;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: var(--space-4); /* 16px */
-    }
-
-    nav a.active::after {
-        display: none;
-    }
-}
-
-@media (max-width: 640px) {
-    .logo h1 {
-        font-size: 1.25rem; /* 20px - Mengikuti skala .text-xl */
-    }
-
-    nav ul {
-        gap: var(--space-3); /* 12px */
-    }
-    
-    nav a, .auth-dropdown span, .auth-dropdown a {
-        font-size: 0.8125rem;
-    }
-
-    .auth-dropdown {
-        gap: var(--space-2); /* 8px */
-        padding: var(--space-1) var(--space-3); /* 4px 12px */
-    }
-
-    .auth-dropdown a#logout-btn {
-        padding-left: var(--space-3);
-    }
 }
 
 /* ==========================================
    BOOKMARK BUTTON
 ========================================== */
 .bookmark-btn {
-    margin-top: var(--space-5); /* 24px */
-    padding: var(--space-3) var(--space-5); /* 12px 24px - Sesuai standar button di spacing.css */
+    margin-top: var(--space-5);
+    padding: var(--space-3) var(--space-5);
     border: 1px solid var(--primary);
-    border-radius: var(--radius-md); /* Sesuai standarisasi button di utilities.css */
+    border-radius: var(--radius-md);
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
@@ -356,7 +365,7 @@ footer p {
     transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2); /* 8px */
+    gap: var(--space-2);
 }
 
 .bookmark-btn:hover {
@@ -373,4 +382,24 @@ footer p {
 .bookmark-btn.bookmarked:hover {
     background: var(--primary-hover);
     border-color: var(--primary-hover);
+}
+
+/* ========= RESPONSIVE (Langkah 7: Mobile Header) ========= */
+@media (max-width: 768px) {
+    .main-nav, 
+    .header-search {
+        display: none; /* Sembunyikan navigasi utama dan search di mobile */
+    }
+
+    .mobile-menu-btn {
+        display: block; /* Munculkan hamburger di mobile */
+    }
+    
+    .site-header .container {
+        min-height: 60px; /* Sedikit lebih ramping di perangkat mobile */
+    }
+
+    .main-nav a.active::after {
+        display: none;
+    }
 }

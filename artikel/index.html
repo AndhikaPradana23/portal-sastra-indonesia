@@ -3,41 +3,50 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-    Artikel Sastra Indonesia | Portal Sastra Indonesia
-</title>
+    <title>
+        Artikel Sastra Indonesia | Portal Sastra Indonesia
+    </title>
 
-<meta id="meta-description" name="description" content="Kumpulan artikel sastra Indonesia mengenai teori sastra, kritik sastra, puisi, novel, cerpen, drama, serta berbagai kajian akademik.">
+    <meta id="meta-description" name="description" content="Kumpulan artikel sastra Indonesia mengenai teori sastra, kritik sastra, puisi, novel, cerpen, drama, serta berbagai kajian akademik.">
 
-<link id="canonical-url" rel="canonical" href="">
+    <link id="canonical-url" rel="canonical" href="">
 
-<meta id="og-title" property="og:title" content="">
+    <meta id="og-title" property="og:title" content="">
 
-<meta id="og-description" property="og:description" content="">
+    <meta id="og-description" property="og:description" content="">
 
-<meta id="og-url" property="og:url" content="">
+    <meta id="og-url" property="og:url" content="">
 
-<meta property="og:type"content="website">
+    <meta property="og:type" content="website">
 
-<meta property="og:site_name" content="Portal Sastra Indonesia">
+    <meta property="og:site_name" content="Portal Sastra Indonesia">
 
-<meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary_large_image">
 
-<meta id="twitter-title" name="twitter:title" content="">
+    <meta id="twitter-title" name="twitter:title" content="">
 
-<meta id="twitter-description" name="twitter:description" content="">
+    <meta id="twitter-description" name="twitter:description" content="">
 
-<link rel="stylesheet" href="/css/variables.css">
-<link rel="stylesheet" href="/css/typography.css">
-<link rel="stylesheet" href="/css/spacing.css">
-<link rel="stylesheet" href="/css/utilities.css">
-<link rel="stylesheet" href="/css/cards.css">
-<link rel="stylesheet" href="/css/artikel.css">
-<link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/typography.css">
+    <link rel="stylesheet" href="/css/spacing.css">
+    <link rel="stylesheet" href="/css/layout.css">
+
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet" href="/css/artikel.css">
 
 </head>
 
@@ -47,11 +56,7 @@
 
     <main class="artikel-page">
 
-        <section
-            class="
-            section
-            "
-        >
+        <section class="section">
 
             <div class="container">
 
@@ -60,15 +65,11 @@
                     <div>
 
                         <h1 class="section-title">
-
                             Artikel Sastra
-
                         </h1>
 
                         <p class="section-description">
-
                             Artikel dan kajian sastra Indonesia.
-
                         </p>
 
                     </div>
@@ -76,9 +77,10 @@
                 </div>
 
                 <div class="search-section" style="margin-top: var(--space-6);">
-
-                    <input type="search" id="search-artikel" placeholder="Cari artikel..." autocomplete="off">
-
+                    <div class="search-box">
+                        🔎
+                        <input type="search" id="search-artikel" class="input" placeholder="Cari artikel..." autocomplete="off">
+                    </div>
                 </div>
 
                 <div class="filter-section" style="margin-top: var(--space-6);">
@@ -88,7 +90,7 @@
                     </h2>
 
                     <div id="kategori-filter">
-                        Memuat kategori...
+                        <span class="badge badge-primary">Memuat kategori...</span>
                     </div>
 
                 </div>
@@ -100,7 +102,7 @@
                     </h2>
 
                     <div id="tag-filter">
-                        Memuat tag...
+                        <span class="badge badge-primary">Memuat tag...</span>
                     </div>
 
                 </div>
@@ -109,34 +111,34 @@
 
                     <div id="artikel-list" class="post-grid">
 
-                        <p>Memuat artikel...</p>
+                        <div class="card skeleton" style="height: 200px;"></div>
+                        <div class="card skeleton" style="height: 200px;"></div>
+                        <div class="card skeleton" style="height: 200px;"></div>
 
                     </div>
 
                     <aside class="artikel-sidebar">
 
-                        <div class="sidebar-box">
-
-                            <h2>
-                                Artikel Populer
-                            </h2>
-
-                            <div id="artikel-populer">
-                                Memuat...
+                        <div class="sidebar-box card">
+                            <div class="card-header">
+                                <h2>
+                                    Artikel Populer
+                                </h2>
                             </div>
-
+                            <div class="card-body" id="artikel-populer">
+                                <p class="text-light">Memuat...</p>
+                            </div>
                         </div>
 
-                        <div class="sidebar-box" style="margin-top: var(--space-6);">
-
-                            <h2>
-                                Artikel Terbaru
-                            </h2>
-
-                            <div id="artikel-terbaru">
-                                Memuat...
+                        <div class="sidebar-box card" style="margin-top: var(--space-6);">
+                            <div class="card-header">
+                                <h2>
+                                    Artikel Terbaru
+                                </h2>
                             </div>
-
+                            <div class="card-body" id="artikel-terbaru">
+                                <p class="text-light">Memuat...</p>
+                            </div>
                         </div>
 
                     </aside>
@@ -164,6 +166,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
 
     <script src="index.js"></script>
 

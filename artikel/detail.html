@@ -11,10 +11,19 @@
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/typography.css">
     <link rel="stylesheet" href="/css/spacing.css">
-    <link rel="stylesheet" href="/css/utilities.css">
-    <link rel="stylesheet" href="/css/cards.css">
-    <link rel="stylesheet" href="/css/artikel.css">
     <link rel="stylesheet" href="/css/layout.css">
+
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <link rel="stylesheet" href="/css/artikel.css">
 
 <script id="jsonld-schema" type="application/ld+json">{}</script>
 </head>
@@ -27,11 +36,7 @@
 
     <main class="article-detail">
 
-        <section
-            class="
-            section
-            "
-        >
+        <section class="section">
 
             <div class="container">
 
@@ -40,15 +45,11 @@
                     <div>
 
                         <h1 class="section-title">
-
                             Artikel Sastra
-
                         </h1>
 
                         <p class="section-description">
-
                             Artikel dan kajian sastra Indonesia.
-
                         </p>
 
                     </div>
@@ -59,37 +60,52 @@
 
                 <div id="thumbnail-container" style="margin-top: var(--space-4);"></div>
 
-                <h1 id="judul" style="margin-top: var(--space-4);">Memuat...</h1>
+                <!-- Representasi awal menggunakan skeleton untuk loading judul -->
+                <h1 id="judul" style="margin-top: var(--space-4);">
+                    <div class="skeleton" style="height: 40px; width: 70%; max-width: 600px; border-radius: var(--radius-sm);"></div>
+                </h1>
 
-                <div style="margin-top: var(--space-3); display: flex; gap: var(--space-2);">
-                    <button id="bookmark-button" class="bookmark-btn">☆ Simpan</button>
-                    <button id="citation-btn" class="citation-btn">📋 Sitasi Artikel</button>
+                <!-- Integrasi Standarisasi Tombol Aksi Baru -->
+                <div style="margin-top: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-2);">
+                    <button id="bookmark-button" class="bookmark-btn btn btn-outline">
+                        ☆ Simpan
+                    </button>
+                    <button id="citation-btn" class="citation-btn btn btn-secondary">
+                        📋 Sitasi Artikel
+                    </button>
                 </div>
 
-                <div id="artikel-meta" style="margin-top: var(--space-4);">
-                    <p id="kategori"></p>
-                    <p id="tanggal"></p>
-                    <p id="penulis"></p>
-                    <p id="estimasi-baca"></p>
+                <!-- Detail Meta dibungkus rapi untuk konsistensi layout -->
+                <div id="artikel-meta" class="text-light" style="margin-top: var(--space-5); display: flex; flex-wrap: wrap; gap: var(--space-4); font-size: 0.9rem;">
+                    <p id="kategori" style="margin: 0;"></p>
+                    <p id="tanggal" style="margin: 0;"></p>
+                    <p id="penulis" style="margin: 0;"></p>
+                    <p id="estimasi-baca" style="margin: 0;"></p>
                 </div>
 
-                <div id="tag-container" style="margin-top: var(--space-3);"></div>
+                <div id="tag-container" style="margin-top: var(--space-3); display: flex; flex-wrap: wrap; gap: var(--space-2);"></div>
 
-                <hr style="margin: var(--space-6) 0;">
+                <hr style="margin: var(--space-6) 0; border: none; border-bottom: 1px solid var(--border);">
 
-                <div id="isi"></div>
+                <!-- Area Isi Artikel -->
+                <div id="isi" class="card-body" style="line-height: 1.8;">
+                    <div class="skeleton" style="height: 20px; margin-bottom: var(--space-2);"></div>
+                    <div class="skeleton" style="height: 20px; margin-bottom: var(--space-2);"></div>
+                    <div class="skeleton" style="height: 20px; margin-bottom: var(--space-2); width: 85%;"></div>
+                </div>
 
+                <!-- Bagian Konten/Entitas Terkait (Dapat menggunakan kelas .card saat dirender dinamis di JS) -->
                 <div id="istilah-terkait-container" style="margin-top: var(--space-6);"></div>
 
-                <hr style="margin: var(--space-6) 0;">
+                <hr style="margin: var(--space-6) 0; border: none; border-bottom: 1px solid var(--border);">
 
                 <div id="sastrawan-terkait-container"></div>
 
-                <hr style="margin: var(--space-6) 0;">
+                <hr style="margin: var(--space-6) 0; border: none; border-bottom: 1px solid var(--border);">
 
                 <div id="karya-terkait-container"></div>
 
-                <hr style="margin: var(--space-6) 0;">
+                <hr style="margin: var(--space-6) 0; border: none; border-bottom: 1px solid var(--border);">
 
                 <div id="artikel-terkait-container"></div>
 
@@ -118,6 +134,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
     <script src="/js/layout/breadcrumb.js"></script>
 
     <script src="/js/citation/citation-auto.js"></script>

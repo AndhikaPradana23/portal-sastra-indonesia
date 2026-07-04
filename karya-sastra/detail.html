@@ -5,17 +5,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Portal Sastra Indonesia</title>
+<title>Detail Karya Sastra | Portal Sastra Indonesia</title>
 
 <meta id="meta-description" name="description" content="Portal Sastra Indonesia">
 
 <link rel="stylesheet" href="/css/variables.css">
 <link rel="stylesheet" href="/css/typography.css">
 <link rel="stylesheet" href="/css/spacing.css">
-<link rel="stylesheet" href="/css/utilities.css">
-<link rel="stylesheet" href="/css/cards.css">
-<link rel="stylesheet" href="/css/karya-sastra.css">
 <link rel="stylesheet" href="/css/layout.css">
+   
+<link rel="stylesheet" href="/css/buttons.css">
+<link rel="stylesheet" href="/css/cards.css">
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/badges.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/animations.css">
+<link rel="stylesheet" href="/css/utilities.css">
+<link rel="stylesheet" href="/css/responsive.css">
+
+<link rel="stylesheet" href="/css/karya-sastra.css">
 
 <script id="jsonld-schema" type="application/ld+json">{}</script>
 </head>
@@ -28,11 +37,7 @@
 
 <main>
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -41,30 +46,58 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Karya Sastra
-
                     </h1>
 
                     <p class="section-description">
-
                         Novel, puisi, cerpen, dan drama.
-
                     </p>
 
                 </div>
 
             </div>
 
-            <div class="bookmark-container">
-                <button id="bookmark-button" class="bookmark-btn">☆ Simpan</button>
-            </div>
+            <div class="card" style="margin-top: var(--space-6);">
+                
+                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                        <h3 style="margin: 0;">Konten Sastra</h3>
+                        <span class="badge badge-primary">Jenis Karya</span>
+                    </div>
+                    
+                    <div class="card-actions" style="display: flex; gap: var(--space-2);">
+                        <button id="bookmark-button" class="btn btn-outline">
+                            🔖 Bookmark
+                        </button>
+                        <button id="citation-btn" class="btn btn-secondary">
+                            📋 Sitasi Karya
+                        </button>
+                    </div>
+                </div>
 
-            <button id="citation-btn" class="citation-btn" style="margin-top: var(--space-4);">📋 Sitasi Karya</button>
+                <div class="card-body">
+                    
+                    <div id="detail-karya">
 
-            <div id="detail-karya" style="margin-top: var(--space-4);">
+                        <div id="loading-text">
+                            <div class="card skeleton" style="height: 150px; margin-bottom: var(--space-4);"></div>
+                            <div class="card skeleton" style="height: 100px;"></div>
+                        </div>
 
-                <div id="loading-text">Memuat data...</div>
+                        <!-- 
+                          Catatan untuk sistem JavaScript Anda: Jika data gagal dimuat atau kosong, 
+                          ganti isi kontainer di atas dengan markup standar empty-state berikut:
+                          
+                          <div class="empty-state">
+                              <div class="empty-icon">📚</div>
+                              <h3>Karya Tidak Ditemukan</h3>
+                              <p>Gagal memuat detail karya sastra. Silakan coba beberapa saat lagi.</p>
+                          </div>
+                        -->
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -93,6 +126,7 @@
 
 <script src="/js/layout/layout.js"></script>
 <script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 <script src="/js/layout/breadcrumb.js"></script>
 
 <script src="/js/citation/citation-auto.js"></script>

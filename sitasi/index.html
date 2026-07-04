@@ -2,8 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Generator Sitasi</title>
+    <title>Generator Sitasi | Portal Sastra Indonesia</title>
 
     <meta name="description" content="Generator sitasi APA, MLA, Chicago, dan Harvard untuk mahasiswa dan peneliti.">
 
@@ -16,16 +17,19 @@
     <script id="jsonld-schema" type="application/ld+json"></script>
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/sitasi.css">
 </head>
@@ -35,11 +39,7 @@
 
 <main>
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -48,108 +48,113 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Generator Sitasi
-
                     </h1>
 
                     <p class="section-description">
-
                         Buat sitasi secara otomatis dengan berbagai format akademik.
-
                     </p>
 
                 </div>
 
             </div>
 
-            <div style="margin-top: var(--space-6);">
+            <div style="margin-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-5);">
 
-                <form id="citation-form">
-
-                    <div class="field">
-                        <label>Penulis</label>
-
-                        <input id="author" type="text" placeholder="Nama penulis">
+                <div class="card">
+                    
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Input Data Referensi</h2>
                     </div>
 
-                    <div class="field">
-                        <label>Judul</label>
+                    <div class="card-body">
 
-                        <input id="title" type="text" placeholder="Judul artikel atau buku">
+                        <form id="citation-form" style="display: flex; flex-direction: column; gap: var(--space-4);">
+
+                            <div class="field">
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">Penulis</label>
+                                <input id="author" class="input" type="text" placeholder="Nama penulis">
+                            </div>
+
+                            <div class="field">
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">Judul</label>
+                                <input id="title" class="input" type="text" placeholder="Judul artikel atau buku">
+                            </div>
+
+                            <div class="field">
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">Tahun</label>
+                                <input id="year" class="input" type="number" placeholder="2026">
+                            </div>
+
+                            <div class="field">
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">Penerbit</label>
+                                <input id="publisher" class="input" type="text" placeholder="Nama penerbit">
+                            </div>
+
+                            <div class="field">
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">URL</label>
+                                <input id="url" class="input" type="url" placeholder="https://example.com">
+                            </div>
+
+                            <div class="field">
+                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">Format</label>
+                                <select id="style" class="select">
+                                    <option value="apa">APA</option>
+                                    <option value="mla">MLA</option>
+                                    <option value="chicago">Chicago</option>
+                                    <option value="harvard">Harvard</option>
+                                </select>
+                            </div>
+
+                        </form>
+
                     </div>
 
-                    <div class="field">
-                        <label>Tahun</label>
-
-                        <input id="year" type="number" placeholder="2026">
+                    <div class="card-footer" style="display: flex; justify-content: flex-end;">
+                        <button type="submit" form="citation-form" class="btn btn-secondary">
+                            Buat Sitasi
+                        </button>
                     </div>
 
-                    <div class="field">
-                        <label>Penerbit</label>
+                </div>
 
-                        <input id="publisher" type="text">
+                <section class="card citation-box">
+
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Hasil Sitasi</h2>
                     </div>
 
-                    <div class="field">
-                        <label>URL</label>
-
-                        <input id="url" type="url">
+                    <div class="card-body">
+                        <pre id="citation-result" class="citation-result" style="background-color: var(--color-gray-100); padding: var(--space-3); border-radius: var(--border-radius-md); font-family: monospace; white-space: pre-wrap;">Belum ada sitasi.</pre>
                     </div>
 
-                    <div class="field">
-                        <label>Format</label>
-
-                        <select id="style">
-
-                            <option value="apa">
-                                APA
-                            </option>
-
-                            <option value="mla">
-                                MLA
-                            </option>
-
-                            <option value="chicago">
-                                Chicago
-                            </option>
-
-                            <option value="harvard">
-                                Harvard
-                            </option>
-
-                        </select>
+                    <div class="card-footer" style="display: flex; gap: var(--space-2); justify-content: flex-end;">
+                        <button id="copy-citation" type="button" class="btn btn-outline">
+                            Salin Sitasi
+                        </button>
+                        <button id="download-citation" type="button" class="btn btn-outline">
+                            Download TXT
+                        </button>
                     </div>
-
-                    <button type="submit">
-                        Buat Sitasi
-                    </button>
-
-                </form>
-
-                <section class="citation-box" style="margin-top: var(--space-6);">
-
-                    <pre id="citation-result" class="citation-result">
-                        Belum ada sitasi.
-                    </pre>
-
-                    <button id="copy-citation" type="button" class="secondary-btn">
-                        Salin Sitasi
-                    </button>
-
-                    <button id="download-citation" type="button" class="secondary-btn">
-                        Download TXT
-                    </button>
 
                 </section>
 
-                <section class="citation-history" style="margin-top: var(--space-6);">
+                <section class="card citation-history">
 
-                    <h2>
-                        Riwayat Sitasi
-                    </h2>
+                    <div class="card-header">
+                        <h2 style="margin: 0; font-size: var(--font-size-lg);">
+                            Riwayat Sitasi
+                        </h2>
+                    </div>
 
-                    <div id="citation-history">
+                    <div class="card-body">
+                        <div id="citation-history">
+                            <div class="empty-state">
+                                <div class="empty-icon">📚</div>
+                                <h3>Belum Ada Riwayat</h3>
+                                <p>Sitasi yang Anda buat akan tersimpan di sini.</p>
+                            </div>
+                        </div>
                     </div>
 
                 </section>
@@ -173,8 +178,9 @@
 <script src="/js/auth/auth-ui.js"></script>
 <script src="/js/auth/auth-state.js"></script>
 
-<script src="/js/layout/active-menu.js"></script>
 <script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
 <script src="/js/citation/citation-formatters.js"></script>
 <script src="/js/citation/citation-history.js"></script>

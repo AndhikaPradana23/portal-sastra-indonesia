@@ -12,14 +12,19 @@
     <meta name="description" content="Cari istilah sastra, artikel, karya sastra, dan sastrawan dalam Portal Sastra Indonesia.">
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/index.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/search.css">
 
@@ -31,11 +36,7 @@
 
     <main>
 
-        <section
-            class="
-            section
-            "
-        >
+        <section class="section">
 
             <div class="container">
 
@@ -44,15 +45,11 @@
                     <div>
 
                         <h1 class="section-title">
-
                             Global Search
-
                         </h1>
 
                         <p class="section-description">
-
                             Cari istilah, artikel, karya sastra, maupun sastrawan.
-
                         </p>
 
                     </div>
@@ -61,7 +58,15 @@
 
                 <div class="search-box" style="margin-top: var(--space-6);">
 
-                    <input id="search-input" type="text" placeholder="Cari istilah, artikel, karya, sastrawan..." autocomplete="off">
+                    🔎
+
+                    <input 
+                        id="search-input" 
+                        class="input" 
+                        type="text" 
+                        placeholder="Cari istilah, artikel, karya, sastrawan..." 
+                        autocomplete="off"
+                    >
 
                     <div id="autocomplete-result" class="autocomplete-list"></div>
 
@@ -76,7 +81,11 @@
                     </h2>
 
                     <div id="search-history">
-                        Belum ada riwayat.
+                        <div class="empty-state">
+                            <div class="empty-icon">🕒</div>
+                            <h3>Belum Ada Riwayat</h3>
+                            <p>Aktivitas pencarian Anda akan muncul di sini.</p>
+                        </div>
                     </div>
 
                 </section>
@@ -86,7 +95,7 @@
                         🔥 Pencarian Populer
                     </h2>
                     <div id="popular-search">
-                        Memuat...
+                        <div class="card skeleton" style="height: 50px;"></div>
                     </div>
                 </section>
 
@@ -98,7 +107,7 @@
                 </div>
 
                 <section id="search-status" style="margin-top: var(--space-4);">
-                    Silakan ketik kata kunci.
+                    <div class="card skeleton" style="height: 200px;"></div>
                 </section>
 
                 <section id="search-results" class="search-results" style="margin-top: var(--space-4);">
@@ -118,7 +127,6 @@
     <script src="/js/search/search-service.js"></script>
     <script src="/js/search/search-renderer.js"></script>
     <script src="/js/search/autocomplete.js"></script>
-    <script src="/js/search/search-service.js"></script>
     <script src="/js/search/search-page.js"></script>
     <script src="/js/search/search-results.js"></script>
     <script src="/js/search/search-group.js"></script>
@@ -132,6 +140,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
 
     <script src="/js/auth/auth-service.js"></script>
     <script src="/js/auth/logout.js"></script>

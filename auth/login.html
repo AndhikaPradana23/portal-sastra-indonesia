@@ -8,14 +8,19 @@
     <title>Masuk</title>
 
     <link rel="stylesheet" href="/css/variables.css">
-
+    <link rel="stylesheet" href="/css/typography.css">
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-    
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/auth.css">
 </head>
@@ -25,51 +30,58 @@
 
     <div class="container">
 
-        <div class="auth-card">
+        <div class="auth-card card">
 
-            <h1>
-                Masuk
-            </h1>
-
-            <p>
-                Masuk untuk mengakses bookmark
-                dan fitur personal lainnya.
-            </p>
-
-            <form id="login-form">
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input id="email" type="email" required>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label>
-                        Password
-                    </label>
-
-                    <input id="password" type="password" required>
-
-                </div>
-
-                <button class="btn-auth" type="submit">
+            <div class="card-header">
+                <h1>
                     Masuk
-                </button>
+                </h1>
+            </div>
 
-            </form>
+            <div class="card-body">
+                <p style="margin-bottom: var(--space-4);">
+                    Masuk untuk mengakses bookmark
+                    dan fitur personal lainnya.
+                </p>
 
-            <p class="auth-footer">
-                Belum punya akun?
-                <a href="register.html">
-                    Daftar
-                </a>
-            </p>
+                <form id="login-form">
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <!-- Penerapan class "input" global -->
+                        <input id="email" class="input" type="email" required>
+
+                    </div>
+
+                    <div class="form-group" style="margin-top: var(--space-4);">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input id="password" class="input" type="password" required>
+
+                    </div>
+
+                    <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: var(--space-5);">
+                        Masuk
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="card-footer">
+                <p class="auth-footer">
+                    Belum punya akun?
+                    <a href="register.html">
+                        Daftar
+                    </a>
+                </p>
+            </div>
 
         </div>
 
@@ -81,6 +93,10 @@
 <script src="/js/supabase-public.js"></script>
 <script src="/js/auth/auth-service.js"></script>
 <script src="/js/auth/login.js"></script>
+
+<script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
 </body>
 </html>

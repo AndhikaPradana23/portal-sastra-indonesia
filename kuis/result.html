@@ -5,21 +5,24 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Hasil Kuis Sastra</title>
+    <title>Hasil Kuis Sastra | Portal Sastra Indonesia</title>
 
     <meta name="description" content="Lihat hasil kuis sastra Indonesia.">
 
     <link rel="stylesheet" href="/css/variables.css">
-
     <link rel="stylesheet" href="/css/typography.css">
-
     <link rel="stylesheet" href="/css/spacing.css">
-
-    <link rel="stylesheet" href="/css/utilities.css">
-
-    <link rel="stylesheet" href="/css/cards.css">
-
     <link rel="stylesheet" href="/css/layout.css">
+   
+    <link rel="stylesheet" href="/css/buttons.css">
+    <link rel="stylesheet" href="/css/cards.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/badges.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <link rel="stylesheet" href="/css/utilities.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/kuis.css">
 </head>
@@ -29,11 +32,7 @@
 
 <main class="quiz-result-page">
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -42,22 +41,51 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Kuis Sastra Indonesia
-
                     </h1>
 
                     <p class="section-description">
-
                         Uji pemahaman sastra Indonesia.
-
                     </p>
 
                 </div>
 
             </div>
 
-            <div id="quiz-result" style="margin-top: var(--space-6);"></div>
+            <div id="quiz-result-card" class="card" style="margin-top: var(--space-6);">
+                
+                <div class="card-header">
+                    <h3 style="margin: 0;">Ringkasan Hasil Evaluasi</h3>
+                </div>
+
+                <div class="card-body">
+                    
+                    <div id="quiz-result">
+                        
+                        <div class="card skeleton" style="height: 180px;"></div>
+                        
+                    </div>
+
+                </div>
+
+                <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+                    
+                    <a href="/kuis/index.html" class="btn btn-outline">
+                        ↩️ Menu Utama Kuis
+                    </a>
+                    
+                    <div style="display: flex; gap: var(--space-2);">
+                        <a href="/kuis/history.html" class="btn btn-outline">
+                            📜 Riwayat Skor
+                        </a>
+                        <a href="/kuis/play.html" class="btn btn-primary">
+                            🔄 Coba Lagi
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -78,6 +106,7 @@
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
+    <script src="/js/layout/mobile-menu.js"></script>
 
     <script src="/js/kuis/quiz-utils.js"></script>
     <script src="/js/kuis/quiz-storage.js"></script>

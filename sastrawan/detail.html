@@ -34,10 +34,19 @@
 <link rel="stylesheet" href="/css/variables.css">
 <link rel="stylesheet" href="/css/typography.css">
 <link rel="stylesheet" href="/css/spacing.css">
-<link rel="stylesheet" href="/css/utilities.css">
-<link rel="stylesheet" href="/css/cards.css">
-<link rel="stylesheet" href="/css/sastrawan.css">
 <link rel="stylesheet" href="/css/layout.css">
+   
+<link rel="stylesheet" href="/css/buttons.css">
+<link rel="stylesheet" href="/css/cards.css">
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/badges.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/skeleton.css">
+<link rel="stylesheet" href="/css/animations.css">
+<link rel="stylesheet" href="/css/utilities.css">
+<link rel="stylesheet" href="/css/responsive.css">
+
+<link rel="stylesheet" href="/css/sastrawan.css">
 
 <script id="person-schema" type="application/ld+json">{}</script>
 <script id="breadcrumb-schema" type="application/ld+json">{}</script>
@@ -50,15 +59,9 @@
 
 <div id="breadcrumb"></div>
 
-<button id="citation-btn" class="citation-btn">📋 Sitasi Profil</button>
-
 <main>
 
-    <section
-        class="
-        section
-        "
-    >
+    <section class="section">
 
         <div class="container">
 
@@ -67,27 +70,33 @@
                 <div>
 
                     <h1 class="section-title">
-
                         Database Sastrawan
-
                     </h1>
 
                     <p class="section-description">
-
                         Profil sastrawan Indonesia.
-
                     </p>
 
                 </div>
 
             </div>
 
-            <div class="bookmark-container">
-                <button id="bookmark-button" class="bookmark-btn">☆ Simpan</button>
+            <div class="action-container" style="display: flex; gap: var(--space-2); margin-top: var(--space-4);">
+                
+                <button id="citation-btn" class="btn btn-secondary citation-btn">
+                    📋 Sitasi Profil
+                </button>
+
+                <div class="bookmark-container">
+                    <button id="bookmark-button" class="btn btn-outline bookmark-btn">
+                        ☆ Simpan
+                    </button>
+                </div>
+
             </div>
 
             <article id="detail-container" class="detail-page" style="margin-top: var(--space-4);">
-                <p>Memuat data...</p>
+                <div class="card skeleton" style="height: 200px;"></div>
             </article>
 
         </div>
@@ -115,6 +124,7 @@
 
 <script src="/js/layout/layout.js"></script>
 <script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 <script src="/js/layout/breadcrumb.js"></script>
 
 <script src="/js/citation/citation-auto.js"></script>
