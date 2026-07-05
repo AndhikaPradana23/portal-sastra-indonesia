@@ -12,12 +12,22 @@ body {
    HERO NEW STYLE
 ==================================== */
 .hero {
-    padding: var(--space-9) var(--space-5); /* 96px 24px - Mengikuti spasing.css */
-    background: var(--surface);
+    padding: 120px 0;
+    background: linear-gradient(
+        180deg,
+        var(--primary-light),
+        white
+    );
     border-radius: var(--radius-xl); /* Sesuai standarisasi di utilities.css */
     margin-bottom: var(--space-7); /* 48px */
     text-align: center;
     box-shadow: var(--shadow-lg);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-badge {
@@ -29,6 +39,10 @@ body {
     font-weight: 700;
     font-size: 0.875rem; /* .text-sm */
     margin-bottom: var(--space-5); /* 24px */
+}
+
+.hero h1 {
+    margin: var(--space-5) 0;
 }
 
 .hero h2 {
@@ -43,11 +57,18 @@ body {
 }
 
 .hero p {
+    font-size: 1.125rem; /* .text-lg */
+    color: var(--text-light);
     max-width: 700px;
     margin: 0 auto var(--space-6) auto;
-    font-size: 1.125rem; /* .text-lg */
     line-height: 1.8;
-    color: var(--text-light);
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
 }
 
 /* ====================================
@@ -131,6 +152,12 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-5); /* 24px - Sesuai aturan .home-grid di spasing.css */
+}
+
+.kategori-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-5);
 }
 
 .home-card {
@@ -335,6 +362,15 @@ body {
 .autocomplete-empty {
     padding: var(--space-4); /* 16px */
     color: var(--text-light);
+}
+
+/* ====================================
+   CALL TO ACTION (CTA)
+==================================== */
+.cta {
+    text-align: center;
+    padding: 100px 0;
+    background: var(--primary-light);
 }
 
 /* ====================================

@@ -1,0 +1,105 @@
+.listing-page {
+
+    padding:
+        var(--space-8)
+        0;
+
+}
+
+.page-header {
+
+    margin-bottom:
+        var(--space-7);
+
+}
+
+.page-header h1 {
+
+    margin-bottom:
+        var(--space-3);
+
+}
+
+.page-description {
+
+    color:
+        var(--text-light);
+
+    max-width:
+        700px;
+
+}
+
+.page-toolbar {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    gap:
+        var(--space-5);
+
+    flex-wrap:
+        wrap;
+
+    margin-bottom:
+        var(--space-6);
+
+}
+
+.page-search {
+
+    flex:
+        1;
+
+    min-width:
+        280px;
+
+}
+
+.page-filters {
+
+    display:
+        flex;
+
+    gap:
+        var(--space-3);
+
+    flex-wrap:
+        wrap;
+
+}
+
+.result-count {
+
+    color:
+        var(--text-light);
+
+    margin-bottom:
+        var(--space-5);
+
+}
+
+.listing-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(
+                280px,
+                1fr
+            )
+        );
+
+    gap:
+        var(--space-5);
+
+}
