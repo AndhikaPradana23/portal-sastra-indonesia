@@ -20,7 +20,7 @@ async function loadComponent(
 }
 
 async function loadLayout() {
-    // Menunggu header dan footer selesai dimasukkan ke DOM
+    // Menunggu header dan footer selesai dimasukkan ke DOM secara paralel
     await Promise.all([
         loadComponent(
             "#site-header",
@@ -91,3 +91,8 @@ function renderBreadcrumb(items) {
     
     container.innerHTML = html;
 }
+
+// Inisialisasi otomatis saat seluruh struktur DOM selesai dimuat
+document.addEventListener("DOMContentLoaded", () => {
+    loadLayout();
+});

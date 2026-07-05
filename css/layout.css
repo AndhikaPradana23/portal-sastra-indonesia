@@ -94,7 +94,7 @@ body {
     text-decoration: underline;
 }
 
-/* ========= HEADER (Langkah 2: Layout Header) ========= */
+/* ========= HEADER ========= */
 .site-header {
     position: sticky;
     top: 0;
@@ -121,7 +121,7 @@ body {
     white-space: nowrap;
 }
 
-/* ========= NAVIGATION (Langkah 2 & Langkah 3) ========= */
+/* ========= NAVIGATION ========= */
 .main-nav {
     display: flex;
     align-items: center;
@@ -139,7 +139,7 @@ body {
     color: var(--primary);
 }
 
-/* ========= ACTIVE MENU INDICATOR (Langkah 3) ========= */
+/* ========= ACTIVE MENU INDICATOR ========= */
 .main-nav a.active {
     color: var(--primary);
     position: relative;
@@ -156,7 +156,7 @@ body {
     background: var(--primary);
 }
 
-/* ========= TOOLS DROPDOWN (Langkah 4) ========= */
+/* ========= TOOLS DROPDOWN ========= */
 .dropdown {
     position: relative;
 }
@@ -196,7 +196,7 @@ body {
     background: var(--background);
 }
 
-/* ========= RIGHT AREA & SEARCH (Langkah 2, 5 & 6) ========= */
+/* ========= RIGHT AREA & SEARCH ========= */
 .header-right {
     display: flex;
     align-items: center;
@@ -331,22 +331,79 @@ body {
 }
 
 /* ========= FOOTER ========= */
-footer {
-    margin-top: var(--space-9);
-    background: var(--surface);
-    border-top: 1px solid var(--border);
+.site-footer {
+    margin-top: var(--space-8);
+    background: var(--secondary);
+    color: white;
 }
 
-footer .container {
-    padding: var(--space-7) 0;
-    text-align: center;
+.site-footer .container {
+    padding: var(--space-8) 0 var(--space-5);
 }
 
-footer p {
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-7);
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.footer-logo {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, .7);
+    line-height: 1.8;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.footer-column h3 {
+    color: white;
+    font-size: 1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    color: var(--text-light);
-    font-size: 0.875rem;
-    line-height: 1.6;
+}
+
+.footer-column li {
+    margin-bottom: var(--space-3);
+}
+
+.footer-column a {
+    display: inline-block;
+    color: rgba(255, 255, 255, .75);
+    text-decoration: none;
+    transition: .2s;
+}
+
+.footer-column a:hover {
+    color: white;
+    transform: translateX(4px);
+}
+
+.footer-bottom {
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid rgba(255, 255, 255, .12);
+    text-align: center;
+    color: rgba(255, 255, 255, .65);
 }
 
 /* ==========================================
@@ -384,7 +441,7 @@ footer p {
     border-color: var(--primary-hover);
 }
 
-/* ========= RESPONSIVE (Langkah 7: Mobile Header) ========= */
+/* ========= RESPONSIVE ========= */
 @media (max-width: 768px) {
     .main-nav, 
     .header-search {

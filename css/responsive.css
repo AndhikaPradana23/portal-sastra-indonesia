@@ -39,4 +39,19 @@
     .mobile-menu-btn:hover {
         opacity: 0.8;
     }
+
+    /* Footer Grid Responsif Tablet */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* --- Breakpoint Media Query (Max-Width: 640px) --- */
+@media (max-width: 640px) {
+
+    /* Footer Grid Responsif Mobile */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
 }
