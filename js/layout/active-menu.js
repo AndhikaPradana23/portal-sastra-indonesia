@@ -1,7 +1,3 @@
-// =====================================
-// ACTIVE MENU
-// =====================================
-
 function initActiveMenu(){
 
     const currentPath =

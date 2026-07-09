@@ -1,5 +1,3 @@
-// js/layout/layout.js
-
 async function loadComponent(
     selector,
     file
@@ -39,6 +37,13 @@ async function loadLayout() {
             "function"
         ) {
             await window.initAuthUI();
+        }
+
+        if(
+            typeof window.updateLastSeen ===
+            "function"
+        ) {
+            await window.updateLastSeen();
         }
     }
     catch (error) {

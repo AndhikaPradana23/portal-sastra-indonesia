@@ -50,35 +50,218 @@
 
             <div style="margin-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-5);">
 
+                <!-- ==========================================
+                     CARD FOTO PROFIL
+                ========================================== -->
                 <div class="card">
 
                     <div class="card-header">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg);">
-                            Informasi Akun
+
+                        <h2>
+                            Foto Profil
                         </h2>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="profile-avatar-section">
+
+                            <img
+                                id="avatar-preview"
+                                src="/icon/default-avatar.png"
+                                alt="Foto Profil"
+                                class="profile-avatar-preview"
+                            >
+
+                            <div class="profile-avatar-info">
+
+                                <h3 id="avatar-nama">
+                                    Memuat...
+                                </h3>
+
+                                <p id="avatar-role">
+                                    User
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="form-group"
+                            style="margin-top: var(--space-5);"
+                        >
+
+                            <label for="avatar">
+                                Upload Foto Baru
+                            </label>
+
+                            <input
+                                id="avatar"
+                                class="input"
+                                type="file"
+                                accept=".jpg,.jpeg,.png,.webp"
+                            >
+
+                            <small>
+                                JPG, PNG atau WEBP. Maksimal 2 MB.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ==========================================
+                     CARD INFORMASI PRIBADI
+                ========================================== -->
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Informasi Pribadi
+                        </h2>
+
                     </div>
 
                     <div class="card-body">
 
                         <form id="profile-form">
 
-                            <div class="form-group" style="margin-bottom: var(--space-4);">
+                            <div class="form-group">
 
-                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
-                                    Nama
+                                <label for="nama_lengkap">
+                                    Nama Lengkap
                                 </label>
 
-                                <input id="nama" class="input" type="text" placeholder="Nama lengkap Anda">
+                                <input
+                                    id="nama_lengkap"
+                                    class="input"
+                                    type="text"
+                                    required
+                                >
 
                             </div>
 
-                            <div class="form-group">
+                            <div
+                                class="form-group"
+                                style="margin-top: var(--space-4);"
+                            >
 
-                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                                <label for="username">
+                                    Username
+                                </label>
+
+                                <input
+                                    id="username"
+                                    class="input"
+                                    type="text"
+                                    required
+                                >
+
+                            </div>
+
+                            <div
+                                class="form-group"
+                                style="margin-top: var(--space-4);"
+                            >
+
+                                <label for="email">
                                     Email
                                 </label>
 
-                                <input id="email" class="input" type="email" disabled>
+                                <input
+                                    id="email"
+                                    class="input"
+                                    type="email"
+                                    readonly
+                                >
+
+                            </div>
+
+                            <div
+                                class="form-group"
+                                style="margin-top: var(--space-4);"
+                            >
+
+                                <label for="no_telp">
+                                    No. Telepon
+                                </label>
+
+                                <input
+                                    id="no_telp"
+                                    class="input"
+                                    type="tel"
+                                >
+
+                            </div>
+
+                            <div
+                                class="form-group"
+                                style="margin-top: var(--space-4);"
+                            >
+
+                                <label for="tanggal_lahir">
+                                    Tanggal Lahir
+                                </label>
+
+                                <input
+                                    id="tanggal_lahir"
+                                    class="input"
+                                    type="date"
+                                >
+
+                            </div>
+
+                            <div
+                                class="form-group"
+                                style="margin-top: var(--space-4);"
+                            >
+
+                                <label for="jenis_kelamin">
+                                    Jenis Kelamin
+                                </label>
+
+                                <select
+                                    id="jenis_kelamin"
+                                    class="select"
+                                >
+
+                                    <option value="">
+                                        Pilih Jenis Kelamin
+                                    </option>
+
+                                    <option value="Laki-laki">
+                                        Laki-laki
+                                    </option>
+
+                                    <option value="Perempuan">
+                                        Perempuan
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div
+                                class="form-group"
+                                style="margin-top: var(--space-4);"
+                            >
+
+                                <label for="bio">
+                                    Bio
+                                </label>
+
+                                <textarea
+                                    id="bio"
+                                    class="textarea"
+                                    rows="5"
+                                    maxlength="500"
+                                    placeholder="Tulis bio singkat mengenai diri Anda..."
+                                ></textarea>
 
                             </div>
 
@@ -86,15 +269,18 @@
 
                     </div>
 
-                    <div class="card-footer" style="display: flex; justify-content: flex-end;">
+                    <div
+                        class="card-footer"
+                        style="
+                            display:flex;
+                            justify-content:flex-end;
+                        "
+                    >
 
-                        <button 
-                            type="submit" 
-                            form="profile-form" 
-                            class="
-                            btn 
-                            btn-primary
-                            "
+                        <button
+                            type="submit"
+                            form="profile-form"
+                            class="btn btn-primary"
                         >
                             Simpan Perubahan
                         </button>
@@ -103,12 +289,21 @@
 
                 </div>
 
+                <!-- ==========================================
+                     CARD KEAMANAN AKUN
+                ========================================== -->
                 <div class="card">
 
                     <div class="card-header">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg);">
-                            Ganti Password
+
+                        <h2>
+                            Keamanan Akun
                         </h2>
+
+                        <p>
+                            Ubah password akun Anda.
+                        </p>
+
                     </div>
 
                     <div class="card-body">
@@ -117,11 +312,38 @@
 
                             <div class="form-group">
 
-                                <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                                <label for="password">
                                     Password Baru
                                 </label>
 
-                                <input id="password" class="input" type="password" minlength="6" required placeholder="Minimal 6 karakter">
+                                <input
+                                    id="password"
+                                    class="input"
+                                    type="password"
+                                    minlength="8"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                            </div>
+
+                            <div
+                                class="form-group"
+                                style="margin-top: var(--space-4);"
+                            >
+
+                                <label for="confirm_password">
+                                    Konfirmasi Password Baru
+                                </label>
+
+                                <input
+                                    id="confirm_password"
+                                    class="input"
+                                    type="password"
+                                    minlength="8"
+                                    autocomplete="new-password"
+                                    required
+                                >
 
                             </div>
 
@@ -129,15 +351,12 @@
 
                     </div>
 
-                    <div class="card-footer" style="display: flex; justify-content: flex-end;">
+                    <div class="card-footer">
 
-                        <button 
-                            type="submit" 
-                            form="password-form" 
-                            class="
-                            btn 
-                            btn-primary
-                            "
+                        <button
+                            type="submit"
+                            form="password-form"
+                            class="btn btn-primary"
                         >
                             Ubah Password
                         </button>
@@ -146,62 +365,99 @@
 
                 </div>
 
+                <!-- ==========================================
+                     CARD PREFERENSI
+                ========================================== -->
                 <div class="card">
 
                     <div class="card-header">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg);">
+
+                        <h2>
                             Preferensi
                         </h2>
+
+                        <p>
+                            Atur preferensi tampilan akun Anda.
+                        </p>
+
                     </div>
 
                     <div class="card-body">
-                        <p style="margin: 0; color: var(--color-text-muted);">
-                            Sesuaikan konfigurasi tema gelap/terang dan batas tampilan data halaman akun Anda.
-                        </p>
-                    </div>
 
-                    <div class="card-footer" style="display: flex; justify-content: flex-start;">
+                        <div class="setting-item">
 
-                        <a 
-                            href="/profile/preferences.html" 
-                            class="
-                            btn 
-                            btn-outline
-                            "
-                        >
-                            Kelola Preferensi →
-                        </a>
+                            <div>
+
+                                <strong>
+                                    Preferensi Pengguna
+                                </strong>
+
+                                <p>
+                                    Kelola tema, riwayat pencarian,
+                                    autocomplete dan pengaturan lainnya.
+                                </p>
+
+                            </div>
+
+                            <a
+                                href="/profile/preferences.html"
+                                class="btn btn-outline"
+                            >
+                                Kelola
+                            </a>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-                <div class="card" style="border-color: var(--color-error, #dc3545);">
+                <!-- ==========================================
+                     CARD DANGER ZONE
+                ========================================== -->
+                <div class="card danger-card">
 
-                    <div class="card-header" style="background-color: rgba(220, 53, 69, 0.05);">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg); color: var(--color-error, #dc3545);">
+                    <div class="card-header">
+
+                        <h2>
                             Danger Zone
                         </h2>
+
+                        <p>
+                            Tindakan di bawah ini bersifat permanen.
+                        </p>
+
                     </div>
 
                     <div class="card-body">
-                        <p style="margin: 0; color: var(--color-text-muted);">
-                            Tindakan ini tidak bisa dibatalkan. Semua data riwayat kuis, artikel yang disimpan, dan profil Anda akan dihapus secara permanen.
-                        </p>
-                    </div>
 
-                    <div class="card-footer" style="display: flex; justify-content: flex-end; background-color: rgba(220, 53, 69, 0.02);">
+                        <div class="setting-item">
 
-                        <button 
-                            id="delete-account" 
-                            class="
-                            btn 
-                            btn-outline
-                            "
-                            style="color: var(--color-error, #dc3545); border-color: var(--color-error, #dc3545);"
-                        >
-                            Hapus Akun
-                        </button>
+                            <div>
+
+                                <strong>
+                                    Hapus Akun
+                                </strong>
+
+                                <p>
+                                    Seluruh data profil,
+                                    bookmark,
+                                    riwayat,
+                                    preferensi,
+                                    dan akun akan dihapus secara permanen.
+                                </p>
+
+                            </div>
+
+                            <button
+                                id="delete-account"
+                                type="button"
+                                class="btn btn-danger"
+                            >
+                                Hapus Akun
+                            </button>
+
+                        </div>
 
                     </div>
 
@@ -217,6 +473,8 @@
 
 <div id="site-footer"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script src="/js/supabase-public.js"></script>
 
 <script src="/js/layout/layout.js"></script>
@@ -224,7 +482,14 @@
 <script src="/js/layout/mobile-menu.js"></script>
 
 <script src="/js/auth/auth-service.js"></script>
+<script src="/js/auth/profile-service.js"></script>
+<script src="/js/auth/avatar-service.js"></script>
+<script src="/js/auth/role-service.js"></script>
+<script src="/js/auth/auth-ui.js"></script>
+<script src="/js/auth/logout.js"></script>
+<script src="/js/auth/auth-state.js"></script>
 <script src="/js/auth/protected-route.js"></script>
+
 <script src="/profile/settings.js"></script>
 
 </body>

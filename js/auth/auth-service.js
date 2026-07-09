@@ -2,35 +2,93 @@
 // AUTH SERVICE (SUPABASE AUTHENTICATION)
 // ==========================================================================
 
-/**
- * Mendaftarkan pengguna baru (akun baru) ke dalam database autentikasi Supabase.
- * @param {string} nama - Nama lengkap pengguna untuk metadata profil
- * @param {string} email - Alamat email unik pengguna
- * @param {string} password - Kata sandi akun pengguna
- * @returns {Promise<Object>} Data session/user jika berhasil
- * @throws {Error} Mengembalikan error jika registrasi gagal
- */
-async function registerUser(
-    nama,
+async function registerUser({
+
+    namaLengkap,
+
+    username,
+
     email,
+
     password
-){
+
+}){
+
+    // ==========================
+    // CEK USERNAME
+    // ==========================
 
     const {
+
+        data: existingUser,
+
+        error: usernameError
+
+    }
+
+    = await supabaseClient
+
+        .from("profiles")
+
+        .select("id")
+
+        .eq("username",username)
+
+        .maybeSingle();
+
+    if(usernameError){
+
+        throw usernameError;
+
+    }
+
+    if(existingUser){
+
+        throw new Error(
+
+            "Username sudah digunakan."
+
+        );
+
+    }
+
+    // ==========================
+    // REGISTER AUTH
+    // ==========================
+
+    const {
+
         data,
+
         error
-    } = await supabaseClient.auth.signUp({
 
-        email,
-        password,
+    }
 
-        options: {
-            data: {
-                nama
+    = await supabaseClient
+
+        .auth
+
+        .signUp({
+
+            email,
+
+            password,
+
+            options:{
+
+                data:{
+
+                    nama_lengkap:
+
+                        namaLengkap,
+
+                    username
+
+                }
+
             }
-        }
 
-    });
+        });
 
     if(error){
 
@@ -64,11 +122,29 @@ async function loginUser(
 
     });
 
+    console.log(
+        "Login Result:",
+        data
+    );
+
+    console.log(
+        "Login Error:",
+        error
+    );
+
     if(error){
 
         throw error;
 
     }
+
+    const session =
+        await supabaseClient.auth.getSession();
+
+    console.log(
+        "Session setelah login:",
+        session
+    );
 
     return data;
 

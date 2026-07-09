@@ -9,17 +9,23 @@ async function requireAuth(){
     const session =
         await getSession();
 
+    console.log("Session:", session);
+
     if(session){
 
         return true;
 
     }
 
+    console.error("SESSION TIDAK DITEMUKAN");
+
+    debugger;
+
     // MENAMBAHKAN: Pesan autentikasi untuk UX yang lebih baik sebelum redirect
-    sessionStorage.setItem(
-        "authMessage",
-        "Silakan masuk terlebih dahulu untuk mengakses halaman ini."
-    );
+    // sessionStorage.setItem(
+    //     "authMessage",
+    //     "Silakan masuk terlebih dahulu untuk mengakses halaman ini."
+    // );
 
     const currentUrl =
         window.location.pathname;
@@ -29,8 +35,8 @@ async function requireAuth(){
             currentUrl
         );
 
-    window.location.href =
-        `/auth/login.html?redirect=${redirect}`;
+    // window.location.href =
+    //     `/auth/login.html?redirect=${redirect}`;
 
     return false;
 

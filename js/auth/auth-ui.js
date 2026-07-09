@@ -1,23 +1,27 @@
-// GANTI: document.addEventListener("DOMContentLoaded", initAuthUI);
-// MENJADI LEBIH AMAN:
+let authListenerInitialized = false;
+
 window.initAuthUI = initAuthUI;
 
 async function initAuthUI(){
 
     await updateAuthMenu();
 
-    // Menangkap parameter event untuk memantau perubahan status autentikasi di console
-    supabaseClient.auth.onAuthStateChange(
-        async (event) => {
+    if(authListenerInitialized){
 
-            console.log(
-                "Auth event terpantau:",
-                event
-            );
+        return;
+
+    }
+
+    authListenerInitialized = true;
+
+    supabaseClient.auth.onAuthStateChange(
+
+        async () => {
 
             await updateAuthMenu();
 
         }
+
     );
 
 }
@@ -29,9 +33,6 @@ async function updateAuthMenu(){
             "auth-menu"
         );
 
-    // Debugging untuk cek apakah elemen sudah ada di DOM
-    console.log("Elemen #auth-menu:", menu);
-
     if(!menu){
 
         return;
@@ -41,57 +42,199 @@ async function updateAuthMenu(){
     const user =
         await getCurrentUser();
 
-    // Debugging untuk cek status session user
-    console.log("Data user:", user);
-
     if(!user){
 
         menu.innerHTML = `
-            <a href="/auth/login.html">
+
+            <a
+                href="/auth/login.html"
+                class="btn btn-primary"
+            >
+
                 Masuk
+
             </a>
+
         `;
 
         return;
 
     }
 
-    const nama =
-        user.user_metadata.nama ||
-        user.email;
+    const profile =
+        await getProfile();
 
-    // Membaca escapeHtml dengan aman menggunakan fallback demi menghilangkan dependency ketat
-    const safeNama = 
+    if(!profile){
+
+        menu.innerHTML = `
+
+            <a
+                href="/profile/"
+                class="btn btn-outline"
+            >
+
+                Profil
+
+            </a>
+
+        `;
+
+        return;
+
+    }
+
+    const roleBadge =
+        typeof renderRoleBadge === "function"
+        ?
+        renderRoleBadge(
+            profile.role
+        )
+        :
+        "";
+
+    const safeNama =
+
         typeof window.escapeHtml === "function"
-            ? window.escapeHtml(nama)
-            : nama;
 
-    // UPDATE: Menambahkan menu "Profil" dan "Pengaturan Akun" ke dalam dropdown
+        ?
+
+        window.escapeHtml(
+
+            profile.nama_lengkap
+
+        )
+
+        :
+
+        profile.nama_lengkap;
+
+    const avatar =
+
+        profile.avatar_url
+
+        ?
+
+        `<img
+            src="${profile.avatar_url}"
+            alt="${safeNama}"
+            class="header-avatar"
+        >`
+
+        :
+
+        `👤`;
+
     menu.innerHTML = `
+
         <div class="auth-dropdown">
 
-            <span>
-                👋 ${safeNama}
-            </span>
+            <button
+                type="button"
+                class="dropdown-toggle btn btn-outline"
+            >
 
-            <a href="/profile/index.html">
-                Profil
-            </a>
+                ${avatar}
 
-            <a href="/settings/index.html">
-                Pengaturan Akun
-            </a>
+                <div class="auth-user-info">
+                    <strong>
+                        ${safeNama}
+                    </strong>
+                    ${roleBadge}
+                </div>
 
-            <a href="#" id="logout-btn">
-                Logout
-            </a>
+                ▼
+
+            </button>
+
+            <div class="dropdown-menu">
+
+                <a href="/profile/">
+
+                    Profil Saya
+
+                </a>
+
+                <a href="/profile/settings.html">
+
+                    Pengaturan Akun
+
+                </a>
+
+                <a href="/profile/preferences.html">
+
+                    Preferensi
+
+                </a>
+
+                <hr>
+
+                <a
+                    href="#"
+                    id="logout-btn"
+                >
+
+                    Logout
+
+                </a>
+
+            </div>
 
         </div>
+
     `;
 
-    // Pastikan initLogout dipanggil jika fungsi globalnya tersedia
-    if (typeof window.initLogout === "function") {
+    if(
+
+        typeof window.initLogout ===
+
+        "function"
+
+    ){
+
         window.initLogout();
+
+    }
+
+    // ===============================
+    // Dropdown Auth
+    // ===============================
+
+    const dropdown =
+        menu.querySelector(
+            ".auth-dropdown"
+        );
+
+    const toggle =
+        menu.querySelector(
+            ".dropdown-toggle"
+        );
+
+    if(toggle && dropdown){
+
+        toggle.addEventListener(
+            "click",
+            function(event){
+
+                event.stopPropagation();
+
+                dropdown.classList.toggle(
+                    "open"
+                );
+
+            }
+        );
+
+        document.addEventListener(
+            "click",
+            function(){
+
+                dropdown.classList.remove(
+                    "open"
+                );
+
+            }
+        );
+
     }
 
 }
