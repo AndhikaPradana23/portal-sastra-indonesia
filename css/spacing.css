@@ -1,8 +1,3 @@
-/* ==========================================
-   SPACING SYSTEM
-   Portal Sastra Indonesia
-========================================== */
-
 /* ========= LANGKAH 3: UTILITY MARGIN ========= */
 .m-0 { margin: 0; }
 .m-1 { margin: var(--space-1); }

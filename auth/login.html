@@ -15,11 +15,7 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/skeleton.css">
-    <link rel="stylesheet" href="/css/animations.css">
-    <link rel="stylesheet" href="/css/utilities.css">
     <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/auth.css">
@@ -28,60 +24,102 @@
 
 <main class="auth-page">
 
-    <div class="container">
+    <div class="auth-card card">
 
-        <div class="auth-card card">
+        <div class="auth-header">
 
-            <div class="card-header">
-                <h1>
-                    Masuk
-                </h1>
+            <div class="auth-icon">
+
+                <img
+                    src="/assets/icons/shield-check.svg"
+                    alt="Login">
+
             </div>
 
-            <div class="card-body">
-                <p style="margin-bottom: var(--space-4);">
-                    Masuk untuk mengakses bookmark
-                    dan fitur personal lainnya.
-                </p>
+            <h1>Masuk</h1>
 
-                <form id="login-form">
+            <p>
+                Masuk untuk mengakses bookmark,
+                riwayat pencarian, dan fitur personal Portal Sastra Indonesia.
+            </p>
 
-                    <div class="form-group">
+        </div>
 
-                        <label for="email">
-                            Email
-                        </label>
+        <form
+            id="login-form"
+            class="auth-form">
 
-                        <!-- Penerapan class "input" global -->
-                        <input id="email" class="input" type="email" required>
+            <div class="form-group">
 
-                    </div>
+                <label for="email">
+                    Email
+                </label>
 
-                    <div class="form-group" style="margin-top: var(--space-4);">
+                <div class="input-icon">
 
-                        <label for="password">
-                            Password
-                        </label>
+                    <img
+                        src="/assets/icons/mail.svg"
+                        alt="Email">
 
-                        <input id="password" class="input" type="password" required>
+                    <input
+                        id="email"
+                        class="input"
+                        type="email"
+                        placeholder="nama@email.com"
+                        required>
 
-                    </div>
+                </div>
 
-                    <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: var(--space-5);">
-                        Masuk
-                    </button>
-
-                </form>
             </div>
 
-            <div class="card-footer">
-                <p class="auth-footer">
-                    Belum punya akun?
-                    <a href="register.html">
-                        Daftar
-                    </a>
-                </p>
+            <div class="form-group">
+
+                <label for="password">
+                    Kata Sandi
+                </label>
+
+                <div class="input-icon">
+
+                    <img
+                        src="/assets/icons/lock-keyhole.svg"
+                        alt="Password">
+
+                    <input
+                        id="password"
+                        class="input"
+                        type="password"
+                        placeholder="Masukkan kata sandi"
+                        required>
+
+                </div>
+
             </div>
+
+            <button
+                class="btn btn-primary btn-auth"
+                type="submit">
+
+                <img
+                    src="/assets/icons/log-in.svg"
+                    alt=""
+                    class="btn-icon">
+
+                Masuk
+
+            </button>
+
+        </form>
+
+        <div class="auth-divider"></div>
+
+        <div class="card-footer auth-footer">
+
+            <p>
+                Belum punya akun?
+                <a href="register.html">
+                    Daftar sekarang
+                </a>
+            </p>
 
         </div>
 

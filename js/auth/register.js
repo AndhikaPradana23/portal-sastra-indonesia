@@ -4,7 +4,6 @@ document.addEventListener(
 );
 
 function initRegister() {
-
     const form =
         document.getElementById(
             "register-form"
@@ -14,11 +13,9 @@ function initRegister() {
         "submit",
         handleRegister
     );
-
 }
 
 async function handleRegister(e) {
-
     e.preventDefault();
 
     const namaLengkap =
@@ -63,51 +60,42 @@ async function handleRegister(e) {
         .value;
 
     const jenisKelamin =
-        document
-        .getElementById("jenis_kelamin")
-        .value;
+        document.querySelector('input[name="jenis_kelamin"]:checked'
+        )?.value;
 
     if (namaLengkap.length < 3) {
-
         alert(
             "Nama lengkap minimal 3 karakter."
         );
-
         return;
-
     }
 
-    const usernameRegex =
-        /^[a-z0-9._]+$/;
-
     if (!usernameRegex.test(username)) {
-
         alert(
             "Username hanya boleh berisi huruf kecil, angka, titik dan underscore."
         );
-
         return;
-
     }
 
     if (password.length < 8) {
-
         alert(
             "Password minimal 8 karakter."
         );
-
         return;
-
     }
 
     if (password !== konfirmasiPassword) {
-
         alert(
             "Konfirmasi password tidak sama."
         );
-
         return;
+    }
 
+    if (!jenisKelamin) {
+        alert(
+            "Silakan pilih jenis kelamin."
+        );
+        return;
     }
 
     const today =
@@ -117,19 +105,14 @@ async function handleRegister(e) {
         new Date(tanggalLahir);
 
     if (birth > today) {
-
         alert(
             "Tanggal lahir tidak valid."
         );
-
         return;
-
     }
 
     try {
-
         await registerUser({
-
             namaLengkap,
             username,
             email,
@@ -137,7 +120,6 @@ async function handleRegister(e) {
             noTelp,
             tanggalLahir,
             jenisKelamin
-
         });
 
         alert(
@@ -146,17 +128,12 @@ async function handleRegister(e) {
 
         location.href =
             "login.html";
-
     }
 
     catch (error) {
-
         console.error(error);
-
         alert(
             error.message
         );
-
     }
-
 }

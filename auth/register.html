@@ -15,10 +15,6 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
-    <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/skeleton.css">
-    <link rel="stylesheet" href="/css/animations.css">
     <link rel="stylesheet" href="/css/utilities.css">
     <link rel="stylesheet" href="/css/responsive.css">
 
@@ -28,201 +24,306 @@
 
 <main class="auth-page">
 
-    <div class="container">
+    <div class="auth-card card">
 
-        <div class="auth-card card">
+        <div class="auth-header">
 
-            <div class="card-header">
-                <h1>
-                    Buat Akun
-                </h1>
+            <div class="auth-icon">
+
+                <img
+                    src="/assets/icons/user-plus.svg"
+                    alt="Register">
+
             </div>
 
-            <div class="card-body">
-                <p style="margin-bottom: var(--space-4);">
-                    Daftar untuk menyimpan bookmark
-                    dan fitur personal lainnya.
-                </p>
+            <h1>Buat Akun</h1>
 
-                <form id="register-form">
+            <p>
+                Daftar untuk menyimpan bookmark, riwayat pencarian,
+                dan fitur personal Portal Sastra Indonesia lainnya.
+            </p>
 
-                    <!-- ========================= -->
-                    <!-- Informasi Identitas -->
-                    <!-- ========================= -->
+        </div>
 
-                    <div class="form-group">
+        <form
+            id="register-form"
+            class="auth-form">
 
-                        <label for="nama_lengkap">
-                            Nama Lengkap
-                        </label>
+            <!-- ========================= -->
+            <!-- Informasi Akun            -->
+            <!-- ========================= -->
+            <div class="auth-section">
+
+                <h2 class="auth-section-title">Informasi Akun</h2>
+
+                <div class="form-group">
+
+                    <label for="nama_lengkap">
+                        Nama Lengkap
+                    </label>
+
+                    <div class="input-icon">
+
+                        <img
+                            src="/assets/icons/user.svg"
+                            alt="Nama">
 
                         <input
                             id="nama_lengkap"
                             class="input"
                             type="text"
+                            placeholder="Masukkan nama lengkap"
                             maxlength="100"
                             autocomplete="name"
-                            required
-                        >
+                            required>
 
                     </div>
 
-                    <div class="form-group">
+                </div>
 
-                        <label for="username">
-                            Username
-                        </label>
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <div class="input-icon">
+
+                        <img
+                            src="/assets/icons/at-sign.svg"
+                            alt="Username">
 
                         <input
                             id="username"
                             class="input"
                             type="text"
+                            placeholder="Masukkan username"
                             maxlength="30"
                             autocomplete="username"
-                            required
-                        >
+                            required>
 
                     </div>
 
-                    <div class="form-group">
+                </div>
 
-                        <label for="email">
-                            Alamat Email Aktif
-                        </label>
+                <div class="form-group">
+
+                    <label for="email">
+                        Alamat Email Aktif
+                    </label>
+
+                    <div class="input-icon">
+
+                        <img
+                            src="/assets/icons/mail.svg"
+                            alt="Email">
 
                         <input
                             id="email"
                             class="input"
                             type="email"
+                            placeholder="nama@email.com"
                             autocomplete="email"
-                            required
-                        >
+                            required>
 
                     </div>
 
-                    <!-- ========================= -->
-                    <!-- Keamanan -->
-                    <!-- ========================= -->
+                </div>
 
-                    <div class="form-group">
+            </div>
 
-                        <label for="password">
-                            Kata Sandi
-                        </label>
+            <!-- ========================= -->
+            <!-- Keamanan Akun             -->
+            <!-- ========================= -->
+            <div class="auth-section">
+
+                <h2 class="auth-section-title">Keamanan Akun</h2>
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Kata Sandi
+                    </label>
+
+                    <div class="input-icon">
+
+                        <img
+                            src="/assets/icons/lock-keyhole.svg"
+                            alt="Password">
 
                         <input
                             id="password"
                             class="input"
                             type="password"
+                            placeholder="Minimal 8 karakter"
                             minlength="8"
                             autocomplete="new-password"
-                            required
-                        >
+                            required>
 
                     </div>
 
-                    <div class="form-group">
+                </div>
 
-                        <label for="confirm_password">
-                            Konfirmasi Kata Sandi
-                        </label>
+                <div class="form-group">
+
+                    <label for="confirm_password">
+                        Konfirmasi Kata Sandi
+                    </label>
+
+                    <div class="input-icon">
+
+                        <img
+                            src="/assets/icons/shield-check.svg"
+                            alt="Konfirmasi Password">
 
                         <input
                             id="confirm_password"
                             class="input"
                             type="password"
+                            placeholder="Ulangi kata sandi"
                             minlength="8"
                             autocomplete="new-password"
-                            required
-                        >
+                            required>
 
                     </div>
 
-                    <!-- ========================= -->
-                    <!-- Informasi Tambahan -->
-                    <!-- ========================= -->
+                </div>
 
-                    <div class="form-group">
+            </div>
 
-                        <label for="no_telp">
-                            Nomor Telepon
-                            <small>(Opsional)</small>
-                        </label>
+            <!-- ========================= -->
+            <!-- Informasi Tambahan        -->
+            <!-- ========================= -->
+            <div class="auth-section">
+
+                <h2 class="auth-section-title">Informasi Tambahan</h2>
+
+                <div class="form-group">
+
+                    <label for="no_telp">
+                        Nomor Telepon <small>(Opsional)</small>
+                    </label>
+
+                    <div class="input-icon">
+
+                        <img
+                            src="/assets/icons/phone.svg"
+                            alt="Nomor Telepon">
 
                         <input
                             id="no_telp"
                             class="input"
                             type="tel"
+                            placeholder="Contoh: 08123456789"
                             maxlength="20"
-                            autocomplete="tel"
-                        >
+                            autocomplete="tel">
 
                     </div>
 
-                    <div class="form-group">
+                </div>
 
-                        <label for="tanggal_lahir">
-                            Tanggal Lahir
-                        </label>
+                <div class="form-group">
+
+                    <label for="tanggal_lahir">
+                        Tanggal Lahir
+                    </label>
+
+                    <div class="input-icon">
+
+                        <img
+                            src="/assets/icons/calendar-days.svg"
+                            alt="Tanggal Lahir">
 
                         <input
                             id="tanggal_lahir"
                             class="input"
                             type="date"
-                            required
-                        >
+                            required>
 
                     </div>
 
-                    <div class="form-group">
+                </div>
 
-                        <label for="jenis_kelamin">
-                            Jenis Kelamin
+                <div class="form-group">
+
+                    <label>
+                        Jenis Kelamin
+                    </label>
+
+                    <div class="radio-group">
+
+                        <label class="radio-card">
+
+                            <input
+                                type="radio"
+                                name="jenis_kelamin"
+                                value="Laki-laki"
+                                required>
+
+                            <span class="radio-label-wrapper">
+
+                                <img 
+                                    src="/assets/icons/users.svg" 
+                                    alt="" 
+                                    class="radio-icon">
+
+                                Laki-laki
+
+                            </span>
+
                         </label>
 
-                        <select
-                            id="jenis_kelamin"
-                            class="select"
-                            required
-                        >
+                        <label class="radio-card">
 
-                            <option value="">
-                                Pilih Jenis Kelamin
-                            </option>
+                            <input
+                                type="radio"
+                                name="jenis_kelamin"
+                                value="Perempuan">
 
-                            <option value="Laki-laki">
-                                Laki-laki
-                            </option>
+                            <span class="radio-label-wrapper">
 
-                            <option value="Perempuan">
+                                <img 
+                                    src="/assets/icons/users.svg" 
+                                    alt="" 
+                                    class="radio-icon">
+
                                 Perempuan
-                            </option>
 
-                        </select>
+                            </span>
+
+                        </label>
 
                     </div>
 
-                    <button
-                        class="btn btn-primary"
-                        type="submit"
-                        style="width:100%;"
-                    >
+                </div>
 
-                        Daftar
-
-                    </button>
-
-                </form>
             </div>
 
-            <div class="card-footer">
-                <p class="auth-footer">
-                    Sudah punya akun?
-                    <a href="login.html">
-                        Masuk
-                    </a>
-                </p>
-            </div>
+            <button
+                class="btn btn-primary btn-auth"
+                type="submit">
+
+                <img
+                    src="/assets/icons/user-plus.svg"
+                    alt=""
+                    class="btn-icon">
+
+                Daftar
+
+            </button>
+
+        </form>
+
+        <div class="auth-divider"></div>
+
+        <div class="card-footer auth-footer">
+
+            <p>
+                Sudah punya akun?
+                <a href="login.html">
+                    Masuk
+                </a>
+            </p>
 
         </div>
 
