@@ -10,7 +10,9 @@ function openMobileMenu() {
         "mobile-menu-open"
     );
 
-    document.body.style.overflow = "hidden";
+    document.documentElement.classList.add(
+        "mobile-menu-open"
+    );
 
 }
 
@@ -20,7 +22,9 @@ function closeMobileMenu() {
         "mobile-menu-open"
     );
 
-    document.body.style.overflow = "";
+    document.documentElement.classList.remove(
+        "mobile-menu-open"
+    );
 
 }
 
