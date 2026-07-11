@@ -1,17 +1,11 @@
-// ==========================================================================
-// AUTH SERVICE (SUPABASE AUTHENTICATION)
-// ==========================================================================
-
 async function registerUser({
-
     namaLengkap,
-
     username,
-
     email,
-
-    password
-
+    password,
+    noTelp,
+    tanggalLahir,
+    jenisKelamin
 }){
 
     // ==========================
@@ -79,10 +73,18 @@ async function registerUser({
                 data:{
 
                     nama_lengkap:
-
                         namaLengkap,
 
-                    username
+                    username,
+
+                    no_telp:
+                        noTelp,
+
+                    tanggal_lahir:
+                        tanggalLahir,
+
+                    jenis_kelamin:
+                        jenisKelamin
 
                 }
 

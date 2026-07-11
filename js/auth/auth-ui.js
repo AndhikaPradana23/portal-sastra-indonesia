@@ -2,11 +2,15 @@ let authListenerInitialized = false;
 
 window.initAuthUI = initAuthUI;
 
-async function initAuthUI(){
+/* ==========================================================
+   INIT
+========================================================== */
+
+async function initAuthUI() {
 
     await updateAuthMenu();
 
-    if(authListenerInitialized){
+    if (authListenerInitialized) {
 
         return;
 
@@ -26,14 +30,23 @@ async function initAuthUI(){
 
 }
 
-async function updateAuthMenu(){
+/* ==========================================================
+   UPDATE AUTH UI
+========================================================== */
 
-    const menu =
+async function updateAuthMenu() {
+
+    const desktopMenu =
         document.getElementById(
             "auth-menu"
         );
 
-    if(!menu){
+    const mobileMenu =
+        document.getElementById(
+            "mobile-auth-menu"
+        );
+
+    if (!desktopMenu) {
 
         return;
 
@@ -42,199 +55,562 @@ async function updateAuthMenu(){
     const user =
         await getCurrentUser();
 
-    if(!user){
+    /* ======================================================
+       BELUM LOGIN
+    ====================================================== */
 
-        menu.innerHTML = `
+    if (!user) {
 
-            <a
-                href="/auth/login.html"
-                class="btn btn-primary"
-            >
+        desktopMenu.innerHTML = `
+<a
+href="/auth/login.html"
+class="btn btn-primary"
+>
+<img
+src="/assets/icons/log-in.svg"
+class="btn-icon"
+alt=""
+>
+<span>Masuk</span>
+</a>
+`;
 
-                Masuk
+        if (mobileMenu) {
 
-            </a>
+            mobileMenu.innerHTML = `
+<a href="/auth/login.html">
 
-        `;
+<img
+src="/assets/icons/log-in.svg"
+class="menu-icon"
+alt=""
+>
+
+<span>
+
+Masuk
+
+</span>
+
+</a>
+
+<a href="/auth/register.html">
+
+<img
+src="/assets/icons/user-plus.svg"
+class="menu-icon"
+alt=""
+>
+
+<span>
+
+Daftar
+
+</span>
+
+</a>
+`;
+
+        }
 
         return;
 
     }
+
+    /* ======================================================
+       PROFILE
+    ====================================================== */
 
     const profile =
         await getProfile();
 
-    if(!profile){
+    if (!profile) {
 
-        menu.innerHTML = `
+        desktopMenu.innerHTML = `
+<a
+href="/profile/"
+class="btn btn-outline"
+>
 
-            <a
-                href="/profile/"
-                class="btn btn-outline"
-            >
+Profil
 
-                Profil
-
-            </a>
-
-        `;
+</a>
+`;
 
         return;
 
     }
 
-    const roleBadge =
-        typeof renderRoleBadge === "function"
-        ?
-        renderRoleBadge(
-            profile.role
-        )
-        :
-        "";
+    const nama =
+        profile.nama_lengkap ||
+        "Pengguna";
+
+    const role =
+        profile.role ||
+        "User";
 
     const safeNama =
 
-        typeof window.escapeHtml === "function"
-
-        ?
-
-        window.escapeHtml(
-
-            profile.nama_lengkap
-
-        )
-
-        :
-
-        profile.nama_lengkap;
-
-    const avatar =
-
-        profile.avatar_url
-
-        ?
-
-        `<img
-            src="${profile.avatar_url}"
-            alt="${safeNama}"
-            class="header-avatar"
-        >`
-
-        :
-
-        `👤`;
-
-    menu.innerHTML = `
-
-        <div class="auth-dropdown">
-
-            <button
-                type="button"
-                class="dropdown-toggle btn btn-outline"
-            >
-
-                ${avatar}
-
-                <div class="auth-user-info">
-                    <strong>
-                        ${safeNama}
-                    </strong>
-                    ${roleBadge}
-                </div>
-
-                ▼
-
-            </button>
-
-            <div class="dropdown-menu">
-
-                <a href="/profile/">
-
-                    Profil Saya
-
-                </a>
-
-                <a href="/profile/settings.html">
-
-                    Pengaturan Akun
-
-                </a>
-
-                <a href="/profile/preferences.html">
-
-                    Preferensi
-
-                </a>
-
-                <hr>
-
-                <a
-                    href="#"
-                    id="logout-btn"
-                >
-
-                    Logout
-
-                </a>
-
-            </div>
-
-        </div>
-
-    `;
-
-    if(
-
-        typeof window.initLogout ===
-
+        typeof window.escapeHtml ===
         "function"
 
-    ){
+        ? window.escapeHtml(nama)
+
+        : nama;
+
+    let avatar =
+        profile.avatar_url;
+
+    if (!avatar) {
+
+        avatar =
+            "/assets/images/default-avatar.png";
+
+    }
+
+    /* ======================================================
+       DESKTOP
+    ====================================================== */
+
+    desktopMenu.innerHTML = `
+
+<div class="auth-dropdown">
+
+<button
+
+id="account-button"
+
+class="account-button"
+
+type="button"
+
+>
+
+<img
+
+src="${avatar}"
+
+class="user-avatar"
+
+alt="${safeNama}"
+
+onerror="this.src='/assets/images/default-avatar.png'"
+
+>
+
+<div class="auth-user-info">
+
+<strong>
+
+${safeNama}
+
+</strong>
+
+<span>
+
+${role}
+
+</span>
+
+</div>
+
+<img
+
+src="/assets/icons/chevron-down.svg"
+
+class="account-arrow"
+
+alt=""
+
+>
+
+</button>
+
+<div class="dropdown-menu">
+
+<a href="/profile/">
+
+<img
+
+src="/assets/icons/user.svg"
+
+alt=""
+
+>
+
+<span>
+
+Profil Saya
+
+</span>
+
+</a>
+
+<a href="/bookmark/">
+
+<img
+
+src="/assets/icons/bookmark.svg"
+
+alt=""
+
+>
+
+<span>
+
+Bookmark
+
+</span>
+
+</a>
+
+<a href="/profile/settings.html">
+
+<img
+
+src="/assets/icons/settings.svg"
+
+alt=""
+
+>
+
+<span>
+
+Pengaturan
+
+</span>
+
+</a>
+
+<a href="/profile/preferences.html">
+
+<img
+
+src="/assets/icons/sliders-horizontal.svg"
+
+alt=""
+
+>
+
+<span>
+
+Preferensi
+
+</span>
+
+</a>
+
+<hr>
+
+<a
+
+href="#"
+
+id="logout-btn"
+
+class="logout-link"
+
+>
+
+<img
+
+src="/assets/icons/log-out.svg"
+
+alt=""
+
+>
+
+<span>
+
+Keluar
+
+</span>
+
+</a>
+
+</div>
+
+</div>
+
+`;
+
+    /* ======================================================
+       MOBILE DRAWER
+    ====================================================== */
+
+    if (mobileMenu) {
+
+        mobileMenu.innerHTML = `
+
+<div class="mobile-user-card">
+
+<img
+
+src="${avatar}"
+
+class="user-avatar"
+
+alt="${safeNama}"
+
+onerror="this.src='/assets/images/default-avatar.png'"
+
+>
+
+<div class="mobile-user-info">
+
+<strong>
+
+${safeNama}
+
+</strong>
+
+<span>
+
+${role}
+
+</span>
+
+</div>
+
+</div>
+
+<div class="mobile-menu-group">
+
+<a href="/profile/">
+
+<img
+
+src="/assets/icons/user.svg"
+
+class="menu-icon"
+
+alt=""
+
+>
+
+<span>
+
+Profil
+
+</span>
+
+</a>
+
+<a href="/bookmark/">
+
+<img
+
+src="/assets/icons/bookmark.svg"
+
+class="menu-icon"
+
+alt=""
+
+>
+
+<span>
+
+Bookmark
+
+</span>
+
+</a>
+
+<a href="/profile/settings.html">
+
+<img
+
+src="/assets/icons/settings.svg"
+
+class="menu-icon"
+
+alt=""
+
+>
+
+<span>
+
+Pengaturan
+
+</span>
+
+</a>
+
+<a href="/profile/preferences.html">
+
+<img
+
+src="/assets/icons/sliders-horizontal.svg"
+
+class="menu-icon"
+
+alt=""
+
+>
+
+<span>
+
+Preferensi
+
+</span>
+
+</a>
+
+<hr>
+
+<a
+
+href="#"
+
+id="mobile-logout-btn"
+
+class="logout-link"
+
+>
+
+<img
+
+src="/assets/icons/log-out.svg"
+
+class="menu-icon"
+
+alt=""
+
+>
+
+<span>
+
+Keluar
+
+</span>
+
+</a>
+
+</div>
+
+`;
+
+    }
+
+    /* ======================================================
+       LOGOUT
+    ====================================================== */
+
+    if (
+
+        typeof window.initLogout ===
+        "function"
+
+    ) {
 
         window.initLogout();
 
     }
 
-    // ===============================
-    // Dropdown Auth
-    // ===============================
+    /* logout mobile */
 
-    const dropdown =
-        menu.querySelector(
-            ".auth-dropdown"
+    const mobileLogout =
+        document.getElementById(
+            "mobile-logout-btn"
         );
 
-    const toggle =
-        menu.querySelector(
-            ".dropdown-toggle"
-        );
+    if (
 
-    if(toggle && dropdown){
+        mobileLogout &&
 
-        toggle.addEventListener(
+        typeof logout ===
+        "function"
+
+    ) {
+
+        mobileLogout.addEventListener(
+
             "click",
-            function(event){
 
-                event.stopPropagation();
+            function (event) {
 
-                dropdown.classList.toggle(
-                    "open"
-                );
+                event.preventDefault();
+
+                logout();
 
             }
-        );
 
-        document.addEventListener(
-            "click",
-            function(){
-
-                dropdown.classList.remove(
-                    "open"
-                );
-
-            }
         );
 
     }
+
+    initAccountDropdown();
+
+}
+
+/* ==========================================================
+   ACCOUNT DROPDOWN
+========================================================== */
+
+function initAccountDropdown() {
+
+    const dropdown =
+        document.querySelector(
+            ".auth-dropdown"
+        );
+
+    const button =
+        document.getElementById(
+            "account-button"
+        );
+
+    if (
+
+        !dropdown ||
+
+        !button
+
+    ) {
+
+        return;
+
+    }
+
+    button.addEventListener(
+
+        "click",
+
+        function (event) {
+
+            event.stopPropagation();
+
+            dropdown.classList.toggle(
+                "open"
+            );
+
+        }
+
+    );
+
+    dropdown.addEventListener(
+
+        "click",
+
+        function (event) {
+
+            event.stopPropagation();
+
+        }
+
+    );
+
+    document.addEventListener(
+
+        "click",
+
+        function () {
+
+            dropdown.classList.remove(
+                "open"
+            );
+
+        }
+
+    );
 
 }

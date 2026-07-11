@@ -1,24 +1,75 @@
-function initActiveMenu(){
+let activeMenuInitialized = false;
+
+// ======================================================
+
+function initActiveMenu() {
+
+    if (
+
+        activeMenuInitialized
+
+    ) {
+
+        return;
+
+    }
+
+    activeMenuInitialized = true;
 
     const currentPath =
-        window.location.pathname;
 
-    const links =
-        document.querySelectorAll(
-            "nav a"
+        normalizePath(
+
+            location.pathname
+
         );
 
-    links.forEach(link=>{
+    const menuLinks =
+
+        document.querySelectorAll(
+
+            ".main-nav > a, .main-nav .dropdown-menu a"
+
+        );
+
+    menuLinks.forEach(link => {
 
         const href =
-            new URL(
-                link.href
-            ).pathname;
 
-        if(currentPath===href){
+            normalizePath(
+
+                new URL(
+
+                    link.href,
+
+                    location.origin
+
+                ).pathname
+
+            );
+
+        if (
+
+            currentPath === href ||
+
+            (
+
+                href !== "/" &&
+
+                currentPath.startsWith(
+
+                    href
+
+                )
+
+            )
+
+        ) {
 
             link.classList.add(
+
                 "active"
+
             );
 
         }
@@ -26,3 +77,34 @@ function initActiveMenu(){
     });
 
 }
+
+// ======================================================
+
+function normalizePath(path) {
+
+    if (
+
+        path.length > 1 &&
+
+        path.endsWith("/")
+
+    ) {
+
+        return path.slice(
+
+            0,
+
+            -1
+
+        );
+
+    }
+
+    return path;
+
+}
+
+// ======================================================
+
+window.initActiveMenu =
+    initActiveMenu;

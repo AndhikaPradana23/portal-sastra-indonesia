@@ -1,106 +1,458 @@
-<link rel="stylesheet" href="/css/variables.css">
-<link rel="stylesheet" href="/css/typography.css">
-<link rel="stylesheet" href="/css/spacing.css">
-<link rel="stylesheet" href="/css/layout.css">
-   
-<link rel="stylesheet" href="/css/buttons.css">
-<link rel="stylesheet" href="/css/cards.css">
-<link rel="stylesheet" href="/css/forms.css">
-<link rel="stylesheet" href="/css/badges.css">
-<link rel="stylesheet" href="/css/components.css">
-<link rel="stylesheet" href="/css/utilities.css">
-<link rel="stylesheet" href="/css/responsive.css">
+<div class="container header-container">
 
-<div class="container">
+    <!-- ======================================
+         LEFT AREA
+    ======================================= -->
 
-    <a href="/" class="logo">
-        📚 Portal Sastra Indonesia
-    </a>
+    <div class="header-left">
 
-    <nav class="main-nav">
+        <a
+            href="/"
+            class="logo"
+            aria-label="Portal Sastra Indonesia">
 
-        <a href="/" data-menu="home">
-            Beranda
+            <img
+                src="/assets/icons/book-open.svg"
+                class="logo-icon"
+                alt="Portal Sastra Indonesia">
+
+            <span class="logo-text">
+
+                Portal Sastra Indonesia
+
+            </span>
+
         </a>
 
-        <a href="/kamus-istilah/" data-menu="kamus">
-            Kamus
-        </a>
+        <nav
+            class="main-nav"
+            aria-label="Navigasi Utama">
 
-        <a href="/artikel/" data-menu="artikel">
-            Artikel
-        </a>
+            <a href="/" data-menu="home">
 
-        <a href="/sastrawan/" data-menu="sastrawan">
-            Sastrawan
-        </a>
+                <img
+                    src="/assets/icons/house.svg"
+                    class="nav-icon"
+                    alt="">
 
-        <a href="/karya-sastra/" data-menu="karya">
-            Karya
-        </a>
+                <span>Beranda</span>
 
-        <div class="dropdown">
+            </a>
 
-            <button class="dropdown-toggle btn btn-outline">
-                Tools ▼
-            </button>
+            <a
+                href="/kamus-istilah/"
+                data-menu="kamus">
 
-            <div class="dropdown-menu">
+                <img
+                    src="/assets/icons/book-text.svg"
+                    class="nav-icon"
+                    alt="">
 
-                <a href="/sitasi/">
-                    Generator Sitasi
-                </a>
+                <span>Kamus</span>
 
-                <a href="/analisis-puisi/">
-                    Analisis Puisi
-                </a>
+            </a>
 
-                <a href="/kuis/">
-                    Kuis Sastra
-                </a>
+            <a
+                href="/artikel/"
+                data-menu="artikel">
 
-            </div>
+                <img
+                    src="/assets/icons/newspaper.svg"
+                    class="nav-icon"
+                    alt="">
 
-        </div>
+                <span>Artikel</span>
 
-    </nav>
+            </a>
+
+            <a
+                href="/sastrawan/"
+                data-menu="sastrawan">
+
+                <img
+                    src="/assets/icons/users.svg"
+                    class="nav-icon"
+                    alt="">
+
+                <span>Sastrawan</span>
+
+            </a>
+
+            <a
+                href="/karya-sastra/"
+                data-menu="karya">
+
+                <img
+                    src="/assets/icons/library-big.svg"
+                    class="nav-icon"
+                    alt="">
+
+                <span>Karya</span>
+
+            </a>
+
+        </nav>
+
+    </div>
+
+    <!-- ======================================
+         RIGHT AREA
+    ======================================= -->
 
     <div class="header-right">
 
-        <form action="/search/" class="header-search">
-            <div class="search-box">
-                🔎
-                <input class="input" name="q" placeholder="Cari..." required>
-            </div>
-        </form>
+        <!-- ======================================
+             TOOLS (DESKTOP)
+        ======================================= -->
 
-        <div id="auth-menu" style="display: inline-block;">
-            <a href="/profile/" class="profile-button btn btn-outline">
-                Profil
-            </a>
-            <!-- 
-              Catatan untuk sistem Auth JS Anda: 
-              Saat user berhasil login, script `initAuthUI()` biasanya akan mengganti isi dari elemen 
-              <div id="auth-menu"> di atas dengan markup dropdown berikut secara dinamis:
-              
-              <div class="auth-dropdown">
-                  <span>👋 ${nama}</span>
-                  <a href="/profile/index.html">Profil</a>
-                  <a href="/profile/preferences.html">Preferensi</a>
-                  <a href="/profile/settings.html">Pengaturan</a>
-                  <a href="#" id="logout-btn">Logout</a>
-              </div>
-            -->
+        <div class="dropdown header-tools">
+
+            <button
+                type="button"
+                class="dropdown-toggle btn btn-outline"
+                aria-haspopup="true"
+                aria-expanded="false">
+
+                <img
+                    src="/assets/icons/sliders-horizontal.svg"
+                    class="nav-icon"
+                    alt="">
+
+                <span>Tools</span>
+
+                <img
+                    src="/assets/icons/chevron-down.svg"
+                    class="dropdown-icon"
+                    alt="">
+
+            </button>
+
+            <div class="dropdown-menu tools-dropdown">
+
+                <div class="dropdown-section">
+
+                    <h4 class="dropdown-title">
+
+                        Pencarian Portal
+
+                    </h4>
+
+                    <form
+                        action="/search/"
+                        class="tools-search">
+
+                        <div class="search-box">
+
+                            <img
+                                src="/assets/icons/search.svg"
+                                class="search-icon"
+                                alt="Cari">
+
+                            <input
+                                class="input"
+                                type="search"
+                                name="q"
+                                placeholder="Cari istilah, artikel, karya, sastrawan...">
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <hr>
+
+                <div class="dropdown-section">
+
+                    <h4 class="dropdown-title">
+
+                        Alat Bantu
+
+                    </h4>
+
+                    <a href="/sitasi/">
+
+                        <img
+                            src="/assets/icons/quote.svg"
+                            class="menu-icon"
+                            alt="">
+
+                        <span>Generator Sitasi</span>
+
+                    </a>
+
+                    <a href="/analisis-puisi/">
+
+                        <img
+                            src="/assets/icons/file-pen-line.svg"
+                            class="menu-icon"
+                            alt="">
+
+                        <span>Analisis Puisi</span>
+
+                    </a>
+
+                    <a href="/kuis/">
+
+                        <img
+                            src="/assets/icons/graduation-cap.svg"
+                            class="menu-icon"
+                            alt="">
+
+                        <span>Kuis Sastra</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <button id="mobile-menu-btn" class="mobile-menu-btn btn btn-outline">
-            ☰
+        <!-- auth-ui.js -->
+
+        <div id="auth-menu"></div>
+
+        <!-- ======================================
+             MOBILE BUTTON
+        ======================================= -->
+
+        <button
+            id="mobile-menu-btn"
+            class="mobile-menu-btn"
+            type="button"
+            aria-label="Menu">
+
+            <img
+                src="/assets/icons/menu.svg"
+                class="nav-icon"
+                alt="Menu">
+
         </button>
 
     </div>
 
 </div>
 
-<script src="/js/layout/layout.js"></script>
-<script src="/js/layout/active-menu.js"></script>
-<script src="/js/layout/mobile-menu.js"></script>
+<!-- ======================================================
+     MOBILE OVERLAY
+======================================================= -->
+
+<div
+    id="mobile-menu-overlay"
+    class="mobile-menu-overlay"></div>
+
+<!-- ======================================================
+     MOBILE DRAWER
+======================================================= -->
+
+<aside
+    id="mobile-drawer"
+    class="mobile-drawer">
+
+    <!-- Header -->
+
+    <div class="mobile-drawer-header">
+
+        <div class="mobile-brand">
+
+            <img
+                src="/assets/icons/book-open.svg"
+                class="logo-icon"
+                alt="">
+
+            <div>
+
+                <strong>
+
+                    Portal Sastra Indonesia
+
+                </strong>
+
+                <small>
+
+                    Referensi Sastra Indonesia
+
+                </small>
+
+            </div>
+
+        </div>
+
+        <button
+            id="mobile-close-btn"
+            class="mobile-close-btn"
+            type="button">
+
+            <img
+                src="/assets/icons/x.svg"
+                class="nav-icon"
+                alt="Tutup">
+
+        </button>
+
+    </div>
+
+    <!-- ==========================
+         NAVIGASI
+    =========================== -->
+
+    <div class="mobile-group">
+
+        <span class="mobile-group-title">
+
+            Navigasi
+
+        </span>
+
+        <nav class="mobile-nav">
+
+            <a href="/">
+
+                <img
+                    src="/assets/icons/house.svg"
+                    class="menu-icon"
+                    alt="">
+
+                Beranda
+
+            </a>
+
+            <a href="/kamus-istilah/">
+
+                <img
+                    src="/assets/icons/book-text.svg"
+                    class="menu-icon"
+                    alt="">
+
+                Kamus
+
+            </a>
+
+            <a href="/artikel/">
+
+                <img
+                    src="/assets/icons/newspaper.svg"
+                    class="menu-icon"
+                    alt="">
+
+                Artikel
+
+            </a>
+
+            <a href="/sastrawan/">
+
+                <img
+                    src="/assets/icons/users.svg"
+                    class="menu-icon"
+                    alt="">
+
+                Sastrawan
+
+            </a>
+
+            <a href="/karya-sastra/">
+
+                <img
+                    src="/assets/icons/library-big.svg"
+                    class="menu-icon"
+                    alt="">
+
+                Karya Sastra
+
+            </a>
+
+        </nav>
+
+    </div>
+
+    <!-- ==========================
+         TOOLS
+    =========================== -->
+
+    <div class="mobile-group">
+
+        <span class="mobile-group-title">
+
+            Tools
+
+        </span>
+
+        <form
+            action="/search/"
+            class="mobile-search">
+
+            <div class="search-box">
+
+                <img
+                    src="/assets/icons/search.svg"
+                    class="search-icon"
+                    alt="">
+
+                <input
+                    type="search"
+                    name="q"
+                    placeholder="Cari Portal...">
+
+            </div>
+
+        </form>
+
+        <nav class="mobile-nav">
+
+            <a href="/sitasi/">
+
+                <img
+                    src="/assets/icons/quote.svg"
+                    class="menu-icon"
+                    alt="">
+
+                Generator Sitasi
+
+            </a>
+
+            <a href="/analisis-puisi/">
+
+                <img
+                    src="/assets/icons/file-pen-line.svg"
+                    class="menu-icon"
+                    alt="">
+
+                Analisis Puisi
+
+            </a>
+
+            <a href="/kuis/">
+
+                <img
+                    src="/assets/icons/graduation-cap.svg"
+                    class="menu-icon"
+                    alt="">
+
+                Kuis Sastra
+
+            </a>
+
+        </nav>
+
+    </div>
+
+    <!-- ==========================
+         AKUN
+    =========================== -->
+
+    <div class="mobile-group">
+
+        <span class="mobile-group-title">
+
+            Akun
+
+        </span>
+
+        <!-- Akan diisi auth-ui.js -->
+
+        <div id="mobile-auth-menu"></div>
+
+    </div>
+
+</aside>

@@ -2,23 +2,21 @@
    GLOBAL & LAYOUT BASE
 ==================================== */
 body {
-    /* Font-family, warna teks, dan background global sudah otomatis mengikuti layout.css & typography.css */
-    max-width: 1200px; /* Diselaraskan dengan kontainer utama portal */
-    margin: 0 auto;
+    margin: 0;
 }
 
 #loading {
-    padding: var(--space-4); /* 16px */
+    padding: var(--space-4);
     background: var(--surface-secondary);
     border-radius: var(--radius-md);
-    margin-bottom: var(--space-5); /* 24px */
+    margin-bottom: var(--space-5);
     text-align: center;
     font-weight: 600;
     color: var(--text-light);
 }
 
 .error, .empty {
-    padding: var(--space-5); /* 24px */
+    padding: var(--space-5);
     background: var(--danger-light);
     color: var(--danger);
     border-radius: var(--radius-md);

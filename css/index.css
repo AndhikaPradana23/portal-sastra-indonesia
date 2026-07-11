@@ -2,10 +2,7 @@
    GLOBAL & LAYOUT BASE
 ==================================== */
 body {
-    /* Aturan font-family, background, dan color sudah diwarisi dari layout & typography */
-    max-width: 1200px; /* Diselaraskan dengan max-width container utama */
-    margin: 0 auto;
-    padding: 0; /* Mengandalkan padding dari .container di layout.css */
+    margin: 0;
 }
 
 /* ====================================
@@ -18,8 +15,8 @@ body {
         var(--primary-light),
         white
     );
-    border-radius: var(--radius-xl); /* Sesuai standarisasi di utilities.css */
-    margin-bottom: var(--space-7); /* 48px */
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-7);
     text-align: center;
     box-shadow: var(--shadow-lg);
 }

@@ -276,3 +276,22 @@
     height:18px;
     accent-color:var(--primary);
 }
+
+/* ==========================================
+   FIELD FEEDBACK
+========================================== */
+
+.field-feedback{
+    display:block;
+    margin-top:8px;
+    min-height:20px;
+    font-size:.875rem;
+}
+
+.field-feedback.success{
+    color:var(--success);
+}
+
+.field-feedback.error{
+    color:var(--danger);
+}

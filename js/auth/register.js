@@ -1,3 +1,9 @@
+// Regex untuk validasi format username (huruf kecil, angka, titik, dan underscore)
+const usernameRegex = /^[a-z0-9._]+$/;
+
+// State global untuk melacak ketersediaan username
+let usernameValid = false;
+
 document.addEventListener(
     "DOMContentLoaded",
     initRegister
@@ -13,10 +19,77 @@ function initRegister() {
         "submit",
         handleRegister
     );
+
+    // Tambahkan pengecekan realtime saat user mengetik username
+    const usernameInput = document.getElementById("username");
+    usernameInput.addEventListener(
+        "input",
+        checkUsernameAvailability
+    );
+}
+
+async function checkUsernameAvailability() {
+    const username =
+        document
+        .getElementById("username")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const feedback =
+        document.getElementById(
+            "username-feedback"
+        );
+
+    // Jika input kurang dari 3 karakter, bersihkan feedback
+    if (username.length < 3) {
+        feedback.className = "field-feedback";
+        feedback.textContent = "";
+        usernameValid = false;
+        return;
+    }
+
+    // Validasi format menggunakan regex sebelum mengecek ke database
+    if (!usernameRegex.test(username)) {
+        feedback.className = "field-feedback error";
+        feedback.textContent = "Format tidak valid (gunakan huruf kecil, angka, titik, atau underscore).";
+        usernameValid = false;
+        return;
+    }
+
+    try {
+        // Menggunakan RPC Supabase untuk efisiensi, keamanan RLS, dan proteksi privasi tabel profiles
+        const { data: isExists, error } = await supabaseClient.rpc(
+            "username_exists",
+            { p_username: username }
+        );
+
+        if (error) throw error;
+
+        if (isExists) {
+            feedback.className = "field-feedback error";
+            feedback.textContent = "Username sudah digunakan. Silakan gunakan username lain.";
+            usernameValid = false;
+        } else {
+            feedback.className = "field-feedback success";
+            feedback.textContent = "Username tersedia.";
+            usernameValid = true;
+        }
+    } catch (error) {
+        console.error("Gagal memeriksa username:", error);
+    }
 }
 
 async function handleRegister(e) {
     e.preventDefault();
+
+    // Validasi pengecekan realtime sebelum proses registrasi dilanjutkan
+    if (!usernameValid) {
+        alert(
+            "Silakan gunakan username yang belum dipakai."
+        );
+        return;
+    }
 
     const namaLengkap =
         document
