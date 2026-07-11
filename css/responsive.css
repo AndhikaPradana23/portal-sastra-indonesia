@@ -53,89 +53,9 @@
     .logo span{
         display:none;
     }
-    .header-search{
-        display:none;
-    }
-    .main-nav{
-        position:fixed;
-        top:69px;
-        left:-100%;
-        width:300px;
-        height:calc(100vh - 69px);
-        display:flex;
-        flex-direction:column;
-        align-items:stretch;
-        gap:4px;
-        padding:24px;
-        background:var(--surface);
-        border-right:1px solid var(--border);
-        box-shadow:var(--shadow-xl);
-        overflow-y:auto;
-        transition:left .25s ease;
-        z-index:999;
-    }
-    body.mobile-menu-open .main-nav{
-        left:0;
-    }
-    .main-nav>a{
-        justify-content:flex-start;
-        padding:14px 16px;
-        border-radius:12px;
-    }
-    .main-nav>a span{
-        display:inline;
-    }
-    .dropdown{
-        width:100%;
-    }
-    .dropdown-toggle{
-        width:100%;
-        justify-content:flex-start;
-    }
-    .dropdown-toggle span{
-        display:inline;
-    }
-    .dropdown-menu{
-        position:static;
-        width:100%;
-        opacity:1;
-        visibility:visible;
-        transform:none;
-        box-shadow:none;
-        border:none;
-        border-left:2px solid var(--border);
-        margin-left:18px;
-        margin-top:10px;
-        display:none;
-    }
-    .dropdown.open .dropdown-menu{
-        display:block;
-    }
-    .dropdown::after{
-        display:none;
-    }
     .header-right{
         margin-left:auto;
         gap:10px;
-    }
-    #auth-menu{
-        flex:1;
-        display:flex;
-        justify-content:flex-end;
-    }
-    .account-button{
-        min-width:auto;
-        padding:8px;
-    }
-    .account-button .auth-user-info{
-        display:none;
-    }
-    .account-arrow{
-        display:none;
-    }
-    .user-avatar{
-        width:46px;
-        height:46px;
     }
     .mobile-menu-btn{
         display:flex;
