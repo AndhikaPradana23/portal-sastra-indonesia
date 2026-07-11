@@ -311,9 +311,7 @@ html{
 }
 
 .mobile-menu-overlay{
-
     touch-action:none;
-
 }
 
 /* ==========================================================
@@ -321,35 +319,41 @@ html{
 ========================================================== */
 .mobile-drawer{
     position:fixed;
-    inset:0 0 0 auto;
+    top:0;
+    right:0;
 
     width:min(360px,100vw);
     max-width:100vw;
+
     height:100dvh;
+
+    background:var(--surface);
 
     display:flex;
     flex-direction:column;
 
-    background:var(--surface);
-
     overflow-y:auto;
     overflow-x:hidden;
 
-    padding-top:env(safe-area-inset-top);
+    -webkit-overflow-scrolling:touch;
+
+    overscroll-behavior:contain;
 
     box-shadow:-8px 0 40px rgba(15,23,42,.12);
 
     z-index:1999;
 
-    transform:translate3d(110%,0,0);
-
-    will-change:transform;
+    transform:translateX(110%);
 
     transition:transform .28s ease;
-}body.mobile-menu-open .mobile-drawer{
+}
 
+.mobile-drawer > *{
+    flex-shrink:0;
+}
+
+body.mobile-menu-open .mobile-drawer{
     transform:translate3d(0,0,0);
-
 }
 
 /* ==========================================================
@@ -685,7 +689,6 @@ html{
 }
 
 @media (max-width:768px){
-
     .header-container{
         min-height:60px;
         gap:10px;
@@ -702,7 +705,6 @@ html{
     #auth-menu{
         max-width:none;
     }
-
 }
 
 @media (max-width:480px){
