@@ -303,23 +303,6 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
-.btn-primary {
-    display: inline-block;
-    margin-top: var(--space-5); /* 24px */
-    padding: var(--space-3) var(--space-5); /* 12px 24px - Sesuai standar button spasing.css */
-    border-radius: var(--radius-md); /* Sesuai standarisasi di utilities.css */
-    background: var(--primary);
-    color: var(--text-white);
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-
-.btn-primary:hover {
-    background: var(--primary-hover);
-    color: var(--text-white);
-}
-
 /* ====================================
    AUTOCOMPLETE SYSTEM
 ==================================== */

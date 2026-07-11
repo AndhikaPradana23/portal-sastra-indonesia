@@ -64,7 +64,7 @@ async function updateAuthMenu() {
         desktopMenu.innerHTML = `
 <a
 href="/auth/login.html"
-class="btn btn-primary"
+class="btn btn-primary btn-header-login"
 >
 <img
 src="/assets/icons/log-in.svg"
