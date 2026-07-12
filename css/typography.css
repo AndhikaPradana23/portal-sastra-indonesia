@@ -25,42 +25,42 @@ body {
 
 /* ========= HEADING SYSTEM ========= */
 h1 {
-    font-size: 2.5rem; /* 40px - Hero Homepage, Judul Artikel/Karya */
+    font-size: 2.5rem;
     line-height: 1.2;
     font-weight: 800;
     color: var(--secondary);
 }
 
 h2 {
-    font-size: 2rem; /* 32px - Judul Section, Heading Halaman */
+    font-size: 2rem;
     line-height: 1.3;
     font-weight: 700;
     color: var(--secondary);
 }
 
 h3 {
-    font-size: 1.5rem; /* 24px - Card Title, Judul Analisis/Quiz */
+    font-size: 1.5rem;
     line-height: 1.4;
     font-weight: 700;
     color: var(--secondary);
 }
 
 h4 {
-    font-size: 1.25rem; /* 20px */
+    font-size: 1.25rem;
     line-height: 1.4;
     font-weight: 600;
     color: var(--secondary);
 }
 
 h5 {
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem;
     line-height: 1.5;
     font-weight: 600;
     color: var(--secondary);
 }
 
 h6 {
-    font-size: 1rem; /* 16px */
+    font-size: 1rem;
     line-height: 1.5;
     font-weight: 600;
     color: var(--secondary);
@@ -69,13 +69,13 @@ h6 {
 /* ========= PARAGRAPH SYSTEM ========= */
 p {
     font-size: 1rem;
-    line-height: 1.8; /* Optimal untuk keterbacaan artikel & biografi panjang */
+    line-height: 1.8;
     color: var(--text-light);
 }
 
 /* ========= SMALL TEXT ========= */
 small {
-    font-size: .875rem; /* 14px - Metadata, tanggal, statistik, referensi */
+    font-size: .875rem;
     line-height: 1.5;
     color: var(--text-soft);
 }
@@ -104,7 +104,7 @@ ol {
 }
 
 li {
-    line-height: 1.8; /* Penting untuk daftar karya, penghargaan, & referensi */
+    line-height: 1.8;
     color: var(--text-light);
 }
 

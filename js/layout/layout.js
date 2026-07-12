@@ -209,14 +209,22 @@ function renderBreadcrumb(items) {
             "breadcrumb"
         );
 
-    if (!container) {
+    if (!container || !Array.isArray(items) || items.length === 0) {
 
         return;
 
     }
 
-    let html =
-        `<nav class="breadcrumb"><ol>`;
+    let html = `
+
+        <nav
+            class="breadcrumb-card"
+            aria-label="Breadcrumb"
+        >
+
+            <ol class="breadcrumb-list">
+
+    `;
 
     items.forEach(
 
@@ -230,59 +238,119 @@ function renderBreadcrumb(items) {
 
             const isLast =
 
-                index ===
+                index === items.length - 1;
 
-                items.length - 1;
+            html += `
+
+                <li class="breadcrumb-item">
+
+            `;
+
+            // ===========================
+            // LINK
+            // ===========================
 
             if (
 
-                isLast ||
+                !isLast &&
 
-                !item.href
+                item.href
 
             ) {
 
                 html += `
 
-<li>
+                    <a href="${item.href}">
 
-<span>
+                        ${
 
-${item.label}
+                            item.icon
 
-</span>
+                                ?
 
-</li>
+                                `<img
+                                    src="${item.icon}"
+                                    class="breadcrumb-icon"
+                                    alt=""
+                                >`
 
-`;
+                                :
+
+                                ""
+
+                        }
+
+                        <span>
+
+                            ${item.label}
+
+                        </span>
+
+                    </a>
+
+                    <img
+                        src="/assets/icons/chevron-right.svg"
+                        class="breadcrumb-separator"
+                        alt=""
+                    >
+
+                `;
 
             }
+
+            // ===========================
+            // CURRENT PAGE
+            // ===========================
 
             else {
 
                 html += `
 
-<li>
+                    <span class="breadcrumb-current">
 
-<a href="${item.href}">
+                        ${
 
-${item.label}
+                            item.icon
 
-</a>
+                                ?
 
-</li>
+                                `<img
+                                    src="${item.icon}"
+                                    class="breadcrumb-icon"
+                                    alt=""
+                                >`
 
-`;
+                                :
+
+                                ""
+
+                        }
+
+                        ${item.label}
+
+                    </span>
+
+                `;
 
             }
+
+            html += `
+
+                </li>
+
+            `;
 
         }
 
     );
 
-    html +=
+    html += `
 
-        `</ol></nav>`;
+            </ol>
+
+        </nav>
+
+    `;
 
     container.innerHTML =
 

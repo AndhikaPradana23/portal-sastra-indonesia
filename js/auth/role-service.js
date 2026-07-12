@@ -9,7 +9,7 @@ const ROLE_CONFIG = {
 
         label:"User",
 
-        icon:"👤",
+        icon:"/assets/icons/user-round.svg",
 
         className:"role-user"
 
@@ -19,7 +19,7 @@ const ROLE_CONFIG = {
 
         label:"Kontributor",
 
-        icon:"✍",
+        icon:"/assets/icons/pen-tool.svg",
 
         className:"role-kontributor"
 
@@ -29,7 +29,7 @@ const ROLE_CONFIG = {
 
         label:"Editor",
 
-        icon:"📝",
+        icon:"/assets/icons/file-pen-line.svg",
 
         className:"role-editor"
 
@@ -39,7 +39,7 @@ const ROLE_CONFIG = {
 
         label:"Admin",
 
-        icon:"🛡",
+        icon:"/assets/icons/shield-check.svg",
 
         className:"role-admin"
 
@@ -49,7 +49,7 @@ const ROLE_CONFIG = {
 
         label:"Super Admin",
 
-        icon:"👑",
+        icon:"/assets/icons/crown.svg",
 
         className:"role-super-admin"
 
@@ -69,21 +69,23 @@ function getRole(role){
 }
 
 /**
- * Merender badge role.
+ * Merender badge role menggunakan ikon SVG Lucide.
  */
 function renderRoleBadge(role){
 
-    const config =
-
-        getRole(role);
+    const config = getRole(role);
 
     return `
 
         <span class="role-badge ${config.className}">
 
-            ${config.icon}
+            <img
+                src="${config.icon}"
+                alt=""
+                class="role-badge-icon"
+            >
 
-            ${config.label}
+            <span>${config.label}</span>
 
         </span>
 

@@ -3,62 +3,266 @@
    Portal Sastra Indonesia
    ========================================================================== */
 
-.profile-section {
-    margin-top: var(--space-7); /* 48px - Selaras dengan spacing layout */
+/* Header */
+.profile-page-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
 }
 
+.section-icon {
+    width: 22px;
+    height: 22px;
+}
+
+/* Card */
 .profile-card {
-    background: var(--surface);
+    padding: 0;
+    overflow: hidden;
+    background: white;
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg); /* 18px */
-    padding: var(--space-7); /* 48px */
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    animation: fadeUp .4s;
+}
+
+/* Cover */
+.profile-cover {
+    height: 140px;
+    background: linear-gradient(135deg, var(--primary), #60a5fa);
+}
+
+/* Header Profil */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 0;
+    padding: 0 var(--space-6);
+}
+
+/* Avatar Lingkaran */
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid #fff;
+    background: #fff;
     box-shadow: var(--shadow-lg);
+    position: relative;
+    transform: translateY(-70px);
+    margin-bottom: -45px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Style agar icon avatar bawaan memenuhi lingkaran dengan rapi */
+.profile-avatar-default {
+    width: 100%;
+    height: 100%;
+    padding: 34px;
+    object-fit: contain;
+}
+
+/* Nama & Username */
+.profile-title {
+    margin-top: 20px;
     text-align: center;
 }
 
-.profile-avatar {
-    font-size: 4.5rem; /* 72px menggunakan skala rem */
-    margin-bottom: var(--space-5); /* 24px */
-    display: inline-block;
+.profile-title h2 {
+    margin: 0;
 }
 
-.profile-card h2 {
-    margin-bottom: var(--space-2); /* 8px */
-}
-
-/* Keterangan warna deskripsi mengikuti global .text-light via typography.css */
-
-/* ========= PROFILE META GRID ========= */
-.profile-meta {
-    margin-top: var(--space-6); /* 32px */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-5); /* 24px */
-}
-
-.profile-meta div {
-    background: var(--surface-secondary); /* Menggunakan token latar komponen sekunder */
-    padding: var(--space-5); /* 24px */
-    border-radius: var(--radius-md); /* 12px - Konsisten dengan form & options */
-    border: 1px solid var(--border);
-    text-align: left; /* Mengembalikan teks meta ke kiri agar mudah dibaca */
-}
-
-.profile-meta span {
-    display: block;
+.profile-title p {
+    margin-top: 6px;
+    margin-bottom: 12px;
     color: var(--text-light);
-    font-size: 0.875rem; /* 14px - Mengikuti skala .text-sm */
-    margin-bottom: var(--space-2); /* 8px */
-    font-weight: 500;
 }
 
-.profile-meta strong {
+/* Bio */
+.profile-bio {
+    max-width: 650px;
+    margin: auto;
+    padding: 28px;
+    text-align: center;
+    color: var(--text-light);
+}
+
+/* Grid Layout */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 0 32px 32px;
+}
+
+/* Card Informasi */
+.profile-info-card {
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 24px;
+}
+
+.profile-info-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    font-size: 1.1rem;
+}
+
+.info-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Item Data */
+.profile-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-item:last-child {
+    border-bottom: none;
+}
+
+.profile-item-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.profile-item-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+.profile-item span {
     display: block;
+    font-size: .85rem;
+    color: var(--text-light);
+}
+
+.profile-item strong {
+    display: block;
+    margin-top: 2px;
     word-break: break-word;
 }
 
+/* Tombol Aksi */
+.profile-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px;
+    flex-wrap: wrap;
+}
+
 /* ==========================================================================
-   SETTINGS CARD & FORM
+   ROLE BADGES COMPONENTS
+   ========================================================================== */
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: .95rem;
+    font-weight: 600;
+}
+
+.role-badge-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Variasi Warna Berdasarkan Tingkatan Akses */
+.role-user {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.role-kontributor {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+.role-editor {
+    background: #E0F2FE;
+    color: #0369A1;
+}
+
+.role-admin {
+    background: #DCFCE7;
+    color: #15803D;
+}
+
+.role-super-admin {
+    background: #F3E8FF;
+    color: #7E22CE;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+    .profile-cover {
+        height: 80px;
+    }
+    
+    .profile-avatar {
+        width: 110px;
+        height: 110px;
+        transform: translateY(-50px);
+        margin-bottom: -25px;
+        border-width: 5px;
+    }
+
+    .profile-title {
+        padding: 0 18px;
+    }
+
+    .profile-title h2 {
+        font-size: 1.8rem;
+    }
+    
+    .profile-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    .profile-actions {
+        flex-direction: column;
+    }
+    
+    .profile-actions .btn {
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   SETTINGS CARD & FORM (Dipertahankan untuk halaman pengaturan)
    ========================================================================== */
 
 .settings-card {
@@ -70,15 +274,12 @@
     box-shadow: var(--shadow-sm);
 }
 
-/* Komponen .form-group margin-bottom & label otomatis diwariskan dari typography & spasing.css */
-
 .form-group input {
     width: 100%;
     box-sizing: border-box;
     border: 1px solid var(--border);
     border-radius: var(--radius-md); /* 12px */
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    /* padding mengikuti aturan global input di spasing.css */
 }
 
 .form-group input:focus {
@@ -93,7 +294,6 @@
     color: var(--text-white);
     cursor: pointer;
     transition: background 0.2s ease, transform 0.1s ease;
-    /* padding, font-size, font-weight, dan radius mengikuti standar button global */
 }
 
 .settings-card button:hover {

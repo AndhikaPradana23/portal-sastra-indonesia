@@ -3,45 +3,35 @@ document.addEventListener(
     initProfilePage
 );
 
-/**
- * Controller Utama Halaman Profil
- * Mengatur alur pemuatan komponen, proteksi rute, dan rendering data.
- */
 async function initProfilePage(){
 
-    // 1. Memuat layout utama (Header & Footer)
     await loadLayout();
 
-    // 2. Merender navigasi Breadcrumb
     if (typeof renderBreadcrumb === "function") {
         renderBreadcrumb([
             {
                 label: "Beranda",
-                href: "/index.html"
+                href: "/",
+                icon: "/assets/icons/house.svg"
             },
             {
-                label: "Profil Saya"
+                label: "Profil Saya",
+                icon: "/assets/icons/user-round.svg"
             }
         ]);
     }
 
-    // 3. Memeriksa apakah pengguna sudah login via protected-route.js
     const allowed =
         await requireAuth();
 
     if(!allowed){
-        // Menghentikan eksekusi jika tidak lolos (otomatis di-redirect ke /auth/login.html)
         return;
     }
 
-    // 4. Jika lolos proteksi, muat data profil pengguna
     await loadProfile();
 
 }
 
-/**
- * Helper untuk mengamankan nilai dari XSS dan memberikan fallback jika kosong
- */
 function safeValue(value) {
     if (!value) {
         return "-";
@@ -51,9 +41,6 @@ function safeValue(value) {
         : value;
 }
 
-/**
- * Formatter tanggal untuk mengubah format ISO menjadi format tanggal Indonesia
- */
 function formatTanggalIndonesia(value){
     if(!value){
         return "-";
@@ -74,9 +61,6 @@ function formatTanggalIndonesia(value){
     }
 }
 
-/**
- * Formatter waktu aktivitas terakhir pengguna.
- */
 function formatLastSeen(value){
 
     if(!value){
@@ -140,9 +124,30 @@ function formatLastSeen(value){
 
 }
 
-/**
- * Memuat dan menampilkan data profil pengguna ke dalam interface (DOM)
- */
+function renderItem(icon, label, value){
+
+    return `
+        <div class="profile-item">
+
+            <div class="profile-item-icon">
+
+                <img src="${icon}" alt="">
+
+            </div>
+
+            <div>
+
+                <span>${label}</span>
+
+                <strong>${value}</strong>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
 async function loadProfile(){
 
     const container =
@@ -155,7 +160,6 @@ async function loadProfile(){
         return;
     }
 
-    // Mengambil data profil (memanggil fungsi dari service)
     const profile =
         await getProfile();
 
@@ -171,23 +175,19 @@ async function loadProfile(){
 
     }
 
-    // Menggunakan helper safeValue untuk proteksi XSS defensif
     const safeNama = safeValue(profile.nama_lengkap);
     const safeEmail = safeValue(profile.email);
     const safeUsername = safeValue(profile.username);
     const safeJenisKelamin = safeValue(profile.jenis_kelamin);
     const safeNoTelp = safeValue(profile.no_telp);
 
-    // Menggunakan status bio informatif
     const safeBio = profile.bio
         ? safeValue(profile.bio)
         : "<span class='text-muted'>Belum menambahkan bio.</span>";
 
-    // Format tanggal menggunakan helper baru
     const tanggalBergabung = formatTanggalIndonesia(profile.created_at);
     const tanggalLahirFormatted = formatTanggalIndonesia(profile.tanggal_lahir);
 
-    // Kondisi untuk render avatar gambar atau emoji default
     const avatarHtml = profile.avatar_url
         ? `
         <img
@@ -200,90 +200,159 @@ async function loadProfile(){
 
     // Menyuntikkan template UI Profil ke dalam kontainer HTML
     container.innerHTML = `
-        <div class="profile-card">
 
-            <div class="profile-header-block">
-                <div class="profile-avatar">
-                    ${avatarHtml}
-                </div>
-                <h2>${safeNama}</h2> 
-                <p class="profile-username-sub">@${safeUsername}</p>
-                <p class="profile-bio-text"><em>"${safeBio}"</em></p>
-            </div>
+<div class="profile-card fade-up">
 
-            <!-- BAGIAN 1: BIODATA -->
-            <div class="profile-section">
-                <h3>Biodata</h3>
-                <div class="profile-meta-grid">
-                    <div class="meta-item">
-                        <span>Nama Lengkap</span>
-                        <strong>${safeNama}</strong>
-                    </div>
-                    <div class="meta-item">
-                        <span>Username</span>
-                        <strong>${safeUsername}</strong>
-                    </div>
-                    <div class="meta-item">
-                        <span>Jenis Kelamin</span>
-                        <strong>${safeJenisKelamin}</strong>
-                    </div>
-                    <div class="meta-item">
-                        <span>Tanggal Lahir</span>
-                        <strong>${tanggalLahirFormatted}</strong>
-                    </div>
-                    <div class="meta-item">
-                        <span>No. Telepon</span>
-                        <strong>${safeNoTelp}</strong>
-                    </div>
-                </div>
-            </div>
+    <div class="profile-cover"></div>
 
-            <!-- BAGIAN 2: INFORMASI AKUN -->
-            <div class="profile-section">
-                <h3>Informasi Akun</h3>
-                <div class="profile-meta-grid">
-                    <div class="meta-item">
-                        <span>Email</span>
-                        <strong>${safeEmail}</strong>
-                    </div>
-                    <div class="meta-item">
-                        <span>Role</span>
-                        ${renderRoleBadge(profile.role)}
-                    </div>
-                    <div class="meta-item">
-                        <span>Tanggal Bergabung</span>
-                        <strong>${tanggalBergabung}</strong>
-                    </div>
-                    <div class="meta-item">
-                        <span>Terakhir Aktif</span>
-                        <strong>
-                            ${formatLastSeen(profile.last_seen_at)}
-                        </strong>
-                    </div>
-                    <div class="meta-item">
-                        <span>ID Pengguna</span>
-                        <strong class="uid-text">${profile.id}</strong>
-                    </div>
-                </div>
+    <div class="profile-header">
+
+        <div class="profile-avatar">
+
+            ${avatarHtml}
+
+        </div>
+
+        <div class="profile-title">
+
+            <h2>${safeNama}</h2>
+
+            <p>@${safeUsername}</p>
+
+            <div class="profile-role">
+
+                ${renderRoleBadge(profile.role)}
+
             </div>
 
         </div>
 
-        <!-- Tombol Aksi Akses Cepat Pengguna -->
-        <div class="profile-actions">
-            <a
-                href="/profile/settings.html"
-                class="btn btn-primary"
-            >
-                Edit Profil
-            </a>
-            <a
-                href="/profile/preferences.html"
-                class="btn btn-outline"
-            >
-                Preferensi
-            </a>
+    </div>
+
+    <div class="profile-bio">
+
+        ${safeBio}
+
+    </div>
+
+    <div class="profile-grid">
+
+        <div class="profile-info-card">
+
+            <h3>
+
+                <img src="/assets/icons/badge-info.svg" class="info-icon">
+
+                Biodata
+
+            </h3>
+
+            ${renderItem(
+                "/assets/icons/user.svg",
+                "Nama Lengkap",
+                safeNama
+            )}
+
+            ${renderItem(
+                "/assets/icons/at-sign.svg",
+                "Username",
+                safeUsername
+            )}
+
+            ${renderItem(
+                "/assets/icons/users.svg",
+                "Jenis Kelamin",
+                safeJenisKelamin
+            )}
+
+            ${renderItem(
+                "/assets/icons/calendar.svg",
+                "Tanggal Lahir",
+                tanggalLahirFormatted
+            )}
+
+            ${renderItem(
+                "/assets/icons/phone.svg",
+                "No. Telepon",
+                safeNoTelp
+            )}
+
         </div>
-    `;
+
+        <div class="profile-info-card">
+
+            <h3>
+
+                <img src="/assets/icons/shield-user.svg" class="info-icon">
+
+                Informasi Akun
+
+            </h3>
+
+            ${renderItem(
+                "/assets/icons/mail.svg",
+                "Email",
+                safeEmail
+            )}
+
+            ${renderItem(
+                "/assets/icons/calendar-plus.svg",
+                "Bergabung",
+                tanggalBergabung
+            )}
+
+            ${renderItem(
+                "/assets/icons/activity.svg",
+                "Terakhir Aktif",
+                formatLastSeen(profile.last_seen_at)
+            )}
+
+            ${renderItem(
+                "/assets/icons/fingerprint-pattern.svg",
+                "ID Pengguna",
+                profile.id
+            )}
+
+        </div>
+
+    </div>
+
+    <div class="profile-actions">
+
+        <a
+            href="/profile/settings.html"
+            class="btn btn-primary"
+        >
+
+            <img
+                src="/assets/icons/pencil.svg"
+                class="btn-icon"
+                alt=""
+            >
+
+            Edit Profil
+
+        </a>
+
+        <a
+            href="/profile/preferences.html"
+            class="btn btn-outline"
+        >
+
+            <img
+                src="/assets/icons/sliders-horizontal.svg"
+                class="btn-icon"
+                alt=""
+            >
+
+            Preferensi
+
+        </a>
+
+    </div>
+
+</div>
+
+`;
 
 }

@@ -13,8 +13,6 @@
    
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
-    <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -33,7 +31,7 @@
 
         <div class="container">
 
-            <div id="breadcrumb" style="margin-bottom: var(--space-4);"></div>
+            <div id="breadcrumb"></div>
 
             <div class="section-header">
 
@@ -53,8 +51,15 @@
 
             <div class="card" style="margin-top: var(--space-6);">
                 
-                <div class="card-header">
-                    <h3 style="margin: 0;">Informasi Akun</h3>
+                <div class="card-header profile-page-header">
+                    <h3>
+                        <img
+                            src="/assets/icons/user-round.svg"
+                            class="section-icon"
+                            alt=""
+                        >
+                        Informasi Profil
+                    </h3>
                 </div>
 
                 <div class="card-body">
@@ -65,12 +70,6 @@
 
                     </div>
 
-                </div>
-
-                <div class="card-footer" style="display: flex; justify-content: flex-end; gap: var(--space-2);">
-                    <!-- Contoh penempatan tombol standar jika diperlukan:
-                    <button class="btn btn-primary">Simpan Perubahan</button> 
-                    -->
                 </div>
 
             </div>
@@ -84,7 +83,6 @@
 <div id="site-footer"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="/js/supabase-public.js"></script>
 
 <script src="/js/core/helpers.js"></script>
@@ -94,11 +92,9 @@
 <script src="/js/auth/role-service.js"></script>
 <script src="/js/auth/auth-ui.js"></script>
 <script src="/js/auth/logout.js"></script>
-<script src="/js/auth/auth-state.js"></script>
 <script src="/js/auth/protected-route.js"></script>
 
 <script src="/js/layout/layout.js"></script>
-<script src="/js/layout/breadcrumb.js"></script>
 <script src="/js/layout/active-menu.js"></script>
 <script src="/js/layout/mobile-menu.js"></script>
 

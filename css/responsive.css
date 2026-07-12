@@ -72,6 +72,46 @@
         width:24px;
         height:24px;
     }
+
+    /* ==========================================================
+        BREADCRUMB
+    ========================================================== */
+    #breadcrumb{
+        margin-bottom:var(--space-4);
+    }
+
+    .breadcrumb-card{
+        width:100%;
+        box-sizing:border-box;
+        padding:var(--space-3);
+    }
+
+    .breadcrumb-list{
+        gap:2px;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        scrollbar-width:none;
+    }
+
+    .breadcrumb-list::-webkit-scrollbar{
+        display:none;
+    }
+
+    .breadcrumb-item{
+        flex-shrink:0;
+    }
+
+    .breadcrumb-item a,
+    .breadcrumb-current{
+        font-size:.85rem;
+        white-space:nowrap;
+    }
+
+    .breadcrumb-icon,
+    .breadcrumb-separator{
+        width:14px;
+        height:14px;
+    }
 }
 
 /* ==========================================================

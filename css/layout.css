@@ -443,57 +443,172 @@ body.mobile-menu-open .mobile-drawer{
     color:var(--primary);
 }
 
-/* ==========================================
+/* ==========================================================
+    BREADCRUMB CONTAINER
+========================================================== */
+#breadcrumb{
+    width:100%;
+    margin-bottom:var(--space-5);
+}
+
+/* ==========================================================
     BREADCRUMB
-========================================== */
-.breadcrumb {
-    width: min(1200px, calc(100% - 32px));
-    margin: var(--space-5) auto;
-    box-sizing: border-box;
+========================================================== */
+
+.breadcrumb-card{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    overflow:hidden;
+
+    padding:
+        12px
+        18px;
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:16px;
+
+    box-shadow:
+        var(--shadow-sm);
+
+    transition:
+        box-shadow .25s ease,
+        border-color .25s ease;
+
 }
 
-.breadcrumb ol {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2);
-    margin: 0;
-    padding: var(--space-3) var(--space-4);
-    list-style: none;
-    background: var(--surface);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
+.breadcrumb-card:hover{
+
+    border-color:
+        rgba(37,99,235,.25);
+
+    box-shadow:
+        var(--shadow-md);
+
 }
 
-.breadcrumb li {
-    display: flex;
-    align-items: center;
-    font-size: 0.875rem;
+.breadcrumb-list{
+
+    display:flex;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    margin:0;
+
+    padding:0;
+
+    list-style:none;
+
+    min-height:22px;
+
 }
 
-.breadcrumb li:not(:last-child)::after {
-    content: "›";
-    margin-left: var(--space-2);
-    color: var(--text-light);
-    font-size: 1.125rem;
-    font-weight: bold;
+.breadcrumb-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    flex-shrink:0;
+
 }
 
-.breadcrumb a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
+.breadcrumb-item a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    min-height:34px;
+
+    padding:6px 10px;
+
+    border-radius:10px;
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
+
 }
 
-.breadcrumb a:hover {
-    color: var(--primary-hover);
-    text-decoration: underline;
+.breadcrumb-item a:hover{
+
+    background:
+        var(--background);
+
+    color:
+        var(--primary-hover);
+
 }
 
-.breadcrumb span {
-    color: var(--text-light);
-    font-weight: 500;
+.breadcrumb-current{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    min-height:34px;
+
+    padding:6px 10px;
+
+    border-radius:10px;
+
+    background:rgba(37,99,235,.08);
+
+    color:var(--secondary);
+
+    font-weight:700;
+
+}
+
+.breadcrumb-icon{
+
+    width:16px;
+
+    height:16px;
+
+    opacity:.75;
+
+    flex-shrink:0;
+
+}
+
+.breadcrumb-separator{
+
+    width:16px;
+
+    height:16px;
+
+    opacity:.45;
+
+    margin:0 4px;
+
+    flex-shrink:0;
+
 }
 
 /* ========= MODERN FOOTER SYSTEM ========= */
@@ -664,6 +779,8 @@ body.mobile-menu-open .mobile-drawer{
     filter:
         brightness(0)
         saturate(100%)
+        invert(56%)
+        skewx(0deg)
         invert(56%)
         sepia(95%)
         saturate(1800%)
