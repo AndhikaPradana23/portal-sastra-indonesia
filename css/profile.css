@@ -1,7 +1,19 @@
 /* ==========================================================================
-   PROFILE & SETTINGS COMPONENT
-   Portal Sastra Indonesia
+   PROFILE PAGE LAYOUT
    ========================================================================== */
+
+main {
+    min-height: auto;
+}
+
+main .section {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-7);
+}
+
+.profile-main-card {
+    margin-top: var(--space-6);
+}
 
 /* Header */
 .profile-page-header h3 {
@@ -106,7 +118,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 24px;
-    padding: 0 32px 32px;
+    padding: 0 32px 24px;
 }
 
 /* Card Informasi */
@@ -176,7 +188,7 @@
     display: flex;
     justify-content: center;
     gap: 16px;
-    padding: 32px;
+    padding: 24px;
     flex-wrap: wrap;
 }
 
@@ -247,9 +259,9 @@
         font-size: 1.8rem;
     }
     
-    .profile-grid {
-        grid-template-columns: 1fr;
-        padding: 20px;
+    .profile-grid{
+        grid-template-columns:1fr;
+        padding:20px 20px 16px;
     }
     
     .profile-actions {

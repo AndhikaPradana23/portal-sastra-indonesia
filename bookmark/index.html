@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -36,26 +35,32 @@
                 <div id="breadcrumb"></div>
 
                 <div class="section-header">
-
-                    <div>
-
-                        <h1 class="section-title">
-                            Bookmark
-                        </h1>
-
-                        <p class="section-description">
-                            Simpan konten favorit Anda.
-                        </p>
-
+                    <div class="page-heading">
+                        <div class="page-icon">
+                            <img src="/assets/icons/bookmark.svg" alt="Bookmark">
+                        </div>
+                        <div>
+                            <h1 class="section-title">
+                                Bookmark Saya
+                            </h1>
+                            <p class="section-description">
+                                Kelola seluruh konten favorit yang telah Anda simpan.
+                            </p>
+                        </div>
                     </div>
-
                 </div>
 
-                <div class="bookmark-summary card" style="margin-top: var(--space-6);">
-                    <div class="card-header">
-                        <div class="bookmark-total">
-                            <h3 id="bookmark-total" style="margin: 0;">0 Bookmark</h3>
+                <div class="bookmark-summary card">
+                    <div class="card-header bookmark-summary-header">
+                        <div>
+                            <h2 id="bookmark-total">
+                                0 Bookmark
+                            </h2>
+                            <p>
+                                Statistik bookmark berdasarkan kategori.
+                            </p>
                         </div>
+                        <img src="/assets/icons/chart-column.svg" class="summary-icon" alt="Summary">
                     </div>
                     <div class="card-body">
                         <div id="bookmark-count-grid" class="bookmark-count-grid">
@@ -63,26 +68,33 @@
                     </div>
                 </div>
 
-                <div class="bookmark-export" style="margin-top: var(--space-4); display: flex; gap: var(--space-2); flex-wrap: wrap;">
-                    <button id="export-json" class="btn btn-outline">
-                        Export JSON
-                    </button>
-                    <button id="export-csv" class="btn btn-outline">
-                        Export CSV
-                    </button>
-                    <button id="export-txt" class="btn btn-outline">
-                        Export TXT
-                    </button>
-                </div>
+                <div class="bookmark-toolbar">
 
-                <div class="bookmark-search" style="margin-top: var(--space-4);">
-                    <div class="search-box">
-                        🔎
-                        <input id="bookmark-search" class="input" type="text" placeholder="Cari bookmark...">
+                    <div class="bookmark-export">
+                        <button id="export-json" class="btn btn-outline">
+                            <img src="/assets/icons/file-braces.svg">
+                            <span>JSON</span>
+                        </button>
+                        <button id="export-csv" class="btn btn-outline">
+                            <img src="/assets/icons/file-spreadsheet.svg">
+                            <span>CSV</span>
+                        </button>
+                        <button id="export-txt" class="btn btn-outline">
+                            <img src="/assets/icons/file-text.svg">
+                            <span>TXT</span>
+                        </button>
                     </div>
+
+                    <div class="bookmark-search">
+                        <div class="search-box">
+                            <img src="/assets/icons/search.svg" class="search-icon" alt="">
+                            <input id="bookmark-search" class="input" type="text" placeholder="Cari bookmark...">
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="bookmark-filter" style="margin-top: var(--space-4); display: flex; gap: var(--space-2); flex-wrap: wrap;">
+                <div class="bookmark-filter">
                     <button class="bookmark-filter-btn btn btn-primary active" data-type="all">
                         Semua
                     </button>
@@ -101,8 +113,8 @@
                 </div>
 
                 <div id="bookmark-list" style="margin-top: var(--space-6);">
-                    <div class="card skeleton" style="height: 200px; margin-bottom: var(--space-4);"></div>
-                    <div class="card skeleton" style="height: 200px; margin-bottom: var(--space-4);"></div>
+                    <div class="card skeleton" style="height: 150px; margin-bottom: var(--space-4);"></div>
+                    <div class="card skeleton" style="height: 150px; margin-bottom: var(--space-4);"></div>
                 </div>
 
             </div>
@@ -118,11 +130,8 @@
 
     <script src="/js/auth/auth-service.js"></script>
     <script src="/js/auth/profile-service.js"></script>
-    <script src="/js/auth/role-service.js"></script>
     <script src="/js/auth/auth-ui.js"></script>
     <script src="/js/auth/logout.js"></script>
-    <script src="/js/auth/auth-state.js"></script>
-    <script src="/js/auth/protected-route.js"></script>
     
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
@@ -132,9 +141,7 @@
 
     <script src="/js/bookmark/bookmark-storage.js"></script>
     <script src="/js/bookmark/bookmark-service.js"></script>
-    
     <script src="/js/bookmark/bookmark-export.js"></script>
-    
     <script src="/js/bookmark/bookmark-renderer.js"></script>
     <script src="/js/bookmark/bookmark-page.js"></script>
 
