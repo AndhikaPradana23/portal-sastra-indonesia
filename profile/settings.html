@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -38,7 +37,12 @@
 
                 <div>
 
-                    <h1 class="section-title">
+                    <h1 class="section-title page-title">
+                        <img
+                            src="/assets/icons/settings.svg"
+                            class="section-icon"
+                            alt=""
+                        >
                         Pengaturan Akun
                     </h1>
 
@@ -59,7 +63,12 @@
 
                     <div class="card-header">
 
-                        <h2>
+                        <h2 class="card-title">
+                            <img
+                                src="/assets/icons/image.svg"
+                                class="card-icon"
+                                alt=""
+                            >
                             Foto Profil
                         </h2>
 
@@ -69,12 +78,14 @@
 
                         <div class="profile-avatar-section">
 
-                            <img
-                                id="avatar-preview"
-                                src="/icon/default-avatar.png"
-                                alt="Foto Profil"
-                                class="profile-avatar-preview"
-                            >
+                            <div class="settings-avatar">
+                                <img
+                                    id="avatar-preview"
+                                    class="profile-avatar-preview"
+                                    src="/icon/default-avatar.png"
+                                    alt="Foto Profil"
+                                >
+                            </div>
 
                             <div class="profile-avatar-info">
 
@@ -95,18 +106,14 @@
                             style="margin-top: var(--space-5);"
                         >
 
-                            <label for="avatar">
-                                Upload Foto Baru
+                            <label for="avatar" class="btn btn-outline upload-btn">
+                                <img src="/assets/icons/upload.svg" class="btn-icon" alt="">
+                                Pilih Foto
                             </label>
 
-                            <input
-                                id="avatar"
-                                class="input"
-                                type="file"
-                                accept=".jpg,.jpeg,.png,.webp"
-                            >
+                            <input id="avatar" type="file" hidden accept=".jpg,.png,.jpeg,.webp">
 
-                            <small>
+                            <small style="display: block; margin-top: var(--space-2);">
                                 JPG, PNG atau WEBP. Maksimal 2 MB.
                             </small>
 
@@ -123,7 +130,8 @@
 
                     <div class="card-header">
 
-                        <h2>
+                        <h2 class="card-title">
+                            <img src="/assets/icons/user-round.svg" class="card-icon" alt="">
                             Informasi Pribadi
                         </h2>
 
@@ -135,7 +143,8 @@
 
                             <div class="form-group">
 
-                                <label for="nama_lengkap">
+                                <label class="form-label">
+                                    <img src="/assets/icons/user-round.svg" class="label-icon" alt="">
                                     Nama Lengkap
                                 </label>
 
@@ -153,7 +162,8 @@
                                 style="margin-top: var(--space-4);"
                             >
 
-                                <label for="username">
+                                <label class="form-label">
+                                    <img src="/assets/icons/at-sign.svg" class="label-icon" alt="">
                                     Username
                                 </label>
 
@@ -171,7 +181,8 @@
                                 style="margin-top: var(--space-4);"
                             >
 
-                                <label for="email">
+                                <label class="form-label">
+                                    <img src="/assets/icons/mail.svg" class="label-icon" alt="">
                                     Email
                                 </label>
 
@@ -189,7 +200,8 @@
                                 style="margin-top: var(--space-4);"
                             >
 
-                                <label for="no_telp">
+                                <label class="form-label">
+                                    <img src="/assets/icons/phone.svg" class="label-icon" alt="">
                                     No. Telepon
                                 </label>
 
@@ -206,7 +218,8 @@
                                 style="margin-top: var(--space-4);"
                             >
 
-                                <label for="tanggal_lahir">
+                                <label class="form-label">
+                                    <img src="/assets/icons/calendar.svg" class="label-icon" alt="">
                                     Tanggal Lahir
                                 </label>
 
@@ -223,7 +236,8 @@
                                 style="margin-top: var(--space-4);"
                             >
 
-                                <label for="jenis_kelamin">
+                                <label class="form-label">
+                                    <img src="/assets/icons/users.svg" class="label-icon" alt="">
                                     Jenis Kelamin
                                 </label>
 
@@ -253,7 +267,8 @@
                                 style="margin-top: var(--space-4);"
                             >
 
-                                <label for="bio">
+                                <label class="form-label">
+                                    <img src="/assets/icons/file-text.svg" class="label-icon" alt="">
                                     Bio
                                 </label>
 
@@ -284,6 +299,7 @@
                             form="profile-form"
                             class="btn btn-primary"
                         >
+                            <img src="/assets/icons/save.svg" class="btn-icon" alt="">
                             Simpan Perubahan
                         </button>
 
@@ -298,7 +314,8 @@
 
                     <div class="card-header">
 
-                        <h2>
+                        <h2 class="card-title">
+                            <img src="/assets/icons/shield.svg" class="card-icon" alt="">
                             Keamanan Akun
                         </h2>
 
@@ -314,7 +331,8 @@
 
                             <div class="form-group">
 
-                                <label for="password">
+                                <label class="form-label">
+                                    <img src="/assets/icons/lock-keyhole.svg" class="label-icon" alt="">
                                     Password Baru
                                 </label>
 
@@ -324,6 +342,7 @@
                                     type="password"
                                     minlength="8"
                                     autocomplete="new-password"
+                                    placeholder="Masukkan password baru (minimal 8 karakter)"
                                     required
                                 >
 
@@ -334,7 +353,8 @@
                                 style="margin-top: var(--space-4);"
                             >
 
-                                <label for="confirm_password">
+                                <label class="form-label">
+                                    <img src="/assets/icons/lock-keyhole.svg" class="label-icon" alt="">
                                     Konfirmasi Password Baru
                                 </label>
 
@@ -344,6 +364,7 @@
                                     type="password"
                                     minlength="8"
                                     autocomplete="new-password"
+                                    placeholder="Ulangi password baru"
                                     required
                                 >
 
@@ -360,6 +381,7 @@
                             form="password-form"
                             class="btn btn-primary"
                         >
+                            <img src="/assets/icons/key-round.svg" class="btn-icon" alt="">
                             Ubah Password
                         </button>
 
@@ -374,7 +396,8 @@
 
                     <div class="card-header">
 
-                        <h2>
+                        <h2 class="card-title">
+                            <img src="/assets/icons/sliders-horizontal.svg" class="card-icon" alt="">
                             Preferensi
                         </h2>
 
@@ -405,6 +428,7 @@
                                 href="/profile/preferences.html"
                                 class="btn btn-outline"
                             >
+                                <img src="/assets/icons/settings-2.svg" class="btn-icon" alt="">
                                 Kelola
                             </a>
 
@@ -421,7 +445,8 @@
 
                     <div class="card-header">
 
-                        <h2>
+                        <h2 class="card-title">
+                            <img src="/assets/icons/triangle-alert.svg" class="card-icon" alt="">
                             Danger Zone
                         </h2>
 
@@ -456,6 +481,7 @@
                                 type="button"
                                 class="btn btn-danger"
                             >
+                                <img src="/assets/icons/trash-2.svg" class="btn-icon" alt="">
                                 Hapus Akun
                             </button>
 
@@ -476,7 +502,6 @@
 <div id="site-footer"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="/js/supabase-public.js"></script>
 
 <script src="/js/layout/layout.js"></script>
@@ -489,10 +514,9 @@
 <script src="/js/auth/role-service.js"></script>
 <script src="/js/auth/auth-ui.js"></script>
 <script src="/js/auth/logout.js"></script>
-<script src="/js/auth/auth-state.js"></script>
 <script src="/js/auth/protected-route.js"></script>
 
-<script src="/profile/settings.js"></script>
+<script src="settings.js"></script>
 
 </body>
 </html>

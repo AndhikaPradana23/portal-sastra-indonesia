@@ -113,6 +113,18 @@
     color:#fff;
 }
 
+.btn-danger .btn-icon{
+    filter: brightness(0) invert(1);
+}
+
+.btn-danger:hover{
+    background:#b91c1c;
+}
+
+.btn-danger:hover .btn-icon{
+    filter:brightness(0) invert(1);
+}
+
 /* ==========================================================
    HEADER LOGIN
 ========================================================== */

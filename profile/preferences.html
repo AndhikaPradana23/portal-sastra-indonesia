@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -38,22 +37,45 @@
 
                 <div>
 
-                    <h1 class="section-title">
-                        Preferensi Pengguna
-                    </h1>
-
-                    <p class="section-description">
-                        Atur konfigurasi tampilan dan fungsionalitas akun Anda.
-                    </p>
+                    <h1 class="section-title page-title">
+                        <img
+                            src="/assets/icons/sliders-horizontal.svg"
+                            class="section-icon"
+                            alt=""
+                        >
+                        Preferensi Pengguna</h1><p class="section-description">
+                        Atur preferensi akun, tampilan, serta pengalaman penggunaan Portal Sastra Indonesia.</p>
 
                 </div>
 
             </div>
 
+            <div class="coming-soon-banner">
+                <img
+                    src="/assets/icons/info.svg"
+                    class="coming-soon-icon"
+                    alt=""
+                >
+                <div>
+                    <strong>Fitur Sedang Dikembangkan</strong>
+                    <p>
+                        Halaman Preferensi masih dalam tahap pengembangan.
+                        Seluruh pengaturan di bawah ini merupakan pratinjau fitur yang akan tersedia
+                        pada pembaruan Portal Sastra Indonesia berikutnya.
+                    </p>
+                </div>
+            </div>
+
             <div class="card" style="margin-top: var(--space-6);">
                 
                 <div class="card-header">
-                    <h3 style="margin: 0;">Konfigurasi Akun</h3>
+                    <h3 class="card-title">
+                        <img
+                            src="/assets/icons/settings-2.svg"
+                            class="card-icon"
+                            alt=""
+                        >
+                        Konfigurasi Akun</h3>
                 </div>
 
                 <div class="card-body">
@@ -64,47 +86,118 @@
 
                         <div class="form-group" style="margin-bottom: var(--space-4);">
 
-                            <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
-                                Tema Tampilan
-                            </label>
-
-                            <select id="theme" class="select">
-                                <option value="light">Light</option>
-                                <option value="dark">Dark</option>
-                            </select>
+                            <div class="setting-block">
+                                <label class="form-label">
+                                    <img
+                                        src="/assets/icons/palette.svg"
+                                        class="label-icon"
+                                        alt=""
+                                    >
+                                    Tema Tampilan
+                                </label>
+                                <p class="setting-description">
+                                    Mengubah tampilan Portal Sastra Indonesia menjadi mode terang atau gelap.
+                                </p>
+                                <select
+                                    id="theme"
+                                    class="select"
+                                    disabled
+                                >
+                                    <option>Light</option>
+                                    <option>Dark</option>
+                                </select>
+                            </div>
 
                         </div>
 
                         <div class="form-group" style="margin-bottom: var(--space-4);">
 
-                            <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
-                                Jumlah Item per Halaman
-                            </label>
-
-                            <select id="items-per-page" class="select">
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="50">50</option>
-                            </select>
+                            <div class="setting-block">
+                                <label class="form-label">
+                                    <img
+                                        src="/assets/icons/list.svg"
+                                        class="label-icon"
+                                        alt=""
+                                    >
+                                    Jumlah Item per Halaman
+                                </label>
+                                <p class="setting-description">
+                                    Mengatur jumlah data yang ditampilkan pada setiap halaman daftar.
+                                </p>
+                                <select
+                                    id="items-per-page"
+                                    class="select"
+                                    disabled
+                                >
+                                    <option>10</option>
+                                    <option>20</option>
+                                    <option>50</option>
+                                </select>
+                            </div>
 
                         </div>
 
                         <div class="form-group" style="margin-bottom: var(--space-3);">
-                            <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
-                                <input type="checkbox" id="enable-history">
-                                <span>Simpan Riwayat Pencarian</span>
-                            </label>
+                            <div class="setting-item">
+                                <div>
+                                    <div class="setting-title">
+                                        <img
+                                            src="/assets/icons/history.svg"
+                                            class="label-icon"
+                                            alt=""
+                                        >
+                                        Simpan Riwayat Pencarian
+                                    </div>
+                                    <p class="setting-description">
+                                        Menyimpan kata kunci pencarian agar lebih mudah ditemukan kembali.
+                                    </p>
+                                </div>
+                                <input
+                                    type="checkbox"
+                                    disabled
+                                >
+                            </div>
                         </div>
 
                         <div class="form-group" style="margin-bottom: var(--space-4);">
-                            <label style="display: flex; align-items: center; gap: var(--space-2); cursor: pointer;">
-                                <input type="checkbox" id="enable-autocomplete">
-                                <span>Aktifkan Autocomplete</span>
-                            </label>
+                            <div class="setting-item">
+                                <div>
+                                    <div class="setting-title">
+                                        <img
+                                            src="/assets/icons/search-check.svg"
+                                            class="label-icon"
+                                            alt=""
+                                        >
+                                        Aktifkan Autocomplete
+                                    </div>
+                                    <p class="setting-description">
+                                        Menampilkan saran pencarian otomatis ketika mengetik.
+                                    </p>
+                                </div>
+                                <input
+                                    type="checkbox"
+                                    disabled
+                                >
+                            </div>
                         </div>
 
                     </form>
 
+                </div>
+
+                <div class="feature-note">
+                    <img
+                        src="/assets/icons/flask-conical.svg"
+                        class="feature-note-icon"
+                        alt=""
+                    >
+                    <div>
+                        <strong>Coming Soon</strong>
+                        <p>
+                            Pengaturan preferensi belum diterapkan pada sistem.
+                            Nantinya perubahan yang Anda simpan akan langsung memengaruhi tampilan Portal Sastra Indonesia.
+                        </p>
+                    </div>
                 </div>
 
                 <div class="card-footer" style="display: flex; justify-content: flex-end;">
@@ -112,12 +205,13 @@
                     <button 
                         type="submit" 
                         form="preferences-form" 
-                        class="
-                        btn 
-                        btn-primary
-                        "
+                        class="btn btn-primary"
+                        disabled
                     >
-                        Simpan Preferensi
+                        <img
+                            src="/assets/icons/save.svg"
+                            class="btn-icon"
+                            alt=""><span>Simpan Preferensi</span>
                     </button>
 
                 </div>
@@ -132,22 +226,22 @@
 
 <div id="site-footer"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="/js/supabase-public.js"></script>
+
+<script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
 <script src="/js/auth/auth-service.js"></script>
 <script src="/js/auth/profile-service.js"></script>
 <script src="/js/auth/role-service.js"></script>
 <script src="/js/auth/auth-ui.js"></script>
 <script src="/js/auth/logout.js"></script>
-<script src="/js/auth/auth-state.js"></script>
 <script src="/js/auth/protected-route.js"></script>
 <script src="/js/auth/preferences.js"></script>
 
-<script src="/js/layout/layout.js"></script>
-<script src="/js/layout/active-menu.js"></script>
-<script src="/js/layout/mobile-menu.js"></script>
-
-<script src="/profile/preferences.js"></script>
+<script src="preferences.js"></script>
 
 </body>
 </html>

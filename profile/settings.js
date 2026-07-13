@@ -433,6 +433,15 @@ async function handleAvatarUpload(event){
     const file =
         event.target.files[0];
 
+    const preview =
+        document.getElementById(
+            "avatar-preview"
+        );
+    if(preview){
+        preview.src =
+            URL.createObjectURL(file);
+    }
+
     if(!file){
         return;
     }

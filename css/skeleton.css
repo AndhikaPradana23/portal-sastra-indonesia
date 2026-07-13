@@ -1,8 +1,3 @@
-/* ==========================================
-   Loading Skeleton
-   File: css/skeleton.css
-   ========================================== */
-
 /* Skeleton Base Animation Effect */
 .skeleton {
     background: linear-gradient(
@@ -12,7 +7,7 @@
         #f1f5f9
     );
     background-size: 200% 100%;
-    animation: skeleton 1.5s infinite linear; /* Ditambahkan linear agar transisi animasi konstan */
+    animation: skeleton 1.5s infinite linear; 
     border-radius: var(--radius-md);
 }
 
