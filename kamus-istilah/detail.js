@@ -75,16 +75,18 @@ async function loadDetailIstilah() {
         }
 
         // ==========================================
-        // RENDER BREADCRUMB DINAMIS
+        // RENDER BREADCRUMB DINAMIS (UPDATED)
         // ==========================================
         renderBreadcrumb([
             {
                 label: "Beranda",
-                href: "/index.html"
+                href: "/",
+                icon: "/assets/icons/house.svg"
             },
             {
-                label: "Kamus Sastra",
-                href: "/kamus-istilah/index.html"
+                label: "Kamus",
+                href: "/kamus/",
+                icon: "/assets/icons/book-open.svg"
             },
             {
                 label: data.nama
@@ -611,8 +613,17 @@ document.addEventListener(
 );
 
 document.addEventListener(
+
     "DOMContentLoaded",
-    loadDetailIstilah
+
+    async()=>{
+
+        await loadLayout();
+
+        await loadDetailIstilah();
+
+    }
+
 );
 
 // ==========================================

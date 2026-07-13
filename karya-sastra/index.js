@@ -12,6 +12,19 @@ document.addEventListener(
         // Memuat layout utama terlebih dahulu
         await loadLayout();
 
+        // Panggil fungsi global renderBreadcrumb (Menggunakan format ikon terbaru)
+        renderBreadcrumb([
+            {
+                label: "Beranda",
+                href: "/",
+                icon: "/assets/icons/house.svg"
+            },
+            {
+                label: "Karya Sastra",
+                icon: "/assets/icons/book-open.svg"
+            }
+        ]);
+
         updateSEO();
         
         await loadDaftarPenulis();

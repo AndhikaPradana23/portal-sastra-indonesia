@@ -194,7 +194,7 @@ function potongTeks(teks, panjang){
 
     return teks.substring(
         0,
-        path
+        panjang
     ) + "...";
 }
 
@@ -378,6 +378,19 @@ document.addEventListener(
     async () => {
         // Memuat layout utama terlebih dahulu
         await loadLayout();
+
+        // Panggil fungsi global renderBreadcrumb untuk halaman Sastrawan
+        renderBreadcrumb([
+            {
+                label: "Beranda",
+                href: "/",
+                icon: "/assets/icons/house.svg"
+            },
+            {
+                label: "Sastrawan",
+                icon: "/assets/icons/user-round.svg"
+            }
+        ]);
 
         updateSEO();
 

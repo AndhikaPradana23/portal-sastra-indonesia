@@ -19,6 +19,24 @@ const ALLOWED_AVATAR_TYPES = [
 async function initPage() {
     await requireAuth();
     await loadLayout();
+    
+    // Panggil fungsi global renderBreadcrumb untuk halaman pengaturan profil
+    renderBreadcrumb([
+        {
+            label: "Beranda",
+            href: "/",
+            icon: "/assets/icons/house.svg"
+        },
+        {
+            label: "Profil Saya",
+            href: "/profile/",
+            icon: "/assets/icons/user-round.svg"
+        },
+        {
+            label: "Pengaturan"
+        }
+    ]);
+
     await loadProfile();
     initForms();
 }

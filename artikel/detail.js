@@ -1,6 +1,15 @@
 document.addEventListener(
+
     "DOMContentLoaded",
-    loadDetailArtikel
+
+    async()=>{
+
+        await loadLayout();
+
+        await loadDetailArtikel();
+
+    }
+
 );
 
 function getSlug() {
@@ -66,20 +75,24 @@ async function loadDetailArtikel() {
     ).textContent =
         data.judul;
 
-    // LANGKAH 5: Memanggil fungsi global renderBreadcrumb baru sesuai array objek instansi data
-    renderBreadcrumb([
-        {
-            label: "Beranda",
-            href: "/index.html"
-        },
-        {
-            label: "Artikel",
-            href: "/artikel/index.html"
-        },
-        {
-            label: data.judul
-        }
-    ]);
+    // Memanggil fungsi global renderBreadcrumb baru sesuai format halaman artikel detail
+    if (typeof renderBreadcrumb === "function") {
+        renderBreadcrumb([
+            {
+                label: "Beranda",
+                href: "/",
+                icon: "/assets/icons/house.svg"
+            },
+            {
+                label: "Artikel",
+                href: "/artikel/",
+                icon: "/assets/icons/newspaper.svg"
+            },
+            {
+                label: data.judul
+            }
+        ]);
+    }
 
     // ==========================================
     // PENGISIAN AREA METADATA ARTIKEL
@@ -766,7 +779,7 @@ function initCitationButton(
                 "Portal Sastra Indonesia",
 
             title:
-                artikel.judul,
+                "artikel.judul",
 
             year:
                 new Date(

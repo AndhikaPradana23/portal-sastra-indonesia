@@ -96,6 +96,36 @@ async function applyPreferences() {
     document.body.dataset.theme = pref.theme;
 }
 
+// ==========================================
+// INISIALISASI HALAMAN PREFERENCES
+// ==========================================
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+        // Memuat layout template (jika ada fungsi loadLayout global)
+        if (typeof loadLayout === "function") {
+            await loadLayout();
+        }
+
+        // Panggil fungsi global renderBreadcrumb untuk halaman pengaturan profil
+        renderBreadcrumb([
+            {
+                label: "Beranda",
+                href: "/",
+                icon: "/assets/icons/house.svg"
+            },
+            {
+                label: "Profil Saya",
+                href: "/profile/",
+                icon: "/assets/icons/user-round.svg"
+            },
+            {
+                label: "Pengaturan"
+            }
+        ]);
+    }
+);
+
 // Export secara global agar bisa diakses dari file script lain via window
 window.PreferencesService = {
     getPreferences,

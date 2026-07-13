@@ -7,6 +7,19 @@ async function initPage(){
 
     await loadLayout();
 
+    // Memanggil breadcrumb untuk halaman pencarian
+    renderBreadcrumb([
+        {
+            label: "Beranda",
+            href: "/",
+            icon: "/assets/icons/house.svg"
+        },
+        {
+            label: "Pencarian",
+            icon: "/assets/icons/search.svg" // Atau ikon lain yang sesuai dengan set Anda
+        }
+    ]);
+
     // LANGKAH 5: Memperbarui objek konfigurasi dengan menyertakan selector #search-suggestion
     initGlobalSearch({
         input: "#search-input",

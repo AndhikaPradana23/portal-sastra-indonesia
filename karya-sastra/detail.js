@@ -4,8 +4,19 @@
 const params = new URLSearchParams(location.search);
 const slug = params.get("slug");
 
-// Jalankan fungsi loadDetail saat DOM HTML selesai dimuat sepenuhnya
-document.addEventListener("DOMContentLoaded", loadDetail);
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    async()=>{
+
+        await loadLayout();
+
+        await loadDetail();
+
+    }
+
+);
 
 // ==========================================
 // 2. FUNGSI UTAMA LOAD DETAIL KARYA
@@ -53,15 +64,17 @@ async function loadDetail() {
     // Set meta deskripsi SEO
     document.getElementById("meta-description").content = data.deskripsi || data.judul;
 
-    // Panggil fungsi global renderBreadcrumb (Tidak perlu membuat HTML manual lagi)
+    // Panggil fungsi global renderBreadcrumb (Menggunakan format ikon terbaru)
     renderBreadcrumb([
         {
             label: "Beranda",
-            href: "/index.html"
+            href: "/",
+            icon: "/assets/icons/house.svg"
         },
         {
             label: "Karya Sastra",
-            href: "/karya-sastra/index.html"
+            href: "/karya-sastra/",
+            icon: "/assets/icons/book-open.svg"
         },
         {
             label: data.judul
@@ -578,6 +591,9 @@ function renderKaryaTerkait(data){
     return html;
 }
 
+// ==========================================
+// LOAD KARYA LAIN DARI PENULIS INI
+// ==========================================
 function renderKaryaLain(data) {
     if (!data.length) {
         return "<p>-</p>";

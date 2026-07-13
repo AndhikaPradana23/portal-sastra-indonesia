@@ -4,8 +4,19 @@
 const params = new URLSearchParams(location.search);
 const slug = params.get("slug");
 
-// Jalankan fungsi pemuatan data utama
-loadDetail();
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    async()=>{
+
+        await loadLayout();
+
+        await loadDetail();
+
+    }
+
+);
 
 // ==========================================
 // 2. FUNGSI UTAMA LOAD DETAIL SASTRAWAN
@@ -31,6 +42,23 @@ async function loadDetail() {
         `;
         return;
     }
+
+    // Panggil fungsi breadcrumb global dengan format baru menggunakan data yang berhasil dimuat
+    renderBreadcrumb([
+        {
+            label: "Beranda",
+            href: "/",
+            icon: "/assets/icons/house.svg"
+        },
+        {
+            label: "Sastrawan",
+            href: "/sastrawan/",
+            icon: "/assets/icons/user-round.svg"
+        },
+        {
+            label: data.nama
+        }
+    ]);
 
     // Set judul halaman browser dan data meta tags secara dinamis via helper SEO
     updateSEO(data);
@@ -391,15 +419,17 @@ function updatePersonSchema(
 // UPDATE BREADCRUMB
 // ==========================================
 function updateBreadcrumb(data){
-    // Memanggil fungsi global renderBreadcrumb sesuai instruksi Langkah 5
+    // Menggunakan format baru yang lebih konsisten dan bersih sesuai halaman lainnya
     renderBreadcrumb([
         {
             label: "Beranda",
-            href: "/index.html"
+            href: "/",
+            icon: "/assets/icons/house.svg"
         },
         {
             label: "Sastrawan",
-            href: "/sastrawan/index.html"
+            href: "/sastrawan/",
+            icon: "/assets/icons/user-round.svg"
         },
         {
             label: data.nama

@@ -12,6 +12,19 @@ async function initSettings(){
 
     await loadLayout();
 
+    // Memanggil breadcrumb untuk halaman Pengaturan Akun / Settings
+    renderBreadcrumb([
+        {
+            label: "Beranda",
+            href: "/",
+            icon: "/assets/icons/house.svg"
+        },
+        {
+            label: "Pengaturan Akun",
+            icon: "/assets/icons/settings.svg" // Menyesuaikan dengan ikon set halaman settings Anda
+        }
+    ]);
+
     await loadUser();
 
     initFormNama();

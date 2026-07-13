@@ -306,6 +306,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Memuat layout utama terlebih dahulu
     await loadLayout();
 
+    // Memanggil fungsi global renderBreadcrumb untuk halaman Indeks Kamus Istilah
+    if (typeof renderBreadcrumb === "function") {
+        renderBreadcrumb([
+            {
+                label: "Beranda",
+                href: "/",
+                icon: "/assets/icons/house.svg"
+            },
+            {
+                label: "Kamus",
+                icon: "/assets/icons/book-open.svg"
+            }
+        ]);
+    }
+
     console.log("Halaman Kamus dimuat");
     console.log("Supabase URL:", SUPABASE_URL);
 

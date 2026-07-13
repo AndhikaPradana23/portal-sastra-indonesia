@@ -11,6 +11,21 @@ document.addEventListener(
         // Memuat layout utama terlebih dahulu
         await loadLayout();
 
+        // Merender navigasi Breadcrumb untuk indeks/daftar artikel
+        if (typeof renderBreadcrumb === "function") {
+            renderBreadcrumb([
+                {
+                    label: "Beranda",
+                    href: "/",
+                    icon: "/assets/icons/house.svg"
+                },
+                {
+                    label: "Artikel",
+                    icon: "/assets/icons/newspaper.svg"
+                }
+            ]);
+        }
+
         updateSEO();
 
         await loadKategori();

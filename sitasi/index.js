@@ -7,6 +7,19 @@ async function initPage(){
 
     await loadLayout();
 
+    // Memanggil breadcrumb untuk halaman generator sitasi
+    renderBreadcrumb([
+        {
+            label: "Beranda",
+            href: "/",
+            icon: "/assets/icons/house.svg"
+        },
+        {
+            label: "Generator Sitasi",
+            icon: "/assets/icons/quote.svg" // Atau ikon lain yang sesuai dengan aset Anda
+        }
+    ]);
+
     initForm();
 
     // UPDATE: Menampilkan riwayat sitasi saat halaman pertama kali dimuat

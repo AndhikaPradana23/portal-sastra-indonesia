@@ -11,6 +11,23 @@ document.addEventListener(
             await loadLayout();
         }
 
+        // Panggil fungsi global renderBreadcrumb untuk halaman riwayat kuis
+        renderBreadcrumb([
+            {
+                label: "Beranda",
+                href: "/",
+                icon: "/assets/icons/house.svg"
+            },
+            {
+                label: "Kuis Sastra",
+                href: "/kuis/",
+                icon: "/assets/icons/gamepad-2.svg"
+            },
+            {
+                label: "Riwayat Nilai"
+            }
+        ]);
+
         renderQuizHistory();
 
         bindHistoryEvents();
@@ -72,7 +89,7 @@ function renderQuizHistory(){
 
                                 Kategori
 
-                            </strong>
+                            </strong> 
 
                             :
                             ${item.kategori || "-"}
@@ -85,7 +102,7 @@ function renderQuizHistory(){
 
                                 Nilai
 
-                            </strong>
+                            </strong> 
 
                             :
                             ${item.nilai}
@@ -98,7 +115,7 @@ function renderQuizHistory(){
 
                                 Benar
 
-                            </strong>
+                            </strong> 
 
                             :
                             ${item.benar}
@@ -113,7 +130,7 @@ function renderQuizHistory(){
 
                                 Salah
 
-                            </strong>
+                            </strong> 
 
                             :
                             ${item.salah}
@@ -126,7 +143,7 @@ function renderQuizHistory(){
 
                                 Tanggal
 
-                            </strong>
+                            </strong> 
 
                             :
                             ${new Date(

@@ -63,6 +63,21 @@ async function requireAuth() {
 function initBookmarkPage() {
     console.log("Inisialisasi halaman bookmark sukses. Memuat daftar item...");
     
+    // Memanggil fungsi global renderBreadcrumb untuk halaman Bookmark
+    if (typeof renderBreadcrumb === "function") {
+        renderBreadcrumb([
+            {
+                label: "Beranda",
+                href: "/",
+                icon: "/assets/icons/house.svg"
+            },
+            {
+                label: "Bookmark Saya",
+                icon: "/assets/icons/bookmark.svg" // Opsional: sesuaikan jika ada icon spesifik bookmark
+            }
+        ]);
+    }
+
     // Tulis logika pemuatan data bookmark Anda di bawah ini
     // Contoh: loadUserBookmarks();
 }
