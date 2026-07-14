@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -40,70 +39,112 @@
 
                 <div class="section-header">
 
-                    <div>
+                    <div class="page-heading">
 
-                        <h1 class="section-title">
-                            Analisis Puisi
-                        </h1>
-
-                        <p class="section-description">
-                            Tempel puisi dan dapatkan analisis otomatis secara instan.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div class="input-section" style="margin-top: var(--space-6);">
-
-                    <textarea 
-                        id="puisi-input" 
-                        class="textarea" 
-                        placeholder="Masukkan puisi di sini..."
-                    ></textarea>
-
-                    <div class="input-info">
-
-                        <span id="char-count">
-                            Karakter: 0
-                        </span>
-
-                        <span id="line-count">
-                            Baris: 0
-                        </span>
-
-                    </div>
-
-                    <div class="input-actions" style="margin-top: var(--space-3); display: flex; gap: var(--space-2);">
-
-                        <button id="example-btn" class="btn btn-outline" type="button">
-                            Contoh Puisi
-                        </button>
-
-                        <button id="clear-btn" class="btn btn-outline" type="button">
-                            Hapus
-                        </button>
-
-                        <button id="analyze-btn" class="btn btn-primary" type="button" disabled>
-                            Analisis
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div id="analysis-result" style="margin-top: var(--space-8);">
-                    
-                    <div class="empty-state">
-                        <div class="empty-icon">
-                            📝
+                        <div class="page-icon">
+                            <img
+                                src="/assets/icons/file-search.svg"
+                                alt="Analisis Puisi">
                         </div>
+
+                        <div>
+
+                            <h1 class="section-title">
+                                Analisis Puisi
+                            </h1>
+
+                            <p class="section-description">
+                                Tempel puisi untuk memperoleh analisis bait, larik, kata, rima, majas, serta statistik secara otomatis.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card analysis-input-card" style="margin-top: var(--space-6);">
+
+                    <div class="card-header">
+
+                        <div class="card-title-row">
+
+                            <img
+                                src="/assets/icons/file-pen.svg"
+                                class="card-icon"
+                                alt="">
+
+                            <h2>
+                                Masukkan Puisi
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <textarea 
+                            id="puisi-input" 
+                            class="textarea" 
+                            placeholder="Masukkan puisi di sini..."
+                        ></textarea>
+
+                        <div class="input-info">
+
+                            <span id="char-count">
+                                Karakter: 0
+                            </span>
+
+                            <span id="line-count">
+                                Baris: 0
+                            </span>
+
+                        </div>
+
+                        <div class="input-actions" style="margin-top: var(--space-3); display: flex; gap: var(--space-2);">
+
+                            <button id="example-btn" class="btn btn-outline" type="button">
+                                <img
+                                    src="/assets/icons/book-open.svg"
+                                    class="btn-icon"
+                                    alt="">
+                                <span>Contoh Puisi</span>
+                            </button>
+
+                            <button id="clear-btn" class="btn btn-outline" type="button">
+                                <img src="/assets/icons/trash-2.svg" class="btn-icon" alt="">
+                                <span>Hapus</span>
+                            </button>
+
+                            <button id="analyze-btn" class="btn btn-primary" type="button" disabled>
+                                <img src="/assets/icons/wand-sparkles.svg" class="btn-icon" alt="">
+                                <span>Analisis</span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div id="analysis-result" class="analysis-result" style="margin-top: var(--space-8);">
+
+                    <div class="card empty-analysis-card">
+
+                        <img
+                            src="/assets/icons/file-search.svg"
+                            class="empty-state-icon"
+                            alt="">
+
                         <h3>
                             Belum Ada Analisis
                         </h3>
+
                         <p>
-                            Silakan masukkan teks puisi di atas lalu klik tombol Analisis.
+                            Masukkan teks puisi di atas kemudian klik tombol Analisis untuk melihat hasilnya.
                         </p>
+
                     </div>
 
                 </div>

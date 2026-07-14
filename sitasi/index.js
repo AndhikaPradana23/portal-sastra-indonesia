@@ -149,9 +149,14 @@ function renderHistory(){
 
         container.innerHTML =
         `
-        <p>
-            Belum ada riwayat.
-        </p>
+        <div class="empty-state">
+            <img
+                src="/assets/icons/history.svg"
+                class="empty-state-icon"
+                alt="">
+            <h3>Belum Ada Riwayat</h3>
+            <p>Sitasi yang Anda buat akan tersimpan di sini.</p>
+        </div>
         `;
 
         return;
@@ -167,9 +172,14 @@ function renderHistory(){
                 "
             >
 
-                <pre>
-${item}
-                </pre>
+                <div class="history-top">
+                    <img
+                        src="/assets/icons/quote.svg"
+                        class="history-icon"
+                        alt="">
+                    <span>Hasil Sitasi</span>
+                </div>
+                <p class="history-text">${item}</p>
 
             </article>
 

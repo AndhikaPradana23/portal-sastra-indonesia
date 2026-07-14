@@ -217,12 +217,16 @@ function analyzePuisi(){
                             : 0;
 
                     return `
-                        <li>
-                            ${kata}
+                        <li class="frequency-item">
+                            <span>
+                                ${kata}
+                            </span>
                             <strong>
-                                (${total})
+                                ${total}
                             </strong>
-                            - ${persen}%
+                            <small>
+                                ${persen}%
+                            </small>
                         </li>
                     `;
                 }
@@ -232,7 +236,11 @@ function analyzePuisi(){
     const topWordsHtml =
         frekuensi
             .slice(0, 5)
-            .map(([kata]) => `<span>${kata}</span>`)
+            .map(([kata]) => `
+                <span class="top-word-badge">
+                    ${kata}
+                </span>
+            `)
             .join("");
 
     // Memasukkan HTML hasil analisis beserta tombol aksi baru ke DOM
@@ -243,11 +251,19 @@ function analyzePuisi(){
         .innerHTML = `
             <div class="analysis-card">
 
-                <h3>
-                    Hasil Analisis
-                </h3>
+                <div class="analysis-header">
+                    <div class="analysis-title">
+                        <img
+                            src="/assets/icons/chart-column.svg"
+                            class="analysis-title-icon"
+                            alt="">
+                        <h3>
+                            Hasil Analisis
+                        </h3>
+                    </div>
+                </div>
 
-                <div class="analysis-item">
+                <div class="analysis-stat-card">
                     <strong>
                         Jumlah Bait
                     </strong>
@@ -256,7 +272,7 @@ function analyzePuisi(){
                     </span>
                 </div>
 
-                <div class="analysis-item">
+                <div class="analysis-stat-card">
                     <strong>
                         Jumlah Larik
                     </strong>
@@ -265,7 +281,7 @@ function analyzePuisi(){
                     </span>
                 </div>
 
-                <div class="analysis-item">
+                <div class="analysis-stat-card">
                     <strong>
                         Jumlah Kata
                     </strong>
@@ -274,7 +290,7 @@ function analyzePuisi(){
                     </span>
                 </div>
 
-                <div class="analysis-item">
+                <div class="analysis-stat-card">
                     <strong>
                         Rata-rata Kata/Larik
                     </strong>
@@ -396,17 +412,44 @@ function analyzePuisi(){
             </div>
 
             <div class="analysis-actions">
-                <button id="copy-analysis" class="analysis-btn">
-                    📋 Salin Hasil
+                <button
+                    id="copy-analysis"
+                    class="btn btn-outline">
+                    <img
+                        src="/assets/icons/copy.svg"
+                        class="btn-icon"
+                        alt="">
+                    <span>Salin Hasil</span>
                 </button>
-                <button id="download-analysis" class="analysis-btn">
-                    📥 Download TXT
+
+                <button
+                    id="download-analysis"
+                    class="btn btn-outline">
+                    <img
+                        src="/assets/icons/download.svg"
+                        class="btn-icon"
+                        alt="">
+                    <span>Download TXT</span>
                 </button>
-                <button id="wa-analysis" class="analysis-btn">
-                    💬 WhatsApp
+
+                <button
+                    id="wa-analysis"
+                    class="btn btn-outline">
+                    <img
+                        src="/assets/icons/message-circle.svg"
+                        class="btn-icon"
+                        alt="">
+                    <span>WhatsApp</span>
                 </button>
-                <button id="share-analysis" class="analysis-btn">
-                    🔗 Bagikan
+
+                <button
+                    id="share-analysis"
+                    class="btn btn-outline">
+                    <img
+                        src="/assets/icons/share-2.svg"
+                        class="btn-icon"
+                        alt="">
+                    <span>Bagikan</span>
                 </button>
             </div>
         `;
