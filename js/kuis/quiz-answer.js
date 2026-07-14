@@ -32,8 +32,19 @@ function getQuizAnswers(){
 
 }
 
+function clearQuizAnswers(){
+
+    localStorage.removeItem(
+        "quiz_answers"
+    );
+
+}
+
 window.saveQuizAnswer =
     saveQuizAnswer;
 
 window.getQuizAnswers =
     getQuizAnswers;
+
+window.clearQuizAnswers =
+    clearQuizAnswers;

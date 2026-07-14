@@ -55,8 +55,12 @@ function renderQuestionNavigation(){
                             " active";
                     }
 
+                    // Pengecekan aman menggunakan hasOwnProperty untuk mendukung falsy values
                     if(
-                        answers[index]
+                        Object.prototype.hasOwnProperty.call(
+                            answers,
+                            index
+                        )
                     ){
                         className +=
                             " answered";
@@ -114,7 +118,7 @@ function bindQuestionNavigation(){
 
 }
 
-// BONUS 2: Renderer Statistik Progress
+// BONUS 2: Renderer Statistik Progress dengan Bug Penghitung Teratasi
 function renderQuizStatus(){
 
     const answers =
@@ -123,17 +127,21 @@ function renderQuizStatus(){
     const total =
         getQuizQuestions().length;
 
+    // Memfilter agar hanya menghitung kunci properti jawaban yang benar-benar valid
     const answered =
         Object.keys(
             answers
+        ).filter(
+            key =>
+            answers[key] !== null &&
+            answers[key] !== undefined &&
+            answers[key] !== ""
         ).length;
 
-    document
-        .getElementById(
-            "quiz-status"
-        )
-        .textContent =
-            `Terjawab ${answered} dari ${total} soal`;
+    const statusElement = document.getElementById("quiz-status");
+    if (statusElement) {
+        statusElement.textContent = `Terjawab ${answered} dari ${total} soal`;
+    }
 
 }
 

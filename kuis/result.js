@@ -4,16 +4,6 @@ document.addEventListener(
 
         await loadLayout();
 
-        renderQuizResult();
-
-    }
-);document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
-
-        await loadLayout();
-
-        // Panggil fungsi global renderBreadcrumb untuk halaman hasil kuis
         renderBreadcrumb([
             {
                 label: "Beranda",

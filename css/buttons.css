@@ -58,7 +58,8 @@
     color:var(--text-white);
 }
 
-.btn-primary .btn-icon{
+.btn-primary .btn-icon,
+.btn-primary .label-icon{
     filter: brightness(0) invert(1);
 }
 
@@ -113,7 +114,8 @@
     color:#fff;
 }
 
-.btn-danger .btn-icon{
+.btn-danger .btn-icon,
+.btn-danger .label-icon{
     filter: brightness(0) invert(1);
 }
 
@@ -121,7 +123,8 @@
     background:#b91c1c;
 }
 
-.btn-danger:hover .btn-icon{
+.btn-danger:hover .btn-icon,
+.btn-danger:hover .label-icon{
     filter:brightness(0) invert(1);
 }
 

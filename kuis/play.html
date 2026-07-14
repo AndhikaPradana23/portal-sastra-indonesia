@@ -37,37 +37,51 @@
 
             <div id="breadcrumb"></div>
 
-            <div class="section-header">
+            <!-- A. Hero kecil tambahan di bawah breadcrumb -->
+            <div class="quiz-mini-hero fade-up">
+                <div class="quiz-mini-icon">
+                    <img src="/assets/icons/gamepad-2.svg" alt="">
+                </div>
                 <div>
                     <h1 class="section-title">
                         Kuis Sastra Indonesia
                     </h1>
                     <p class="section-description">
-                        Uji pemahaman sastra Indonesia.
+                        Jawablah setiap soal dengan teliti. Anda dapat berpindah nomor soal kapan saja.
                     </p>
                 </div>
             </div>
 
             <div class="card" style="margin-top: var(--space-6);">
                 
-                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
-                    <div style="flex: 1; min-width: 200px;">
-                        <div id="quiz-progress" style="font-weight: var(--font-weight-medium); margin-bottom: var(--space-1);"></div>
-                        <div id="question-navigation" class="question-navigation"></div>
+                <!-- B. Card Header baru dengan ikon buku dan waktu -->
+                <div class="quiz-card-header">
+                    <div class="quiz-progress-title">
+                        <img src="/assets/icons/book-open.svg" class="section-icon" alt="">
+                        <div>
+                            <h3 id="quiz-progress"></h3>
+                            <small>Pilih nomor soal kapan saja.</small>
+                        </div>
                     </div>
-                    <div id="quiz-timer" class="badge badge-primary" style="font-size: var(--font-size-base); padding: var(--space-2) var(--space-3);">
-                        ⏱ 00:00
+                    <div id="quiz-timer">
+                        <img src="/assets/icons/clock-3.svg" class="timer-icon" alt="">
+                        <span>00:00</span>
                     </div>
                 </div>
 
                 <div class="card-body">
                     
-                    <div id="quiz-status"></div>
+                    <!-- C. Navigasi nomor soal dibungkus wrapper -->
+                    <div class="question-nav-wrapper">
+                        <div id="question-navigation" class="question-navigation"></div>
+                    </div>
 
-                    <div id="quiz-container" style="margin-top: var(--space-2);">
-                        
-                        <div class="card skeleton" style="height: 200px;"></div>
-                        
+                    <!-- D. Area soal dibungkus dengan question-wrapper -->
+                    <div class="question-wrapper">
+                        <div id="quiz-status"></div>
+                        <div id="quiz-container">
+                            <div class="card skeleton" style="height: 200px;"></div>
+                        </div>
                     </div>
 
                 </div>
@@ -76,24 +90,20 @@
                     
                     <div class="quiz-navigation" style="display: flex; justify-content: space-between; align-items: center; gap: var(--space-3);">
                         
+                        <!-- E. Tombol Sebelumnya dengan ikon panah kiri -->
                         <button 
                             id="prev-btn" 
-                            class="
-                            btn 
-                            btn-outline
-                            "
+                            class="btn btn-outline"
                         >
-                            ← Sebelumnya
+                            <img src="/assets/icons/arrow-left.svg" alt=""> Sebelumnya
                         </button>
 
+                        <!-- E. Tombol Selanjutnya dengan ikon panah kanan -->
                         <button 
                             id="next-btn" 
-                            class="
-                            btn 
-                            btn-primary
-                            "
+                            class="btn btn-primary"
                         >
-                            Selanjutnya →
+                            Selanjutnya <img src="/assets/icons/arrow-right.svg" alt="">
                         </button>
 
                     </div>
@@ -111,7 +121,6 @@
 <footer id="site-footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
     <script src="/js/supabase-public.js"></script>
 
     <script src="/js/auth/auth-service.js"></script>
@@ -119,7 +128,6 @@
     <script src="/js/auth/role-service.js"></script>
     <script src="/js/auth/auth-ui.js"></script>
     <script src="/js/auth/logout.js"></script>
-    <script src="/js/auth/auth-state.js"></script>
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>

@@ -30,7 +30,47 @@ function clearQuizResult(){
 }
 
 // ==========================================
-// RENDERER PEMBAHASAN
+// BADGE NILAI
+// ==========================================
+
+function getScoreBadge(score){
+
+    if(score >= 90){
+
+        return {
+            text : "Sangat Baik",
+            className : "badge-success"
+        };
+
+    }
+
+    if(score >= 75){
+
+        return {
+            text : "Baik",
+            className : "badge-primary"
+        };
+
+    }
+
+    if(score >= 60){
+
+        return {
+            text : "Cukup",
+            className : "badge-warning"
+        };
+
+    }
+
+    return {
+        text : "Perlu Belajar Lagi",
+        className : "badge-danger"
+    };
+
+}
+
+// ==========================================
+// REVIEW
 // ==========================================
 
 function renderReview(){
@@ -38,127 +78,130 @@ function renderReview(){
     const result =
         getQuizResult();
 
-    if(
-        !result
-    ){
+    if(!result){
         return "";
     }
 
-    return result.detail
-        .map(
-            item => `
+    return result.detail.map(item => `
 
-                <div
-                    class="
-                    review-card
-                    "
+        <div class="review-card">
+
+            <h3>
+
+                <img
+                    src="/assets/icons/circle-question-mark.svg"
+                    class="label-icon"
+                    alt=""
                 >
 
-                    <h3>
+                Soal ${item.nomor}
 
-                        Soal
-                        ${item.nomor}
+            </h3>
 
-                    </h3>
+            <p>
+
+                ${item.question}
+
+            </p>
+
+            <div class="review-answer">
+
+                <strong>
+
+                    <img
+                        src="/assets/icons/user.svg"
+                        class="label-icon"
+                        alt=""
+                    >
+
+                    Jawaban Anda
+
+                </strong>
+
+                <p>
+
+                    ${item.userAnswer || "-"}
+
+                    <img
+                        src="/assets/icons/${
+                            item.isCorrect
+                                ? "circle-check.svg"
+                                : "circle-x.svg"
+                        }"
+                        class="label-icon"
+                        alt=""
+                    >
+
+                </p>
+
+            </div>
+
+            ${
+                !item.isCorrect
+                ?
+
+                `
+
+                <div class="review-correct">
+
+                    <strong>
+
+                        <img
+                            src="/assets/icons/check-check.svg"
+                            class="label-icon"
+                            alt=""
+                        >
+
+                        Jawaban Benar
+
+                    </strong>
 
                     <p>
 
-                        ${item.question}
+                        ${item.correct}
 
                     </p>
 
-                    <div
-                        class="
-                        review-answer
-                        "
-                    >
-
-                        <strong>
-
-                            Jawaban Anda
-
-                        </strong> 
-
-                        <p>
-
-                            ${
-                                item.userAnswer ||
-                                "-"
-                            }
-
-                            ${
-                                item.isCorrect
-                                ? "✅"
-                                : "❌"
-                            }
-
-                        </p>
-
-                    </div>
-
-                    ${
-                        !item.isCorrect
-                        ?
-                        `
-                            <div
-                                class="
-                                review-correct
-                                "
-                            >
-
-                                <strong>
-
-                                    Jawaban Benar
-
-                                </strong> 
-
-                                <p>
-
-                                    ${item.correct}
-                                    ✅
-
-                                </p>
-
-                            </div>
-                        `
-                        :
-                        ""
-                    }
-
-                    <div
-                        class="
-                        review-explanation
-                        "
-                    >
-
-                        <strong>
-
-                            Pembahasan
-
-                        </strong> 
-
-                        <p>
-
-                            ${
-                                getPembahasan(
-                                    item
-                                )
-                            }
-
-                        </p>
-
-                    </div>
-
                 </div>
 
-            `
-        )
-        .join("");
+                `
+
+                :
+
+                ""
+
+            }
+
+            <div class="review-explanation">
+
+                <strong>
+
+                    <img
+                        src="/assets/icons/book-open.svg"
+                        class="label-icon"
+                        alt=""
+                    >
+
+                    Pembahasan
+
+                </strong>
+
+                <p>
+
+                    ${getPembahasan(item)}
+
+                </p>
+
+            </div>
+
+        </div>
+
+    `).join("");
 
 }
 
 // ==========================================
-// MAIN RENDERER
+// MAIN RENDER
 // ==========================================
 
 function renderQuizResult(){
@@ -166,9 +209,7 @@ function renderQuizResult(){
     const result =
         getQuizResult();
 
-    if(
-        !result
-    ){
+    if(!result){
 
         window.location.href =
             "/kuis/index.html";
@@ -177,145 +218,221 @@ function renderQuizResult(){
 
     }
 
-    document
-        .getElementById(
-            "quiz-result"
-        )
-        .innerHTML = `
+    const badge =
+        getScoreBadge(result.nilai);
 
-            <div
-                class="
-                result-card
-                "
-            >
+    document.getElementById(
+        "quiz-result"
+    ).innerHTML = `
+
+        <div class="result-card">
+
+            <div class="quiz-hero">
+
+                <div class="quiz-hero-icon">
+
+                    <img
+                        src="/assets/icons/${
+                            result.timeout
+                                ? "clock-3.svg"
+                                : "trophy.svg"
+                        }"
+                        alt=""
+                    >
+
+                </div>
 
                 <h1>
 
                     ${
                         result.timeout
-                            ? "⏰ Waktu Habis"
-                            : "🎉 Kuis Selesai"
+                            ? "Waktu Habis"
+                            : "Kuis Selesai"
                     }
 
                 </h1>
 
-                <div
-                    class="
-                    result-score
-                    "
-                >
+                <p>
 
-                    ${result.nilai}
+                    ${
+                        result.timeout
+                        ?
 
-                </div>
+                        "Waktu pengerjaan telah berakhir."
 
-                <div
-                    class="
-                    result-item
-                    "
-                >
+                        :
 
-                    <strong>
-                        Benar
-                    </strong>
+                        "Selamat! Anda telah menyelesaikan kuis."
 
-                    <span>
+                    }
+
+                </p>
+
+            </div>
+
+            <div class="result-score">
+
+                ${result.nilai}
+
+            </div>
+
+            <div
+                class="
+                    badge
+                    result-badge
+                    ${badge.className}
+                "
+            >
+
+                ${badge.text}
+
+            </div>
+
+            <div class="result-stats">
+
+                <div class="result-stat-card">
+
+                    <img
+                        src="/assets/icons/circle-check.svg"
+                        class="result-stat-icon"
+                        alt=""
+                    >
+
+                    <div class="result-stat-label">
+
+                        Jawaban Benar
+
+                    </div>
+
+                    <div class="result-stat-value">
+
                         ${result.benar}
-                    </span>
+
+                    </div>
 
                 </div>
 
-                <div
-                    class="
-                    result-item
-                    "
-                >
+                <div class="result-stat-card">
 
-                    <strong>
-                        Salah
-                    </strong>
+                    <img
+                        src="/assets/icons/circle-x.svg"
+                        class="result-stat-icon"
+                        alt=""
+                    >
 
-                    <span>
+                    <div class="result-stat-label">
+
+                        Jawaban Salah
+
+                    </div>
+
+                    <div class="result-stat-value">
+
                         ${result.salah}
-                    </span>
+
+                    </div>
 
                 </div>
 
-                <div
-                    class="
-                    result-item
-                    "
-                >
+                <div class="result-stat-card">
 
-                    <strong>
-                        Total
-                    </strong>
+                    <img
+                        src="/assets/icons/list-checks.svg"
+                        class="result-stat-icon"
+                        alt=""
+                    >
 
-                    <span>
+                    <div class="result-stat-label">
+
+                        Total Soal
+
+                    </div>
+
+                    <div class="result-stat-value">
+
                         ${result.total}
-                    </span>
 
-                </div>
-
-                <div
-                    class="
-                    result-actions
-                    "
-                >
-
-                    <a
-                        href="/kuis/index.html"
-                        class="
-                        result-button
-                        "
-                    >
-                        Ulangi Kuis
-                    </a>
-
-                    <a
-                        href="/kuis/history.html"
-                        class="
-                        result-button
-                        "
-                    >
-                        Riwayat Nilai
-                    </a>
-
-                    <a
-                        href="/kuis/leaderboard.html"
-                        class="
-                        result-button
-                        "
-                    >
-                        Leaderboard
-                    </a>
+                    </div>
 
                 </div>
 
             </div>
 
-            <section
-                class="
-                review-section
-                "
-            >
+            <div class="result-actions">
 
-                <h2>
+                <a
+                    href="/kuis/play.html"
+                    class="btn btn-primary"
+                >
 
-                    Pembahasan Jawaban
+                    <img
+                        src="/assets/icons/rotate-ccw.svg"
+                        class="label-icon"
+                        alt=""
+                    >
 
-                </h2>
+                    Ulangi Kuis
 
-                ${renderReview()}
+                </a>
 
-            </section>
+                <a
+                    href="/kuis/history.html"
+                    class="btn btn-outline"
+                >
+
+                    <img
+                        src="/assets/icons/history.svg"
+                        class="label-icon"
+                        alt=""
+                    >
+
+                    Riwayat Nilai
+
+                </a>
+
+                <a
+                    href="/kuis/leaderboard.html"
+                    class="btn btn-outline"
+                >
+
+                    <img
+                        src="/assets/icons/trophy.svg"
+                        class="label-icon"
+                        alt=""
+                    >
+
+                    Leaderboard
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <section class="review-section">
+
+            <h2>
+
+                <img
+                    src="/assets/icons/book-open.svg"
+                    class="section-icon"
+                    alt=""
+                >
+
+                Pembahasan Jawaban
+
+            </h2>
+
+            ${renderReview()}
+
+        </section>
 
     `;
 
 }
 
 // ==========================================
-// EXPORT TO WINDOW
+// EXPORT
 // ==========================================
 
 window.saveQuizResult =

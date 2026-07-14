@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
 
     <title>Hasil Kuis Sastra | Portal Sastra Indonesia</title>
 
-    <meta name="description" content="Lihat hasil kuis sastra Indonesia.">
+    <meta
+        name="description"
+        content="Lihat hasil kuis sastra Indonesia."
+    >
 
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/typography.css">
     <link rel="stylesheet" href="/css/spacing.css">
     <link rel="stylesheet" href="/css/layout.css">
-   
+
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
@@ -26,6 +30,7 @@
 
     <link rel="stylesheet" href="/css/kuis.css">
 </head>
+
 <body>
 
 <header id="site-header"></header>
@@ -47,42 +52,129 @@
                     </h1>
 
                     <p class="section-description">
-                        Uji pemahaman sastra Indonesia.
+                        Lihat hasil evaluasi serta pembahasan jawaban kuis sastra Indonesia.
                     </p>
 
                 </div>
 
             </div>
 
-            <div id="quiz-result-card" class="card" style="margin-top: var(--space-6);">
-                
-                <div class="card-header">
-                    <h3 style="margin: 0;">Ringkasan Hasil Evaluasi</h3>
-                </div>
+            <div
+                id="quiz-result-card"
+                class="card quiz-result-wrapper"
+            >
 
-                <div class="card-body">
-                    
-                    <div id="quiz-result">
-                        
-                        <div class="card skeleton" style="height: 180px;"></div>
-                        
+                <div class="card-header quiz-result-header">
+
+                    <div class="section-title-group">
+
+                        <div class="section-icon-wrapper">
+
+                            <img
+                                src="/assets/icons/clipboard-check.svg"
+                                alt=""
+                                class="section-icon"
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <h2 class="card-title">
+
+                                Ringkasan Hasil Evaluasi
+
+                            </h2>
+
+                            <p class="card-description">
+
+                                Nilai akhir, statistik jawaban, dan pembahasan setiap soal.
+
+                            </p>
+
+                        </div>
+
                     </div>
 
                 </div>
 
-                <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
-                    
-                    <a href="/kuis/index.html" class="btn btn-outline">
-                        ↩️ Menu Utama Kuis
+                <div class="card-body">
+
+                    <div id="quiz-result">
+
+                        <div
+                            class="
+                                card
+                                skeleton
+                                quiz-result-skeleton
+                            ">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card-footer quiz-result-footer">
+
+                    <a
+                        href="/kuis/index.html"
+                        class="btn btn-outline"
+                    >
+
+                        <img
+                            src="/assets/icons/house.svg"
+                            alt=""
+                            class="label-icon"
+                        >
+
+                        <span>
+
+                            Menu Utama Kuis
+
+                        </span>
+
                     </a>
-                    
-                    <div style="display: flex; gap: var(--space-2);">
-                        <a href="/kuis/history.html" class="btn btn-outline">
-                            📜 Riwayat Skor
+
+                    <div class="quiz-result-actions">
+
+                        <a
+                            href="/kuis/history.html"
+                            class="btn btn-outline"
+                        >
+
+                            <img
+                                src="/assets/icons/history.svg"
+                                alt=""
+                                class="label-icon"
+                            >
+
+                            <span>
+
+                                Riwayat Skor
+
+                            </span>
+
                         </a>
-                        <a href="/kuis/play.html" class="btn btn-primary">
-                            🔄 Coba Lagi
+
+                        <a
+                            href="/kuis/play.html"
+                            class="btn btn-primary"
+                        >
+
+                            <img
+                                src="/assets/icons/rotate-ccw.svg"
+                                alt=""
+                                class="label-icon"
+                            >
+
+                            <span>
+
+                                Coba Lagi
+
+                            </span>
+
                         </a>
+
                     </div>
 
                 </div>
@@ -97,30 +189,30 @@
 
 <footer id="site-footer"></footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-    <script src="/js/supabase-public.js"></script>
+<script src="/js/supabase-public.js"></script>
 
-    <script src="/js/auth/auth-service.js"></script>
-    <script src="/js/auth/profile-service.js"></script>
-    <script src="/js/auth/role-service.js"></script>
-    <script src="/js/auth/auth-ui.js"></script>
-    <script src="/js/auth/logout.js"></script>
-    <script src="/js/auth/auth-state.js"></script>
+<script src="/js/auth/auth-service.js"></script>
+<script src="/js/auth/profile-service.js"></script>
+<script src="/js/auth/role-service.js"></script>
+<script src="/js/auth/auth-ui.js"></script>
+<script src="/js/auth/logout.js"></script>
+<script src="/js/auth/auth-state.js"></script>
 
-    <script src="/js/layout/layout.js"></script>
-    <script src="/js/layout/active-menu.js"></script>
-    <script src="/js/layout/mobile-menu.js"></script>
+<script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
 
-    <script src="/js/kuis/quiz-utils.js"></script>
-    <script src="/js/kuis/quiz-storage.js"></script>
+<script src="/js/kuis/quiz-utils.js"></script>
+<script src="/js/kuis/quiz-storage.js"></script>
 
-    <script src="/js/kuis/quiz-score.js"></script>
-    <script src="/js/kuis/quiz-result.js"></script>
-    <script src="/js/kuis/quiz-review.js"></script>
-    <script src="/js/kuis/quiz-summary.js"></script>
+<script src="/js/kuis/quiz-score.js"></script>
+<script src="/js/kuis/quiz-result.js"></script>
+<script src="/js/kuis/quiz-review.js"></script>
+<script src="/js/kuis/quiz-summary.js"></script>
 
-    <script src="result.js"></script>
+<script src="result.js"></script>
 
 </body>
 </html>

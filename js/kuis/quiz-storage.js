@@ -63,6 +63,26 @@ function getQuizTime(){
 
 }
 
+function clearQuizSession(){
+
+    localStorage.removeItem(
+        "quiz_answers"
+    );
+
+    localStorage.removeItem(
+        "quiz_questions"
+    );
+
+    localStorage.removeItem(
+        "quiz_time"
+    );
+
+    localStorage.removeItem(
+        "quiz_result"
+    );
+
+}
+
 // Mengekspos fungsi-fungsi ke objek global window
 window.saveQuizConfig = saveQuizConfig;
 window.getQuizConfig = getQuizConfig;
@@ -70,3 +90,4 @@ window.saveQuizQuestions = saveQuizQuestions;
 window.getQuizQuestions = getQuizQuestions;
 window.saveQuizTime = saveQuizTime;
 window.getQuizTime = getQuizTime;
+window.clearQuizSession = clearQuizSession;

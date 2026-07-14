@@ -79,9 +79,7 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
-    <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
     <link rel="stylesheet" href="/css/utilities.css">
     <link rel="stylesheet" href="/css/responsive.css">
@@ -113,22 +111,38 @@
                     </div>
                 </div>
 
-                <div class="quiz-hero" style="margin-top: var(--space-4);">
+                <!-- 1. Perbaikan Hero -->
+                <div class="quiz-hero fade-up">
+                    <div class="quiz-hero-icon">
+                        <img src="/assets/icons/gamepad-2.svg" alt="Kuis">
+                    </div>
+                    <h2>Siap Menguji Pengetahuan Sastra?</h2>
                     <p>
-                        Uji pemahaman Anda mengenai istilah sastra, sastrawan, karya sastra, dan artikel melalui simulasi interaktif di bawah ini.
+                        Pilih kategori dan jumlah soal, kemudian mulai simulasi kuis interaktif untuk mengukur pemahaman Anda mengenai sastra Indonesia.
                     </p>
                 </div>
 
-                <div class="quiz-form card" style="margin-top: var(--space-6); padding: var(--space-5);">
+                <!-- 2. Menghilangkan Inline Style Form -->
+                <div class="quiz-form card fade-up">
                     
-                    <div class="card-header" style="padding-left: 0; padding-right: 0; padding-top: 0;">
-                        <h3 style="margin: 0;">Konfigurasi Kuis Sastra</h3>
+                    <!-- 3. Header Card Diberi Ikon -->
+                    <div class="card-header quiz-card-header">
+                        <div class="quiz-card-title">
+                            <img src="/assets/icons/settings-2.svg" class="section-icon" alt="">
+                            <div>
+                                <h3>Konfigurasi Kuis Sastra</h3>
+                                <small>Sesuaikan kategori dan jumlah soal.</small>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="card-body" style="padding-left: 0; padding-right: 0; display: flex; flex-direction: column; gap: var(--space-4);">
+                    <!-- Menghilangkan Inline Style Body -->
+                    <div class="card-body quiz-card-body">
                         
                         <div class="form-group">
-                            <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                            <!-- 4. Tambah Ikon pada Label Kategori -->
+                            <label class="quiz-label">
+                                <img src="/assets/icons/layout-grid.svg" class="label-icon" alt="">
                                 Kategori Kuis
                             </label>
                             <select id="quiz-category" class="select">
@@ -140,7 +154,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label style="display: block; margin-bottom: var(--space-2); font-weight: var(--font-weight-medium);">
+                            <!-- 4. Tambah Ikon pada Label Jumlah Soal -->
+                            <label class="quiz-label">
+                                <img src="/assets/icons/list-ordered.svg" class="label-icon" alt="">
                                 Jumlah Soal
                             </label>
                             <select id="quiz-total" class="select">
@@ -150,19 +166,25 @@
                             </select>
                         </div>
 
-                        <button id="start-quiz-btn" class="btn btn-primary" style="width: 100%; margin-top: var(--space-2);">
+                        <!-- 5. Tombol Mulai Kuis dengan Ikon -->
+                        <button id="start-quiz-btn" class="btn btn-primary">
+                            <img src="/assets/icons/play.svg" class="btn-icon" alt="">
                             Mulai Kuis
                         </button>
 
                     </div>
 
-                    <div class="card-footer" style="padding-left: 0; padding-right: 0; padding-bottom: 0; border-top: 1px solid var(--border-color); padding-top: var(--space-4);">
-                        <div class="quiz-links" style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+                    <!-- Menghilangkan Inline Style Footer -->
+                    <div class="card-footer quiz-card-footer">
+                        <div class="quiz-links">
+                            <!-- 6. Perubahan Tombol Bawah (Riwayat & Leaderboard) -->
                             <a href="/kuis/history.html" class="btn btn-outline">
-                                📜 Riwayat Nilai
+                                <img src="/assets/icons/history.svg" class="btn-icon" alt="">
+                                Riwayat Nilai
                             </a>
                             <a href="/kuis/leaderboard.html" class="btn btn-outline">
-                                🏆 Leaderboard
+                                <img src="/assets/icons/trophy.svg" class="btn-icon" alt="">
+                                Leaderboard
                             </a>
                         </div>
                     </div>
@@ -178,7 +200,6 @@
     <footer id="site-footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
     <script src="/js/supabase-public.js"></script>
 
     <script src="/js/auth/auth-service.js"></script>
@@ -186,7 +207,6 @@
     <script src="/js/auth/role-service.js"></script>
     <script src="/js/auth/auth-ui.js"></script>
     <script src="/js/auth/logout.js"></script>
-    <script src="/js/auth/auth-state.js"></script>
 
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>

@@ -1,90 +1,367 @@
 /* ==========================================================================
-   QUIZ (KUIS) COMPONENT
-   Portal Sastra Indonesia
+   LAYOUT WRAPPER HALAMAN KUIS & OPTIMASI JARAK
    ========================================================================== */
 
-/* Layout wrapper halaman kuis */
 .quiz-page,
 .quiz-play-page,
 .quiz-result-page {
-    padding: var(--space-8) 0; /* 64px - Mengikuti ritme vertikal .home-section */
+    padding: 0;
 }
+
+.quiz-page .section,
+.quiz-play-page .section,
+.quiz-result-page .section {
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-6);
+}
+
+.quiz-page #breadcrumb,
+.quiz-play-page #breadcrumb,
+.quiz-result-page #breadcrumb {
+    margin-bottom: var(--space-4);
+}
+
+.quiz-result-page .section-header {
+    margin-bottom: var(--space-5);
+}
+
+/* Merapatkan footer global khusus setelah halaman kuis */
+.quiz-page + .site-footer,
+.quiz-play-page + .site-footer,
+.quiz-result-page + .site-footer {
+    margin-top: var(--space-6);
+}
+
+/* ==========================================================================
+   WRAPPER HALAMAN HASIL KUIS
+   ========================================================================== */
+
+.quiz-result-wrapper {
+    margin-top: var(--space-6);
+    overflow: hidden;
+}
+
+.quiz-result-skeleton {
+    height: 180px;
+}
+
+/* ==========================================================================
+   HERO & HEADER COMPONENT
+   ========================================================================== */
 
 .quiz-hero {
+    max-width: 760px;
+    margin: 0 auto var(--space-6);
     text-align: center;
-    margin-bottom: var(--space-6); /* 32px */
 }
 
-.quiz-hero h1 {
-    margin-bottom: var(--space-3); /* 12px */
+.quiz-hero-icon {
+    width: 78px;
+    height: 78px;
+    margin: 0 auto var(--space-5);
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-hero-icon img {
+    width: 38px;
+    height: 38px;
+}
+
+.quiz-hero h2 {
+    margin-bottom: 12px;
 }
 
 .quiz-hero p {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* Mini Hero */
+.quiz-mini-hero {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 26px;
+}
+
+.quiz-mini-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.quiz-mini-icon img {
+    width: 34px;
+    height: 34px;
+}
+
+/* Header Hasil Kuis */
+.quiz-result-header {
+    padding: 24px 28px;
+    background: linear-gradient(
+        180deg,
+        rgba(37,99,235,.04),
+        transparent
+    );
+    border-bottom: 1px solid var(--border);
+}
+
+.section-title-group {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.section-icon-wrapper {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.section-icon-wrapper .section-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.quiz-result-header .card-title {
+    margin: 0;
+}
+
+.card-description {
+    margin-top: 6px;
+    color: var(--text-light);
+    line-height: 1.7;
+}
+
+/* Footer Hasil Kuis */
+.quiz-result-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+.quiz-result-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.quiz-result-footer .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.quiz-result-footer .label-icon {
+    width: 18px;
+    height: 18px;
 }
 
 /* ==========================================================================
    QUIZ FORMS & PLAY CARDS
    ========================================================================== */
 
-.quiz-form,
-.quiz-card {
-    max-width: 600px;
+/* Setup Card Utama Form Kuis & Efek Hover Bookmark */
+.quiz-form {
+    margin-top: var(--space-6);
+    max-width: 640px;
+    padding: 32px;
     margin-left: auto;
     margin-right: auto;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg); /* 18px - Selaras dengan standarisasi komponen */
-    padding: var(--space-5); /* 24px - Menggantikan 30px acak */
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
+}
+
+.quiz-form:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37,99,235,.25);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Card untuk simulasi pengerjaan kuis */
+.quiz-card {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
     box-shadow: var(--shadow-md);
 }
 
-.quiz-card {
-    max-width: 100%; /* Kartu soal memanfaatkan lebar kontainer penuh */
+.quiz-card h2 {
+    margin-bottom: var(--space-5);
 }
 
-.quiz-card h2 {
-    margin-bottom: var(--space-5); /* 24px */
+/* Header Card & Judul */
+.quiz-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 22px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Progress Title */
+.quiz-progress-title {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.quiz-progress-title h3 {
+    margin: 0;
+}
+
+.quiz-progress-title small {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-light);
+}
+
+.quiz-card-title {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.quiz-card-title h3 {
+    margin-bottom: 4px;
+}
+
+.quiz-card-title small {
+    color: var(--text-light);
 }
 
 /* Form group overrides untuk drop-down kuis */
 .form-group select {
     width: 100%;
     box-sizing: border-box;
-    /* padding, border, radius otomatis diwariskan dari spacing.css & utilities.css */
 }
 
 #start-quiz-btn {
     width: 100%;
-    /* padding dan radius otomatis mengambil standarisasi tombol */
 }
 
-/* Pilihan Jawaban (Options) */
+/* Wrapper Nomor Soal & Soal */
+.question-nav-wrapper {
+    margin-top: 24px;
+    padding: 18px;
+    background: #f5f8fd;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.question-wrapper {
+    margin-top: 30px;
+    padding: 28px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow-md);
+    animation: fadeUp .35s ease;
+}
+
+/* ==========================================================================
+   IKON & LABEL
+   ========================================================================== */
+
+.section-icon {
+    width: 26px;
+    height: 26px;
+}
+
+.label-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.quiz-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   FOOTER CARD & LINKS
+   ========================================================================== */
+
+.card-footer {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.quiz-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.quiz-links .btn {
+    min-width: 170px;
+}
+
+/* ==========================================================================
+   PILIHAN JAWABAN (OPTIONS) & NAVIGASI INTERNAL
+   ========================================================================== */
+
 .quiz-option {
     display: flex;
     align-items: center;
-    gap: var(--space-3); /* 12px */
-    margin-bottom: var(--space-4); /* 16px */
-    padding: var(--space-4); /* 16px */
+    gap: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
     border: 1px solid var(--border);
-    border-radius: var(--radius-md); /* 12px - Selaras dengan utilities.css */
-    background: var(--surface);
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    border-radius: 16px;
+    background: #fff;
+    transition: all .2s ease;
 }
 
 .quiz-option:hover {
-    background: var(--surface-secondary);
-    border-color: var(--border-dark);
+    border-color: var(--primary);
+    background: #f8fbff;
+    transform: translateY(-2px);
 }
 
 /* Navigasi kuis bawah (Next/Prev) */
 .quiz-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-top: var(--space-5); /* 24px */
+    margin-top: 28px;
+    gap: 16px;
+}
+
+.quiz-navigation .btn {
+    height: 50px;
+    font-weight: 700;
 }
 
 /* Header kuis (Timer & Progres) */
@@ -96,20 +373,48 @@
     margin-bottom: var(--space-5);
 }
 
-/* Widget Timer Kuis */
+/* ======================================================================
+   TIMER
+   ====================================================================== */
+
 #quiz-timer {
-    background: var(--primary);
-    color: var(--text-white);
-    padding: var(--space-2) var(--space-4); /* 8px 16px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 132px;
+    height: 48px;
+    padding: 0 18px;
+    margin-left: auto;
     border-radius: var(--radius-md);
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-hover)
+    );
+    color: #fff;
+    font-size: 1rem;
     font-weight: 700;
-    font-size: 1.125rem; /* 18px */
-    transition: background 0.3s ease;
+    box-shadow: var(--shadow-md);
+    transition:
+        background .25s ease,
+        transform .25s ease;
 }
 
 #quiz-timer.warning {
-    background: var(--danger);
+    background: linear-gradient(
+        135deg,
+        #ef4444,
+        #dc2626
+    );
     animation: pulse 1s infinite;
+}
+
+.timer-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    filter: brightness(0) invert(1);
 }
 
 /* ==========================================================================
@@ -119,34 +424,40 @@
 .question-navigation {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2); /* 8px */
+    gap: 10px;
+    justify-content: center;
     margin-top: var(--space-4);
 }
 
 .question-number {
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     border: 1px solid var(--border);
-    border-radius: var(--radius-sm); /* 8px */
-    background: var(--surface-secondary);
+    border-radius: 12px;
+    background: #fff;
     color: var(--text-light);
     cursor: pointer;
     font-weight: 700;
+    font-size: .95rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    box-shadow: var(--shadow-sm);
+    user-select: none;
+    transition: all .2s ease;
 }
 
 .question-number:hover {
-    background: var(--border-dark);
-    color: var(--text);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .question-number.active {
     background: var(--primary);
-    color: var(--text-white);
     border-color: var(--primary);
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(37,99,235,.25);
 }
 
 .question-number.answered {
@@ -162,31 +473,55 @@
 }
 
 /* ==========================================================================
-   QUIZ RESULT & REVIEW
+   QUIZ RESULT CARD & STATISTIK
    ========================================================================== */
 
 .result-card {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    background: var(--surface);
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 36px;
+    border-radius: 22px;
     border: 1px solid var(--border);
-    padding: var(--space-6); /* 32px */
-    border-radius: var(--radius-lg);
+    background: var(--surface);
     box-shadow: var(--shadow-lg);
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37,99,235,.18);
+    box-shadow: 0 20px 40px rgba(15,23,42,.08);
 }
 
 .result-card h1 {
+    margin-bottom: 18px;
     text-align: center;
-    margin-bottom: var(--space-5);
 }
 
 .result-score {
     text-align: center;
-    font-size: 4.5rem; /* Skala teks skor besar yang proporsional */
+    font-size: 4.8rem;
     font-weight: 800;
     color: var(--primary);
-    margin-bottom: var(--space-5);
+    margin: 20px 0 28px;
+    animation:
+        fadeUp .45s ease,
+        pulse .8s ease;
+}
+
+/* Badge kategori nilai */
+.result-badge{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:max-content;
+    margin:0 auto var(--space-6);
+    padding:8px 18px;
+    font-weight:600;
+    border-radius:999px;
 }
 
 .result-item {
@@ -196,60 +531,148 @@
     border-bottom: 1px solid var(--border);
 }
 
-.result-actions {
-    margin-top: var(--space-6);
+/* Grid Statistik Hasil Kuis */
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(160px, 1fr)
+    );
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.result-stat-card {
+    padding: 22px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: #fff;
     text-align: center;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.result-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.result-stat-icon {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 12px;
+}
+
+.result-stat-label {
+    color: var(--text-light);
+    font-size: .92rem;
+    margin-bottom: 8px;
+}
+
+.result-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+/* Tombol Aksi Halaman Hasil */
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 34px;
 }
 
 .result-button {
-    display: inline-block;
-    padding: var(--space-3) var(--space-5); /* 12px 24px - Selaras standar button */
-    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 170px;
+    padding: 14px 22px;
+    border-radius: 14px;
     font-weight: 600;
     text-decoration: none;
     background: var(--primary);
     color: var(--text-white);
-    transition: background 0.2s ease;
+    transition: all .25s ease;
 }
 
 .result-button:hover {
+    transform: translateY(-2px);
     background: var(--primary-hover);
     color: var(--text-white);
 }
 
-/* Review Jawaban */
+/* ==========================================================================
+   REVIEW JAWABAN KUIS
+   ========================================================================== */
+
 .review-section {
     margin-top: var(--space-7); /* 48px */
 }
 
 .review-section h2 {
-    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: var(--space-5);
 }
 
 .review-card,
 .history-card {
+    padding: 26px;
+    border-radius: 18px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: var(--space-4); /* 16px */
-    margin-bottom: var(--space-4);
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-sm);
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(37,99,235,.18);
+    box-shadow: var(--shadow-lg);
 }
 
 .review-card h3 {
-    margin-bottom: var(--space-2);
+    margin-bottom: 14px;
 }
 
 .review-answer,
 .review-correct,
 .review-explanation {
-    margin-top: var(--space-3);
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
 }
 
 .review-answer p,
 .review-correct p,
 .review-explanation p {
-    margin-top: var(--space-1);
-    line-height: 1.6;
+    margin-top: 8px;
+    line-height: 1.8;
+}
+
+.review-answer {
+    border-left: 4px solid #3b82f6;
+    padding-left: 18px;
+}
+
+.review-correct {
+    border-left: 4px solid #22c55e;
+    padding-left: 18px;
+}
+
+.review-explanation {
+    border-left: 4px solid #f59e0b;
+    padding-left: 18px;
 }
 
 /* ==========================================================================
@@ -278,15 +701,130 @@
 }
 
 .leaderboard-card:hover {
-    transform: translateX(4px); /* Efek interaktif list peringkat */
+    transform: translateX(4px);
     border-color: var(--border-dark);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+@media(max-width:768px){
+
+    .quiz-mini-hero {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .quiz-mini-icon {
+        width: 68px;
+        height: 68px;
+    }
+
+    .quiz-card-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .quiz-result-header {
+        padding: 22px;
+    }
+
+    .section-title-group {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    #quiz-timer {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 auto;
+    }
+
+    .question-nav-wrapper {
+        padding: 14px;
+    }
+
+    .question-navigation {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .question-number {
+        width: 42px;
+        height: 42px;
+    }
+
+    .question-wrapper {
+        padding: 20px;
+    }
+
+    .quiz-option {
+        padding: 16px;
+    }
+
+    .quiz-form {
+        padding: 22px;
+    }
+
+    .quiz-links,
+    .quiz-navigation,
+    .quiz-result-actions,
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .quiz-result-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .quiz-links .btn,
+    .quiz-navigation .btn,
+    .quiz-result-footer .btn,
+    .quiz-result-actions .btn,
+    .result-button {
+        width: 100%;
+    }
+
+    .result-card {
+        padding: 24px;
+    }
+
+    .result-score {
+        font-size: 3.6rem;
+    }
+
+    .result-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .review-card {
+        padding: 20px;
+    }
+
 }
 
 /* ==========================================================================
    ANIMATIONS
    ========================================================================== */
+
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.03); }
     100% { transform: scale(1); }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

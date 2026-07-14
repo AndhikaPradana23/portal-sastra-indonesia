@@ -160,9 +160,10 @@ function finishQuiz(
             result
         );
 
-    localStorage.removeItem(
-        "quiz_time"
-    );
+    // 4. Reset seluruh parameter sesi pengerjaan kuis ketika selesai
+    localStorage.removeItem("quiz_time");
+    clearQuizAnswers();
+    setCurrentQuestion(0);
 
     window.location.href =
         "/kuis/result.html";
