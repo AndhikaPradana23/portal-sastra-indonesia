@@ -2,9 +2,16 @@ document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
+        // ==========================================
+        // LOAD LAYOUT
+        // ==========================================
+
         await loadLayout();
 
-        // Panggil fungsi global renderBreadcrumb untuk halaman papan peringkat
+        // ==========================================
+        // BREADCRUMB
+        // ==========================================
+
         renderBreadcrumb([
             {
                 label: "Beranda",
@@ -17,11 +24,35 @@ document.addEventListener(
                 icon: "/assets/icons/gamepad-2.svg"
             },
             {
-                label: "Papan Peringkat"
+                label: "Leaderboard"
             }
         ]);
 
-        renderLeaderboard();
+        // ==========================================
+        // RENDER AWAL
+        // ==========================================
+
+        await renderLeaderboard();
+
+        // ==========================================
+        // REFRESH SAAT KEMBALI KE TAB
+        // ==========================================
+
+        document.addEventListener(
+            "visibilitychange",
+            async () => {
+
+                if (
+                    document.visibilityState ===
+                    "visible"
+                ) {
+
+                    await renderLeaderboard();
+
+                }
+
+            }
+        );
 
     }
 );

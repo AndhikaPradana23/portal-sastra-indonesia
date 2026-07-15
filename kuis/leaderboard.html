@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Leaderboard Kuis | Portal Sastra Indonesia</title>
 
+    <meta name="description" content="Papan peringkat kuis sastra Indonesia berdasarkan akumulasi skor setiap pengguna.">
+
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/typography.css">
     <link rel="stylesheet" href="/css/spacing.css">
     <link rel="stylesheet" href="/css/layout.css">
-   
+
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
-    <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -23,96 +22,54 @@
     <link rel="stylesheet" href="/css/responsive.css">
 
     <link rel="stylesheet" href="/css/kuis.css">
-
 </head>
+
 <body>
 
 <header id="site-header"></header>
 
 <main class="leaderboard-page">
-
     <section class="section">
-
         <div class="container">
-
             <div id="breadcrumb"></div>
-
-            <div class="section-header">
-
-                <div>
-
-                    <h1 class="section-title">
-                        Leaderboard Kuis
-                    </h1>
-
-                    <p class="section-description">
-                        Uji pemahaman sastra Indonesia.
-                    </p>
-
+            
+            <div class="quiz-mini-hero">
+                <div class="quiz-mini-icon">
+                    <img src="/assets/icons/trophy.svg" alt="Leaderboard">
                 </div>
-
+                <div class="quiz-mini-details">
+                    <h1 class="quiz-mini-title">Leaderboard Kuis Sastra</h1>
+                    <p class="quiz-mini-description">
+                        Papan peringkat dihitung berdasarkan <b>akumulasi skor</b> setiap akun. 
+                    </p>
+                </div>
             </div>
 
             <div class="card" style="margin-top: var(--space-6);">
-
-                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
-                    
-                    <h3 style="margin: 0;">Peringkat Tertinggi</h3>
-
-                    <div class="filter-container" style="display: flex; align-items: center; gap: var(--space-2);">
-                        
-                        <label for="leaderboard-filter" style="font-weight: var(--font-weight-medium); white-space: nowrap;">
-                            Kategori:
-                        </label>
-
-                        <select id="leaderboard-filter" class="select">
-                            <option value="">Semua</option>
-                            <option value="istilah">Istilah</option>
-                            <option value="sastrawan">Sastrawan</option>
-                            <option value="karya">Karya</option>
-                            <option value="campuran">Campuran</option>
-                        </select>
-
-                    </div>
-
+                <div class="card-header">
+                    <h3>Peringkat Pengguna</h3>
+                    <small style="color: var(--text-light);">
+                        Akumulasi skor dari seluruh kategori kuis.
+                    </small>
                 </div>
 
                 <div class="card-body">
-
                     <div id="leaderboard-list">
-                        
-                        <div class="card skeleton" style="height: 250px;"></div>
-
-                        <!-- 
-                          Catatan untuk sistem JavaScript Anda: Jika data kosong atau belum ada skor kuis, 
-                          ganti isi kontainer di atas dengan komponen standarisasi berikut:
-                          
-                          <div class="empty-state">
-                              <div class="empty-icon">📚</div>
-                              <h3>Belum Ada Riwayat</h3>
-                              <p>Coba gunakan kata kunci lain atau jadilah yang pertama mengisi papan peringkat kuis!</p>
-                          </div>
-                        -->
-
+                        <div class="card skeleton" style="height: 320px;"></div>
                     </div>
-
                 </div>
 
-                <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-2);">
+                <div class="card-footer" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
                     <a href="/kuis/index.html" class="btn btn-outline">
-                        ↩️ Kembali ke Menu Kuis
+                        ← Menu Kuis
                     </a>
                     <a href="/kuis/history.html" class="btn btn-primary">
-                        📜 Lihat Skor Saya
+                        Riwayat Saya
                     </a>
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 </main>
 
 <footer id="site-footer"></footer>
@@ -127,7 +84,6 @@
 <script src="/js/auth/role-service.js"></script>
 <script src="/js/auth/auth-ui.js"></script>
 <script src="/js/auth/logout.js"></script>
-<script src="/js/auth/auth-state.js"></script>
 
 <script src="/js/layout/layout.js"></script>
 <script src="/js/layout/active-menu.js"></script>

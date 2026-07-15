@@ -1,218 +1,242 @@
 /**
- * Menyimpan hasil kuis ke dalam tabel quiz_leaderboard di Supabase
- * @param {Object} result - Objek hasil kuis yang berisi nilai, benar, salah, dan total
+ * ==========================================================
+ * LEADERBOARD SERVICE
+ * Satu akun = satu baris leaderboard
+ * Skor bersifat akumulatif per kategori
+ * ==========================================================
  */
-async function saveLeaderboard(
-    result
-){
 
+const LEADERBOARD_CATEGORY_MAP = {
+    istilah: "total_istilah",
+    sastrawan: "total_sastrawan",
+    karya: "total_karya",
+    campuran: "total_campuran"
+};
+
+/**
+ * ==========================================================
+ * SIMPAN LEADERBOARD
+ * ==========================================================
+ */
+async function saveLeaderboard(result){
     try{
+        // Memakai getCurrentUser() sesuai dengan Solusi 3
+        const user = await getCurrentUser();
 
-        const session =
-            await getSession();
-
-        let nama =
-            "Guest";
-
-        let userId =
-            null;
-
-        if(session){
-
-            nama =
-                session.user.user_metadata
-                    ?.nama ||
-                session.user.email;
-
-            userId =
-                session.user.id;
-
+        if(!user){
+            return;
         }
 
-        const config =
-            getQuizConfig();
+        const userId = user.id;
+        
+        // Pembaruan A: Menggunakan fallback username -> nama_lengkap -> email prefix
+        const username = user.user_metadata?.username;
+        const namaLengkap = user.user_metadata?.nama_lengkap;
+        const nama = username || namaLengkap || user.email.split("@")[0];
 
-        await supabaseClient
-            .from(
-                "quiz_leaderboard"
-            )
-            .insert({
+        const config = getQuizConfig();
+        const kategori = config.kategori;
+        const field = LEADERBOARD_CATEGORY_MAP[kategori];
 
-                user_id:
-                    userId,
+        if(!field){
+            console.warn(
+                "Kategori leaderboard tidak dikenal:",
+                kategori
+            );
+            return;
+        }
 
-                nama,
-
-                kategori:
-                    config.kategori,
-
-                nilai:
-                    result.nilai,
-
-                benar:
-                    result.benar,
-
-                salah:
-                    result.salah,
-
-                total:
-                    result.total
-
-            });
-
-    }
-    catch(error){
-
-        console.error(
+        //------------------------------------------------------
+        const {
+            data: existing,
             error
+        } = await supabaseClient
+            .from("quiz_leaderboard")
+            .select("*")
+            .eq("user_id", userId)
+            .maybeSingle();
+
+        if(error){
+            throw error;
+        }
+
+        //------------------------------------------------------
+        let leaderboard;
+
+        if(existing){
+            leaderboard = {
+                ...existing
+            };
+        }
+        else{
+            leaderboard = {
+                user_id: userId,
+                nama,
+                total_istilah: 0,
+                total_sastrawan: 0,
+                total_karya: 0,
+                total_campuran: 0,
+                total_semua: 0,
+                jumlah_kuis: 0
+            };
+        }
+
+        //------------------------------------------------------
+        leaderboard.nama = nama;
+
+        // Logging untuk memastikan nilai nama yang akan disimpan
+        console.log(
+            "Nama leaderboard:",
+            nama
         );
 
-    }
+        leaderboard[field] += result.nilai;
+        leaderboard.jumlah_kuis += 1;
 
+        leaderboard.total_semua =
+            leaderboard.total_istilah +
+            leaderboard.total_sastrawan +
+            leaderboard.total_karya +
+            leaderboard.total_campuran;
+
+        leaderboard.updated_at = new Date().toISOString();
+
+        //------------------------------------------------------
+        const {
+            error: updateError
+        } = await supabaseClient
+            .from("quiz_leaderboard")
+            .upsert(
+                leaderboard,
+                {
+                    onConflict: "user_id"
+                }
+            );
+
+        if(updateError){
+            throw updateError;
+        }
+    }
+    catch(error){
+        console.error(
+            "Leaderboard:",
+            error
+        );
+    }
 }
 
 /**
- * Mengambil data 50 besar papan peringkat kuis dari Supabase
- * diurutkan berdasarkan nilai tertinggi dan waktu pembuatan terbaru
- * @returns {Array} Array objek data leaderboard atau array kosong jika terjadi error
+ * ==========================================================
+ * AMBIL LEADERBOARD
+ * ==========================================================
  */
 async function getLeaderboard(){
-
     const {
         data,
         error
     } =
     await supabaseClient
-        .from(
-            "quiz_leaderboard"
-        )
+        .from("quiz_leaderboard")
         .select("*")
         .order(
-            "nilai",
+            "total_semua",
             {
-                ascending:
-                    false
-                }
-        )
-        .order(
-            "created_at",
-            {
-                ascending:
-                    false
+                ascending:false
             }
         )
         .limit(50);
 
     if(error){
-
-        console.error(
-            error
-        );
-
+        console.error(error);
         return [];
-
     }
 
     return data || [];
-
 }
 
-// LANGKAH 6: Renderer leaderboard ke dalam DOM elemen
+/**
+ * ==========================================================
+ * RENDER LEADERBOARD
+ * ==========================================================
+ */
 async function renderLeaderboard(){
-
-    const container =
-        document.getElementById(
-            "leaderboard-list"
-        );
+    const container = document.getElementById("leaderboard-list");
 
     if(!container){
         return;
     }
 
-    const data =
-        await getLeaderboard();
+    const data = await getLeaderboard();
 
-    if(
-        !data.length
-    ){
-
+    if(!data.length){
         container.innerHTML = `
-            <p>
-
-                Belum ada data.
-
-            </p>
+            <div class="empty-state">
+                <div class="empty-icon">🏆</div>
+                <h3>Belum ada leaderboard.</h3>
+            </div>
         `;
-
         return;
     }
 
-    container.innerHTML =
-        data
-            .map(
-                (
-                    item,
-                    index
-                ) => `
+    container.innerHTML = data
+        .map((item,index)=>{
 
-                    <div
-                        class="
-                        leaderboard-card
-                        "
-                    >
+            const medal =
+                index===0
+                ? "🥇"
+                : index===1
+                ? "🥈"
+                : index===2
+                ? "🥉"
+                : `#${index+1}`;
 
-                        <div>
-
-                            ${
-                                index === 0
-                                    ? "🥇"
-                                    : index === 1
-                                    ? "🥈"
-                                    : index === 2
-                                    ? "🥉"
-                                    : `#${index + 1}`
-                            }
-
+            return `
+                <div class="leaderboard-card fade-up">
+                    <div class="leaderboard-rank">${medal}</div>
+                    <div class="leaderboard-user">
+                        <div class="leaderboard-name">
+                            <strong>${item.nama}</strong>
                         </div>
-
-                        <div>
-
-                            <strong>
-
-                                ${item.nama}
-
-                            </strong> 
-
-                            <br>
-
-                            <small>
-
-                                ${item.kategori}
-
-                            </small>
-
+                        <div class="leaderboard-meta">
+                            <div>
+                                <img src="/assets/icons/book-open.svg" class="label-icon">
+                                Istilah
+                                <b>${item.total_istilah}</b>
+                            </div>
+                            <div>
+                                <img src="/assets/icons/user-round.svg" class="label-icon">
+                                Sastrawan
+                                <b>${item.total_sastrawan}</b>
+                            </div>
+                            <div>
+                                <img src="/assets/icons/library.svg" class="label-icon">
+                                Karya
+                                <b>${item.total_karya}</b>
+                            </div>
+                            <div>
+                                <img src="/assets/icons/target.svg" class="label-icon">
+                                Campuran
+                                <b>${item.total_campuran}</b>
+                            </div>
                         </div>
-
-                        <div>
-
-                            ${item.nilai}
-
+                        <div class="leaderboard-total">
+                            <img src="/assets/icons/clipboard-list.svg" class="label-icon">${item.jumlah_kuis} Kuis
                         </div>
-
                     </div>
-
-                `
-            )
-            .join("");
-
+                    <div class="leaderboard-score">${item.total_semua}</div>
+                </div>
+            `;
+        }).join("");
 }
 
-// Mengekspos layanan papan peringkat ke objek global window agar bisa diakses oleh skrip lain
+/**
+ * ==========================================================
+ * EXPOSE SERVICE TO WINDOW
+ * ==========================================================
+ */
 window.LeaderboardService = {
     saveLeaderboard,
     getLeaderboard
 };
 
-// Mengekspos fungsi render secara global
-window.renderLeaderboard =
-    renderLeaderboard;
+window.renderLeaderboard = renderLeaderboard;

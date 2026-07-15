@@ -33,6 +33,123 @@
 }
 
 /* ==========================================================================
+   QUIZ HISTORY
+   ========================================================================== */
+
+.quiz-history-page{
+    padding:0;
+}
+
+.quiz-history-page .section{
+    padding-top:var(--space-5);
+    padding-bottom:var(--space-6);
+}
+
+.quiz-history-page #breadcrumb{
+    margin-bottom:var(--space-4);
+}
+
+.quiz-history-page .section-header,
+.quiz-history-page .quiz-mini-hero{
+    margin-bottom:var(--space-5);
+}
+
+/* Footer lebih dekat */
+.quiz-history-page + .site-footer{
+    margin-top:var(--space-6);
+}
+
+.history-card{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+    border-radius:20px;
+    padding:24px;
+    transition:.25s;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-sm);
+}
+
+.history-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-lg);
+}
+
+.history-card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+
+.history-label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:8px;
+    color:var(--text-light);
+    font-size:.9rem;
+}
+
+.history-score{
+    width:74px;
+    height:74px;
+    border-radius:50%;
+    background:var(--primary-light);
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.7rem;
+    font-weight:800;
+}
+
+.history-stats{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap:18px;
+}
+
+.history-stat{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:18px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:#fff;
+}
+
+.history-stat img{
+    width:22px;
+    height:22px;
+}
+
+.empty-state{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:56px 24px;
+}
+
+.empty-icon{
+    width:70px;
+    height:70px;
+    margin-bottom:22px;
+}
+
+.empty-state h3{
+    margin-bottom:10px;
+}
+
+.empty-state p{
+    margin-bottom:28px;
+}
+
+/* ==========================================================================
    WRAPPER HALAMAN HASIL KUIS
    ========================================================================== */
 
@@ -621,8 +738,7 @@
     margin-bottom: var(--space-5);
 }
 
-.review-card,
-.history-card {
+.review-card {
     padding: 26px;
     border-radius: 18px;
     background: var(--surface);
@@ -675,34 +791,111 @@
     padding-left: 18px;
 }
 
-/* ==========================================================================
-   HISTORY & LEADERBOARD
-   ========================================================================== */
+/* ==========================================================
+   LEADERBOARD
+========================================================== */
 
-.quiz-history-page,
-.leaderboard-page {
-    padding: var(--space-7) 0;
+.leaderboard-page{
+    padding:0;
 }
 
-.history-card div {
-    margin-bottom: var(--space-2);
+.leaderboard-page .section{
+    padding-top:var(--space-5);
+    padding-bottom:var(--space-6);
 }
 
-.leaderboard-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: var(--surface);
-    padding: var(--space-4);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--space-3);
-    border: 1px solid var(--border);
-    transition: transform 0.2s ease;
+.leaderboard-page #breadcrumb{
+    margin-bottom:var(--space-4);
 }
 
-.leaderboard-card:hover {
-    transform: translateX(4px);
-    border-color: var(--border-dark);
+.leaderboard-page .quiz-mini-hero{
+    margin-bottom:var(--space-5);
+}
+
+.leaderboard-page + .site-footer{
+    margin-top:var(--space-6);
+}
+
+.leaderboard-wrapper{
+    padding:0;
+    overflow:hidden;
+}
+
+.leaderboard-loading{
+    height:320px;
+}
+
+.leaderboard-card{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    padding:22px 24px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:#fff;
+    margin-bottom:18px;
+    transition:.25s;
+}
+
+.leaderboard-card:hover{
+    transform:translateY(-4px);
+    box-shadow:var(--shadow-lg);
+}
+
+.leaderboard-rank{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:var(--primary-light);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.5rem;
+    font-weight:800;
+    flex-shrink:0;
+}
+
+.leaderboard-user{
+    flex:1;
+}
+
+.leaderboard-name{
+    margin-bottom:10px;
+}
+
+.leaderboard-total{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--text-light);
+}
+
+.leaderboard-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    color:var(--text-light);
+    font-size:.9rem;
+}
+
+.leaderboard-meta div{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.leaderboard-meta img{
+    width:18px;
+    height:18px;
+}
+
+.leaderboard-score{
+    width:90px;
+    text-align:right;
+    font-size:2rem;
+    font-weight:800;
+    color:var(--primary);
 }
 
 /* ==========================================================================
@@ -710,6 +903,17 @@
    ========================================================================== */
 
 @media(max-width:768px){
+
+    .history-card-top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .history-score{
+        width:64px;
+        height:64px;
+        font-size:1.5rem;
+    }
 
     .quiz-mini-hero {
         flex-direction: column;
@@ -806,6 +1010,21 @@
         padding: 20px;
     }
 
+    .leaderboard-card{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .leaderboard-score{
+        width:100%;
+        text-align:left;
+        margin-top:10px;
+    }
+
+    .leaderboard-meta{
+        flex-direction:column;
+        gap:10px;
+    }
 }
 
 /* ==========================================================================

@@ -133,7 +133,7 @@ function updateNavigation(){
 /**
  * Mengakhiri sesi kuis, menghitung skor, menyimpan hasil, dan pindah ke halaman skor
  */
-function finishQuiz(
+async function finishQuiz(
     timeout = false
 ){
 
@@ -155,7 +155,7 @@ function finishQuiz(
     });
 
     // LANGKAH 3: Simpan data hasil kuis ke papan peringkat (Leaderboard)
-    LeaderboardService
+    await LeaderboardService
         .saveLeaderboard(
             result
         );

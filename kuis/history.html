@@ -14,8 +14,6 @@
    
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
-    <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -37,7 +35,16 @@
 
             <div id="breadcrumb"></div>
 
-            <div class="section-header">
+            <div class="quiz-mini-hero fade-up">
+
+                <div class="quiz-mini-icon">
+
+                    <img
+                        src="/assets/icons/history.svg"
+                        alt="Riwayat"
+                    >
+
+                </div>
 
                 <div>
 
@@ -46,7 +53,7 @@
                     </h1>
 
                     <p class="section-description">
-                        Uji pemahaman sastra Indonesia.
+                        Lihat seluruh hasil kuis yang pernah Anda kerjakan beserta perkembangan skor Anda.
                     </p>
 
                 </div>
@@ -55,11 +62,51 @@
 
             <div class="card" style="margin-top: var(--space-6);">
                 
-                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
-                    <h3 style="margin: 0;">Daftar Skor Kuis Anda</h3>
-                    <button id="clear-history-btn" class="btn btn-outline">
-                        🗑️ Hapus Riwayat
+                <div class="quiz-result-header">
+
+                    <div class="section-title-group">
+
+                        <div class="section-icon-wrapper">
+
+                            <img
+                                src="/assets/icons/list-checks.svg"
+                                class="section-icon"
+                                alt=""
+                            >
+
+                        </div>
+
+                        <div>
+
+                            <h2 class="card-title">
+                                Daftar Skor Kuis
+                            </h2>
+
+                            <p class="card-description">
+
+                                Semua riwayat hasil kuis Anda akan tampil di bawah ini.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        id="clear-history-btn"
+                        class="btn btn-outline"
+                    >
+
+                        <img
+                            src="/assets/icons/trash-2.svg"
+                            class="btn-icon"
+                            alt=""
+                        >
+
+                        Hapus Riwayat
+
                     </button>
+
                 </div>
 
                 <div class="card-body">
@@ -84,10 +131,29 @@
 
                 </div>
 
-                <div class="card-footer" style="display: flex; justify-content: flex-end;">
-                    <a href="/kuis/index.html" class="btn btn-primary">
-                        Mulai Kuis Baru
-                    </a>
+                <div class="quiz-result-footer">
+
+                    <div></div>
+
+                    <div class="quiz-result-actions">
+
+                        <a
+                            href="/kuis/index.html"
+                            class="btn btn-primary"
+                        >
+
+                            <img
+                                src="/assets/icons/play.svg"
+                                class="btn-icon"
+                                alt=""
+                            >
+
+                            Mulai Kuis Baru
+
+                        </a>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -101,7 +167,6 @@
 <footer id="site-footer"></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
 <script src="/js/supabase-public.js"></script>
 
 <script src="/js/auth/auth-service.js"></script>
@@ -109,7 +174,6 @@
 <script src="/js/auth/role-service.js"></script>
 <script src="/js/auth/auth-ui.js"></script>
 <script src="/js/auth/logout.js"></script>
-<script src="/js/auth/auth-state.js"></script>
 
 <script src="/js/layout/layout.js"></script>
 <script src="/js/layout/active-menu.js"></script>
