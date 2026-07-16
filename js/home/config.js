@@ -3,7 +3,10 @@
 // ====================================
 
 const configData = {
-    LIMIT: 6,
+
+    // Jumlah item yang ditampilkan
+    // pada setiap section homepage
+    LIMIT: 3,
 
     istilah: {
         badge: "Istilah",
@@ -24,8 +27,10 @@ const configData = {
         badge: "Karya Sastra",
         detailUrl: "karya-sastra/detail.html?slug="
     }
+
 };
 
-// Expose ke kedua nama variabel agar api.js maupun modul lain tidak error
+// Expose ke global agar dapat digunakan
+// oleh api.js dan modul homepage lainnya
 window.HOME_CONFIG = configData;
 window.APP_CONFIG = configData;

@@ -1,27 +1,28 @@
-// ==========================================================================
-// HELPER DETAIL BOOKMARK (REFACTOR)
-// ==========================================================================
-/**
- * Helper global untuk menginisialisasi tombol bookmark di semua halaman detail.
- * @param {string} tipe - Kategori tipe konten ('istilah', 'artikel', 'karya', 'sastrawan')
- * @param {Object} data - Objek data mentah dari database Supabase
- */
-function initDetailBookmark(tipe, data){
+// ======================================================
+// BOOKMARK
+// ======================================================
+function initDetailBookmark(data){
 
     if(
-        typeof initBookmarkButton !==
-        "function"
+        typeof initBookmarkButton !== "function"
     ){
         return;
     }
 
-    return initBookmarkButton(
+    initBookmarkButton(
+
         createBookmarkItem({
-            tipe: "istilah",
-            item_id: data.id,
-            judul: data.nama || data.judul,
-            slug: data.slug
+
+            tipe:"istilah",
+
+            item_id:data.id,
+
+            judul:data.nama,
+
+            slug:data.slug
+
         })
+
     );
 
 }
@@ -31,11 +32,14 @@ function initDetailBookmark(tipe, data){
 // ==========================================================================
 async function loadDetailIstilah() {
 
+    const container =
+        document.getElementById("detail-istilah");
+
     const loading =
         document.getElementById("loading");
 
-    const container =
-        document.getElementById("detail-istilah");
+    const toolbar =
+        container.querySelector(".detail-toolbar");
 
     try {
 
@@ -49,11 +53,18 @@ async function loadDetailIstilah() {
 
         if (!slug) {
 
-            loading.style.display = "none";
-
-            container.innerHTML = `
-                <div class="error">
-                    <h2>Istilah tidak ditemukan</h2>
+            loading.outerHTML = `
+                <div class="empty-state">
+                    <img
+                        src="/assets/icons/book-open.svg"
+                        class="empty-icon"
+                        alt="">
+                    <h3>
+                        Istilah tidak ditemukan
+                    </h3>
+                    <p>
+                        Silakan kembali ke halaman kamus.
+                    </p>
                 </div>
             `;
 
@@ -293,8 +304,6 @@ async function loadDetailIstilah() {
             );
         }
 
-        loading.style.display = "none";
-
         let referensiHTML = "";
 
         if (
@@ -305,17 +314,15 @@ async function loadDetailIstilah() {
             referensiHTML = `
                 <section class="section">
 
-                    <h2>Referensi</h2>
+                    <h2><img src="/assets/icons/library.svg" class="heading-icon" alt=""> Referensi</h2>
 
-                    <ul class="referensi-list">
-
+                    <div class="tag-list">
                         ${referensiData.map(item => `
-                            <li>
-                                ${item.sumber}
-                            </li>
+                            <span class="tag-link">
+                                <img src="/assets/icons/library.svg" class="tag-icon" alt="">${item.sumber}
+                            </span>
                         `).join("")}
-
-                    </ul>
+                    </div>
 
                 </section>
             `;
@@ -336,19 +343,15 @@ async function loadDetailIstilah() {
             terkaitHTML = `
                 <section class="section">
 
-                    <h2>Istilah Terkait</h2>
+                    <h2><img src="/assets/icons/link.svg" class="heading-icon" alt=""> Istilah Terkait</h2>
 
-                    <ul class="terkait-list">
-
+                    <div class="tag-list">
                         ${istilahTerkait.map(item => `
-                            <li>
-                                <a href="detail.html?slug=${item.slug}">
-                                    ${item.nama}
-                                </a>
-                            </li>
+                            <a href="detail.html?slug=${item.slug}" class="tag-link">
+                                <img src="/assets/icons/link.svg" class="tag-icon" alt="">${item.nama}
+                            </a>
                         `).join("")}
-
-                    </ul>
+                    </div>
 
                 </section>
             `;
@@ -366,16 +369,14 @@ async function loadDetailIstilah() {
 
             sastrawanHTML = `
                 <section class="section">
-                    <h2>Sastrawan yang Menggunakan Istilah</h2>
-                    <ul>
+                    <h2><img src="/assets/icons/users.svg" class="heading-icon" alt=""> Sastrawan yang Menggunakan Istilah</h2>
+                    <div class="tag-list">
                         ${sastrawanRelasi.map(item=>`
-                            <li>
-                                <a href="../sastrawan/detail.html?slug=${item.sastrawan.slug}">
-                                    ${item.sastrawan.nama}
-                                </a>
-                            </li>
+                            <a href="../sastrawan/detail.html?slug=${item.sastrawan.slug}" class="tag-link">
+                                <img src="/assets/icons/users.svg" class="tag-icon" alt="">${item.sastrawan.nama}
+                            </a>
                         `).join("")}
-                    </ul>
+                    </div>
                 </section>
             `;
 
@@ -393,16 +394,14 @@ async function loadDetailIstilah() {
 
             karyaHTML = `
                 <section class="section">
-                    <h2>Karya Sastra yang Menggunakan Istilah</h2>
-                    <ul>
+                    <h2><img src="/assets/icons/book-copy.svg" class="heading-icon" alt=""> Karya Sastra yang Menggunakan Istilah</h2>
+                    <div class="tag-list">
                         ${karyaRelasi.map(item=>`
-                            <li>
-                                <a href="../karya-sastra/detail.html?slug=${item.karya.slug}">
-                                    ${item.karya.judul}
-                                </a>
-                            </li>
+                            <a href="../karya-sastra/detail.html?slug=${item.karya.slug}" class="tag-link">
+                                <img src="/assets/icons/book-copy.svg" class="tag-icon" alt="">${item.karya.judul}
+                            </a>
                         `).join("")}
-                    </ul>
+                    </div>
                 </section>
             `;
 
@@ -423,25 +422,14 @@ async function loadDetailIstilah() {
             artikelHTML = `
                 <section class="section">
 
-                    <h2>Artikel Terkait</h2>
+                    <h2><img src="/assets/icons/newspaper.svg" class="heading-icon" alt=""> Artikel Terkait</h2>
 
-                    <div class="artikel-grid">
-
+                    <div class="tag-list">
                         ${artikelTerkait.map(item => `
-
-                            <article class="artikel-card">
-
-                                <a
-                                    href="../artikel/detail.html?slug=${item.slug}"
-                                    class="artikel-link"
-                                >
-                                    ${item.judul}
-                                </a>
-
-                            </article>
-
+                            <a href="../artikel/detail.html?slug=${item.slug}" class="tag-link">
+                                <img src="/assets/icons/newspaper.svg" class="tag-icon" alt="">${item.judul}
+                            </a>
                         `).join("")}
-
                     </div>
 
                 </section>
@@ -449,34 +437,70 @@ async function loadDetailIstilah() {
         }
 
         // ==================================================================
-        // RENDER HTML UTAMA (Sintaks liar 'academic' kini sudah dibersihkan!)
+        // RENDER HTML UTAMA (MENGGANTI LOADING TANPA MENGHAPUS TOOLBAR)
         // ==================================================================
-        container.innerHTML = `
-            <article class="detail-card">
+        loading.outerHTML = `
+            <article class="detail-card fade-up">
 
-                <header>
+                <header class="detail-header">
 
-                    <h1>
-                        ${data.nama}
-                    </h1>
+                    <div class="detail-title">
 
-                    <div class="meta">
+                        <img
+                            src="/assets/icons/book-open.svg"
+                            class="detail-icon"
+                            alt=""
+                        >
 
-                        <span class="badge-tingkat">
-                            ${data.tingkat || "-"}
-                        </span>
+                        <div>
+
+                            <h1>${data.nama}</h1>
+
+                            <div class="meta">
+
+                                <span class="badge-tingkat">
+                                    ${data.tingkat || "-"}
+                                </span>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
-                    <button id="bookmark-button" class="bookmark-btn">
-                        ☆ Simpan
-                    </button>
+                    <div class="detail-actions">
+
+                        <button
+                            id="bookmark-button"
+                            class="btn btn-outline"
+                        >
+
+                            <img
+                                src="/assets/icons/bookmark.svg"
+                                class="btn-icon"
+                                alt=""
+                            >
+
+                            Simpan
+
+                        </button>
+
+                    </div>
 
                 </header>
 
                 <section class="section">
 
-                    <h2>Definisi</h2>
+                    <h2>
+
+                        <img
+                            src="/assets/icons/file-text.svg"
+                            class="heading-icon"
+                            alt="">
+
+                        Definisi
+
+                    </h2>
 
                     <p>
                         ${data.definisi || "-"}
@@ -486,7 +510,16 @@ async function loadDetailIstilah() {
 
                 <section class="section">
 
-                    <h2>Penjelasan Lengkap</h2>
+                    <h2>
+
+                        <img
+                            src="/assets/icons/file-text.svg"
+                            class="heading-icon"
+                            alt="">
+
+                        Penjelasan Lengkap
+
+                    </h2>
 
                     <p>
                         ${data.penjelasan || "-"}
@@ -496,7 +529,16 @@ async function loadDetailIstilah() {
 
                 <section class="section">
 
-                    <h2>Contoh</h2>
+                    <h2>
+
+                        <img
+                            src="/assets/icons/pen-tool.svg"
+                            class="heading-icon"
+                            alt="">
+
+                        Contoh
+
+                    </h2>
 
                     <p>
                         ${data.contoh || "-"}
@@ -518,27 +560,16 @@ async function loadDetailIstilah() {
         `;
 
         // ==================================================================
-        // INISIALISASI TOMBOL BOOKMARK AMAN (Dipanggil SETELAH HTML masuk DOM)
+        // INISIALISASI TOMBOL SITASI DAN BOOKMARK AMAN
         // ==================================================================
-        await initDetailBookmark(
-            "istilah",
-            data
-        );
-
-        // ==================================================================
-        // INISIALISASI TOMBOL SITASI AMAN
-        // ==================================================================
-        initCitationButton(
-            data
-        );
+        initDetailBookmark(data);
+        initCitationButton(data);
 
     } catch (error) {
 
-        loading.style.display = "none";
-
         console.error(error);
 
-        container.innerHTML = `
+        loading.outerHTML = `
             <div class="error">
 
                 <h2>
@@ -553,64 +584,6 @@ async function loadDetailIstilah() {
         `;
     }
 }
-
-// ==========================================
-// FUNGSIONALITAS BOOKMARK ISTILAH KAMUS (LAMA - CADANGAN)
-// ==========================================
-document.addEventListener(
-    "click",
-    function(event) {
-        if (
-            event.target.id ===
-            "bookmark-btn"
-        ) {
-
-            const nama =
-                event.target.dataset.nama;
-
-            const slug =
-                event.target.dataset.slug;
-
-            let bookmarks =
-                JSON.parse(
-                    localStorage.getItem(
-                        "deliciousKamusBookmarks"
-                    )
-                ) || JSON.parse(localStorage.getItem("kamusBookmarks")) || [];
-
-            const sudahAda =
-                bookmarks.some(
-                    item =>
-                        item.slug === slug
-                );
-
-            if (!sudahAda) {
-
-                bookmarks.push({
-                    nama,
-                    slug
-                });
-
-                localStorage.setItem(
-                    "kamusBookmarks",
-                    JSON.stringify(
-                        bookmarks
-                    )
-                );
-
-                alert(
-                    "Istilah berhasil disimpan."
-                );
-
-            } else {
-
-                alert(
-                    "Istilah sudah ada di bookmark."
-                );
-            }
-        }
-    }
-);
 
 document.addEventListener(
 

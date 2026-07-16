@@ -69,6 +69,37 @@ body {
 }
 
 /* ====================================
+   LUCIDE ICONS
+==================================== */
+.hero-icon {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 14px;
+}
+
+.hero-search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    opacity: .65;
+    pointer-events: none;
+}
+
+.hero-search input {
+    padding-left: 56px;
+}
+
+.kategori-icon,
+.tool-icon {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+/* ====================================
    HERO SEARCH & AUTOCOMPLETE
 ==================================== */
 .hero-search {
@@ -105,30 +136,37 @@ body {
 }
 
 .hero-card {
-    background: var(--surface-secondary);
-    border-radius: var(--radius-lg); /* Sesuai standarisasi di utilities.css */
-    padding: var(--space-5); /* 24px - Mengikuti aturan .hero-card di spasing.css */
-    text-decoration: none;
-    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.hero-card .card-body {
     display: flex;
     flex-direction: column;
-    gap: var(--space-4); /* 16px */
-    font-size: 2rem; /* .text-3xl untuk display ikon/angka besar */
-    font-weight: 700;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    border: 1px solid var(--border);
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.hero-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
 }
 
 .hero-card strong {
     font-size: 1rem; /* .text-base */
     font-weight: 700;
     color: var(--secondary);
-}
-
-.hero-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    background: var(--surface);
 }
 
 /* ====================================
@@ -147,44 +185,61 @@ body {
 
 .home-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-5); /* 24px - Sesuai aturan .home-grid di spasing.css */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+    align-items: stretch;
 }
 
 .kategori-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--space-5);
+    align-items: stretch;
 }
 
 .home-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--space-5);
     background: var(--surface);
-    padding: var(--space-5); /* 24px - Disamakan dengan basis .card */
-    border-radius: var(--radius-lg); /* Sesuai standarisasi di cards.css & utilities.css */
     border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.card-badge {
-    display: inline-block;
-    padding: var(--space-1) var(--space-3); /* 4px 12px */
-    margin-bottom: var(--space-3); /* 12px */
-    background: var(--primary-light);
-    color: var(--primary);
-    border-radius: var(--radius-full); /* Mengikuti kelas token badge/tag */
-    font-size: 0.8125rem;
-    font-weight: 700;
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        border-color .25s ease;
 }
 
 .home-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    border-color: var(--primary);
     box-shadow: var(--shadow-lg);
 }
 
+.card-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    padding: 6px 12px;
+    margin-bottom: var(--space-3);
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+}
+
 .home-card h3 {
-    margin-top: 0;
-    margin-bottom: var(--space-3); /* 12px */
+    margin: 0 0 var(--space-3);
+    min-height: 58px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 1.5;
 }
 
 .home-card a {
@@ -199,16 +254,23 @@ body {
 
 .home-card p {
     color: var(--text-light);
-    line-height: 1.8; /* Sesuai paragraf sistem */
+    line-height: 1.7;
+    margin: 0;
+    min-height: 78px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
 }
 
 .home-link {
-    display: inline-block;
-    margin-top: var(--space-4); /* 16px */
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-weight: 600;
     color: var(--primary);
     text-decoration: none;
-    transition: color 0.2s;
 }
 
 .home-link:hover {
@@ -225,6 +287,31 @@ body {
 
 .lihat-semua:hover {
     color: var(--primary-hover);
+}
+
+/* ====================================
+   KATEGORI & TOOLS STYLE
+==================================== */
+.kategori-card,
+.tool-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 100%;
+    text-decoration: none;
+    color: var(--secondary);
+    font-weight: 600;
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.kategori-card:hover,
+.tool-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
 }
 
 /* ====================================
@@ -370,6 +457,10 @@ body {
         gap: var(--space-3); /* 12px */
     }
 
+    .kategori-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .tentang-grid {
         grid-template-columns: 1fr;
         gap: var(--space-6); /* 32px */
@@ -381,6 +472,14 @@ body {
         grid-template-columns: 1fr; /* Responsif satu kolom untuk layar sangat kecil */
     }
     
+    .kategori-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-grid {
+        grid-template-columns: 1fr;
+    }
+
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
     }

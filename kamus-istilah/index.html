@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -58,11 +57,29 @@
                     </div>
                 </div>
 
-                <!-- Penerapan Kamus Search Box Global Standar -->
-                <div class="search-section" style="margin-top: var(--space-4);">
-                    <div class="search-box">
-                        自由 🔎
-                        <input type="text" id="search-input" class="input" placeholder="Cari istilah sastra..." autocomplete="off">
+                <!-- Perubahan 1 — Search Card Baru -->
+                <div class="search-card card fade-up" style="margin-top: var(--space-4);">
+
+                    <div class="search-icon-wrapper">
+                        <img
+                            src="/assets/icons/search.svg"
+                            class="section-icon"
+                            alt="Cari">
+                    </div>
+
+                    <div class="search-content">
+
+                        <label for="search-input">
+                            Cari Istilah Sastra
+                        </label>
+
+                        <input
+                            id="search-input"
+                            class="input"
+                            type="text"
+                            placeholder="Contoh: Majas, Amanat, Diksi..."
+                            autocomplete="off">
+
                     </div>
                 </div>
 
@@ -71,15 +88,38 @@
                     <div class="card skeleton" style="height: 100px;"></div>
                 </div>
 
+                <!-- Perubahan 2 — Card Riwayat -->
                 <div class="history-section card" style="margin-top: var(--space-6);">
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Terakhir Dicari</h2>
-                        <button id="clear-history" class="btn btn-outline">Hapus Riwayat</button>
+                    <div class="card-header">
+
+                        <div class="section-heading">
+
+                            <img
+                                src="/assets/icons/history.svg"
+                                class="section-icon"
+                                alt="">
+
+                            <h2>Terakhir Dicari</h2>
+
+                        </div>
+
+                        <button
+                            id="clear-history"
+                            class="btn btn-outline">
+
+                            <img
+                                src="/assets/icons/trash-2.svg"
+                                class="btn-icon"
+                                alt="">
+
+                            Hapus Riwayat
+
+                        </button>
                     </div>
                     <div class="card-body">
                         <div id="history-list">
                             <div class="empty-state">
-                                <div class="empty-icon">📚</div>
+                                <div class="empty-icon"></div>
                                 <h3>Belum Ada Riwayat</h3>
                                 <p>Aktivitas riwayat pencarian Anda akan muncul di sini.</p>
                             </div>
@@ -87,24 +127,20 @@
                     </div>
                 </div>
 
-                <div class="bookmark-section card" style="margin-top: var(--space-6);">
-                    <div class="card-header">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Bookmark Saya</h2>
-                    </div>
-                    <div class="card-body">
-                        <div id="bookmark-list">
-                            <div class="empty-state">
-                                <div class="empty-icon">📚</div>
-                                <h3>Belum Ada Bookmark</h3>
-                                <p>Simpan istilah sastra favorit Anda di sini.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Perubahan 3 — Bookmark-section card TELAH DIHAPUS -->
 
                 <div class="az-section card" style="margin-top: var(--space-6);">
                     <div class="card-header">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Daftar A-Z</h2>
+                        <!-- Perubahan 4 — Tambahkan ikon pada filter A-Z -->
+                        <div class="section-heading">
+
+                            <img
+                                src="/assets/icons/list.svg"
+                                class="section-icon"
+                                alt="">
+
+                            <h2>Daftar A–Z</h2>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div id="az-filter" style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
@@ -141,7 +177,16 @@
 
                 <div class="tingkat-section card" style="margin-top: var(--space-6);">
                     <div class="card-header">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Tingkat Kesulitan</h2>
+                        <!-- Perubahan 4 — Tambahkan ikon pada filter Tingkat Kesulitan -->
+                        <div class="section-heading">
+
+                            <img
+                                src="/assets/icons/layers.svg"
+                                class="section-icon"
+                                alt="">
+
+                            <h2>Tingkat Kesulitan</h2>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div id="tingkat-filter" style="display: flex; gap: var(--space-2);">
@@ -161,7 +206,16 @@
 
                 <div class="kategori-section card" style="margin-top: var(--space-6);">
                     <div class="card-header">
-                        <h2 style="margin: 0; font-size: var(--font-size-lg);">Kategori</h2>
+                        <!-- Perubahan 4 — Tambahkan ikon pada filter Kategori -->
+                        <div class="section-heading">
+
+                            <img
+                                src="/assets/icons/folder.svg"
+                                class="section-icon"
+                                alt="">
+
+                            <h2>Kategori</h2>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div id="kategori-list">
@@ -186,7 +240,6 @@
     <footer id="site-footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
     <script src="/js/supabase.js"></script>
 
     <script src="/js/auth/auth-service.js"></script>
@@ -194,7 +247,6 @@
     <script src="/js/auth/role-service.js"></script>
     <script src="/js/auth/auth-ui.js"></script>
     <script src="/js/auth/logout.js"></script>
-    <script src="/js/auth/auth-state.js"></script>
 
     <script src="/js/core/helpers.js"></script>
 

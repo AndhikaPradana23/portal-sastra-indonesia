@@ -1,10 +1,10 @@
 // VARIABEL STATUS GLOBAL
 let kategoriAktif = null;
 let hurufAktif = "";
-let tingkatAktif = ""; // Menambahkan status tingkat kesulitan aktif
+let tingkatAktif = ""; 
 
 // ==========================================
-// 1. FUNGSI UNTUK MEMUAT DAFTAR KATEGORI
+// FUNGSI UNTUK MEMUAT DAFTAR KATEGORI
 // ==========================================
 async function loadKategori() {
     const kategoriContainer = document.getElementById("kategori-list");
@@ -21,7 +21,6 @@ async function loadKategori() {
 
     if (error) {
         console.error("Gagal memuat kategori:", error);
-        kategoriContainer.innerHTML = "Gagal memuat kategori";
         return;
     }
 
@@ -38,7 +37,7 @@ async function loadKategori() {
 }
 
 // ==========================================
-// 2. FUNGSI UTAMA UNTUK MEMUAT DATA ISTILAH
+// FUNGSI UTAMA UNTUK MEMUAT DATA ISTILAH
 // ==========================================
 async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat = "") {
 
@@ -102,30 +101,38 @@ async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat 
             return;
         }
 
+        // Perubahan 1 — Card istilah modern
         const html = data.map(item => `
-            <article class="istilah-card">
-
-                <h2>${escapeHtml(item.nama || "-")}</h2>
-
-                <p>
-                    <strong>Tingkat:</strong>
-                    ${escapeHtml(item.tingkat || "-")}
-                </p>
-
-                <p class="definisi">
-                    ${escapeHtml(
-                        potongTeks(item.definisi || "", 180)
-                    )}
-                </p>
-
-                <a
-                    href="detail.html?slug=${encodeURIComponent(item.slug || "")}"
-                    class="btn-detail"
-                >
-                    Lihat Detail
-                </a>
-
-            </article>
+        <article class="istilah-card card fade-up">
+            <div class="istilah-header">
+                <div>
+                    <h2>
+                        <img
+                            src="/assets/icons/book-open.svg"
+                            class="inline-icon"
+                            alt="">
+                        ${escapeHtml(item.nama)}
+                    </h2>
+                    <span class="badge-tingkat">
+                        ${escapeHtml(item.tingkat)}
+                    </span>
+                </div>
+            </div>
+            <p class="definisi">
+                ${escapeHtml(
+                    potongTeks(item.definisi, 180)
+                )}
+            </p>
+            <a
+                href="detail.html?slug=${encodeURIComponent(item.slug)}"
+                class="btn-detail">
+                <span>Lihat Detail</span>
+                <img
+                    src="/assets/icons/arrow-right.svg"
+                    class="btn-detail-icon"
+                    alt="">
+            </a>
+        </article>
         `).join("");
 
         container.innerHTML = html;
@@ -153,7 +160,7 @@ async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat 
 }
 
 // ==========================================
-// 3. FUNGSI UTILITY, PENOLONG (HELPER), RIWAYAT & BOOKMARK
+// FUNGSI UTILITY, PENOLONG (HELPER) & RIWAYAT
 // ==========================================
 function potongTeks(teks, panjang) {
     if (!teks) return "";
@@ -191,28 +198,8 @@ function loadHistory() {
     `).join("");
 }
 
-// TAMBAHAN LANGKAH 4: Fungsi Memuat Bookmark dari LocalStorage
-function loadBookmarks() {
-    const container = document.getElementById("bookmark-list");
-
-    if (!container) return;
-
-    const bookmarks = JSON.parse(localStorage.getItem("kamusBookmarks")) || [];
-
-    if (bookmarks.length === 0) {
-        container.innerHTML = "<p>Belum ada bookmark.</p>";
-        return;
-    }
-
-    container.innerHTML = bookmarks.map(item => `
-        <a href="detail.html?slug=${item.slug}" class="bookmark-item">
-            ⭐ ${escapeHtml(item.nama)}
-        </a>
-    `).join("");
-}
-
 // ==========================================
-// 4. EVENT LISTENERS
+// EVENT LISTENERS
 // ==========================================
 
 // Listener Aksi klik Tombol Hapus Riwayat Pencarian
@@ -220,14 +207,6 @@ document.addEventListener("click", function (event) {
     if (event.target.id === "clear-history") {
         localStorage.removeItem("kamusHistory");
         loadHistory();
-    }
-});
-
-// TAMBAHAN LANGKAH 7: Listener Aksi klik Tombol Hapus Bookmark
-document.addEventListener("click", function (event) {
-    if (event.target.id === "clear-bookmarks") {
-        localStorage.removeItem("kamusBookmarks");
-        loadBookmarks();
     }
 });
 
@@ -247,7 +226,6 @@ document.addEventListener("click", function (event) {
         const searchInput = document.getElementById("search-input");
         const keyword = searchInput ? searchInput.value : "";
 
-        // Mengirimkan parameter tingkatAktif ke fungsi loadIstilah
         loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif);
     }
 });
@@ -267,7 +245,6 @@ document.addEventListener("click", function (event) {
         const searchInput = document.getElementById("search-input");
         const keyword = searchInput ? searchInput.value : "";
 
-        // Mengirimkan parameter tingkatAktif ke fungsi loadIstilah
         loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif);
     }
 });
@@ -287,7 +264,6 @@ document.addEventListener("click", function (event) {
         const searchInput = document.getElementById("search-input");
         const keyword = searchInput ? searchInput.value : "";
 
-        // Panggil data dengan menyertakan semua kombinasi filter global
         loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif);
     }
 });
@@ -296,17 +272,14 @@ document.addEventListener("click", function (event) {
 document.addEventListener("input", function (event) {
     if (event.target.id === "search-input") {
         
-        // Mengirimkan parameter tingkatAktif ke fungsi loadIstilah saat mengetik
         loadIstilah(kategoriAktif, event.target.value, hurufAktif, tingkatAktif);
     }
 });
 
-// UBAHAN LANGKAH 6: Menangani Inisialisasi Awal Ketika Halaman Selesai Dimuat Browser dengan Layout Dahulu
+// Menangani Inisialisasi Awal Ketika Halaman Selesai Dimuat Browser dengan Layout Dahulu
 document.addEventListener("DOMContentLoaded", async () => {
-    // Memuat layout utama terlebih dahulu
     await loadLayout();
 
-    // Memanggil fungsi global renderBreadcrumb untuk halaman Indeks Kamus Istilah
     if (typeof renderBreadcrumb === "function") {
         renderBreadcrumb([
             {
@@ -324,7 +297,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("Halaman Kamus dimuat");
     console.log("Supabase URL:", SUPABASE_URL);
 
-    // Metadata SEO
     updateSEO();
 
     // Memuat filter kategori dari database
@@ -332,9 +304,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Memuat komponen daftar riwayat terakhir dicari
     loadHistory();
-
-    // Memuat komponen daftar bookmark yang disimpan
-    loadBookmarks();
 
     // Memuat seluruh data awal secara utuh (semua parameter kosong bawaan)
     loadIstilah();
@@ -406,6 +375,3 @@ function updateSEO(){
 
 // Segarkan Riwayat Secara Otomatis Saat Kembali ke Tab/Halaman Kamus
 window.addEventListener("focus", loadHistory);
-
-// TAMBAHAN LANGKAH 6: Segarkan Bookmark Secara Otomatis Saat Kembali ke Tab/Halaman Kamus
-window.addEventListener("focus", loadBookmarks);

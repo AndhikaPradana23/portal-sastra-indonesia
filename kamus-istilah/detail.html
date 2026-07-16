@@ -11,11 +11,10 @@
     <link rel="stylesheet" href="/css/typography.css">
     <link rel="stylesheet" href="/css/spacing.css">
     <link rel="stylesheet" href="/css/layout.css">
-   
+
     <link rel="stylesheet" href="/css/buttons.css">
     <link rel="stylesheet" href="/css/cards.css">
     <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/badges.css">
     <link rel="stylesheet" href="/css/components.css">
     <link rel="stylesheet" href="/css/skeleton.css">
     <link rel="stylesheet" href="/css/animations.css">
@@ -31,56 +30,94 @@
 
     <main>
 
-        <section class="section">
+        <section class="section section-sm">
 
             <div class="container">
 
+                <!-- Breadcrumb -->
                 <div id="breadcrumb"></div>
 
+                <!-- Heading -->
                 <div class="section-header">
+
                     <div>
+
                         <h1 class="section-title">
                             Kamus Istilah Sastra
                         </h1>
+
                         <p class="section-description">
                             Kumpulan istilah sastra Indonesia.
                         </p>
+
                     </div>
+
                 </div>
 
-                <div id="detail-istilah" class="detail-container card" style="margin-top: var(--space-6);">
-                    
-                    <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
-                        <h3 style="margin: 0;">Detail Istilah Sastra</h3>
-                        
-                        <div class="card-actions" style="display: flex; gap: var(--space-2);">
-                            <!-- Standarisasi Tombol Aksi Bookmark -->
-                            <button id="bookmark-button" class="btn btn-outline">
-                                🔖 Bookmark
-                            </button>
-                            <button id="citation-btn" class="btn btn-secondary">
-                                📋 Sitasi Istilah
-                            </button>
+                <!-- Detail -->
+                <div id="detail-istilah" class="detail-container">
+
+                    <!-- Header Card -->
+                    <div class="detail-toolbar">
+
+                        <div class="section-heading">
+
+                            <img
+                                src="/assets/icons/book-open.svg"
+                                class="section-icon"
+                                alt="Kamus">
+
+                            <div>
+
+                                <h3 class="m-0">
+                                    Detail Istilah
+                                </h3>
+
+                                <small>
+                                    Informasi lengkap mengenai istilah sastra.
+                                </small>
+
+                            </div>
+
                         </div>
+
+                        <div class="detail-toolbar-actions">
+
+                            <button
+                                id="citation-btn"
+                                class="btn btn-primary">
+
+                                <img
+                                    src="/assets/icons/quote.svg"
+                                    class="btn-icon"
+                                    alt="Sitasi">
+
+                                Buat Sitasi
+
+                            </button>
+
+                        </div>
+
                     </div>
 
-                    <div class="card-body">
-                        <div id="loading">
-                            <div class="card skeleton" style="height: 120px; margin-bottom: var(--space-4);"></div>
-                            <div class="card skeleton" style="height: 80px;"></div>
+                    <!-- Loading -->
+                    <div id="loading">
+
+                        <div
+                            class="card skeleton"
+                            style="height:140px;margin-bottom:var(--space-4);">
                         </div>
 
-                        <!--
-                          Catatan untuk sistem JS Anda: Jika data gagal ditemukan, 
-                          ganti isi .card-body dengan komponen standarisasi berikut:
-                          
-                          <div class="empty-state">
-                              <div class="empty-icon">📚</div>
-                              <h3>Istilah Tidak Ditemukan</h3>
-                              <p>Silakan periksa kembali kata kunci atau kembali ke halaman utama kamus.</p>
-                          </div>
-                        -->
+                        <div
+                            class="card skeleton"
+                            style="height:80px;">
+                        </div>
+
                     </div>
+
+                    <!--
+                    Seluruh isi detail istilah akan dirender oleh detail.js
+                    -->
 
                 </div>
 
@@ -92,28 +129,34 @@
 
     <footer id="site-footer"></footer>
 
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="/js/supabase.js"></script>
 
+    <!-- Auth -->
     <script src="/js/auth/auth-service.js"></script>
     <script src="/js/auth/profile-service.js"></script>
     <script src="/js/auth/role-service.js"></script>
     <script src="/js/auth/auth-ui.js"></script>
     <script src="/js/auth/logout.js"></script>
-    <script src="/js/auth/auth-state.js"></script>
 
+    <!-- Helper -->
     <script src="/js/core/helpers.js"></script>
 
+    <!-- Layout -->
     <script src="/js/layout/layout.js"></script>
     <script src="/js/layout/active-menu.js"></script>
     <script src="/js/layout/mobile-menu.js"></script>
 
+    <!-- Bookmark -->
     <script src="/js/bookmark/bookmark-service.js"></script>
     <script src="/js/bookmark/bookmark-storage.js"></script>
     <script src="/js/bookmark/bookmark-button.js"></script>
 
+    <!-- Citation -->
     <script src="/js/citation/citation-auto.js"></script>
 
+    <!-- Page -->
     <script src="detail.js"></script>
 
 </body>

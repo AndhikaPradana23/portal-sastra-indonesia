@@ -100,66 +100,116 @@
 
             <h2>
                 Belajar Sastra Indonesia
-                <span>
-                    Melalui Kemudahan
-                </span>
+                <span>Melalui Kemudahan</span>
             </h2>
 
             <p>
-                Portal Sastra Indonesia merupakan pusat referensi sastra Indonesia yang menyediakan kamus istilah, profil sastrawan, karya sastra, artikel, dan berbagai alat bantu untuk mahasiswa, guru, peneliti, maupun masyarakat umum.
+                Portal Sastra Indonesia merupakan pusat referensi sastra Indonesia
+                yang menyediakan kamus istilah, profil sastrawan, karya sastra,
+                artikel, dan berbagai alat bantu untuk mahasiswa, guru,
+                peneliti, maupun masyarakat umum.
             </p>
 
             <div class="search-box hero-search">
-                🔎
-                <input id="hero-search" class="input" type="text" placeholder="Cari istilah, artikel, karya, sastrawan..." data-autofocus="true">
-                <button id="hero-search-btn" class="btn btn-primary" style="display: none;">
+
+                <img
+                    src="/assets/icons/search.svg"
+                    alt="Cari"
+                    class="hero-search-icon">
+
+                <input
+                    id="hero-search"
+                    class="input"
+                    type="text"
+                    placeholder="Cari istilah, artikel, karya, sastrawan..."
+                    data-autofocus="true">
+
+                <button
+                    id="hero-search-btn"
+                    class="btn btn-primary"
+                    style="display:none;">
                     Cari
                 </button>
-                <div id="hero-autocomplete" class="autocomplete-list"></div>
+
+                <div
+                    id="hero-autocomplete"
+                    class="autocomplete-list">
+                </div>
+
             </div>
 
             <div class="hero-menu">
 
-                <a href="kamus-istilah/index.html" class="card hero-card">
-                    <div class="card-body" style="text-align: center;">
-                        📖 <br>
+                <a href="/kamus-istilah/" class="card hero-card">
+
+                    <div class="card-body">
+
+                        <img
+                            src="/assets/icons/book-open.svg"
+                            class="hero-icon"
+                            alt="Kamus">
+
                         <strong>Kamus</strong>
+
                     </div>
+
                 </a>
 
-                <a href="artikel/index.html" class="card hero-card">
-                    <div class="card-body" style="text-align: center;">
-                        📰 <br>
+                <a href="/artikel/" class="card hero-card">
+
+                    <div class="card-body">
+
+                        <img
+                            src="/assets/icons/newspaper.svg"
+                            class="hero-icon"
+                            alt="Artikel">
+
                         <strong>Artikel</strong>
+
                     </div>
+
                 </a>
 
-                <a href="sastrawan/index.html" class="card hero-card">
-                    <div class="card-body" style="text-align: center;">
-                        👤 <br>
+                <a href="/sastrawan/" class="card hero-card">
+
+                    <div class="card-body">
+
+                        <img
+                            src="/assets/icons/user-round.svg"
+                            class="hero-icon"
+                            alt="Sastrawan">
+
                         <strong>Sastrawan</strong>
+
                     </div>
+
                 </a>
 
-                <a href="karya-sastra/index.html" class="card hero-card">
-                    <div class="card-body" style="text-align: center;">
-                        📚 <br>
+                <a href="/karya-sastra/" class="card hero-card">
+
+                    <div class="card-body">
+
+                        <img
+                            src="/assets/icons/library-big.svg"
+                            class="hero-icon"
+                            alt="Karya">
+
                         <strong>Karya</strong>
+
                     </div>
+
                 </a>
+
             </div>
+
         </div>
     </section>
 
     <main>
 
-        <section id="hero-section"></section>
-
-        <section id="search-section"></section>
+        <section id="statistik-section"></section>
 
         <section id="kategori-section"></section>
-
-        <section id="statistik-section"></section>
 
         <section id="istilah-section"></section>
 
@@ -170,8 +220,6 @@
         <section id="karya-section"></section>
 
         <section id="tools-section"></section>
-
-        <section id="tentang-section"></section>
 
         <section id="cta-section"></section>
 
@@ -200,8 +248,6 @@
     <script src="js/core/renderer.js"></script>
     <script src="js/core/api.js"></script>
     
-    <script src="/js/home/hero.js"></script>
-    <script src="/js/home/hero-search.js"></script>
     <script src="/js/home/kategori.js"></script>
     <script src="/js/home/statistik.js"></script>
     <script src="/js/home/istilah.js"></script>
@@ -209,7 +255,6 @@
     <script src="/js/home/sastrawan.js"></script>
     <script src="/js/home/karya.js"></script>
     <script src="/js/home/tools.js"></script>
-    <script src="/js/home/tentang.js"></script>
     <script src="/js/home/cta.js"></script>
 
     <script src="/js/layout/layout.js"></script>

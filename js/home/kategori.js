@@ -9,7 +9,7 @@ function renderKategori() {
 
                 <div class="section-header">
 
-                    <h2>
+                    <h2 class="section-title">
                         Kategori Utama
                     </h2>
 
@@ -19,34 +19,74 @@ function renderKategori() {
 
                     <a
                         href="/kamus-istilah/"
-                        class="card"
+                        class="card kategori-card"
+                        aria-label="Kamus Istilah"
                     >
-                        📖
-                        Kamus Istilah
+
+                        <img
+                            src="/assets/icons/book-open.svg"
+                            alt=""
+                            class="kategori-icon"
+                        >
+
+                        <span>
+                            Kamus Istilah
+                        </span>
+
                     </a>
 
                     <a
                         href="/artikel/"
-                        class="card"
+                        class="card kategori-card"
+                        aria-label="Artikel"
                     >
-                        📝
-                        Artikel
+
+                        <img
+                            src="/assets/icons/newspaper.svg"
+                            alt=""
+                            class="kategori-icon"
+                        >
+
+                        <span>
+                            Artikel
+                        </span>
+
                     </a>
 
                     <a
                         href="/sastrawan/"
-                        class="card"
+                        class="card kategori-card"
+                        aria-label="Sastrawan"
                     >
-                        👤
-                        Sastrawan
+
+                        <img
+                            src="/assets/icons/user-round.svg"
+                            alt=""
+                            class="kategori-icon"
+                        >
+
+                        <span>
+                            Sastrawan
+                        </span>
+
                     </a>
 
                     <a
                         href="/karya-sastra/"
-                        class="card"
+                        class="card kategori-card"
+                        aria-label="Karya Sastra"
                     >
-                        📚
-                        Karya
+
+                        <img
+                            src="/assets/icons/library-big.svg"
+                            alt=""
+                            class="kategori-icon"
+                        >
+
+                        <span>
+                            Karya Sastra
+                        </span>
+
                     </a>
 
                 </div>
@@ -55,5 +95,4 @@ function renderKategori() {
         `;
 }
 
-window.renderKategori =
-    renderKategori;
+window.renderKategori = renderKategori;

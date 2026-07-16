@@ -5,6 +5,19 @@ body {
     margin: 0;
 }
 
+main {
+    min-height: calc(100vh - 250px);
+}
+
+.section {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+}
+
+.site-footer {
+    margin-top: 48px;
+}
+
 #loading {
     padding: var(--space-4);
     background: var(--surface-secondary);
@@ -30,14 +43,14 @@ body {
 .search-section {
     position: relative;
     max-width: 700px;
-    margin: var(--space-6) 0; /* 32px */
+    margin: var(--space-6) 0;
 }
 
 .search-section input[type="text"] {
     width: 100%;
-    padding: var(--space-4) var(--space-5); /* 16px 24px - Sesuai standar search global */
-    font-size: 1.125rem; /* .text-lg */
-    border-radius: var(--radius-lg); /* Mengikuti spesifikasi utilities.css */
+    padding: var(--space-4) var(--space-5);
+    font-size: 1.125rem;
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     background: var(--surface);
     color: var(--text);
@@ -50,6 +63,60 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
+/* Tambahan Search Card */
+.search-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+}
+
+.search-icon-wrapper {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--primary-light);
+}
+
+.section-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.search-content {
+    flex: 1;
+    max-width: 720px;
+    min-width: 0;
+}
+
+.search-content label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.search-content .input {
+    width: 100%;
+}
+
+/* Tambahan Heading Card */
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Tambahan Ikon Inline */
+.inline-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
 /* ====================================
    RIWAYAT (HISTORY) & BOOKMARK
 ==================================== */
@@ -57,21 +124,42 @@ body {
     margin: var(--space-6) 0;
 }
 
-.history-item, .bookmark-item {
+/* History Item */
+.history-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--surface-secondary);
+    border-radius: 999px;
+    font-weight: 600;
+    transition: .2s;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.history-item:hover {
+    transform: translateY(-2px);
+    background: var(--surface);
+    border-color: var(--border-dark);
+    color: var(--primary);
+}
+
+.bookmark-item {
     display: inline-block;
-    margin: var(--space-1) var(--space-2); /* 4px 8px */
-    padding: var(--space-2) var(--space-4); /* 8px 16px */
+    margin: var(--space-1) var(--space-2);
+    padding: var(--space-2) var(--space-4);
     border: 1px solid var(--border);
-    border-radius: var(--radius-full); /* Mengikuti kelas token badge/pill */
+    border-radius: var(--radius-full);
     background: var(--surface-secondary);
     text-decoration: none;
     color: var(--text);
-    font-size: 0.875rem; /* .text-sm */
+    font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.2s ease;
 }
 
-.history-item:hover, .bookmark-item:hover {
+.bookmark-item:hover {
     background: var(--surface);
     border-color: var(--border-dark);
     color: var(--primary);
@@ -102,19 +190,32 @@ body {
     margin-top: var(--space-6);
 }
 
-.az-btn, .tingkat-btn, .kategori-btn {
-    margin: var(--space-1);
-    padding: var(--space-2) var(--space-4);
+/* Filter Modern */
+#az-filter, #tingkat-filter, #kategori-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Tombol Filter */
+.az-btn,
+.kategori-btn,
+.tingkat-btn {
+    min-width: 44px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
     border: 1px solid var(--border);
     border-radius: var(--radius-full);
     background: var(--surface);
     color: var(--text-light);
-    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.az-btn:hover, .tingkat-btn:hover, .kategori-btn:hover {
+.az-btn:hover, .kategori-btn:hover, .tingkat-btn:hover {
     background: var(--surface-secondary);
     color: var(--text);
     border-color: var(--border-dark);
@@ -138,22 +239,23 @@ body {
 #daftar-istilah {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5); /* 24px - Mengikuti spasing.css */
+    gap: var(--space-5);
 }
 
-/* Kartu daftar istilah */
-.istilah-section .istilah-card {
-    background: var(--surface);
-    padding: var(--space-5); /* 24px - Sesuai standar komponen .card */
-    border-radius: var(--radius-lg); /* Sesuai standarisasi di utilities.css & cards.css */
+/* Perbaiki Card Istilah */
+.istilah-card {
     border: 1px solid var(--border);
+    transition: .25s;
+    background: var(--surface);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.istilah-section .istilah-card:hover {
-    transform: translateY(-4px);
+.istilah-card:hover {
+    transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
+    border-color: rgba(37,99,235,.25);
 }
 
 .istilah-section .istilah-card h2 {
@@ -166,35 +268,128 @@ body {
     line-height: 1.8;
 }
 
+/* ====================================
+   BUTTON DETAIL
+==================================== */
 .btn-detail {
-    display: inline-block;
-    margin-top: var(--space-3); /* 12px */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-weight: 700;
     color: var(--primary);
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.2s ease;
+    transition: all .2s ease;
+}
+
+.btn-detail-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform .2s ease;
 }
 
 .btn-detail:hover {
     color: var(--primary-hover);
-    text-decoration: underline;
+}
+
+.btn-detail:hover .btn-detail-icon {
+    transform: translateX(4px);
 }
 
 /* ====================================
    HALAMAN DETAIL ISTILAH (DETAIL)
 ==================================== */
 .detail-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: var(--space-7) 0; /* 48px - Menggunakan grid padding container */
+    width: 100%;
+    margin-top: var(--space-6);
+}
+
+/* Perbaikan 9: Card lebih dekat ke breadcrumb */
+.section-header {
+    margin-bottom: 22px;
+}
+
+/* ====================================
+   TOOLBAR DETAIL
+==================================== */
+.detail-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+.detail-toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.detail-toolbar small {
+    color: var(--text-light);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.section-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-5);
+    padding-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.detail-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.detail-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.detail-actions .btn {
+    min-width: 140px;
 }
 
 .detail-card {
+    width: 100%;
+    box-sizing: border-box;
     background: var(--surface);
-    padding: var(--space-6); /* 32px */
-    border-radius: var(--radius-lg);
     border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-7);
+    animation: fadeUp .35s ease;
+}
+
+.detail-card:hover {
+    border-color: rgba(37,99,235,.18);
+    box-shadow: var(--shadow-lg);
 }
 
 .detail-card h1 {
@@ -202,19 +397,23 @@ body {
 }
 
 .meta {
-    margin-bottom: var(--space-4);
     display: flex;
     align-items: center;
     gap: var(--space-3);
+    margin-top: var(--space-3);
 }
 
+/* Badge Tingkat */
 .badge-tingkat {
-    background: var(--warning-light);
-    color: var(--secondary);
-    padding: var(--space-1) var(--space-3); /* 4px 12px */
-    border-radius: var(--radius-full); /* Diselaraskan dengan token badge global */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: var(--primary-light);
+    color: var(--primary);
     font-weight: 700;
-    font-size: 0.8125rem;
+    font-size: .82rem;
 }
 
 /* Tombol bookmark internal diselaraskan dengan .bookmark-btn global di layout.css */
@@ -235,26 +434,42 @@ body {
 }
 
 .detail-card .section {
-    margin-top: var(--space-6); /* 32px */
+    margin-top: var(--space-6);
 }
 
 .detail-card .section h2 {
-    margin-top: 0;
-    margin-bottom: var(--space-4);
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: var(--space-1);
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 var(--space-4);
     color: var(--secondary);
+    font-size: 1.9rem;
+}
+
+.heading-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* Perbaikan 1: Mencegah teks keluar dari card */
+.detail-card p,
+.detail-card li,
+.tag-link {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
 }
 
 .detail-card p {
-    line-height: 1.8;
-    font-size: 1rem;
+    line-height: 1.9;
     color: var(--text-light);
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .detail-card ul {
-    padding-left: 1.5rem; /* Sesuai standar typography.css */
+    padding-left: 1.5rem;
 }
 
 .detail-card li {
@@ -274,21 +489,58 @@ body {
     text-decoration: underline;
 }
 
+/* Chip List & Tag Styling */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: var(--space-4);
+}
+
+.tag-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--surface-secondary);
+    border: 1px solid var(--border);
+    color: var(--secondary);
+    font-weight: 600;
+    transition: all .2s ease;
+}
+
+.tag-link:hover {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.tag-icon {
+    width: 16px;
+    height: 16px;
+    opacity: .8;
+}
+
 /* Grid komponen Artikel Terkait di dalam detail */
 .artikel-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--space-4); /* 16px */
+    gap: var(--space-4);
     margin-top: var(--space-5);
 }
 
 .artikel-card {
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg); /* Mengikuti modul standar token artikel-card */
+    border-radius: var(--radius-lg);
     padding: var(--space-4);
     background: var(--surface);
     box-shadow: var(--shadow-sm);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .artikel-card:hover {
@@ -297,9 +549,12 @@ body {
 }
 
 .artikel-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
     text-decoration: none;
     color: var(--primary);
-    font-weight: 600;
     transition: color 0.2s ease;
 }
 
@@ -309,15 +564,161 @@ body {
 }
 
 /* ====================================
+   EMPTY STATE & OTHERS
+==================================== */
+.empty-state {
+    padding: 60px 30px;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+    opacity: .65;
+}
+
+/* ====================================
    RESPONSIVE DESIGN
 ==================================== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .detail-card {
-        padding: var(--space-5); /* 24px di layar tablet/mobile */
+        padding: var(--space-6);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Perbaikan 10: Container Mobile */
+    .detail-container {
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
 
-    .search-section input[type="text"] {
-        padding: var(--space-3) var(--space-4);
-        font-size: 1rem;
+    .detail-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .detail-toolbar-actions {
+        width: 100%;
+    }
+
+    .detail-toolbar-actions .btn {
+        width: 100%;
+    }
+
+    /* Perbaikan 7: Tombol Bookmark Mobile */
+    .detail-actions {
+        width: 100%;
+        margin-top: 14px;
+    }
+
+    .detail-actions .btn {
+        width: 100%;
+        height: 42px;
+        font-size: .92rem;
+    }
+
+    .detail-header {
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    /* Perbaikan 5: Perkecil padding card mobile */
+    .detail-card {
+        padding: 18px;
+    }
+
+    /* Perbaikan 4: Kurangi jarak antar section */
+    .detail-card .section {
+        margin-top: 24px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    /* Perbaikan 3: Perkecil Heading Mobile */
+    .detail-card .section h2 {
+        font-size: 1.45rem;
+        gap: 8px;
+        line-height: 1.35;
+    }
+
+    .heading-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Perbaikan 2: Perkecil ukuran Chip Mobile */
+    .tag-list {
+        gap: 8px;
+    }
+
+    .tag-link {
+        padding: 8px 12px;
+        font-size: .82rem;
+    }
+
+    .tag-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* Perbaikan 6: Badge tingkat mobile */
+    .badge-tingkat {
+        font-size: .72rem;
+        padding: 5px 12px;
+    }
+
+    /* Perbaikan 8: Rapikan tombol Sitasi mobile */
+    .card-actions {
+        width: 100%;
+    }
+
+    .card-actions .btn {
+        width: 100%;
+    }
+
+    .search-card {
+        gap: 16px;
+        padding: 18px;
+    }
+
+    .search-content {
+        max-width: none;
+        width: 100%;
+    }
+
+    .search-content .input {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .detail-card {
+        padding: var(--space-4);
+    }
+
+    .detail-title {
+        gap: 12px;
+    }
+
+    .detail-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .detail-card .section h2 {
+        font-size: 1.4rem;
+    }
+
+    .search-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-icon-wrapper {
+        margin: 0 auto;
     }
 }
