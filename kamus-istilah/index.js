@@ -1,4 +1,7 @@
 // VARIABEL STATUS GLOBAL
+const ITEMS_PER_PAGE = 10;
+let currentPage = 1;
+
 let kategoriAktif = null;
 let hurufAktif = "";
 let tingkatAktif = ""; 
@@ -39,7 +42,7 @@ async function loadKategori() {
 // ==========================================
 // FUNGSI UTAMA UNTUK MEMUAT DATA ISTILAH
 // ==========================================
-async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat = "") {
+async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat = "", page = 1) {
 
     const loading = document.getElementById("loading");
     const container = document.getElementById("daftar-istilah");
@@ -53,10 +56,12 @@ async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat 
         loading.style.display = "block";
         console.log("Memulai koneksi ke Supabase...");
 
-        // Inisialisasi query dasar istilah
+        // Inisialisasi query dasar istilah dengan count exact
         let query = supabaseClient
             .from("istilah")
-            .select("*");
+            .select("*", {
+                count: "exact"
+            });
 
         // Filter 1: Kategori (Exact Match)
         if (kategoriId) {
@@ -78,13 +83,22 @@ async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat 
             query = query.eq("tingkat", tingkat);
         }
 
+        // Batasi rentang data untuk pagination
+        const from = (page - 1) * ITEMS_PER_PAGE;
+        const to = from + ITEMS_PER_PAGE - 1;
+        query = query.range(from, to);
+
         // Jalankan seluruh rangkaian query di atas secara terurut alfabetis
         const response = await query.order("nama", { ascending: true });
 
         console.log("Response Supabase:");
         console.log(response);
 
-        const { data, error } = response;
+        const {
+            data,
+            error,
+            count
+        } = response;
 
         loading.style.display = "none";
 
@@ -92,12 +106,18 @@ async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat 
             throw error;
         }
 
+        // Simpan halaman aktif saat berhasil dimuat
+        currentPage = page;
+
         if (!data || data.length === 0) {
             container.innerHTML = `
                 <div class="empty">
                     <h3>Data istilah tidak ditemukan atau kategori masih kosong</h3>
                 </div>
             `;
+            // Kosongkan pagination jika data tidak ditemukan
+            const wrapper = document.getElementById("pagination");
+            if (wrapper) wrapper.innerHTML = "";
             return;
         }
 
@@ -137,6 +157,12 @@ async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat 
 
         container.innerHTML = html;
 
+        // Render komponen pagination setelah HTML dimasukkan ke container
+        renderPagination(
+            count,
+            page
+        );
+
         console.log("Data berhasil dimuat:");
         console.table(data);
 
@@ -157,6 +183,81 @@ async function loadIstilah(kategoriId = null, keyword = "", huruf = "", tingkat 
             </div>
         `;
     }
+}
+
+// ==========================================
+// FUNGSI UNTUK MERENDER PAGINATION
+// ==========================================
+function renderPagination(
+    totalItems,
+    current
+){
+
+    const wrapper =
+    document.getElementById(
+        "pagination"
+    );
+
+    if(!wrapper) return;
+
+    const totalPages =
+    Math.ceil(
+        totalItems /
+        ITEMS_PER_PAGE
+    );
+
+    if(totalPages <= 1){
+
+        wrapper.innerHTML = "";
+
+        return;
+    }
+
+    let html = "";
+
+    html += `
+    <button
+        class="page-btn"
+        ${current===1?"disabled":""}
+        data-page="${current-1}">
+        ←
+    </button>
+    `;
+
+    for(
+        let i=1;
+        i<=totalPages;
+        i++
+    ){
+
+        html += `
+        <button
+            class="page-btn ${
+                i===current
+                ?"active"
+                :""
+            }"
+            data-page="${i}">
+            ${i}
+        </button>
+        `;
+    }
+
+    html += `
+    <button
+        class="page-btn"
+        ${
+            current===totalPages
+            ?"disabled"
+            :""
+        }
+        data-page="${current+1}">
+        →
+    </button>
+    `;
+
+    wrapper.innerHTML = html;
+
 }
 
 // ==========================================
@@ -202,6 +303,53 @@ function loadHistory() {
 // EVENT LISTENERS
 // ==========================================
 
+// Event pagination klik halaman
+document.addEventListener(
+    "click",
+    function(e){
+
+        const btn =
+        e.target.closest(".page-btn");
+
+        if(!btn) return;
+
+        if(btn.disabled) return;
+
+        const page =
+        Number(
+            btn.dataset.page
+        );
+
+        const keyword =
+        document
+        .getElementById("search-input")
+        ?.value || "";
+
+        loadIstilah(
+
+            kategoriAktif,
+
+            keyword,
+
+            hurufAktif,
+
+            tingkatAktif,
+
+            page
+
+        );
+
+        window.scrollTo({
+
+            top:0,
+
+            behavior:"smooth"
+
+        });
+
+    }
+);
+
 // Listener Aksi klik Tombol Hapus Riwayat Pencarian
 document.addEventListener("click", function (event) {
     if (event.target.id === "clear-history") {
@@ -226,7 +374,8 @@ document.addEventListener("click", function (event) {
         const searchInput = document.getElementById("search-input");
         const keyword = searchInput ? searchInput.value : "";
 
-        loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif);
+        currentPage = 1;
+        loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif, 1);
     }
 });
 
@@ -245,7 +394,8 @@ document.addEventListener("click", function (event) {
         const searchInput = document.getElementById("search-input");
         const keyword = searchInput ? searchInput.value : "";
 
-        loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif);
+        currentPage = 1;
+        loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif, 1);
     }
 });
 
@@ -264,7 +414,8 @@ document.addEventListener("click", function (event) {
         const searchInput = document.getElementById("search-input");
         const keyword = searchInput ? searchInput.value : "";
 
-        loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif);
+        currentPage = 1;
+        loadIstilah(kategoriAktif, keyword, hurufAktif, tingkatAktif, 1);
     }
 });
 
@@ -272,7 +423,8 @@ document.addEventListener("click", function (event) {
 document.addEventListener("input", function (event) {
     if (event.target.id === "search-input") {
         
-        loadIstilah(kategoriAktif, event.target.value, hurufAktif, tingkatAktif);
+        currentPage = 1;
+        loadIstilah(kategoriAktif, event.target.value, hurufAktif, tingkatAktif, 1);
     }
 });
 
@@ -305,7 +457,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Memuat komponen daftar riwayat terakhir dicari
     loadHistory();
 
-    // Memuat seluruh data awal secara utuh (semua parameter kosong bawaan)
+    // Memuat seluruh data awal secara utuh ke halaman pertama (parameter kosong)
     loadIstilah();
 });
 

@@ -2,7 +2,6 @@
    GLOBAL STYLES & LAYOUT BASE (Diturunkan dari css/layout.css)
    ========================================================================== */
 body {
-    /* Aturan dasar margin, font-family, max-width, dan background diwariskan dari layout & typography */
     margin: 0 auto;
 }
 
@@ -17,8 +16,9 @@ hr {
 /* ==========================================================================
    HALAMAN DAFTAR ARTIKEL (artikel/index.html)
    ========================================================================== */
-.artikel-page {
-    padding: var(--space-4) 0;
+.section.artikel-page{
+    padding-top:var(--space-6);
+    padding-bottom:var(--space-6);
 }
 
 .artikel-page h1 {
@@ -26,206 +26,683 @@ hr {
     margin-bottom: var(--space-6); /* 32px - Konsisten dengan section-header */
 }
 
-/* Section Pencarian */
-.search-section {
-    margin-bottom: var(--space-5); /* 24px */
-}
-
-.search-section input[type="search"] {
-    width: 100%;
-    padding: var(--space-3) var(--space-4); /* 12px 16px - Konsisten dengan form system */
-    font-size: 1rem;
-    border-radius: var(--radius-lg); /* Mengikuti komponen .search-box */
-    border: 1px solid var(--border);
-    box-sizing: border-box;
-    outline: none;
-    background-color: var(--surface);
-    color: var(--text);
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.search-section input[type="search"]:focus {
-    border-color: var(--border-dark);
-    box-shadow: var(--shadow-sm);
-}
-
-/* Section Filter Kategori & Tag */
-.filter-section {
-    margin-bottom: var(--space-5); /* 24px */
-    background: var(--surface);
-    padding: var(--space-5); /* 24px */
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-}
-
-.filter-section h2 {
+/* Breadcrumb Adjustment */
+.breadcrumb {
     margin-top: 0;
-    margin-bottom: var(--space-3);
-    font-size: 0.875rem; /* .text-sm */
-    color: var(--text-light);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    margin-bottom: 22px;
 }
 
-#kategori-filter, #tag-filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2); /* 8px */
+/* ==========================================================================
+   SEARCH CARD
+   ========================================================================== */
+.search-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:24px 28px;
+    margin-bottom:32px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-xl);
+    box-shadow:var(--shadow-sm);
+    transition:all .25s ease;
 }
 
-/* Komponen Button Filter (Diselaraskan dengan komponen chip/tag) */
-.kategori-btn, .tag-btn {
-    padding: var(--space-2) var(--space-4); /* 8px 16px */
-    border: 1px solid var(--border);
-    border-radius: var(--radius-full); /* Mengikuti spesifikasi .tag/.chip di utilities.css */
-    background: var(--surface);
-    color: var(--text-light);
-    cursor: pointer;
-    font-size: 0.875rem; /* .text-sm */
-    font-weight: 500;
-    transition: all 0.2s ease;
+.search-card:hover{
+    box-shadow:var(--shadow-md);
 }
 
-.kategori-btn:hover, .tag-btn:hover {
-    background: var(--surface-secondary);
-    border-color: var(--border-dark);
-    color: var(--text);
+.search-header{
+    display: contents; /* Fallback desktop agar flexbox search-card tetap bekerja normal */
 }
 
-.kategori-btn.aktif, .tag-btn.aktif {
-    background: var(--primary-light);
-    color: var(--primary-hover);
-    border-color: var(--primary);
-    font-weight: 700;
+.search-icon{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    background:var(--primary-light);
+    border-radius:50%;
 }
 
-/* Layout Utama: Grid Artikel & Sidebar */
-.artikel-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: var(--space-6); /* 32px */
-    margin-top: var(--space-6);
+.search-icon img{
+    width:24px;
+    height:24px;
 }
 
-@media (max-width: 768px) {
-    .artikel-layout {
-        grid-template-columns: 1fr;
-        gap: var(--space-5);
+.search-content{
+    flex:1;
+}
+
+.search-content label{
+    display:block;
+    margin-bottom:10px;
+    font-size:.95rem;
+    font-weight:700;
+    color:var(--text);
+}
+
+.search-content input{
+    width:100%;
+    padding:14px 18px;
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    background:var(--surface);
+    color:var(--text);
+    font-size:1rem;
+    transition:.25s;
+}
+
+.search-content input:focus{
+    outline:none;
+    border-color:var(--primary);
+    box-shadow:0 0 0 4px rgba(59,130,246,.12);
+}
+
+/* ==========================================================================
+   FILTER CARD
+   ========================================================================== */
+.filter-section{
+    margin-bottom:24px;
+    padding:24px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-xl);
+    box-shadow:var(--shadow-sm);
+}
+
+.filter-section:last-child{
+    margin-bottom:0;
+}
+
+/* ==========================================================================
+   SECTION HEADING
+   ========================================================================== */
+.section-heading{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.section-heading img{
+    width:20px;
+    height:20px;
+    opacity:.85;
+}
+
+.section-heading h2{
+    margin:0;
+    font-size:1rem;
+    font-weight:700;
+    color:var(--text);
+}
+
+/* ==========================================================================
+   FILTER CONTAINER
+   ========================================================================== */
+#kategori-filter,#tag-filter{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+/* ==========================================================================
+   FILTER BUTTON BARU
+   ========================================================================== */
+.kategori-btn,
+.tag-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    background:var(--surface);
+    color:var(--text-light);
+    cursor:pointer;
+    font-size:.9rem;
+    font-weight:600;
+    transition:.25s;
+}
+
+.kategori-btn:hover,
+.tag-btn:hover{
+    background:var(--primary-light);
+    color:var(--primary);
+    border-color:var(--primary);
+    transform:translateY(-2px);
+}
+
+.kategori-btn.aktif,
+.tag-btn.aktif{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+    box-shadow:var(--shadow-sm);
+}
+
+/* ==========================================================================
+   ICON PADA FILTER
+   ========================================================================== */
+.filter-icon{
+    width:16px;
+    height:16px;
+    flex-shrink:0;
+}
+
+.kategori-btn.aktif .filter-icon,
+.tag-btn.aktif .filter-icon{
+    filter:brightness(0) invert(1);
+}
+
+/* ==========================================================================
+   LAYOUT ARTIKEL
+   ========================================================================== */
+.artikel-layout{
+    display:grid;
+    grid-template-columns:minmax(0,2fr) 340px;
+    gap:32px;
+    align-items:start;
+    margin-top:32px;
+    margin-bottom:16px;
+}
+
+.post-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+    width:100%;
+    min-width:0;
+}
+
+/* ==========================================================================
+   POST CARD
+   ========================================================================== */
+.post-card{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    overflow:hidden;
+    padding:28px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-xl);
+    box-shadow:var(--shadow-sm);
+    box-sizing:border-box;
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        border-color .25s;
+}
+
+.post-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--primary);
+    box-shadow:var(--shadow-lg);
+}
+
+.post-card>*{
+    min-width:0;
+}
+
+.post-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
+
+.post-card h2{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin:0;
+    min-width:0;
+    font-size:1.45rem;
+    line-height:1.45;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+}
+
+.title-icon{
+    width:22px;
+    height:22px;
+    flex-shrink:0;
+    margin-top:2px;
+}
+
+.post-card p{
+    margin:0;
+    min-width:0;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+    color:var(--text-light);
+    line-height:1.8;
+}
+
+/* ==========================================================================
+   BADGE
+   ========================================================================== */
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:.82rem;
+    font-weight:700;
+}
+
+.badge-primary{
+    background:var(--primary-light);
+    color:var(--primary);
+}
+
+.badge-icon{
+    width:15px;
+    height:15px;
+    flex-shrink:0;
+}
+
+/* ==========================================================================
+   METADATA
+   ========================================================================== */
+.post-footer{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+    padding-top:18px;
+    border-top:1px solid var(--border);
+}
+
+.post-footer small{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:.86rem;
+    color:var(--text-soft);
+}
+
+.meta-icon{
+    width:15px;
+    height:15px;
+    opacity:.75;
+}
+
+/* ==========================================================================
+   FOOTER CARD / GLOBAL FOOTER SPACING
+   ========================================================================== */
+.post-card .btn{
+    align-self:flex-start;
+    margin-top:auto;
+}
+
+.post-card .btn-icon{
+    width:17px;
+    height:17px;
+    filter:brightness(0) invert(1);
+}
+
+.site-footer{
+    margin-top:48px;
+}
+
+/* ==========================================================================
+   TOMBOL BACA SELENGKAPNYA
+   ========================================================================== */
+.post-card .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 18px;
+    border-radius:var(--radius-lg);
+    font-size:.92rem;
+    font-weight:700;
+    text-decoration:none;
+    width:100%;
+    justify-content:center;
+    box-sizing:border-box;
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+.post-card .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:var(--shadow-md);
+}
+
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+.artikel-sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    position:sticky;
+    top:96px;
+}
+
+.sidebar-box{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius-xl);
+    padding:24px;
+    box-shadow:var(--shadow-sm);
+    transition:
+        box-shadow .25s,
+        transform .25s;
+}
+
+.sidebar-box:hover{
+    box-shadow:var(--shadow-md);
+}
+
+.sidebar-box .section-heading{
+    margin-bottom:20px;
+}
+
+/* ==========================================================================
+   SIDEBAR POST
+   ========================================================================== */
+.sidebar-post{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.sidebar-post:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+}
+
+.sidebar-content{
+    flex:1;
+    min-width:0;
+}
+
+.sidebar-title{
+    display:block;
+    margin-bottom:8px;
+    color:var(--text);
+    text-decoration:none;
+    font-size:.96rem;
+    font-weight:700;
+    line-height:1.5;
+    transition:color .25s;
+}
+
+.sidebar-title:hover{
+    color:var(--primary);
+}
+
+/* ==========================================================================
+   RANKING NUMBER
+   ========================================================================== */
+.sidebar-number{
+    width:34px;
+    height:34px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--primary);
+    color:#fff;
+    font-weight:700;
+    font-size:.9rem;
+    box-shadow:var(--shadow-sm);
+}
+
+/* ==========================================================================
+   SIDEBAR ICON
+   ========================================================================== */
+.sidebar-icon{
+    width:36px;
+    height:36px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--primary-light);
+}
+
+.sidebar-icon img{
+    width:18px;
+    height:18px;
+}
+
+/* ==========================================================================
+   SIDEBAR META
+   ========================================================================== */
+.sidebar-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    font-size:.82rem;
+    color:var(--text-soft);
+}
+
+.sidebar-meta span{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.sidebar-meta .meta-icon{
+    width:14px;
+    height:14px;
+    opacity:.75;
+}
+
+/* ==========================================================================
+   SIDEBAR LOADING
+   ========================================================================== */
+.sidebar-loading{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:90px;
+    padding:20px;
+    border:1px dashed var(--border);
+    border-radius:var(--radius-lg);
+    background:var(--surface-secondary);
+    color:var(--text-soft);
+    font-size:.92rem;
+}
+
+/* ==========================================================================
+   PAGINATION
+   ========================================================================== */
+.pagination-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:40px;
+}
+
+.pagination-btn{
+    min-width:42px;
+    height:42px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 14px;
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    background:var(--surface);
+    color:var(--text);
+    font-size:.95rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:
+        background .2s,
+        color .2s,
+        border-color .2s,
+        transform .2s;
+}
+
+.pagination-btn:hover:not(:disabled){
+    background:var(--primary-light);
+    border-color:var(--primary);
+    color:var(--primary);
+    transform:translateY(-2px);
+}
+
+.pagination-btn.aktif{
+    background:var(--primary);
+    border-color:var(--primary);
+    color:#fff;
+    box-shadow:var(--shadow-sm);
+}
+
+.pagination-btn:disabled{
+    opacity:.45;
+    cursor:not-allowed;
+}
+
+/* ==========================================================================
+   EMPTY STATE
+   ========================================================================== */
+.empty-state{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    padding:56px 32px;
+    text-align:center;
+    background:var(--surface);
+    border:1px dashed var(--border);
+    border-radius:var(--radius-xl);
+}
+
+.empty-state img{
+    width:70px;
+    height:70px;
+    opacity:.7;
+}
+
+.empty-state h3{
+    margin:0;
+    font-size:1.3rem;
+    color:var(--text);
+}
+
+.empty-state p{
+    margin:0;
+    max-width:460px;
+    color:var(--text-light);
+    line-height:1.8;
+}
+
+/* ==========================================================================
+   SKELETON LOADING
+   ========================================================================== */
+.skeleton{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius-xl);
+    background:#eceff3;
+}
+
+.skeleton::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    transform:translateX(-100%);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.65),
+            transparent
+        );
+    animation:
+        skeleton-loading
+        1.2s
+        infinite;
+}
+
+@keyframes skeleton-loading{
+    100%{
+        transform:translateX(100%);
     }
 }
 
-/* Grid Card Daftar Postingan */
-.post-grid {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5); /* 24px - Mengikuti home-grid */
+/* ==========================================================================
+   ANIMATION
+   ========================================================================== */
+.fade-up{
+    animation:
+        fadeUp .45s ease;
 }
 
-/* Mewarisi perilaku dasar .card dari cards.css */
-.post-card {
-    background: var(--surface);
-    padding: var(--space-5); /* 24px */
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:
+            translateY(14px);
+    }
+    to{
+        opacity:1;
+        transform:
+            translateY(0);
+    }
 }
 
-.post-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+/* ==========================================================================
+   UTILITY
+   ========================================================================== */
+.text-muted{
+    color:var(--text-soft);
 }
 
-.post-card h2 {
-    margin-top: 0;
-    margin-bottom: var(--space-3);
-    font-size: 1.5rem; /* Menyesuaikan h3 global */
-    font-weight: 700;
-    color: var(--secondary);
-    line-height: 1.4;
+.text-center{
+    text-align:center;
 }
 
-.post-card p {
-    color: var(--text-light);
-    line-height: 1.8; /* Sesuai paragraf system */
-    margin-bottom: var(--space-4);
+.w-100{
+    width:100%;
 }
 
-/* Link Baca Selengkapnya */
-.read-more {
-    display: inline-block;
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    transition: color 0.2s ease;
+.mt-2{
+    margin-top:8px;
 }
 
-.read-more:hover {
-    color: var(--primary-hover);
-    text-decoration: underline;
+.mt-3{
+    margin-top:16px;
 }
 
-/* Sidebar Area */
-.artikel-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5); /* 24px */
+.mt-4{
+    margin-top:24px;
 }
 
-/* Mewarisi bentuk .card */
-.sidebar-box {
-    background: var(--surface);
-    padding: var(--space-5); /* 24px */
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
+.mb-2{
+    margin-bottom:8px;
 }
 
-.sidebar-box h2 {
-    margin-top: 0;
-    margin-bottom: var(--space-4);
-    font-size: 1.125rem; /* Sesuai h5 global */
-    font-weight: 700;
-    color: var(--secondary);
-    border-bottom: 2px solid var(--surface-secondary);
-    padding-bottom: var(--space-2);
+.mb-3{
+    margin-bottom:16px;
 }
 
-.sidebar-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.mb-4{
+    margin-bottom:24px;
 }
-
-.sidebar-list li {
-    margin-bottom: var(--space-4);
-    line-height: 1.6;
-}
-
-.sidebar-list li:last-child {
-    margin-bottom: 0;
-}
-
-.sidebar-list a {
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 600;
-    transition: color 0.2s ease;
-}
-
-.sidebar-list a:hover {
-    color: var(--primary-hover);
-    text-decoration: underline;
-}
-
-.sidebar-list small {
-    color: var(--text-soft);
-    display: block;
-    margin-top: var(--space-1);
-}
-
 
 /* ==========================================================================
    HALAMAN DETAIL ARTIKEL (artikel/detail.html)
@@ -313,7 +790,6 @@ hr {
     color: var(--text); /* Keterbacaan utama artikel diisi teks solid */
 }
 
-
 /* ==========================================================================
    BAGIAN DETAIL RELASI (Istilah, Sastrawan, Karya & Artikel Terkait)
    ========================================================================== */
@@ -395,11 +871,134 @@ hr {
 /* ==========================================================================
    RESPONSIVE DESIGN SYSTEM ADJUSTMENTS
    ========================================================================== */
-@media (max-width: 768px) {
+@media (max-width:992px){
+    .artikel-layout{
+        grid-template-columns:1fr;
+    }
+    .artikel-sidebar{
+        position:static;
+    }
+    .pagination-wrapper{
+        margin-top:32px;
+    }
+}
+
+@media (max-width:768px){
+    .artikel-layout{
+        grid-template-columns:1fr;
+        gap:20px;
+        margin-top:20px;
+    }
+
+    .post-grid{
+        gap:18px;
+    }
+
+    .post-card{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        padding:18px;
+        border-radius:18px;
+    }
+
+    .post-card h2{
+        font-size:1.15rem;
+        line-height:1.45;
+    }
+
+    .post-footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    /* 1. Search Card Mobile */
+    .search-card{
+        flex-direction:column;
+        align-items:stretch;
+        gap:16px;
+        padding:20px;
+    }
+    .search-content{
+        width:100%;
+    }
+    .search-header{
+        display:flex;
+        align-items:center;
+        gap:12px;
+    }
+    .search-icon{
+        width:42px;
+        height:42px;
+        margin:0;
+    }
+    .search-icon img{
+        width:20px;
+        height:20px;
+    }
+    .search-content label{
+        margin:0;
+        font-size:1rem;
+    }
+
+    /* 7. Tombol Baca Selengkapnya Mobile */
+    .post-card .btn-primary{
+        padding:11px 16px;
+        font-size:.88rem;
+    }
+
+    /* 5. Sidebar Mobile */
+    .sidebar-box{
+        padding:18px;
+    }
+    .sidebar-post{
+        gap:10px;
+        padding:12px 0;
+    }
+    .sidebar-title{
+        font-size:.92rem;
+        line-height:1.45;
+    }
+
+    /* 8. Judul Sidebar Mobile */
+    .section-heading h2{
+        font-size:1rem;
+    }
+
+    .section-heading{
+        margin-bottom:14px;
+    }
+    .sidebar-number{
+        width:30px;
+        height:30px;
+        font-size:.8rem;
+    }
+    .sidebar-icon{
+        width:32px;
+        height:32px;
+    }
+    .pagination-wrapper{
+        gap:8px;
+    }
+    .pagination-btn{
+        min-width:38px;
+        height:38px;
+        font-size:.88rem;
+    }
+    .empty-state{
+        padding:42px 20px;
+    }
+    .empty-state img{
+        width:58px;
+        height:58px;
+    }
+    .empty-state h3{
+        font-size:1.15rem;
+    }
     #judul {
-        font-size: 2rem; /* Mengikuti fallback h1 responsif */
+        font-size: 2rem;
     }
     #isi {
-        font-size: 1rem; /* Ukuran font mengecil di layar ponsel */
+        font-size: 1rem;
     }
 }

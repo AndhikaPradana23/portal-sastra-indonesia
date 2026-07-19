@@ -102,7 +102,6 @@ main {
     width: 100%;
 }
 
-/* Tambahan Heading Card */
 .section-heading {
     display: flex;
     align-items: center;
@@ -190,14 +189,12 @@ main {
     margin-top: var(--space-6);
 }
 
-/* Filter Modern */
 #az-filter, #tingkat-filter, #kategori-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-/* Tombol Filter */
 .az-btn,
 .kategori-btn,
 .tingkat-btn {
@@ -221,7 +218,6 @@ main {
     border-color: var(--border-dark);
 }
 
-/* Status tombol aktif berdasarkan script js */
 .az-btn.aktif, .tingkat-btn.aktif, .kategori-btn.aktif {
     background: var(--warning-light);
     border-color: var(--warning);
@@ -242,7 +238,6 @@ main {
     gap: var(--space-5);
 }
 
-/* Perbaiki Card Istilah */
 .istilah-card {
     border: 1px solid var(--border);
     transition: .25s;
@@ -304,7 +299,6 @@ main {
     margin-top: var(--space-6);
 }
 
-/* Perbaikan 9: Card lebih dekat ke breadcrumb */
 .section-header {
     margin-bottom: 22px;
 }
@@ -403,7 +397,6 @@ main {
     margin-top: var(--space-3);
 }
 
-/* Badge Tingkat */
 .badge-tingkat {
     display: inline-flex;
     align-items: center;
@@ -416,7 +409,6 @@ main {
     font-size: .82rem;
 }
 
-/* Tombol bookmark internal diselaraskan dengan .bookmark-btn global di layout.css */
 #bookmark-btn {
     padding: var(--space-2) var(--space-4);
     background: var(--surface);
@@ -452,7 +444,6 @@ main {
     flex-shrink: 0;
 }
 
-/* Perbaikan 1: Mencegah teks keluar dari card */
 .detail-card p,
 .detail-card li,
 .tag-link {
@@ -489,7 +480,6 @@ main {
     text-decoration: underline;
 }
 
-/* Chip List & Tag Styling */
 .tag-list {
     display: flex;
     flex-wrap: wrap;
@@ -588,7 +578,6 @@ main {
 }
 
 @media (max-width: 768px) {
-    /* Perbaikan 10: Container Mobile */
     .detail-container {
         padding-top: 20px;
         padding-bottom: 20px;
@@ -607,7 +596,6 @@ main {
         width: 100%;
     }
 
-    /* Perbaikan 7: Tombol Bookmark Mobile */
     .detail-actions {
         width: 100%;
         margin-top: 14px;
@@ -624,19 +612,16 @@ main {
         gap: var(--space-4);
     }
 
-    /* Perbaikan 5: Perkecil padding card mobile */
     .detail-card {
         padding: 18px;
     }
 
-    /* Perbaikan 4: Kurangi jarak antar section */
     .detail-card .section {
         margin-top: 24px;
         padding-top: 0;
         padding-bottom: 0;
     }
 
-    /* Perbaikan 3: Perkecil Heading Mobile */
     .detail-card .section h2 {
         font-size: 1.45rem;
         gap: 8px;
@@ -648,7 +633,6 @@ main {
         height: 20px;
     }
 
-    /* Perbaikan 2: Perkecil ukuran Chip Mobile */
     .tag-list {
         gap: 8px;
     }
@@ -663,13 +647,11 @@ main {
         height: 14px;
     }
 
-    /* Perbaikan 6: Badge tingkat mobile */
     .badge-tingkat {
         font-size: .72rem;
         padding: 5px 12px;
     }
 
-    /* Perbaikan 8: Rapikan tombol Sitasi mobile */
     .card-actions {
         width: 100%;
     }
@@ -721,4 +703,45 @@ main {
     .search-icon-wrapper {
         margin: 0 auto;
     }
+}
+
+/* ====================================
+   PAGINATION
+==================================== */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    min-width: 44px;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    cursor: pointer;
+    font-weight: 600;
+    transition: .25s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.page-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.page-btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
 }

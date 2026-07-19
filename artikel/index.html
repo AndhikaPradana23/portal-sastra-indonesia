@@ -4,31 +4,25 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Artikel Sastra Indonesia | Portal Sastra Indonesia
-    </title>
+    <title>Artikel Sastra Indonesia | Portal Sastra Indonesia</title>
 
-    <meta id="meta-description" name="description" content="Kumpulan artikel sastra Indonesia mengenai teori sastra, kritik sastra, puisi, novel, cerpen, drama, serta berbagai kajian akademik.">
+    <meta id="meta-description"
+        name="description"
+        content="Kumpulan artikel sastra Indonesia mengenai teori sastra, kritik sastra, puisi, novel, cerpen, drama, serta berbagai kajian akademik.">
 
     <link id="canonical-url" rel="canonical" href="">
 
     <meta id="og-title" property="og:title" content="">
-
     <meta id="og-description" property="og:description" content="">
-
     <meta id="og-url" property="og:url" content="">
 
     <meta property="og:type" content="website">
-
     <meta property="og:site_name" content="Portal Sastra Indonesia">
 
     <meta name="twitter:card" content="summary_large_image">
-
     <meta id="twitter-title" name="twitter:title" content="">
-
     <meta id="twitter-description" name="twitter:description" content="">
 
     <link rel="stylesheet" href="/css/variables.css">
@@ -52,128 +46,279 @@
 
 <body>
 
-    <header id="site-header"></header>
+<header id="site-header"></header>
 
-    <main class="artikel-page">
+<main>
 
-        <section class="section">
+<section class="section artikel-page">
 
-            <div class="container">
+<div class="container">
 
-                <div id="breadcrumb"></div>
+    <div id="breadcrumb"></div>
 
-                <div class="section-header">
+    <!-- ===================================================== -->
+    <!-- HEADER -->
+    <!-- ===================================================== -->
 
-                    <div>
+    <div class="section-header">
 
-                        <h1 class="section-title">
-                            Artikel Sastra
-                        </h1>
+        <div>
 
-                        <p class="section-description">
-                            Artikel dan kajian sastra Indonesia.
-                        </p>
+            <h1 class="section-title">
+                Artikel Sastra
+            </h1>
+
+            <p class="section-description">
+                Kumpulan artikel, teori, kritik sastra, puisi,
+                novel, cerpen, drama dan berbagai kajian akademik.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SEARCH CARD -->
+    <!-- ===================================================== -->
+
+    <div class="search-card card fade-up">
+
+        <div class="search-header">
+
+            <div class="search-icon">
+                <img
+                    src="/assets/icons/search.svg"
+                    alt="">
+            </div>
+
+            <label for="search-artikel">
+                Cari Artikel Sastra
+            </label>
+
+        </div>
+
+        <div class="search-content">
+
+            <input
+                id="search-artikel"
+                type="search"
+                placeholder="Contoh: Puisi, Kritik Sastra, Cerpen..." />
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- FILTER KATEGORI -->
+    <!-- ===================================================== -->
+
+    <div class="filter-section card fade-up">
+
+        <div class="card-header">
+
+            <div class="section-heading">
+
+                <img
+                    src="/assets/icons/folder.svg"
+                    class="section-icon"
+                    alt="Kategori">
+
+                <h2>
+                    Filter Kategori
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div id="kategori-filter">
+
+                <span class="badge badge-primary">
+                    Memuat kategori...
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- FILTER TAG -->
+    <!-- ===================================================== -->
+
+    <div class="filter-section card fade-up">
+
+        <div class="card-header">
+
+            <div class="section-heading">
+
+                <img
+                    src="/assets/icons/tag.svg"
+                    class="section-icon"
+                    alt="Tag">
+
+                <h2>
+                    Filter Tag
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div id="tag-filter">
+
+                <span class="badge badge-primary">
+                    Memuat tag...
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- ARTIKEL + SIDEBAR -->
+    <!-- ===================================================== -->
+
+    <div class="artikel-layout">
+
+        <!-- ====================== -->
+        <!-- LIST ARTIKEL -->
+        <!-- ====================== -->
+
+        <div>
+
+            <div
+                id="artikel-list"
+                class="post-grid">
+
+                <div class="card skeleton" style="height:220px;"></div>
+
+                <div class="card skeleton" style="height:220px;"></div>
+
+                <div class="card skeleton" style="height:220px;"></div>
+
+                <div class="card skeleton" style="height:220px;"></div>
+
+                <div class="card skeleton" style="height:220px;"></div>
+
+            </div>
+
+            <!-- ====================== -->
+            <!-- PAGINATION -->
+            <!-- ====================== -->
+
+            <div
+                id="pagination"
+                class="pagination-wrapper">
+
+            </div>
+
+        </div>
+
+        <!-- ====================== -->
+        <!-- SIDEBAR -->
+        <!-- ====================== -->
+
+        <aside class="artikel-sidebar">
+
+            <div class="sidebar-box card">
+
+                <div class="card-header">
+
+                    <div class="section-heading">
+
+                        <img
+                            src="/assets/icons/flame.svg"
+                            class="section-icon"
+                            alt="Populer">
+
+                        <h2>
+                            Artikel Populer
+                        </h2>
 
                     </div>
 
                 </div>
 
-                <div class="search-section" style="margin-top: var(--space-6);">
-                    <div class="search-box">
-                        🔎
-                        <input type="search" id="search-artikel" class="input" placeholder="Cari artikel..." autocomplete="off">
-                    </div>
-                </div>
+                <div
+                    id="artikel-populer"
+                    class="card-body">
 
-                <div class="filter-section" style="margin-top: var(--space-6);">
-
-                    <h2>
-                        Filter Kategori
-                    </h2>
-
-                    <div id="kategori-filter">
-                        <span class="badge badge-primary">Memuat kategori...</span>
-                    </div>
-
-                </div>
-
-                <div class="filter-section" style="margin-top: var(--space-6);">
-
-                    <h2>
-                        Filter Tag
-                    </h2>
-
-                    <div id="tag-filter">
-                        <span class="badge badge-primary">Memuat tag...</span>
-                    </div>
-
-                </div>
-
-                <div class="artikel-layout" style="margin-top: var(--space-6);">
-
-                    <div id="artikel-list" class="post-grid">
-
-                        <div class="card skeleton" style="height: 200px;"></div>
-                        <div class="card skeleton" style="height: 200px;"></div>
-                        <div class="card skeleton" style="height: 200px;"></div>
-
-                    </div>
-
-                    <aside class="artikel-sidebar">
-
-                        <div class="sidebar-box card">
-                            <div class="card-header">
-                                <h2>
-                                    Artikel Populer
-                                </h2>
-                            </div>
-                            <div class="card-body" id="artikel-populer">
-                                <p class="text-light">Memuat...</p>
-                            </div>
-                        </div>
-
-                        <div class="sidebar-box card" style="margin-top: var(--space-6);">
-                            <div class="card-header">
-                                <h2>
-                                    Artikel Terbaru
-                                </h2>
-                            </div>
-                            <div class="card-body" id="artikel-terbaru">
-                                <p class="text-light">Memuat...</p>
-                            </div>
-                        </div>
-
-                    </aside>
+                    <p class="text-light">
+                        Memuat...
+                    </p>
 
                 </div>
 
             </div>
 
-        </section>
+            <div class="sidebar-box card">
 
-    </main>
+                <div class="card-header">
 
-    <footer id="site-footer"></footer>
+                    <div class="section-heading">
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+                        <img
+                            src="/assets/icons/calendar-days.svg"
+                            class="section-icon"
+                            alt="Terbaru">
 
-    <script src="/js/supabase-public.js"></script>
+                        <h2>
+                            Artikel Terbaru
+                        </h2>
 
-    <script src="/js/auth/auth-service.js"></script>
-    <script src="/js/auth/profile-service.js"></script>
-    <script src="/js/auth/role-service.js"></script>
-    <script src="/js/auth/auth-ui.js"></script>
-    <script src="/js/auth/logout.js"></script>
-    <script src="/js/auth/auth-state.js"></script>
+                    </div>
 
-    <script src="/js/core/helpers.js"></script>
+                </div>
 
-    <script src="/js/layout/layout.js"></script>
-    <script src="/js/layout/active-menu.js"></script>
-    <script src="/js/layout/mobile-menu.js"></script>
+                <div
+                    id="artikel-terbaru"
+                    class="card-body">
 
-    <script src="index.js"></script>
+                    <p class="text-light">
+                        Memuat...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="/js/supabase-public.js"></script>
+
+<script src="/js/auth/auth-service.js"></script>
+<script src="/js/auth/profile-service.js"></script>
+<script src="/js/auth/role-service.js"></script>
+<script src="/js/auth/auth-ui.js"></script>
+<script src="/js/auth/logout.js"></script>
+
+<script src="/js/core/helpers.js"></script>
+
+<script src="/js/layout/layout.js"></script>
+<script src="/js/layout/active-menu.js"></script>
+<script src="/js/layout/mobile-menu.js"></script>
+
+<script src="index.js"></script>
 
 </body>
-
 </html>
