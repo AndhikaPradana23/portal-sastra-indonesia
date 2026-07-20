@@ -34,7 +34,7 @@
 
     <main class="article-detail">
 
-        <section class="section">
+        <section class="section article-detail-page">
 
             <div class="container">
 
@@ -49,70 +49,111 @@
                         </h1>
 
                         <p class="section-description">
-                            Artikel dan kajian sastra Indonesia.
+                            Artikel, esai, dan kajian sastra Indonesia.
                         </p>
 
                     </div>
 
                 </div>
 
-                <a href="index.html" class="back-link" style="margin-top: var(--space-4); display: inline-block;">← Kembali ke Artikel</a>
+                <!-- Tombol Kembali -->
 
-                <div id="thumbnail-container" style="margin-top: var(--space-4);"></div>
+                <a href="index.html" class="back-link btn btn-outline">
 
-                <!-- Representasi awal menggunakan skeleton untuk loading judul -->
-                <h1 id="judul" style="margin-top: var(--space-4);">
-                    <div class="skeleton" style="height: 40px; width: 70%; max-width: 600px; border-radius: var(--radius-sm);"></div>
+                    <img src="/assets/icons/arrow-left.svg" alt="" class="btn-icon">
+
+                    <span>Kembali ke Artikel</span>
+
+                </a>
+
+                <!-- Thumbnail -->
+
+                <div id="thumbnail-container" class="article-thumbnail">
+                </div>
+
+                <!-- Judul -->
+
+                <h1 id="judul" class="article-title">
+
+                    <div class="skeleton article-title-skeleton">
+                    </div>
+
                 </h1>
 
-                <!-- Integrasi Standarisasi Tombol Aksi Baru -->
-                <div style="margin-top: var(--space-4); display: flex; flex-wrap: wrap; gap: var(--space-2);">
+                <!-- Tombol Aksi -->
+
+                <div class="article-actions">
+
                     <button id="bookmark-button" class="bookmark-btn btn btn-outline">
-                        ☆ Simpan
+
+                        <img src="/assets/icons/bookmark.svg" class="btn-icon" alt="">
+
+                        <span>Simpan</span>
+
                     </button>
-                    <button id="citation-btn" class="citation-btn btn btn-secondary">
-                        📋 Sitasi Artikel
+
+                    <button id="citation-btn" class="citation-btn btn btn-primary">
+
+                        <img src="/assets/icons/quote.svg" class="btn-icon" alt="">
+
+                        <span>Sitasi Artikel</span>
+
                     </button>
+
                 </div>
 
-                <!-- Detail Meta dibungkus rapi untuk konsistensi layout -->
-                <div id="artikel-meta" class="text-light" style="margin-top: var(--space-5); display: flex; flex-wrap: wrap; gap: var(--space-4); font-size: 0.9rem;">
-                    <p id="kategori" style="margin: 0;"></p>
-                    <p id="tanggal" style="margin: 0;"></p>
-                    <p id="penulis" style="margin: 0;"></p>
-                    <p id="estimasi-baca" style="margin: 0;"></p>
+                <!-- Metadata -->
+
+                <div id="artikel-meta" class="article-meta">
+
+                    <p id="kategori"></p>
+
+                    <p id="tanggal"></p>
+
+                    <p id="penulis"></p>
+
+                    <p id="estimasi-baca"></p>
+
                 </div>
 
-                <div id="tag-container" style="margin-top: var(--space-3); display: flex; flex-wrap: wrap; gap: var(--space-2);"></div>
+                <!-- Tag -->
 
-                <hr style="margin: var(--space-6) 0; border: none; border-bottom: 1px solid var(--border);">
-
-                <!-- Area Isi Artikel -->
-                <div id="isi" class="card-body" style="line-height: 1.8;">
-                    <div class="skeleton" style="height: 20px; margin-bottom: var(--space-2);"></div>
-                    <div class="skeleton" style="height: 20px; margin-bottom: var(--space-2);"></div>
-                    <div class="skeleton" style="height: 20px; margin-bottom: var(--space-2); width: 85%;"></div>
+                <div id="tag-container" class="tag-container">
                 </div>
 
-                <!-- Bagian Konten/Entitas Terkait (Dapat menggunakan kelas .card saat dirender dinamis di JS) -->
-                <div id="istilah-terkait-container" style="margin-top: var(--space-6);"></div>
+                <!-- Isi Artikel -->
 
-                <hr style="margin: var(--space-6) 0; border: none; border-bottom: 1px solid var(--border);">
+                <article id="isi" class="article-content card">
 
-                <div id="sastrawan-terkait-container"></div>
+                    <div class="skeleton skeleton-line"></div>
 
-                <hr style="margin: var(--space-6) 0; border: none; border-bottom: 1px solid var(--border);">
+                    <div class="skeleton skeleton-line"></div>
 
-                <div id="karya-terkait-container"></div>
+                    <div class="skeleton skeleton-line short"></div>
 
-                <hr style="margin: var(--space-6) 0; border: none; border-bottom: 1px solid var(--border);">
+                </article>
 
-                <div id="artikel-terkait-container"></div>
+                <div id="istilah-terkait-container" class="related-wrapper">
+                </div>
+
+                <!-- Sastrawan -->
+
+                <div id="sastrawan-terkait-container" class="related-wrapper">
+                </div>
+
+                <hr>
+
+                <div id="karya-terkait-container" class="related-wrapper">
+                </div>
+
+                <!-- Artikel Terkait -->
+
+                <div id="artikel-terkait-container" class="related-wrapper">
+                </div>
 
             </div>
 
         </section>
-
     </main>
 
     <footer id="site-footer"></footer>

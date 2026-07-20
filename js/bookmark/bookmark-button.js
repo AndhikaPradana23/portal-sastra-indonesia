@@ -50,6 +50,8 @@ async function initBookmarkButton(item){
         statusAwal
     );
 
+    button.type = "button";
+
     button.onclick = async () => {
         
         // --- LANGKAH 3: CEK PROTEKSI SESI USER ---
@@ -109,19 +111,43 @@ async function initBookmarkButton(item){
 function updateBookmarkButton(
     button,
     bookmarked
-){
+) {
 
-    if(bookmarked){
-        button.innerHTML = "★ Disimpan";
-        button.classList.add(
-            "bookmarked"
-        );
-    }
-    else{
-        button.innerHTML = "☆ Simpan";
-        button.classList.remove(
-            "bookmarked"
-        );
+    button.classList.add(
+        "btn",
+        "bookmark-btn"
+    );
+
+    if (bookmarked) {
+
+        button.classList.remove("btn-outline");
+        button.classList.add("btn-primary");
+        button.classList.add("bookmarked");
+
+        button.innerHTML = `
+            <img
+                src="/assets/icons/bookmark-check.svg"
+                class="btn-icon"
+                alt=""
+            >
+            <span>Disimpan</span>
+        `;
+
+    } else {
+
+        button.classList.remove("btn-primary");
+        button.classList.add("btn-outline");
+        button.classList.remove("bookmarked");
+
+        button.innerHTML = `
+            <img
+                src="/assets/icons/bookmark.svg"
+                class="btn-icon"
+                alt=""
+            >
+            <span>Simpan</span>
+        `;
+
     }
 
 }

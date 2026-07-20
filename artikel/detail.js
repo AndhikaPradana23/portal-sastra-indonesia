@@ -1,19 +1,12 @@
 document.addEventListener(
-
     "DOMContentLoaded",
-
     async()=>{
-
         await loadLayout();
-
         await loadDetailArtikel();
-
     }
-
 );
 
 function getSlug() {
-
     const params =
         new URLSearchParams(
             location.search
@@ -22,7 +15,6 @@ function getSlug() {
     return params.get(
         "slug"
     );
-
 }
 
 // ======================================================
@@ -34,10 +26,8 @@ async function loadDetailArtikel() {
         getSlug();
 
     if (!slug) {
-
         document.body.innerHTML =
             "<h1>Slug tidak ditemukan.</h1>";
-
         return;
     }
 
@@ -52,10 +42,8 @@ async function loadDetailArtikel() {
             .single();
 
     if (error || !data) {
-
         document.body.innerHTML =
             "<h1>Artikel tidak ditemukan.</h1>";
-
         return;
     }
 
@@ -95,77 +83,105 @@ async function loadDetailArtikel() {
     }
 
     // ==========================================
-    // PENGISIAN AREA METADATA ARTIKEL
+    // PENGISIAN AREA METADATA ARTIKEL (Diperbarui)
     // ==========================================
-    document.getElementById(
-        "kategori"
-    ).innerHTML = `
-        <strong>Kategori :</strong> ${data.kategori || "-"}
-    `;
+    document.getElementById("kategori").innerHTML = `
+<img
+src="/assets/icons/folder.svg"
+class="meta-icon"
+alt="">
 
-    document.getElementById(
-        "tanggal"
-    ).innerHTML = `
-        <strong>Publish :</strong> ${new Date(
-            data.published_at || data.created_at
-        ).toLocaleDateString(
-            "id-ID",
-            {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }
-        )}
-    `;
+<div>
+<strong>Kategori</strong>
+<span>${data.kategori || "-"}</span>
+</div>
+`;document.getElementById("tanggal").innerHTML = `
+<img
+src="/assets/icons/calendar.svg"
+class="meta-icon"
+alt="">
 
-    document.getElementById(
-        "estimasi-baca"
-    ).innerHTML = `
-        <strong>Estimasi :</strong> ${hitungEstimasiBaca(data.isi)}
-    `;
+<div>
+<strong>Publish</strong>
+<span>${new Date(
+    data.published_at || data.created_at
+).toLocaleDateString(
+    "id-ID",
+    {
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+    }
+)}</span>
+</div>
+`;document.getElementById("penulis").innerHTML = "";document.getElementById("estimasi-baca").innerHTML = `
+<img
+src="/assets/icons/clock.svg"
+class="meta-icon"
+alt="">
+
+<div>
+<strong>Estimasi</strong>
+<span>${hitungEstimasiBaca(data.isi)}</span>
+</div>
+`;
 
     // ==========================================
-    // RENDERING GAMBAR MINI (THUMBNAIL)
+    // RENDERING THUMBNAIL HERO (Diperbarui)
     // ==========================================
-    if (data.thumbnail) {
-        document.getElementById(
-            "thumbnail-container"
-        ).innerHTML = `
-            <img
-                src="${data.thumbnail}"
-                alt="${data.judul}"
-                style="
-                    width: 100%;
-                    max-height: 450px;
-                    object-fit: cover;
-                    border-radius: 10px;
-                    margin-bottom: 25px;
-                "
-            >
-        `;
+    const thumbnailContainer =document.getElementById("thumbnail-container"
+    );if(data.thumbnail){thumbnailContainer.innerHTML=`
+
+<img
+src="${data.thumbnail}"
+alt="${data.judul}"
+loading="lazy">
+
+`;
+
+    }else{thumbnailContainer.innerHTML="";
+
     }
 
     // ==========================================
     // RENDERING LABEL TAGS
     // ==========================================
-    const tagContainer = document.getElementById("tag-container");
-    if (Array.isArray(data.tag) && data.tag.length) {
+    const tagContainer =
+        document.getElementById(
+            "tag-container"
+        );
+
+    if (
+        Array.isArray(data.tag) &&
+        data.tag.length
+    ) {
         tagContainer.innerHTML = `
             <div class="tag-list">
-                ${data.tag.map(tag => `
-                    <span class="tag">${tag}</span>
+                ${data.tag.map(tag=>`
+                    <span class="tag">
+                        ${tag}
+                    </span>
                 `).join("")}
             </div>
         `;
+    } else {
+        tagContainer.innerHTML = "";
     }
 
-    // Tampilkan isi teks tubuh artikel
-    document.getElementById(
-        "isi"
-    ).innerHTML =
+    // Tampilkan isi teks tubuh artikel beserta animasi
+    const isiArtikel =
+        document.getElementById(
+            "isi"
+        );
+
+    isiArtikel.innerHTML =
         formatIsiArtikel(
             data.isi
         );
+
+    isiArtikel.classList.add(
+        "fade-up"
+    );
 
     // ==========================================
     // PENULIS & JSON-LD META
@@ -208,16 +224,14 @@ async function loadDetailArtikel() {
     );
 
     initCitationButton(data);
-
 }
 
 // ==========================================
-// FUNGSI RELASI PENULIS (SASTRAWAN) (Langkah 1)
+// FUNGSI RELASI PENULIS (SASTRAWAN) (Diperbarui)
 // ==========================================
 async function loadPenulisArtikel(
     artikelId
 ){
-
     const {
         data,
         error
@@ -242,33 +256,33 @@ async function loadPenulisArtikel(
         data &&
         data.length
     ){
-
         namaPenulis =
         data
         .map(item=>item.sastrawan.nama)
         .join(", ");
-
     }
 
-    document
-    .getElementById(
-        "penulis"
-    )
-    .innerHTML=
-    `
-<strong>Penulis :</strong>
+    document.getElementById("penulis").innerHTML = `
+<img
+src="/assets/icons/user.svg"
+class="meta-icon"
+alt="">
 
-${namaPenulis}
+<div>
+
+<strong>Penulis</strong>
+
+<span>${namaPenulis}</span>
+
+</div>
 `;
 
     return namaPenulis;
-
 }
 
 async function loadIstilahTerkait(
     artikelId
 ) {
-
     const container =
         document.getElementById(
             "istilah-terkait-container"
@@ -294,6 +308,7 @@ async function loadIstilahTerkait(
     }
 
     if (!relasi || relasi.length === 0) {
+        container.innerHTML = "";
         return;
     }
 
@@ -324,31 +339,35 @@ async function loadIstilahTerkait(
         return;
     }
 
+    if (!istilahData || istilahData.length === 0) {
+        container.innerHTML = "";
+        return;
+    }
+
     container.innerHTML = `
-        <section class="istilah-terkait">
-            <h2>Istilah yang Dibahas</h2>
+        <section class="related-section">
+            <h2>
+                <img src="/assets/icons/book-open.svg" class="section-icon" alt="">
+                <span>Istilah yang Dibahas</span>
+            </h2>
             <div class="istilah-grid">
-                ${istilahData.map(item => `
-                    <a
-                        href="../kamus-istilah/detail.html?slug=${item.slug}"
-                        class="istilah-card"
-                    >
-                        ${item.nama}
+                ${istilahData.map(item=>`
+                    <a href="../kamus-istilah/detail.html?slug=${item.slug}" class="istilah-card">
+                        <img src="/assets/icons/book.svg" class="filter-icon" alt="">
+                        <span>${item.nama}</span>
                     </a>
                 `).join("")}
             </div>
         </section>
     `;
-
 }
 
 // ==========================================
-// LOAD DETAIL RELASI SASTRAWAN TERKAIT 
+// LOAD DETAIL RELASI SASTRAWAN TERKAIT (Diperbarui)
 // ==========================================
 async function loadSastrawanTerkait(
     artikelId
 ){
-
     const container =
         document.getElementById(
             "sastrawan-terkait-container"
@@ -368,6 +387,7 @@ async function loadSastrawanTerkait(
     );
 
     if(!data || data.length === 0){
+        container.innerHTML = "";
         return;
     }
 
@@ -385,16 +405,14 @@ async function loadSastrawanTerkait(
             </ul>
         </section>
     `;
-
 }
 
 // ==========================================
-// LOAD DETAIL RELASI KARYA TERKAIT
+// LOAD DETAIL RELASI KARYA TERKAIT (Diperbarui)
 // ==========================================
 async function loadKaryaTerkait(
     artikelId
 ){
-
     const container =
         document.getElementById(
             "karya-terkait-container"
@@ -414,6 +432,7 @@ async function loadKaryaTerkait(
     );
 
     if(!data || data.length === 0){
+        container.innerHTML = "";
         return;
     }
 
@@ -431,11 +450,10 @@ async function loadKaryaTerkait(
             </ul>
         </section>
     `;
-
 }
 
 // ==========================================
-// ARTIKEL TERKAIT OTOMATIS (SKORING)
+// ARTIKEL TERKAIT OTOMATIS (SKORING) (Diperbarui)
 // Prioritas:
 // 1. Kategori
 // 2. Tag
@@ -444,7 +462,6 @@ async function loadKaryaTerkait(
 async function loadArtikelTerkait(
     artikel
 ){
-
     const container =
         document.getElementById(
             "artikel-terkait-container"
@@ -483,6 +500,7 @@ async function loadArtikelTerkait(
         !data
     ){
         console.error(error);
+        container.innerHTML = "";
         return;
     }
 
@@ -560,6 +578,7 @@ async function loadArtikelTerkait(
     if(
         artikelTerkait.length===0
     ){
+        container.innerHTML = "";
         return;
     }
 
@@ -581,7 +600,6 @@ async function loadArtikelTerkait(
         </ul>
     </section>
     `;
-
 }
 
 // ==========================================
@@ -590,7 +608,6 @@ async function loadArtikelTerkait(
 function formatIsiArtikel(
     text
 ) {
-
     if (!text)
         return "";
 
@@ -605,14 +622,12 @@ function formatIsiArtikel(
                 `<p>${p}</p>`
         )
         .join("");
-
 }
 
 // ==========================================
 // HELPER ESTIMASI WAKTU BACA
 // ==========================================
 function hitungEstimasiBaca(text) {
-
     if (!text)
         return "1 menit";
 
@@ -631,7 +646,6 @@ function hitungEstimasiBaca(text) {
     );
 
     return `${menit} menit baca`;
-
 }
 
 // ==========================================
@@ -641,7 +655,6 @@ function updateArticleSchema(
     artikel,
     authorName
 ){
-
     // Langkah 4: Hitung jumlah kata
     const wordCount =
     artikel.isi
@@ -733,14 +746,12 @@ function updateArticleSchema(
         null,
         2
     );
-
 }
 
 // ==========================================
 // MENAMBAHKAN JUMLAH VIEW (DENGAN LOGGING)
 // ==========================================
 async function tambahViews(id, views){
-
     const { data, error } =
     await supabaseClient
         .from("artikel")
@@ -752,7 +763,6 @@ async function tambahViews(id, views){
 
     console.log("Data hasil update views:", data);
     console.log("Error hasil update views:", error);
-
 }
 
 // ==========================================
@@ -761,7 +771,6 @@ async function tambahViews(id, views){
 function initCitationButton(
     artikel
 ){
-
     const button =
         document.getElementById(
             "citation-btn"
@@ -772,29 +781,20 @@ function initCitationButton(
     }
 
     button.onclick = () => {
-
         openCitationPage({
-
             author:
                 "Portal Sastra Indonesia",
-
             title:
-                "artikel.judul",
-
+                artikel.judul,
             year:
                 new Date(
                     artikel.published_at ||
                     artikel.created_at
                 ).getFullYear(),
-
             publisher:
                 "Portal Sastra Indonesia",
-
             url:
                 window.location.href
-
         });
-
     };
-
 }
